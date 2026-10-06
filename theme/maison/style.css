@@ -1,0 +1,18 @@
+/*
+Theme Name: Maison
+Theme URI: https://example.com/maison
+Author: Maison
+Author URI: https://example.com
+Description: A premium, Cartier-inspired WordPress theme for a growth agency. Light palette, editorial serif typography, outcome-led content model (case studies, services, insights), full SEO/AEO/GEO scaffolding (JSON-LD schema, llms.txt, FAQ structured data). Built lean — no page builders, no bloat.
+Version: 1.0.0
+Requires at least: 6.4
+Requires PHP: 8.1
+License: Proprietary
+License URI: https://example.com/license
+Text Domain: maison
+Tags: agency, premium, light, serif, editorial, custom-logo, custom-menu, featured-images, translation-ready
+*/
+
+/* Theme stylesheet imports */
+@import url("assets/css/reset.css");
+@import url("assets/css/main.css");
