@@ -41,15 +41,15 @@ function maison_arrow_svg() {
 	return '<svg class="arrow" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H1" stroke="currentColor" stroke-width="1.3" stroke-linecap="square"/></svg>';
 }
 
-/** Primary CTA target URL (uses homepage CTA URL, falls back to contact page or #contact). */
+/** Primary CTA target URL (prefers the Contact page, then homepage CTA field, then #contact). */
 function maison_primary_cta_url() {
-	$url = maison_field( 'hero_cta_primary_url', '', get_option( 'page_on_front' ) );
-	if ( $url ) {
-		return $url;
-	}
 	$contact = get_page_by_path( 'contact' );
 	if ( $contact ) {
 		return get_permalink( $contact );
+	}
+	$url = maison_field( 'hero_cta_primary_url', '', get_option( 'page_on_front' ) );
+	if ( $url ) {
+		return $url;
 	}
 	return home_url( '/#contact' );
 }

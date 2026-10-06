@@ -33,10 +33,23 @@
 					'depth'          => 1,
 				) );
 			} else {
+				$about   = get_page_by_path( 'about' );
+				$contact = get_page_by_path( 'contact' );
+				$blog_id = (int) get_option( 'page_for_posts' );
+
 				echo '<a href="' . esc_url( get_post_type_archive_link( 'case_study' ) ?: home_url( '/#work' ) ) . '">' . esc_html__( 'Work', 'maison' ) . '</a>';
-				echo '<a href="' . esc_url( home_url( '/#approach' ) ) . '">' . esc_html__( 'Approach', 'maison' ) . '</a>';
-				echo '<a href="' . esc_url( get_post_type_archive_link( 'service' ) ?: home_url( '/#capabilities' ) ) . '">' . esc_html__( 'Capabilities', 'maison' ) . '</a>';
-				echo '<a href="' . esc_url( home_url( '/#contact' ) ) . '">' . esc_html__( 'Contact', 'maison' ) . '</a>';
+				echo '<a href="' . esc_url( get_post_type_archive_link( 'service' ) ?: home_url( '/#capabilities' ) ) . '">' . esc_html__( 'Services', 'maison' ) . '</a>';
+				if ( $about ) {
+					echo '<a href="' . esc_url( get_permalink( $about ) ) . '">' . esc_html__( 'About', 'maison' ) . '</a>';
+				}
+				if ( $blog_id ) {
+					echo '<a href="' . esc_url( get_permalink( $blog_id ) ) . '">' . esc_html__( 'Insights', 'maison' ) . '</a>';
+				}
+				if ( $contact ) {
+					echo '<a href="' . esc_url( get_permalink( $contact ) ) . '">' . esc_html__( 'Contact', 'maison' ) . '</a>';
+				} else {
+					echo '<a href="' . esc_url( home_url( '/#contact' ) ) . '">' . esc_html__( 'Contact', 'maison' ) . '</a>';
+				}
 			}
 			?>
 		</nav>

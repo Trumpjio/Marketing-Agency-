@@ -872,3 +872,94 @@ section {
     transform: none;
   }
 }
+
+/* ============================================================
+   FORMS
+   ============================================================ */
+.contact-form .form-row {
+  margin-bottom: var(--space-3);
+}
+
+.contact-form .form-label {
+  display: block;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 0.5rem;
+}
+
+.contact-form .form-input,
+.contact-form select.form-input,
+.contact-form textarea.form-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  color: var(--color-ink);
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--dur-med) var(--ease-out);
+}
+
+.contact-form .form-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.contact-form textarea.form-input {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+@media (max-width: 820px) {
+  .contact__grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Service page FAQ accordion polish */
+details[open] summary span:last-child {
+  transform: rotate(45deg);
+}
+details summary span:last-child {
+  display: inline-block;
+  transition: transform var(--dur-med) var(--ease-out);
+}
+
+/* WordPress pagination */
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+}
+.nav-links .page-numbers {
+  padding: 0.5rem 0.875rem;
+  font-size: var(--fs-sm);
+  color: var(--color-ink-soft);
+  border: 1px solid var(--color-divider);
+  text-decoration: none;
+  transition: all var(--dur-med) var(--ease-out);
+}
+.nav-links .page-numbers.current,
+.nav-links .page-numbers:hover {
+  color: var(--color-bg);
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+}
+
+/* Core post content typography */
+.wp-block-image img {
+  max-width: 100%;
+  height: auto;
+}
+.wp-block-quote {
+  padding-left: var(--space-3);
+  border-left: 2px solid var(--color-accent);
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  color: var(--color-ink);
+  margin: var(--space-4) 0;
+}

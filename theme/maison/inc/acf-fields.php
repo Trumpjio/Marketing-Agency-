@@ -184,4 +184,70 @@ function maison_register_fields() {
 		),
 		'location' => array( array( array( 'param' => 'post_type', 'operator' => '==', 'value' => 'testimonial' ) ) ),
 	) );
+
+	/* ----------------------------------------------------------
+	 *  ABOUT PAGE (template-about.php)
+	 * ---------------------------------------------------------- */
+	acf_add_local_field_group( array(
+		'key'      => 'group_about',
+		'title'    => 'About Page',
+		'fields'   => array(
+			array( 'key' => 'field_ab_eyebrow', 'label' => 'Eyebrow', 'name' => 'about_eyebrow', 'type' => 'text', 'default_value' => 'About' ),
+			array( 'key' => 'field_ab_title', 'label' => 'Headline (wrap emphasis in <em>…</em>)', 'name' => 'about_title', 'type' => 'textarea', 'rows' => 2, 'new_lines' => 'br' ),
+			array( 'key' => 'field_ab_sub', 'label' => 'Sub-headline', 'name' => 'about_sub', 'type' => 'textarea', 'rows' => 3 ),
+			array( 'key' => 'field_ab_story_tab', 'label' => 'Story', 'name' => '', 'type' => 'tab' ),
+			array( 'key' => 'field_ab_story_title', 'label' => 'Story section title', 'name' => 'story_title', 'type' => 'text', 'default_value' => 'A different kind of agency.' ),
+			array( 'key' => 'field_ab_story_body', 'label' => 'Story body', 'name' => 'story_body', 'type' => 'wysiwyg', 'media_upload' => 0 ),
+			array( 'key' => 'field_ab_principles_tab', 'label' => 'Principles', 'name' => '', 'type' => 'tab' ),
+			array( 'key' => 'field_ab_principles_title', 'label' => 'Principles section title', 'name' => 'principles_title', 'type' => 'text', 'default_value' => 'What we believe.' ),
+			array( 'key' => 'field_ab_principles', 'label' => 'Principles', 'name' => 'principles', 'type' => 'repeater', 'layout' => 'block', 'sub_fields' => array(
+				array( 'key' => 'field_ab_principle_title', 'label' => 'Title', 'name' => 'title', 'type' => 'text' ),
+				array( 'key' => 'field_ab_principle_desc', 'label' => 'Description', 'name' => 'desc', 'type' => 'textarea', 'rows' => 3 ),
+			) ),
+			array( 'key' => 'field_ab_team_tab', 'label' => 'Team', 'name' => '', 'type' => 'tab' ),
+			array( 'key' => 'field_ab_team_title', 'label' => 'Team section title', 'name' => 'team_title', 'type' => 'text', 'default_value' => 'The people.' ),
+			array( 'key' => 'field_ab_team', 'label' => 'Team members', 'name' => 'team', 'type' => 'repeater', 'layout' => 'block', 'sub_fields' => array(
+				array( 'key' => 'field_ab_tm_name', 'label' => 'Name', 'name' => 'name', 'type' => 'text' ),
+				array( 'key' => 'field_ab_tm_role', 'label' => 'Role', 'name' => 'role', 'type' => 'text' ),
+				array( 'key' => 'field_ab_tm_bio', 'label' => 'Bio', 'name' => 'bio', 'type' => 'textarea', 'rows' => 3 ),
+				array( 'key' => 'field_ab_tm_photo', 'label' => 'Photo', 'name' => 'photo', 'type' => 'image', 'return_format' => 'array' ),
+			) ),
+		),
+		'location' => array( array( array( 'param' => 'page_template', 'operator' => '==', 'value' => 'templates/template-about.php' ) ) ),
+	) );
+
+	/* ----------------------------------------------------------
+	 *  CONTACT PAGE (template-contact.php)
+	 * ---------------------------------------------------------- */
+	acf_add_local_field_group( array(
+		'key'      => 'group_contact',
+		'title'    => 'Contact Page',
+		'fields'   => array(
+			array( 'key' => 'field_ct_eyebrow', 'label' => 'Eyebrow', 'name' => 'contact_eyebrow', 'type' => 'text', 'default_value' => 'Begin' ),
+			array( 'key' => 'field_ct_title', 'label' => 'Headline (wrap emphasis in <em>…</em>)', 'name' => 'contact_title', 'type' => 'textarea', 'rows' => 2, 'new_lines' => 'br' ),
+			array( 'key' => 'field_ct_sub', 'label' => 'Sub-headline', 'name' => 'contact_sub', 'type' => 'textarea', 'rows' => 3 ),
+			array( 'key' => 'field_ct_form_shortcode', 'label' => 'Form shortcode (Fluent Forms / Gravity / etc.)', 'name' => 'contact_form_shortcode', 'type' => 'text', 'instructions' => 'Paste a form shortcode here. If empty, a native HTML form is rendered.' ),
+			array( 'key' => 'field_ct_steps_tab', 'label' => 'What happens next', 'name' => '', 'type' => 'tab' ),
+			array( 'key' => 'field_ct_steps_title', 'label' => 'Section title', 'name' => 'steps_title', 'type' => 'text', 'default_value' => 'What happens next.' ),
+			array( 'key' => 'field_ct_steps', 'label' => 'Steps', 'name' => 'steps', 'type' => 'repeater', 'layout' => 'block', 'sub_fields' => array(
+				array( 'key' => 'field_ct_step_title', 'label' => 'Title', 'name' => 'title', 'type' => 'text' ),
+				array( 'key' => 'field_ct_step_desc', 'label' => 'Description', 'name' => 'desc', 'type' => 'textarea', 'rows' => 3 ),
+			) ),
+		),
+		'location' => array( array( array( 'param' => 'page_template', 'operator' => '==', 'value' => 'templates/template-contact.php' ) ) ),
+	) );
+
+	/* ----------------------------------------------------------
+	 *  BLOG PAGE (home.php target — WP posts page)
+	 * ---------------------------------------------------------- */
+	acf_add_local_field_group( array(
+		'key'      => 'group_blog',
+		'title'    => 'Blog / Insights Page',
+		'fields'   => array(
+			array( 'key' => 'field_bl_eyebrow', 'label' => 'Eyebrow', 'name' => 'blog_eyebrow', 'type' => 'text', 'default_value' => 'Insights' ),
+			array( 'key' => 'field_bl_title', 'label' => 'Headline (wrap emphasis in <em>…</em>)', 'name' => 'blog_title', 'type' => 'textarea', 'rows' => 2, 'new_lines' => 'br' ),
+			array( 'key' => 'field_bl_sub', 'label' => 'Sub-headline', 'name' => 'blog_sub', 'type' => 'textarea', 'rows' => 3 ),
+		),
+		'location' => array( array( array( 'param' => 'page_type', 'operator' => '==', 'value' => 'posts_page' ) ) ),
+	) );
 }

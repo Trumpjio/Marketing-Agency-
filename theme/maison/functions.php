@@ -23,3 +23,4 @@ require_once MAISON_DIR . '/inc/schema.php';
 require_once MAISON_DIR . '/inc/seo.php';
 require_once MAISON_DIR . '/inc/llms.php';
 require_once MAISON_DIR . '/inc/helpers.php';
+require_once MAISON_DIR . '/inc/seeder.php';
