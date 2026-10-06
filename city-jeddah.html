@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jeddah — OrcaPulse</title>
+    <meta name="description" content="OrcaPulse in Jeddah, Saudi Arabia — capability page in production." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles/glass.css" />
+  </head>
+  <body>
+    <div class="page">
+      <div class="orb orb-blue"   style="top: 220px; left: -280px;"></div>
+      <div class="orb orb-cyan"   style="top: 1200px; right: -240px;"></div>
+      <div class="orb orb-purple" style="top: 2200px; left: -260px;"></div>
+      <div class="orb orb-green"  style="top: 3100px; right: -260px;"></div>
+
+      <header class="nav" id="nav">
+        <div class="container nav__inner">
+          <a href="index.html" class="brand">ORCA<span>PULSE</span></a>
+          <nav class="nav__links" aria-label="Primary">
+            <a href="work.html">Work</a>
+            <a href="services.html">Services</a>
+            <a href="locations.html">Locations</a>
+            <a href="about.html">About</a>
+            <a href="insights.html">Insights</a>
+          </nav>
+          <a href="contact.html" class="btn btn--primary">Book a Call <svg class="arrow" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+        </div>
+      </header>
+
+      <div class="container">
+
+      <section class="hero" style="padding-bottom: var(--s-4);">
+        <div class="badge reveal"><a href="country-saudi-arabia.html" style="color: inherit;">Saudi Arabia</a> · City</div>
+        <h1 class="reveal">Jeddah<br><span class="gradient-text">— The commercial gateway to the Red Sea.</span></h1>
+        <p class="hero__sub reveal">Jeddah is Riyadh's commercial counterpart — heritage retail families, F&B, hospitality anchored by religious tourism, and a distinct buyer profile from the capital. Deep local research in progress; full market view publishing soon.</p>
+        <div class="hero__actions reveal">
+          <a href="contact.html" class="btn btn--primary">Enquire about Jeddah <svg class="arrow" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+          <a href="country-saudi-arabia.html" class="btn btn--ghost">Back to Saudi Arabia</a>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head center reveal">
+          <div class="kicker">Honest status</div>
+          <h2>Deep local research in progress.</h2>
+          <p>We refuse to publish a generic city page with a swapped name on a template — the OrcaPulse rule is that any location page must contain material local differentiation. Research on Jeddah is active; the full capability page publishes next cycle.</p>
+          <p style="margin-top: var(--s-3);"><a href="contact.html" style="color: var(--blue); font-weight: 600;">If you have a Jeddah engagement in mind, we'd rather have the conversation now and apply what we learn. →</a></p>
+        </div>
+      </section>
+
+        <section class="cta reveal">
+          <h2>Ready to grow?</h2>
+          <p>We take on a limited number of partnerships each quarter. Thirty minutes, no pitch — a frank conversation about where your growth is leaking and what it would take to seal it.</p>
+          <a href="contact.html" class="btn btn--primary">Book a Strategy Call <svg class="arrow" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+        </section>
+
+        <footer>
+          <div class="footer__grid">
+            <div>
+              <div class="brand" style="margin-bottom: 1rem;">ORCA<span>PULSE</span></div>
+              <p style="max-width: 36ch;">A premium growth partner for ambitious businesses across the GCC &amp; beyond.</p>
+            </div>
+            <div class="footer__col">
+              <div class="footer__col-title">Capabilities</div>
+              <a href="service-search-discovery.html">Search &amp; Discovery</a>
+              <a href="service-paid-media.html">Paid Media</a>
+              <a href="service-web-commerce.html">Web &amp; Commerce</a>
+              <a href="service-brand-design.html">Brand &amp; Design</a>
+            </div>
+            <div class="footer__col">
+              <div class="footer__col-title">Studio</div>
+              <a href="about.html">About</a>
+              <a href="work.html">Selected Work</a>
+              <a href="insights.html">Insights</a>
+              <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer__col">
+              <div class="footer__col-title">GCC Locations</div>
+              <a href="country-uae.html">United Arab Emirates</a>
+              <a href="country-saudi-arabia.html">Saudi Arabia</a>
+              <a href="country-qatar.html">Qatar</a>
+              <a href="country-kuwait.html">Kuwait</a>
+              <a href="country-bahrain.html">Bahrain</a>
+            </div>
+          </div>
+          <div class="footer__bottom">
+            <div>&copy; 2026 OrcaPulse &middot; All rights reserved</div>
+            <div><a href="#">Privacy</a> &middot; <a href="#">Terms</a></div>
+          </div>
+        </footer>
+
+      </div>
+    </div>
+
+    <script>
+      const nav = document.getElementById('nav');
+      const onScroll = () => (window.scrollY > 10 ? nav.classList.add('is-scrolled') : nav.classList.remove('is-scrolled'));
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && (e.target.classList.add('is-visible'), io.unobserve(e.target))), { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
+        document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+      } else {
+        document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
+      }
+    </script>
+  </body>
+</html>

@@ -3,88 +3,103 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Services — Maison</title>
-    <meta name="description" content="Full-stack growth capability under one roof — Search, Paid, Web, App, Social, Content, Film, Brand." />
+    <title>Services — OrcaPulse</title>
+    <meta name="description" content="Full-stack growth capability — Search, Paid, Web, App, Social, Content, Film, Brand. All under one house." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles/reset.css" />
-    <link rel="stylesheet" href="styles/main.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles/glass.css" />
   </head>
   <body>
-    <header class="site-header">
+    <div class="page">
+      <div class="orb orb-blue"   style="top: 220px; left: -280px;"></div>
+      <div class="orb orb-cyan"   style="top: 1200px; right: -240px;"></div>
+      <div class="orb orb-purple" style="top: 2200px; left: -260px;"></div>
+      <div class="orb orb-green"  style="top: 3100px; right: -260px;"></div>
+
+      <header class="nav" id="nav">
+        <div class="container nav__inner">
+          <a href="index.html" class="brand">ORCA<span>PULSE</span></a>
+          <nav class="nav__links" aria-label="Primary">
+            <a href="work.html">Work</a>
+            <a href="services.html">Services</a>
+            <a href="locations.html">Locations</a>
+            <a href="about.html">About</a>
+            <a href="insights.html">Insights</a>
+          </nav>
+          <a href="contact.html" class="btn btn--primary">Book a Call <svg class="arrow" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+        </div>
+      </header>
+
       <div class="container">
-        <a href="index.html" class="brand">Maison<span>.</span></a>
-        <nav class="nav" aria-label="Primary">
-          <a href="work.html">Work</a>
-          <a href="services.html">Services</a>
-          <a href="about.html">About</a>
-          <a href="insights.html">Insights</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-        <a href="contact.html" class="btn btn-primary">Book a Call <svg class="arrow" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H1" stroke="currentColor" stroke-width="1.3" stroke-linecap="square"/></svg></a>
-      </div>
-    </header>
 
-    <main id="top">
-      <section class="hero">
-        <div class="hero__watermark" aria-hidden="true">Services</div>
-        <div class="container">
-          <div class="hero__eyebrow reveal">Capabilities</div>
-          <h1 class="hero__title serif reveal">One house. <em>Every</em> lever.</h1>
-          <p class="hero__sub reveal">A single team that moves across every surface your growth needs — not a menu of services. You brief the outcome; we assemble the craft behind it.</p>
+      <section class="hero" style="padding-bottom: var(--s-4);">
+        <div class="badge reveal">Capabilities</div>
+        <h1 class="reveal">One house.<br><span class="gradient-text">Every lever.</span></h1>
+        <p class="hero__sub reveal">A single team that moves across every surface your growth needs. You brief the outcome; we assemble the craft behind it.</p>
+      </section>
+
+      <section>
+        <div class="grid grid--4">
+<a class="glass reveal" href="service-search-discovery.html"><div class="cap__icon">01</div><h3 class="cap__title">Search & Discovery</h3><p class="cap__desc">SEO, AEO and GEO — ranking in Google, Perplexity, ChatGPT, and AI Overviews.</p></a><a class="glass reveal" href="service-paid-media.html"><div class="cap__icon">02</div><h3 class="cap__title">Paid Media</h3><p class="cap__desc">Google, Meta, LinkedIn, TikTok, programmatic — one portfolio, managed against revenue.</p></a><a class="glass reveal" href="service-web-commerce.html"><div class="cap__icon">03</div><h3 class="cap__title">Web & Commerce</h3><p class="cap__desc">Marketing sites, e-commerce, SaaS platforms. Built to convert, built to last.</p></a><a class="glass reveal" href="service-product-app.html"><div class="cap__icon">04</div><h3 class="cap__title">Product & App</h3><p class="cap__desc">iOS, Android, cross-platform apps — scoping to shipped, growth loop baked in.</p></a><a class="glass reveal" href="service-social-presence.html"><div class="cap__icon">05</div><h3 class="cap__title">Social Presence</h3><p class="cap__desc">Strategy and daily operations across every platform your audience actually lives on.</p></a><a class="glass reveal" href="service-content-editorial.html"><div class="cap__icon">06</div><h3 class="cap__title">Content & Editorial</h3><p class="cap__desc">The long-form, the briefings, the owned media — the asset that pays off for years.</p></a><a class="glass reveal" href="service-film-motion.html"><div class="cap__icon">07</div><h3 class="cap__title">Film & Motion</h3><p class="cap__desc">Production, editing and motion design — premium at thumb-scroll speed.</p></a><a class="glass reveal" href="service-brand-design.html"><div class="cap__icon">08</div><h3 class="cap__title">Brand & Design</h3><p class="cap__desc">Identity, art direction, systems — every surface made by the same hand.</p></a>
         </div>
       </section>
 
-      <section style="padding-top:0;position:relative;overflow:hidden;">
-        <div class="bg-numeral" style="right:-5vw;top:4vw;">08</div>
-        <div class="container" style="position:relative;z-index:1;">
-          <div class="capabilities__grid">
-<a class="capability reveal" href="service-search-discovery.html" style="color:inherit;text-decoration:none;"><div class="capability__num">01 —</div><h3 class="capability__title serif">Search & Discovery</h3><p class="capability__desc">SEO, AEO and GEO — ranking in search engines, answer engines and AI-generated results.</p></a>
-<a class="capability reveal" href="service-paid-media.html" style="color:inherit;text-decoration:none;"><div class="capability__num">02 —</div><h3 class="capability__title serif">Paid Media</h3><p class="capability__desc">Performance across Google, Meta, LinkedIn, TikTok, programmatic and emerging platforms — managed as one portfolio.</p></a>
-<a class="capability reveal" href="service-web-commerce.html" style="color:inherit;text-decoration:none;"><div class="capability__num">03 —</div><h3 class="capability__title serif">Web & Commerce</h3><p class="capability__desc">Marketing sites, SaaS platforms, e-commerce, membership and booking systems — built to convert, built to last.</p></a>
-<a class="capability reveal" href="service-product-app.html" style="color:inherit;text-decoration:none;"><div class="capability__num">04 —</div><h3 class="capability__title serif">Product & App</h3><p class="capability__desc">iOS, Android and cross-platform applications — from scoping to shipped product, with the growth loop baked in.</p></a>
-<a class="capability reveal" href="service-social-presence.html" style="color:inherit;text-decoration:none;"><div class="capability__num">05 —</div><h3 class="capability__title serif">Social Presence</h3><p class="capability__desc">Strategy, calendar and operations across every platform the audience actually lives on — anchored to narrative.</p></a>
-<a class="capability reveal" href="service-content-editorial.html" style="color:inherit;text-decoration:none;"><div class="capability__num">06 —</div><h3 class="capability__title serif">Content & Editorial</h3><p class="capability__desc">The long-form, the briefings, the owned media — the compounding asset that pays off for years, not days.</p></a>
-<a class="capability reveal" href="service-film-motion.html" style="color:inherit;text-decoration:none;"><div class="capability__num">07 —</div><h3 class="capability__title serif">Film & Motion</h3><p class="capability__desc">Production, editing and motion design that reads premium at thumb-scroll speed and billboard scale alike.</p></a>
-<a class="capability reveal" href="service-brand-design.html" style="color:inherit;text-decoration:none;"><div class="capability__num">08 —</div><h3 class="capability__title serif">Brand & Design</h3><p class="capability__desc">Identity, art direction and the system that keeps every surface feeling made by the same hand.</p></a>
-          </div>
-        </div>
-      </section>
+        <section class="cta reveal">
+          <h2>Ready to grow?</h2>
+          <p>We take on a limited number of partnerships each quarter. Thirty minutes, no pitch — a frank conversation about where your growth is leaking and what it would take to seal it.</p>
+          <a href="contact.html" class="btn btn--primary">Book a Strategy Call <svg class="arrow" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+        </section>
 
-      <div class="ornament" aria-hidden="true"><span class="ornament__mark"></span></div>
-
-      <section class="cta">
-        <div class="container">
-          <div class="cta__inner">
-            <div class="reveal">
-              <div class="section-label">Begin</div>
-              <h2 class="cta__title serif">If you're ready to grow, we're ready to build.</h2>
-              <p class="cta__sub">We take on a limited number of partnerships each quarter. Thirty minutes, no pitch — a frank conversation about where your growth is leaking and what it would take to seal it.</p>
-              <a href="contact.html" class="btn btn-primary">Book a Strategy Call<svg class="arrow" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H1" stroke="currentColor" stroke-width="1.3" stroke-linecap="square"/></svg></a>
+        <footer>
+          <div class="footer__grid">
+            <div>
+              <div class="brand" style="margin-bottom: 1rem;">ORCA<span>PULSE</span></div>
+              <p style="max-width: 36ch;">A premium growth partner for ambitious businesses across the GCC &amp; beyond.</p>
             </div>
-            <div class="cta__right reveal">
-              <div class="cta__contact-item"><div class="cta__contact-label">Partnerships</div><div class="cta__contact-value">hello@maison.studio</div></div>
-              <div class="cta__contact-item"><div class="cta__contact-label">Direct</div><div class="cta__contact-value">+1 (000) 000 0000</div></div>
-              <div class="cta__contact-item"><div class="cta__contact-label">Studio</div><div class="cta__contact-value">By appointment</div></div>
+            <div class="footer__col">
+              <div class="footer__col-title">Capabilities</div>
+              <a href="service-search-discovery.html">Search &amp; Discovery</a>
+              <a href="service-paid-media.html">Paid Media</a>
+              <a href="service-web-commerce.html">Web &amp; Commerce</a>
+              <a href="service-brand-design.html">Brand &amp; Design</a>
+            </div>
+            <div class="footer__col">
+              <div class="footer__col-title">Studio</div>
+              <a href="about.html">About</a>
+              <a href="work.html">Selected Work</a>
+              <a href="insights.html">Insights</a>
+              <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer__col">
+              <div class="footer__col-title">GCC Locations</div>
+              <a href="country-uae.html">United Arab Emirates</a>
+              <a href="country-saudi-arabia.html">Saudi Arabia</a>
+              <a href="country-qatar.html">Qatar</a>
+              <a href="country-kuwait.html">Kuwait</a>
+              <a href="country-bahrain.html">Bahrain</a>
             </div>
           </div>
-        </div>
-      </section>
-    </main>
+          <div class="footer__bottom">
+            <div>&copy; 2026 OrcaPulse &middot; All rights reserved</div>
+            <div><a href="#">Privacy</a> &middot; <a href="#">Terms</a></div>
+          </div>
+        </footer>
 
-    <footer class="site-footer">
-      <div class="container site-footer__inner">
-        <div class="site-footer__brand">Maison<span>.</span></div>
-        <div class="site-footer__social">
-          <a href="#">Instagram</a>
-          <a href="#">LinkedIn</a>
-          <a href="#">Dribbble</a>
-        </div>
-        <div class="site-footer__meta">© 2026 Maison · All rights reserved</div>
       </div>
-    </footer>
+    </div>
 
-    <script src="scripts/main.js"></script>
+    <script>
+      const nav = document.getElementById('nav');
+      const onScroll = () => (window.scrollY > 10 ? nav.classList.add('is-scrolled') : nav.classList.remove('is-scrolled'));
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && (e.target.classList.add('is-visible'), io.unobserve(e.target))), { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
+        document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+      } else {
+        document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
+      }
+    </script>
   </body>
 </html>
