@@ -30,8 +30,9 @@ if ( $services->have_posts() ) {
 	}
 }
 ?>
-<section id="capabilities">
-	<div class="container">
+<section id="capabilities" style="position:relative;overflow:hidden;">
+	<div class="bg-numeral" style="right:-5vw;top:4vw;">04</div>
+	<div class="container" style="position:relative;z-index:1;">
 		<div class="capabilities__head">
 			<div class="reveal">
 				<div class="section-label"><?php echo esc_html( $label ); ?></div>

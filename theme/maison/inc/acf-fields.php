@@ -101,6 +101,34 @@ function maison_register_fields() {
 			array( 'key' => 'field_hp_cap_title', 'label' => 'Title', 'name' => 'cap_title', 'type' => 'text', 'default_value' => 'Full-stack growth capability, under one roof.' ),
 			array( 'key' => 'field_hp_cap_intro', 'label' => 'Intro', 'name' => 'cap_intro', 'type' => 'textarea', 'rows' => 3 ),
 
+			// Press
+			array( 'key' => 'field_hp_press_tab', 'label' => 'Press', 'name' => '', 'type' => 'tab' ),
+			array( 'key' => 'field_hp_press_label', 'label' => 'Press label', 'name' => 'press_label', 'type' => 'text', 'default_value' => 'As featured in' ),
+			array( 'key' => 'field_hp_press_outlets', 'label' => 'Outlets', 'name' => 'press_outlets', 'type' => 'repeater', 'layout' => 'table', 'sub_fields' => array(
+				array( 'key' => 'field_hp_press_name', 'label' => 'Name', 'name' => 'name', 'type' => 'text' ),
+				array( 'key' => 'field_hp_press_url',  'label' => 'URL (optional)', 'name' => 'url', 'type' => 'url' ),
+			) ),
+
+			// By the numbers
+			array( 'key' => 'field_hp_numbers_tab', 'label' => 'By the numbers', 'name' => '', 'type' => 'tab' ),
+			array( 'key' => 'field_hp_numbers_label', 'label' => 'Section label', 'name' => 'numbers_label', 'type' => 'text', 'default_value' => 'By the numbers' ),
+			array( 'key' => 'field_hp_numbers_title', 'label' => 'Title (wrap emphasis in <em>…</em>)', 'name' => 'numbers_title', 'type' => 'textarea', 'rows' => 2, 'new_lines' => 'br' ),
+			array( 'key' => 'field_hp_numbers_intro', 'label' => 'Intro', 'name' => 'numbers_intro', 'type' => 'textarea', 'rows' => 3 ),
+			array( 'key' => 'field_hp_numbers_stats', 'label' => 'Stats (4 recommended)', 'name' => 'numbers_stats', 'type' => 'repeater', 'min' => 0, 'max' => 4, 'layout' => 'block', 'sub_fields' => array(
+				array( 'key' => 'field_hp_numbers_value',   'label' => 'Value', 'name' => 'value', 'type' => 'text' ),
+				array( 'key' => 'field_hp_numbers_caption', 'label' => 'Caption', 'name' => 'caption', 'type' => 'textarea', 'rows' => 2 ),
+			) ),
+
+			// The Standard
+			array( 'key' => 'field_hp_std_tab', 'label' => 'The Standard', 'name' => '', 'type' => 'tab' ),
+			array( 'key' => 'field_hp_std_label', 'label' => 'Section label', 'name' => 'standard_label', 'type' => 'text', 'default_value' => 'The Standard' ),
+			array( 'key' => 'field_hp_std_title', 'label' => 'Title', 'name' => 'standard_title', 'type' => 'text', 'default_value' => 'Five commitments we never break.' ),
+			array( 'key' => 'field_hp_std_intro', 'label' => 'Intro', 'name' => 'standard_intro', 'type' => 'textarea', 'rows' => 3 ),
+			array( 'key' => 'field_hp_std_items', 'label' => 'Commitments', 'name' => 'standard_items', 'type' => 'repeater', 'layout' => 'block', 'sub_fields' => array(
+				array( 'key' => 'field_hp_std_item_title', 'label' => 'Title', 'name' => 'title', 'type' => 'text' ),
+				array( 'key' => 'field_hp_std_item_desc',  'label' => 'Description', 'name' => 'desc', 'type' => 'textarea', 'rows' => 3 ),
+			) ),
+
 			// Testimonial
 			array( 'key' => 'field_hp_quote_tab', 'label' => 'Testimonial', 'name' => '', 'type' => 'tab' ),
 			array( 'key' => 'field_hp_quote_text', 'label' => 'Quote text (wrap emphasis in <em>…</em>)', 'name' => 'quote_text', 'type' => 'textarea', 'rows' => 3 ),

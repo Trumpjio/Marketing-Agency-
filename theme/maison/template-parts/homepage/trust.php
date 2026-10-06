@@ -1,6 +1,6 @@
 <?php
 /**
- * Homepage — Trust strip.
+ * Homepage — Trust marquee (continuous horizontal scroll of client logos).
  *
  * @package Maison
  */
@@ -14,20 +14,27 @@ if ( ! is_array( $logos ) || empty( $logos ) ) {
 		array( 'name' => 'Vireo' ),
 		array( 'name' => 'Rowan Health' ),
 		array( 'name' => 'Halden' ),
+		array( 'name' => 'Marchetti' ),
+		array( 'name' => 'Studio Oak' ),
 	);
 }
+
+// Duplicate the logo list for seamless CSS marquee loop.
+$track = array_merge( $logos, $logos );
 ?>
 <section class="trust">
-	<div class="container trust__inner">
-		<div class="trust__label"><?php echo esc_html( $label ); ?></div>
-		<div class="trust__logos">
-			<?php foreach ( $logos as $logo ) :
+	<div class="trust__label-wrap">
+		<span class="trust__label"><?php echo esc_html( $label ); ?></span>
+	</div>
+	<div class="marquee" aria-hidden="true">
+		<div class="marquee__track">
+			<?php foreach ( $track as $logo ) :
 				$name  = $logo['name'] ?? '';
 				$image = $logo['image'] ?? null;
 				if ( is_array( $image ) && ! empty( $image['url'] ) ) : ?>
-					<img class="trust__logo" src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $name ); ?>" loading="lazy" width="140" height="42">
+					<span class="marquee__item"><img src="<?php echo esc_url( $image['url'] ); ?>" alt="" loading="lazy"></span>
 				<?php else : ?>
-					<span class="trust__logo"><?php echo esc_html( $name ); ?></span>
+					<span class="marquee__item"><?php echo esc_html( $name ); ?></span>
 				<?php endif;
 			endforeach; ?>
 		</div>

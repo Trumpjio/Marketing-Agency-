@@ -7,8 +7,9 @@
 
 $cases = maison_homepage_case_studies( 3 );
 ?>
-<section id="work">
-	<div class="container">
+<section id="work" style="position:relative;overflow:hidden;">
+	<div class="bg-numeral" style="left:-3vw;top:4vw;">01</div>
+	<div class="container" style="position:relative;z-index:1;">
 		<div class="reveal">
 			<div class="section-label"><?php esc_html_e( 'Selected Work', 'maison' ); ?></div>
 			<h2 class="section-title serif"><?php esc_html_e( 'Businesses that chose depth over noise.', 'maison' ); ?></h2>

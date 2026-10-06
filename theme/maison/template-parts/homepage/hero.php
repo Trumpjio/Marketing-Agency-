@@ -14,6 +14,7 @@ $cta_s_u = maison_field( 'hero_cta_secondary_url', '#work' );
 $meta    = maison_field( 'hero_meta', maison_default_hero_meta() );
 ?>
 <section class="hero">
+	<div class="hero__watermark" aria-hidden="true"><?php echo esc_html( maison_brand_name() ); ?></div>
 	<div class="container">
 		<div class="hero__eyebrow reveal"><?php echo esc_html( $eyebrow ); ?></div>
 		<h1 class="hero__title serif reveal"><?php echo maison_safe_headline( $title ); ?></h1>

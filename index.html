@@ -9,7 +9,6 @@
       content="A premium growth partner for businesses that are already good — and ready to become unmistakable. Strategy, media, product and brand under one house."
     />
 
-    <!-- Fonts: editorial serif + clean sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -21,43 +20,28 @@
     <link rel="stylesheet" href="styles/main.css" />
   </head>
   <body>
-    <!-- =============================================
-         HEADER
-         ============================================= -->
+    <!-- HEADER -->
     <header class="site-header">
       <div class="container">
         <a href="#top" class="brand">Maison<span>.</span></a>
         <nav class="nav" aria-label="Primary">
           <a href="#work">Work</a>
+          <a href="#capabilities">Services</a>
           <a href="#approach">Approach</a>
-          <a href="#capabilities">Capabilities</a>
+          <a href="#standard">The Standard</a>
           <a href="#contact">Contact</a>
         </nav>
         <a href="#contact" class="btn btn-primary">
           Book a Call
-          <svg
-            class="arrow"
-            viewBox="0 0 14 10"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <path
-              d="M9 1l4 4-4 4M13 5H1"
-              stroke="currentColor"
-              stroke-width="1.3"
-              stroke-linecap="square"
-            />
-          </svg>
+          <svg class="arrow" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H1" stroke="currentColor" stroke-width="1.3" stroke-linecap="square"/></svg>
         </a>
       </div>
     </header>
 
     <main id="top">
-      <!-- =============================================
-           HERO
-           ============================================= -->
+      <!-- HERO -->
       <section class="hero">
+        <div class="hero__watermark" aria-hidden="true">Maison</div>
         <div class="container">
           <div class="hero__eyebrow reveal">Est. 2026 · Partner, not vendor</div>
           <h1 class="hero__title serif reveal">
@@ -71,388 +55,216 @@
           <div class="hero__cta reveal">
             <a href="#contact" class="btn btn-primary">
               Book a Strategy Call
-              <svg
-                class="arrow"
-                viewBox="0 0 14 10"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
-                <path
-                  d="M9 1l4 4-4 4M13 5H1"
-                  stroke="currentColor"
-                  stroke-width="1.3"
-                  stroke-linecap="square"
-                />
-              </svg>
+              <svg class="arrow" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H1" stroke="currentColor" stroke-width="1.3" stroke-linecap="square"/></svg>
             </a>
             <a href="#work" class="btn btn-ghost">See Selected Work</a>
           </div>
 
           <div class="hero__meta reveal">
-            <div class="hero__meta-item">
-              <div class="hero__meta-value serif">+312%</div>
-              <div class="hero__meta-label">Avg. pipeline growth</div>
-            </div>
-            <div class="hero__meta-item">
-              <div class="hero__meta-value serif">47</div>
-              <div class="hero__meta-label">Ambitious partners</div>
-            </div>
-            <div class="hero__meta-item">
-              <div class="hero__meta-value serif">12 yrs</div>
-              <div class="hero__meta-label">Compounded craft</div>
-            </div>
-            <div class="hero__meta-item">
-              <div class="hero__meta-value serif">1</div>
-              <div class="hero__meta-label">Team, end to end</div>
-            </div>
+            <div class="hero__meta-item"><div class="hero__meta-value serif">+312%</div><div class="hero__meta-label">Avg. pipeline growth</div></div>
+            <div class="hero__meta-item"><div class="hero__meta-value serif">47</div><div class="hero__meta-label">Ambitious partners</div></div>
+            <div class="hero__meta-item"><div class="hero__meta-value serif">12 yrs</div><div class="hero__meta-label">Compounded craft</div></div>
+            <div class="hero__meta-item"><div class="hero__meta-value serif">1</div><div class="hero__meta-label">Team, end to end</div></div>
           </div>
         </div>
       </section>
 
-      <!-- =============================================
-           TRUST
-           ============================================= -->
+      <!-- TRUST MARQUEE -->
       <section class="trust">
-        <div class="container trust__inner">
-          <div class="trust__label">Trusted by businesses that compound</div>
-          <div class="trust__logos">
-            <span class="trust__logo">Lumière &amp; Co</span>
-            <span class="trust__logo">Northbrook</span>
-            <span class="trust__logo">Atelier Nine</span>
-            <span class="trust__logo">Vireo</span>
-            <span class="trust__logo">Rowan Health</span>
-            <span class="trust__logo">Halden</span>
+        <div class="trust__label-wrap">
+          <span class="trust__label">Trusted by businesses that compound</span>
+        </div>
+        <div class="marquee" aria-hidden="true">
+          <div class="marquee__track">
+            <span class="marquee__item">Lumière &amp; Co</span>
+            <span class="marquee__item">Northbrook</span>
+            <span class="marquee__item">Atelier Nine</span>
+            <span class="marquee__item">Vireo</span>
+            <span class="marquee__item">Rowan Health</span>
+            <span class="marquee__item">Halden</span>
+            <span class="marquee__item">Marchetti</span>
+            <span class="marquee__item">Studio Oak</span>
+            <!-- duplicate for seamless loop -->
+            <span class="marquee__item">Lumière &amp; Co</span>
+            <span class="marquee__item">Northbrook</span>
+            <span class="marquee__item">Atelier Nine</span>
+            <span class="marquee__item">Vireo</span>
+            <span class="marquee__item">Rowan Health</span>
+            <span class="marquee__item">Halden</span>
+            <span class="marquee__item">Marchetti</span>
+            <span class="marquee__item">Studio Oak</span>
           </div>
         </div>
       </section>
 
-      <!-- =============================================
-           SELECTED WORK — outcome-led, not service-led
-           ============================================= -->
-      <section id="work">
+      <!-- PRESS -->
+      <section class="press">
         <div class="container">
+          <div class="press__inner">
+            <div class="press__label">As featured in</div>
+            <div class="press__list">
+              <span class="press__item">Fast Company</span>
+              <span class="press__item">Forbes</span>
+              <span class="press__item">AdAge</span>
+              <span class="press__item">The Drum</span>
+              <span class="press__item">Monocle</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ORNAMENT -->
+      <div class="ornament" aria-hidden="true"><span class="ornament__mark"></span></div>
+
+      <!-- SELECTED WORK -->
+      <section id="work" style="position:relative;overflow:hidden;">
+        <div class="bg-numeral" style="left:-3vw;top:4vw;">01</div>
+        <div class="container" style="position:relative;z-index:1;">
           <div class="reveal">
             <div class="section-label">Selected Work</div>
-            <h2 class="section-title serif">
-              Businesses that chose depth over noise.
-            </h2>
+            <h2 class="section-title serif">Businesses that chose depth over noise.</h2>
           </div>
-
           <div style="margin-top: var(--space-7)">
-            <!-- Case 01 -->
             <article class="case reveal">
-              <div class="case__visual">
-                <div class="case__visual-number">01</div>
-                <div class="case__visual-mark">Lumière &amp; Co</div>
-              </div>
+              <div class="case__visual"><div class="case__visual-number">01</div><div class="case__visual-mark">Lumière &amp; Co</div></div>
               <div>
-                <div class="case__meta">
-                  <span>Premium E-Commerce</span>
-                  <span>18-Month Engagement</span>
-                </div>
-                <h3 class="case__title serif">
-                  From quiet brand to category authority.
-                </h3>
-                <p class="case__desc">
-                  A heritage leather maison with exceptional product and
-                  invisible demand. We rebuilt the brand story, re-architected
-                  acquisition, and ran a disciplined content and SEO program —
-                  then layered paid media on top of a working engine.
-                </p>
+                <div class="case__meta"><span>Premium E-Commerce</span><span>18-Month Engagement</span></div>
+                <h3 class="case__title serif">From quiet brand to category authority.</h3>
+                <p class="case__desc">A heritage leather maison with exceptional product and invisible demand. We rebuilt the brand story, re-architected acquisition, and ran a disciplined content and SEO program.</p>
                 <div class="case__kpis">
-                  <div>
-                    <div class="case__kpi-value serif">4.2×</div>
-                    <div class="case__kpi-label">Revenue, YoY</div>
-                  </div>
-                  <div>
-                    <div class="case__kpi-value serif">63%</div>
-                    <div class="case__kpi-label">Lower CAC</div>
-                  </div>
-                  <div>
-                    <div class="case__kpi-value serif">#1</div>
-                    <div class="case__kpi-label">Category SOV</div>
-                  </div>
+                  <div><div class="case__kpi-value serif">4.2×</div><div class="case__kpi-label">Revenue, YoY</div></div>
+                  <div><div class="case__kpi-value serif">63%</div><div class="case__kpi-label">Lower CAC</div></div>
+                  <div><div class="case__kpi-value serif">#1</div><div class="case__kpi-label">Category SOV</div></div>
                 </div>
-                <a href="#" class="btn-text">
-                  View case study
-                  <svg
-                    class="arrow"
-                    viewBox="0 0 14 10"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M9 1l4 4-4 4M13 5H1"
-                      stroke="currentColor"
-                      stroke-width="1.3"
-                      stroke-linecap="square"
-                    />
-                  </svg>
-                </a>
+                <a href="#" class="btn-text">View case study<svg class="arrow" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H1" stroke="currentColor" stroke-width="1.3" stroke-linecap="square"/></svg></a>
               </div>
             </article>
 
-            <!-- Case 02 -->
             <article class="case case--reverse reveal">
-              <div class="case__visual">
-                <div class="case__visual-number">02</div>
-                <div class="case__visual-mark">Rowan Health</div>
-              </div>
+              <div class="case__visual"><div class="case__visual-number">02</div><div class="case__visual-mark">Rowan Health</div></div>
               <div>
-                <div class="case__meta">
-                  <span>B2B · Healthtech</span>
-                  <span>Pipeline Program</span>
-                </div>
-                <h3 class="case__title serif">
-                  A $14M pipeline — built in nine months.
-                </h3>
-                <p class="case__desc">
-                  Rowan had the product. What they lacked was signal, position,
-                  and a repeatable system for enterprise demand. We delivered a
-                  narrative, a demand engine, and the account-based motion to
-                  convert it — then measured every dollar back to revenue.
-                </p>
+                <div class="case__meta"><span>B2B · Healthtech</span><span>Pipeline Program</span></div>
+                <h3 class="case__title serif">A $14M pipeline — built in nine months.</h3>
+                <p class="case__desc">Rowan had the product; what they lacked was signal, position, and a repeatable system for enterprise demand.</p>
                 <div class="case__kpis">
-                  <div>
-                    <div class="case__kpi-value serif">$14M</div>
-                    <div class="case__kpi-label">Qualified pipeline</div>
-                  </div>
-                  <div>
-                    <div class="case__kpi-value serif">38%</div>
-                    <div class="case__kpi-label">Reply rate (outbound)</div>
-                  </div>
-                  <div>
-                    <div class="case__kpi-value serif">6</div>
-                    <div class="case__kpi-label">Enterprise logos</div>
-                  </div>
+                  <div><div class="case__kpi-value serif">$14M</div><div class="case__kpi-label">Qualified pipeline</div></div>
+                  <div><div class="case__kpi-value serif">38%</div><div class="case__kpi-label">Reply rate</div></div>
+                  <div><div class="case__kpi-value serif">6</div><div class="case__kpi-label">Enterprise logos</div></div>
                 </div>
-                <a href="#" class="btn-text">
-                  View case study
-                  <svg
-                    class="arrow"
-                    viewBox="0 0 14 10"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M9 1l4 4-4 4M13 5H1"
-                      stroke="currentColor"
-                      stroke-width="1.3"
-                      stroke-linecap="square"
-                    />
-                  </svg>
-                </a>
+                <a href="#" class="btn-text">View case study<svg class="arrow" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H1" stroke="currentColor" stroke-width="1.3" stroke-linecap="square"/></svg></a>
               </div>
             </article>
 
-            <!-- Case 03 -->
             <article class="case reveal">
-              <div class="case__visual">
-                <div class="case__visual-number">03</div>
-                <div class="case__visual-mark">Atelier Nine</div>
-              </div>
+              <div class="case__visual"><div class="case__visual-number">03</div><div class="case__visual-mark">Atelier Nine</div></div>
               <div>
-                <div class="case__meta">
-                  <span>Hospitality</span>
-                  <span>Brand &amp; Digital</span>
-                </div>
-                <h3 class="case__title serif">
-                  A hotel brand built to be unmistakable.
-                </h3>
-                <p class="case__desc">
-                  New property. No category. We shaped the identity, built the
-                  booking experience, and launched with a signature content
-                  campaign designed to be seen — not scrolled past. First year
-                  occupancy exceeded forecast by a wide margin.
-                </p>
+                <div class="case__meta"><span>Hospitality</span><span>Brand &amp; Digital</span></div>
+                <h3 class="case__title serif">A hotel brand built to be unmistakable.</h3>
+                <p class="case__desc">New property. No category. We shaped the identity, built the booking experience, and launched with a signature content campaign.</p>
                 <div class="case__kpis">
-                  <div>
-                    <div class="case__kpi-value serif">92%</div>
-                    <div class="case__kpi-label">Year-1 occupancy</div>
-                  </div>
-                  <div>
-                    <div class="case__kpi-value serif">+47%</div>
-                    <div class="case__kpi-label">ADR vs. forecast</div>
-                  </div>
-                  <div>
-                    <div class="case__kpi-value serif">11M</div>
-                    <div class="case__kpi-label">Earned reach, launch</div>
-                  </div>
+                  <div><div class="case__kpi-value serif">92%</div><div class="case__kpi-label">Year-1 occupancy</div></div>
+                  <div><div class="case__kpi-value serif">+47%</div><div class="case__kpi-label">ADR vs. forecast</div></div>
+                  <div><div class="case__kpi-value serif">11M</div><div class="case__kpi-label">Earned reach</div></div>
                 </div>
-                <a href="#" class="btn-text">
-                  View case study
-                  <svg
-                    class="arrow"
-                    viewBox="0 0 14 10"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M9 1l4 4-4 4M13 5H1"
-                      stroke="currentColor"
-                      stroke-width="1.3"
-                      stroke-linecap="square"
-                    />
-                  </svg>
-                </a>
+                <a href="#" class="btn-text">View case study<svg class="arrow" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H1" stroke="currentColor" stroke-width="1.3" stroke-linecap="square"/></svg></a>
               </div>
             </article>
           </div>
         </div>
       </section>
 
-      <!-- =============================================
-           APPROACH
-           ============================================= -->
+      <!-- BY THE NUMBERS -->
+      <section class="stats">
+        <div class="container">
+          <div class="stats__head">
+            <div class="reveal">
+              <div class="stats__label">By the numbers</div>
+              <h2 class="stats__title">Twelve years. One method. Measured in revenue.</h2>
+            </div>
+            <p class="stats__intro reveal">A quiet track record, built one patient engagement at a time. These are the numbers that decide whether a partnership continues.</p>
+          </div>
+          <div class="stats__grid">
+            <div class="stats__item reveal"><div class="stats__value">+312<em>%</em></div><div class="stats__caption">Average pipeline growth across engagements, year one</div></div>
+            <div class="stats__item reveal"><div class="stats__value">$2.4<em>B</em></div><div class="stats__caption">Revenue attributed to campaigns we have run</div></div>
+            <div class="stats__item reveal"><div class="stats__value">94<em>%</em></div><div class="stats__caption">Of partnerships renewed into a second year</div></div>
+            <div class="stats__item reveal"><div class="stats__value">47</div><div class="stats__caption">Ambitious businesses partnered to date</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ORNAMENT -->
+      <div class="ornament" aria-hidden="true"><span class="ornament__mark"></span></div>
+
+      <!-- APPROACH -->
       <section id="approach" class="approach">
         <div class="container">
           <div class="reveal" style="max-width: 56rem">
             <div class="section-label">The Approach</div>
-            <h2 class="section-title serif">
-              One partner. One engine. Compounding returns.
-            </h2>
-            <p class="section-intro">
-              Most agencies ship tactics. We build growth as a system — one that
-              gets smarter, cheaper and more defensible with every quarter it
-              runs. Three principles decide what we accept and how we deliver.
-            </p>
+            <h2 class="section-title serif">One partner. One engine. Compounding returns.</h2>
+            <p class="section-intro">Most agencies ship tactics. We build growth as a system — one that gets smarter, cheaper and more defensible with every quarter it runs.</p>
           </div>
-
           <div class="approach__grid">
-            <div class="pillar reveal">
-              <div class="pillar__num">01 —</div>
-              <h3 class="pillar__title">Positioning before promotion.</h3>
-              <p class="pillar__desc">
-                We don't amplify noise. Every engagement begins by sharpening
-                the thing worth saying — so every dollar after travels further.
-              </p>
-            </div>
-            <div class="pillar reveal">
-              <div class="pillar__num">02 —</div>
-              <h3 class="pillar__title">A system, not a stack of tactics.</h3>
-              <p class="pillar__desc">
-                Acquisition, conversion, retention and brand built as one
-                integrated engine — because disconnected tactics are how
-                budgets quietly leak.
-              </p>
-            </div>
-            <div class="pillar reveal">
-              <div class="pillar__num">03 —</div>
-              <h3 class="pillar__title">Measured in revenue.</h3>
-              <p class="pillar__desc">
-                Impressions are vanity. Pipeline, LTV and gross margin are the
-                only scoreboard that matters — and the one we report on, every
-                month.
-              </p>
-            </div>
+            <div class="pillar reveal"><div class="pillar__num">01 —</div><h3 class="pillar__title">Positioning before promotion.</h3><p class="pillar__desc">We don't amplify noise. Every engagement begins by sharpening the thing worth saying — so every dollar after travels further.</p></div>
+            <div class="pillar reveal"><div class="pillar__num">02 —</div><h3 class="pillar__title">A system, not a stack of tactics.</h3><p class="pillar__desc">Acquisition, conversion, retention and brand built as one integrated engine — because disconnected tactics are how budgets quietly leak.</p></div>
+            <div class="pillar reveal"><div class="pillar__num">03 —</div><h3 class="pillar__title">Measured in revenue.</h3><p class="pillar__desc">Impressions are vanity. Pipeline, LTV and gross margin are the only scoreboard that matters.</p></div>
           </div>
         </div>
       </section>
 
-      <!-- =============================================
-           CAPABILITIES — the "do everything" problem solved:
-           presented as ONE integrated capability, not a service menu
-           ============================================= -->
-      <section id="capabilities">
-        <div class="container">
+      <!-- THE STANDARD -->
+      <section id="standard" class="standard">
+        <div class="bg-numeral" style="right:-5vw;top:5vw;">05</div>
+        <div class="container" style="position:relative;z-index:1;">
+          <div class="standard__head">
+            <div class="reveal">
+              <div class="section-label">The Standard</div>
+              <h2 class="section-title serif">Five commitments we never break.</h2>
+            </div>
+            <p class="section-intro reveal">The agency industry runs on vague promises. These are the ones we have put in writing, in every contract we have ever signed.</p>
+          </div>
+          <div class="standard__list">
+            <div class="standard__row reveal"><div class="standard__num">01</div><h3 class="standard__title">Senior people, every day.</h3><p class="standard__desc">The person who sells you the engagement is the person running it. No account-manager layer, no juniors learning on your budget.</p></div>
+            <div class="standard__row reveal"><div class="standard__num">02</div><h3 class="standard__title">A flat fee. Known in advance.</h3><p class="standard__desc">Quarterly retainer, scoped before you sign. No hourly billing, no surprise invoices, no scope-of-work gymnastics.</p></div>
+            <div class="standard__row reveal"><div class="standard__num">03</div><h3 class="standard__title">Honest reporting, every month.</h3><p class="standard__desc">Pipeline, LTV and gross-margin numbers — reported against the goals we agreed on in week one, not reshuffled to look flattering.</p></div>
+            <div class="standard__row reveal"><div class="standard__num">04</div><h3 class="standard__title">A real exit at any point.</h3><p class="standard__desc">Thirty-day notice and your data, access and work product handed back clean. If we are not earning the retainer, you should walk.</p></div>
+            <div class="standard__row reveal"><div class="standard__num">05</div><h3 class="standard__title">Discretion, by default.</h3><p class="standard__desc">We publish case studies only with written approval. The work speaks for the client first, for us second.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ORNAMENT -->
+      <div class="ornament" aria-hidden="true"><span class="ornament__mark"></span></div>
+
+      <!-- CAPABILITIES -->
+      <section id="capabilities" style="position:relative;overflow:hidden;">
+        <div class="bg-numeral" style="right:-5vw;top:4vw;">04</div>
+        <div class="container" style="position:relative;z-index:1;">
           <div class="capabilities__head">
             <div class="reveal">
               <div class="section-label">Capabilities</div>
-              <h2 class="section-title serif">
-                Full-stack growth capability, under one roof.
-              </h2>
+              <h2 class="section-title serif">Full-stack growth capability, under one roof.</h2>
             </div>
-            <p class="section-intro reveal">
-              Not a menu of services — a single team that moves across every
-              lever your growth needs. You brief the outcome; we assemble the
-              craft behind it.
-            </p>
+            <p class="section-intro reveal">Not a menu of services — a single team that moves across every lever your growth needs. You brief the outcome; we assemble the craft behind it.</p>
           </div>
-
           <div class="capabilities__grid">
-            <div class="capability reveal">
-              <div class="capability__num">01 —</div>
-              <h3 class="capability__title serif">Search &amp; Discovery</h3>
-              <p class="capability__desc">
-                SEO, AEO and GEO — ranking in search engines, answer engines
-                and AI-generated results.
-              </p>
-            </div>
-            <div class="capability reveal">
-              <div class="capability__num">02 —</div>
-              <h3 class="capability__title serif">Paid Media</h3>
-              <p class="capability__desc">
-                Performance across Google, Meta, LinkedIn, TikTok, programmatic
-                and emerging platforms — managed as one portfolio.
-              </p>
-            </div>
-            <div class="capability reveal">
-              <div class="capability__num">03 —</div>
-              <h3 class="capability__title serif">Web &amp; Commerce</h3>
-              <p class="capability__desc">
-                Marketing sites, SaaS platforms, e-commerce, membership and
-                booking systems — built to convert, built to last.
-              </p>
-            </div>
-            <div class="capability reveal">
-              <div class="capability__num">04 —</div>
-              <h3 class="capability__title serif">Product &amp; App</h3>
-              <p class="capability__desc">
-                iOS, Android and cross-platform applications — from scoping to
-                shipped product, with the growth loop baked in.
-              </p>
-            </div>
-            <div class="capability reveal">
-              <div class="capability__num">05 —</div>
-              <h3 class="capability__title serif">Social Presence</h3>
-              <p class="capability__desc">
-                Strategy, calendar and operations across every platform the
-                audience actually lives on — anchored to narrative.
-              </p>
-            </div>
-            <div class="capability reveal">
-              <div class="capability__num">06 —</div>
-              <h3 class="capability__title serif">Content &amp; Editorial</h3>
-              <p class="capability__desc">
-                The long-form, the briefings, the owned media — the compounding
-                asset that pays off for years, not days.
-              </p>
-            </div>
-            <div class="capability reveal">
-              <div class="capability__num">07 —</div>
-              <h3 class="capability__title serif">Film &amp; Motion</h3>
-              <p class="capability__desc">
-                Production, editing and motion design that reads premium at
-                thumb-scroll speed and billboard scale alike.
-              </p>
-            </div>
-            <div class="capability reveal">
-              <div class="capability__num">08 —</div>
-              <h3 class="capability__title serif">Brand &amp; Design</h3>
-              <p class="capability__desc">
-                Identity, art direction and the system that keeps every surface
-                feeling made by the same hand.
-              </p>
-            </div>
+            <div class="capability reveal"><div class="capability__num">01 —</div><h3 class="capability__title serif">Search &amp; Discovery</h3><p class="capability__desc">SEO, AEO and GEO — ranking in search engines, answer engines and AI-generated results.</p></div>
+            <div class="capability reveal"><div class="capability__num">02 —</div><h3 class="capability__title serif">Paid Media</h3><p class="capability__desc">Performance across Google, Meta, LinkedIn, TikTok, programmatic and emerging platforms — managed as one portfolio.</p></div>
+            <div class="capability reveal"><div class="capability__num">03 —</div><h3 class="capability__title serif">Web &amp; Commerce</h3><p class="capability__desc">Marketing sites, SaaS platforms, e-commerce, membership and booking systems — built to convert, built to last.</p></div>
+            <div class="capability reveal"><div class="capability__num">04 —</div><h3 class="capability__title serif">Product &amp; App</h3><p class="capability__desc">iOS, Android and cross-platform applications — from scoping to shipped product, with the growth loop baked in.</p></div>
+            <div class="capability reveal"><div class="capability__num">05 —</div><h3 class="capability__title serif">Social Presence</h3><p class="capability__desc">Strategy, calendar and operations across every platform the audience actually lives on — anchored to narrative.</p></div>
+            <div class="capability reveal"><div class="capability__num">06 —</div><h3 class="capability__title serif">Content &amp; Editorial</h3><p class="capability__desc">The long-form, the briefings, the owned media — the compounding asset that pays off for years, not days.</p></div>
+            <div class="capability reveal"><div class="capability__num">07 —</div><h3 class="capability__title serif">Film &amp; Motion</h3><p class="capability__desc">Production, editing and motion design that reads premium at thumb-scroll speed and billboard scale alike.</p></div>
+            <div class="capability reveal"><div class="capability__num">08 —</div><h3 class="capability__title serif">Brand &amp; Design</h3><p class="capability__desc">Identity, art direction and the system that keeps every surface feeling made by the same hand.</p></div>
           </div>
         </div>
       </section>
 
-      <!-- =============================================
-           TESTIMONIAL
-           ============================================= -->
+      <!-- TESTIMONIAL -->
       <section class="quote">
         <div class="container">
           <div class="reveal">
             <div class="quote__mark">&ldquo;</div>
-            <p class="quote__text">
-              They stopped feeling like an agency after month two. They started
-              feeling like <em>the team</em>.
-            </p>
+            <p class="quote__text">They stopped feeling like an agency after month two. They started feeling like <em>the team</em>.</p>
             <div class="quote__attribution">
               <span class="quote__name serif">Isla Mendez</span>
               <span>Founder &amp; CEO, Northbrook</span>
@@ -461,62 +273,30 @@
         </div>
       </section>
 
-      <!-- =============================================
-           CTA
-           ============================================= -->
+      <!-- ORNAMENT -->
+      <div class="ornament" aria-hidden="true"><span class="ornament__mark"></span></div>
+
+      <!-- CTA -->
       <section id="contact" class="cta">
         <div class="container">
           <div class="cta__inner">
             <div class="reveal">
               <div class="section-label">Begin</div>
-              <h2 class="cta__title serif">
-                If you're ready to grow, we're ready to build.
-              </h2>
-              <p class="cta__sub">
-                We take on a limited number of partnerships each quarter.
-                Thirty minutes, no pitch — a frank conversation about where
-                your growth is leaking and what it would take to seal it.
-              </p>
-              <a href="#" class="btn btn-primary">
-                Book a Strategy Call
-                <svg
-                  class="arrow"
-                  viewBox="0 0 14 10"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M9 1l4 4-4 4M13 5H1"
-                    stroke="currentColor"
-                    stroke-width="1.3"
-                    stroke-linecap="square"
-                  />
-                </svg>
-              </a>
+              <h2 class="cta__title serif">If you're ready to grow, we're ready to build.</h2>
+              <p class="cta__sub">We take on a limited number of partnerships each quarter. Thirty minutes, no pitch — a frank conversation about where your growth is leaking and what it would take to seal it.</p>
+              <a href="#" class="btn btn-primary">Book a Strategy Call<svg class="arrow" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H1" stroke="currentColor" stroke-width="1.3" stroke-linecap="square"/></svg></a>
             </div>
             <div class="cta__right reveal">
-              <div class="cta__contact-item">
-                <div class="cta__contact-label">Partnerships</div>
-                <div class="cta__contact-value">hello@maison.studio</div>
-              </div>
-              <div class="cta__contact-item">
-                <div class="cta__contact-label">Direct</div>
-                <div class="cta__contact-value">+1 (000) 000 0000</div>
-              </div>
-              <div class="cta__contact-item">
-                <div class="cta__contact-label">Studio</div>
-                <div class="cta__contact-value">By appointment</div>
-              </div>
+              <div class="cta__contact-item"><div class="cta__contact-label">Partnerships</div><div class="cta__contact-value">hello@maison.studio</div></div>
+              <div class="cta__contact-item"><div class="cta__contact-label">Direct</div><div class="cta__contact-value">+1 (000) 000 0000</div></div>
+              <div class="cta__contact-item"><div class="cta__contact-label">Studio</div><div class="cta__contact-value">By appointment</div></div>
             </div>
           </div>
         </div>
       </section>
     </main>
 
-    <!-- =============================================
-         FOOTER
-         ============================================= -->
+    <!-- FOOTER -->
     <footer class="site-footer">
       <div class="container site-footer__inner">
         <div class="site-footer__brand">Maison<span>.</span></div>

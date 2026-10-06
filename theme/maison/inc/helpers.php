@@ -41,6 +41,11 @@ function maison_arrow_svg() {
 	return '<svg class="arrow" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H1" stroke="currentColor" stroke-width="1.3" stroke-linecap="square"/></svg>';
 }
 
+/** Decorative ornament divider between sections. */
+function maison_ornament() {
+	echo '<div class="ornament" aria-hidden="true"><span class="ornament__mark"></span></div>';
+}
+
 /** Primary CTA target URL (prefers the Contact page, then homepage CTA field, then #contact). */
 function maison_primary_cta_url() {
 	$contact = get_page_by_path( 'contact' );
