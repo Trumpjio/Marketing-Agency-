@@ -195,14 +195,7 @@
         <div class="grid grid--3"><div class="glass reveal"><div class="cap__icon">01</div><h3 class="cap__title">Real estate</h3><p class="cap__desc">High-value and time-sensitive. Kuwait City developers need campaigns that generate qualified inquiries fast.</p></div><div class="glass reveal"><div class="cap__icon">02</div><h3 class="cap__title">FMCG</h3><p class="cap__desc">A deeply developed category with strong local brands and multinational competition.</p></div><div class="glass reveal"><div class="cap__icon">03</div><h3 class="cap__title">Fashion, skincare, jewelry</h3><p class="cap__desc">Kuwaiti consumers over-index on premium personal categories.</p></div><div class="glass reveal"><div class="cap__icon">04</div><h3 class="cap__title">Financial services</h3><p class="cap__desc">Banks, Islamic banks, insurance, wealth. Trust-led, long-cycle marketing.</p></div><div class="glass reveal"><div class="cap__icon">05</div><h3 class="cap__title">Professional services</h3><p class="cap__desc">Tax, legal, consulting — less saturated than consumer.</p></div><div class="glass reveal"><div class="cap__icon">06</div><h3 class="cap__title">Hospitality & F&B</h3><p class="cap__desc">An increasingly premium category, concentrated in Kuwait City and parts of Hawalli.</p></div></div>
       </section>
 
-      <section>
-        <div class="section-head reveal">
-          <div class="kicker">Business opportunities</div>
-          <h2>Where new growth is opening up.</h2>
-          <p>Categories we see creating real openings in 2026 — for operators who move early.</p>
-        </div>
-        <div class="grid grid--2"><div class="glass reveal"><div class="cap__icon" style="background: linear-gradient(135deg, rgba(53,211,154,0.18), rgba(24,191,255,0.1)); color: var(--green);">+</div><h3 class="cap__title">Vertical-specialist agencies</h3><p class="cap__desc">The generalist market is crowded. Specialists in real estate, fintech or healthcare have a defensible position.</p></div><div class="glass reveal"><div class="cap__icon" style="background: linear-gradient(135deg, rgba(53,211,154,0.18), rgba(24,191,255,0.1)); color: var(--green);">+</div><h3 class="cap__title">Pan-GCC content for Kuwaiti B2B</h3><p class="cap__desc">Many Kuwaiti B2B brands sell regionally. Content and brand built for that is undersupplied.</p></div><div class="glass reveal"><div class="cap__icon" style="background: linear-gradient(135deg, rgba(53,211,154,0.18), rgba(24,191,255,0.1)); color: var(--green);">+</div><h3 class="cap__title">Instagram-first premium brands</h3><p class="cap__desc">Instagram is dominant in Kuwait. Brands that take it seriously as a top-of-funnel channel win.</p></div><div class="glass reveal"><div class="cap__icon" style="background: linear-gradient(135deg, rgba(53,211,154,0.18), rgba(24,191,255,0.1)); color: var(--green);">+</div><h3 class="cap__title">Loyalty and retention</h3><p class="cap__desc">A category Kuwaiti family groups have under-invested in. Big opportunity to help them keep the customers they already have.</p></div></div>
-      </section>
+      
 
       <section>
         <div class="section-head reveal">
@@ -278,6 +271,9 @@
     </div>
 
     <script>
+      // Scroll to top on every page load — ignore browser scroll restoration
+      if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+      if (!window.location.hash) { window.scrollTo(0, 0); }
       const nav = document.getElementById('nav');
       const onScroll = () => (window.scrollY > 10 ? nav.classList.add('is-scrolled') : nav.classList.remove('is-scrolled'));
       window.addEventListener('scroll', onScroll, { passive: true });

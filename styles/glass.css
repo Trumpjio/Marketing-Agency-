@@ -278,9 +278,12 @@ section {
   border-top: 1px solid var(--line);
 }
 
-/* Mobile menu */
+/* Hamburger-only nav — hide inline links + standalone CTA at all widths */
+.nav__links { display: none !important; }
+.nav__cta { display: none !important; }
+
+/* Mobile menu — always-on hamburger */
 .nav__mobile-trigger {
-  display: none;
   background: none;
   border: 1px solid var(--line);
   border-radius: var(--r-sm);
@@ -305,6 +308,7 @@ section {
   background: var(--ink);
   border-radius: 2px;
 }
+.nav__mobile-trigger { display: inline-flex; }
 
 .nav__mobile-panel {
   display: none;
@@ -346,10 +350,7 @@ section {
   justify-content: center;
 }
 
-@media (max-width: 980px) {
-  .nav__links { display: none; }
-  .nav__mobile-trigger { display: inline-flex; }
-}
+/* nav__mobile-trigger already always visible */
 
 /* ============================================================
    SCROLL ANCHOR OFFSET — so anchor links don't hide under sticky nav

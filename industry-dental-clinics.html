@@ -237,13 +237,7 @@
         <div class="process" style="grid-template-columns: repeat(2, 1fr);"><div class="step reveal"><div class="step__num">01 —</div><h3 class="step__title">Treating every procedure the same — veneers and family dental have different buyers.</h3></div><div class="step reveal"><div class="step__num">02 —</div><h3 class="step__title">Letting leads go cold — 48h slow response destroys this category.</h3></div><div class="step reveal"><div class="step__num">03 —</div><h3 class="step__title">Generic creative that doesn't show the clinician.</h3></div><div class="step reveal"><div class="step__num">04 —</div><h3 class="step__title">No WhatsApp option — losing most GCC patients.</h3></div></div>
       </section>
 
-      <section>
-        <div class="section-head reveal">
-          <div class="kicker">Scaling what works</div>
-          <h2>After the first win, what happens next.</h2>
-        </div>
-        <ol class="list-numbered reveal"><li><span class="n">01</span><span class="t">Expand into adjacent procedures with proven creative formats.</span></li><li><span class="n">02</span><span class="t">Build clinician personal brands on Instagram and TikTok.</span></li><li><span class="n">03</span><span class="t">Launch retention programs for existing patient base (worth more than new acquisition).</span></li><li><span class="n">04</span><span class="t">Open international / dental tourism campaigns for high-ticket procedures.</span></li><li><span class="n">05</span><span class="t">Build review-acquisition programs — the compounding trust asset.</span></li></ol>
-      </section>
+      
 
       <section>
         <div class="section-head reveal">
@@ -297,6 +291,9 @@
       </div>
     </div>
     <script>
+      // Scroll to top on every page load — ignore browser scroll restoration
+      if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+      if (!window.location.hash) { window.scrollTo(0, 0); }
       const nav = document.getElementById('nav');
       const onScroll = () => (window.scrollY > 10 ? nav.classList.add('is-scrolled') : nav.classList.remove('is-scrolled'));
       window.addEventListener('scroll', onScroll, { passive: true });

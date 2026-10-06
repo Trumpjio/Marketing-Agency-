@@ -195,14 +195,7 @@
         <div class="grid grid--3"><div class="glass reveal"><div class="cap__icon">01</div><h3 class="cap__title">Giga-projects & real estate</h3><p class="cap__desc">NEOM, Diriyah, Qiddiya, Red Sea Global. Both direct marketing and a supplier ecosystem of agencies, consultants and services.</p></div><div class="glass reveal"><div class="cap__icon">02</div><h3 class="cap__title">Fintech</h3><p class="cap__desc">A category being invented in real time. Payments, BNPL, wealth, Islamic finance, open banking.</p></div><div class="glass reveal"><div class="cap__icon">03</div><h3 class="cap__title">Entertainment</h3><p class="cap__desc">A sector that barely existed before 2017. Cinemas, concerts, Riyadh Season, sports.</p></div><div class="glass reveal"><div class="cap__icon">04</div><h3 class="cap__title">Tourism & hospitality</h3><p class="cap__desc">A new category with new rules. Hotels, DMCs, experiences, religious tourism.</p></div><div class="glass reveal"><div class="cap__icon">05</div><h3 class="cap__title">Enterprise B2B</h3><p class="cap__desc">Advisory, legal, cloud, cybersecurity — all following the capital flows.</p></div><div class="glass reveal"><div class="cap__icon">06</div><h3 class="cap__title">Retail & F&B</h3><p class="cap__desc">Family groups digitising fast. International brands entering weekly.</p></div></div>
       </section>
 
-      <section>
-        <div class="section-head reveal">
-          <div class="kicker">Business opportunities</div>
-          <h2>Where new growth is opening up.</h2>
-          <p>Categories we see creating real openings in 2026 — for operators who move early.</p>
-        </div>
-        <div class="grid grid--2"><div class="glass reveal"><div class="cap__icon" style="background: linear-gradient(135deg, rgba(53,211,154,0.18), rgba(24,191,255,0.1)); color: var(--green);">+</div><h3 class="cap__title">SME media spend</h3><p class="cap__desc">Market reports expect SMEs to add roughly $1B of annual media spend by the early 2030s. Early movers can own share.</p></div><div class="glass reveal"><div class="cap__icon" style="background: linear-gradient(135deg, rgba(53,211,154,0.18), rgba(24,191,255,0.1)); color: var(--green);">+</div><h3 class="cap__title">Vertical specialists</h3><p class="cap__desc">Procurement teams increasingly prefer vertical experts (fintech, tourism, healthcare) over generalist agencies.</p></div><div class="glass reveal"><div class="cap__icon" style="background: linear-gradient(135deg, rgba(53,211,154,0.18), rgba(24,191,255,0.1)); color: var(--green);">+</div><h3 class="cap__title">Arabic AI content</h3><p class="cap__desc">Saudi buyers are heavy ChatGPT and Google AI Overview users. Arabic AEO is almost completely open ground.</p></div><div class="glass reveal"><div class="cap__icon" style="background: linear-gradient(135deg, rgba(53,211,154,0.18), rgba(24,191,255,0.1)); color: var(--green);">+</div><h3 class="cap__title">Giga-project supplier marketing</h3><p class="cap__desc">Suppliers servicing NEOM and Red Sea Global have massive marketing budgets and limited local agency capability.</p></div></div>
-      </section>
+      
 
       <section>
         <div class="section-head reveal">
@@ -278,6 +271,9 @@
     </div>
 
     <script>
+      // Scroll to top on every page load — ignore browser scroll restoration
+      if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+      if (!window.location.hash) { window.scrollTo(0, 0); }
       const nav = document.getElementById('nav');
       const onScroll = () => (window.scrollY > 10 ? nav.classList.add('is-scrolled') : nav.classList.remove('is-scrolled'));
       window.addEventListener('scroll', onScroll, { passive: true });

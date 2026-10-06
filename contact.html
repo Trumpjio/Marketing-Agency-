@@ -213,6 +213,9 @@
     </div>
 
     <script>
+      // Scroll to top on every page load — ignore browser scroll restoration
+      if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+      if (!window.location.hash) { window.scrollTo(0, 0); }
       const nav = document.getElementById('nav');
       const onScroll = () => (window.scrollY > 10 ? nav.classList.add('is-scrolled') : nav.classList.remove('is-scrolled'));
       window.addEventListener('scroll', onScroll, { passive: true });

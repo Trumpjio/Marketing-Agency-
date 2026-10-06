@@ -195,14 +195,7 @@
         <div class="grid grid--3"><div class="glass reveal"><div class="cap__icon">01</div><h3 class="cap__title">Fintech</h3><p class="cap__desc">Payments, open banking, wealth, insurance, regtech. The specialist category — rewards B2B over consumer tactics.</p></div><div class="glass reveal"><div class="cap__icon">02</div><h3 class="cap__title">Banking & financial services</h3><p class="cap__desc">Retail, Islamic, corporate banking. Trust-led, long-cycle.</p></div><div class="glass reveal"><div class="cap__icon">03</div><h3 class="cap__title">B2B technology</h3><p class="cap__desc">SaaS, cloud, cybersecurity — Manama-based, pan-GCC focused.</p></div><div class="glass reveal"><div class="cap__icon">04</div><h3 class="cap__title">Healthcare</h3><p class="cap__desc">Private medical groups scaling across Capital and Northern governorates.</p></div><div class="glass reveal"><div class="cap__icon">05</div><h3 class="cap__title">Construction & real estate</h3><p class="cap__desc">Diyar Al Muharraq, Reef Island, and ongoing Capital redevelopment.</p></div><div class="glass reveal"><div class="cap__icon">06</div><h3 class="cap__title">Logistics & aviation</h3><p class="cap__desc">Especially around Muharraq, home to Bahrain International Airport.</p></div></div>
       </section>
 
-      <section>
-        <div class="section-head reveal">
-          <div class="kicker">Business opportunities</div>
-          <h2>Where new growth is opening up.</h2>
-          <p>Categories we see creating real openings in 2026 — for operators who move early.</p>
-        </div>
-        <div class="grid grid--2"><div class="glass reveal"><div class="cap__icon" style="background: linear-gradient(135deg, rgba(53,211,154,0.18), rgba(24,191,255,0.1)); color: var(--green);">+</div><h3 class="cap__title">B2B fintech SEO & ABM</h3><p class="cap__desc">A specialist category where few local agencies have real depth. Open ground for operators who can write about regulation.</p></div><div class="glass reveal"><div class="cap__icon" style="background: linear-gradient(135deg, rgba(53,211,154,0.18), rgba(24,191,255,0.1)); color: var(--green);">+</div><h3 class="cap__title">Pan-GCC positioning for Manama brands</h3><p class="cap__desc">Most Bahraini fintechs target KSA, UAE and beyond. Branding and content built for that regional audience is undersupplied.</p></div><div class="glass reveal"><div class="cap__icon" style="background: linear-gradient(135deg, rgba(53,211,154,0.18), rgba(24,191,255,0.1)); color: var(--green);">+</div><h3 class="cap__title">Family office and wealth marketing</h3><p class="cap__desc">A quiet but very high-value category, especially with HNW GCC and Indian subcontinent audiences.</p></div><div class="glass reveal"><div class="cap__icon" style="background: linear-gradient(135deg, rgba(53,211,154,0.18), rgba(24,191,255,0.1)); color: var(--green);">+</div><h3 class="cap__title">Regulatory and compliance marketing</h3><p class="cap__desc">A niche category where Bahrain's single-regulator model creates clear thought-leadership opportunities.</p></div></div>
-      </section>
+      
 
       <section>
         <div class="section-head reveal">
@@ -278,6 +271,9 @@
     </div>
 
     <script>
+      // Scroll to top on every page load — ignore browser scroll restoration
+      if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+      if (!window.location.hash) { window.scrollTo(0, 0); }
       const nav = document.getElementById('nav');
       const onScroll = () => (window.scrollY > 10 ? nav.classList.add('is-scrolled') : nav.classList.remove('is-scrolled'));
       window.addEventListener('scroll', onScroll, { passive: true });

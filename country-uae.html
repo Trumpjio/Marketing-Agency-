@@ -195,14 +195,7 @@
         <div class="grid grid--3"><div class="glass reveal"><div class="cap__icon">01</div><h3 class="cap__title">Premium real estate</h3><p class="cap__desc">The biggest single marketing category. Developers, brokers and property platforms compete for the same affluent buyer.</p></div><div class="glass reveal"><div class="cap__icon">02</div><h3 class="cap__title">Luxury retail & e-commerce</h3><p class="cap__desc">Family-office retail groups now facing digital-native D2C brands. Brand-first businesses are winning.</p></div><div class="glass reveal"><div class="cap__icon">03</div><h3 class="cap__title">Hospitality & tourism</h3><p class="cap__desc">A hotel market unlike any other on Earth. Marketing is year-round, platform-wide, and expensive.</p></div><div class="glass reveal"><div class="cap__icon">04</div><h3 class="cap__title">Financial services</h3><p class="cap__desc">DIFC and ADGM are home to wealth managers, hedge funds and fintechs. Long sales cycles. LinkedIn-heavy.</p></div><div class="glass reveal"><div class="cap__icon">05</div><h3 class="cap__title">Healthcare & wellness</h3><p class="cap__desc">Premium clinics, cosmetic medicine, fertility. Big spenders with heavy regulatory sensitivity.</p></div><div class="glass reveal"><div class="cap__icon">06</div><h3 class="cap__title">F&B</h3><p class="cap__desc">Where new concepts open weekly. Social and influencer win here.</p></div></div>
       </section>
 
-      <section>
-        <div class="section-head reveal">
-          <div class="kicker">Business opportunities</div>
-          <h2>Where new growth is opening up.</h2>
-          <p>Categories we see creating real openings in 2026 — for operators who move early.</p>
-        </div>
-        <div class="grid grid--2"><div class="glass reveal"><div class="cap__icon" style="background: linear-gradient(135deg, rgba(53,211,154,0.18), rgba(24,191,255,0.1)); color: var(--green);">+</div><h3 class="cap__title">D2C e-commerce brands</h3><p class="cap__desc">Logistics, payments and consumer behaviour have matured. Launching a D2C brand in the UAE is easier than any time in the past decade.</p></div><div class="glass reveal"><div class="cap__icon" style="background: linear-gradient(135deg, rgba(53,211,154,0.18), rgba(24,191,255,0.1)); color: var(--green);">+</div><h3 class="cap__title">B2B SaaS targeting GCC</h3><p class="cap__desc">DIFC and Hub71 are producing a wave of SaaS brands. Most need help with positioning and demand generation.</p></div><div class="glass reveal"><div class="cap__icon" style="background: linear-gradient(135deg, rgba(53,211,154,0.18), rgba(24,191,255,0.1)); color: var(--green);">+</div><h3 class="cap__title">Health, wellness and longevity</h3><p class="cap__desc">A category creating itself in real time. Marketing playbooks are still being written.</p></div><div class="glass reveal"><div class="cap__icon" style="background: linear-gradient(135deg, rgba(53,211,154,0.18), rgba(24,191,255,0.1)); color: var(--green);">+</div><h3 class="cap__title">AI services</h3><p class="cap__desc">Buyers are early adopters. Agencies and consultancies that can speak the language win.</p></div></div>
-      </section>
+      
 
       <section>
         <div class="section-head reveal">
@@ -278,6 +271,9 @@
     </div>
 
     <script>
+      // Scroll to top on every page load — ignore browser scroll restoration
+      if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+      if (!window.location.hash) { window.scrollTo(0, 0); }
       const nav = document.getElementById('nav');
       const onScroll = () => (window.scrollY > 10 ? nav.classList.add('is-scrolled') : nav.classList.remove('is-scrolled'));
       window.addEventListener('scroll', onScroll, { passive: true });

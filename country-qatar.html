@@ -195,14 +195,7 @@
         <div class="grid grid--3"><div class="glass reveal"><div class="cap__icon">01</div><h3 class="cap__title">Real estate</h3><p class="cap__desc">West Bay, Lusail, Msheireb, The Pearl, Al Sadd. Each with distinct buyer segments and premium cues.</p></div><div class="glass reveal"><div class="cap__icon">02</div><h3 class="cap__title">Travel & hospitality</h3><p class="cap__desc">Hamad International, Qatar Airways, hotel groups, the full tourism stack.</p></div><div class="glass reveal"><div class="cap__icon">03</div><h3 class="cap__title">B2B services</h3><p class="cap__desc">QFC- and QFZA-anchored legal, finance, consulting — often selling pan-GCC.</p></div><div class="glass reveal"><div class="cap__icon">04</div><h3 class="cap__title">Retail</h3><p class="cap__desc">Compact but highly affluent. Luxury, lifestyle, premium F&B.</p></div><div class="glass reveal"><div class="cap__icon">05</div><h3 class="cap__title">Healthcare</h3><p class="cap__desc">A capacity build-out tied to Qatar National Health Strategy.</p></div><div class="glass reveal"><div class="cap__icon">06</div><h3 class="cap__title">Media & tech</h3><p class="cap__desc">Growing visibly post-Web Summit. Startups, media properties, publishers.</p></div></div>
       </section>
 
-      <section>
-        <div class="section-head reveal">
-          <div class="kicker">Business opportunities</div>
-          <h2>Where new growth is opening up.</h2>
-          <p>Categories we see creating real openings in 2026 — for operators who move early.</p>
-        </div>
-        <div class="grid grid--2"><div class="glass reveal"><div class="cap__icon" style="background: linear-gradient(135deg, rgba(53,211,154,0.18), rgba(24,191,255,0.1)); color: var(--green);">+</div><h3 class="cap__title">AI-first brands</h3><p class="cap__desc">Qatar's buyers are among the earliest global adopters of Perplexity and ChatGPT Search. Brands that build for AI search now will own the next decade here.</p></div><div class="glass reveal"><div class="cap__icon" style="background: linear-gradient(135deg, rgba(53,211,154,0.18), rgba(24,191,255,0.1)); color: var(--green);">+</div><h3 class="cap__title">Hyper-local district marketing</h3><p class="cap__desc">Lusail vs West Bay vs The Pearl is a real segmentation. Few agencies use it well.</p></div><div class="glass reveal"><div class="cap__icon" style="background: linear-gradient(135deg, rgba(53,211,154,0.18), rgba(24,191,255,0.1)); color: var(--green);">+</div><h3 class="cap__title">B2B pan-GCC positioning</h3><p class="cap__desc">Doha-based businesses with regional ambition need brand and content that works across borders.</p></div><div class="glass reveal"><div class="cap__icon" style="background: linear-gradient(135deg, rgba(53,211,154,0.18), rgba(24,191,255,0.1)); color: var(--green);">+</div><h3 class="cap__title">Post-FIFA tourism</h3><p class="cap__desc">The World Cup legacy is still generating marketing demand. Operators who can tap it are winning.</p></div></div>
-      </section>
+      
 
       <section>
         <div class="section-head reveal">
@@ -278,6 +271,9 @@
     </div>
 
     <script>
+      // Scroll to top on every page load — ignore browser scroll restoration
+      if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+      if (!window.location.hash) { window.scrollTo(0, 0); }
       const nav = document.getElementById('nav');
       const onScroll = () => (window.scrollY > 10 ? nav.classList.add('is-scrolled') : nav.classList.remove('is-scrolled'));
       window.addEventListener('scroll', onScroll, { passive: true });

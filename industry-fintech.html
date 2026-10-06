@@ -237,13 +237,7 @@
         <div class="process" style="grid-template-columns: repeat(2, 1fr);"><div class="step reveal"><div class="step__num">01 —</div><h3 class="step__title">Treating fintech content like consumer content — buyers see through it.</h3></div><div class="step reveal"><div class="step__num">02 —</div><h3 class="step__title">Ignoring AI search — fintech buyers increasingly research in Perplexity and ChatGPT.</h3></div><div class="step reveal"><div class="step__num">03 —</div><h3 class="step__title">No named customer logos — anonymous 'leading brands' claims kill credibility.</h3></div><div class="step reveal"><div class="step__num">04 —</div><h3 class="step__title">Non-compliant campaigns — one shut-down is weeks lost.</h3></div></div>
       </section>
 
-      <section>
-        <div class="section-head reveal">
-          <div class="kicker">Scaling what works</div>
-          <h2>After the first win, what happens next.</h2>
-        </div>
-        <ol class="list-numbered reveal"><li><span class="n">01</span><span class="t">Expand ABM to adjacent target segments.</span></li><li><span class="n">02</span><span class="t">Launch sector-specific content programs (payments vs wealth vs insurance).</span></li><li><span class="n">03</span><span class="t">Open international / pan-GCC campaigns from a base market.</span></li><li><span class="n">04</span><span class="t">Build customer-advocacy programs for referrals and case studies.</span></li><li><span class="n">05</span><span class="t">Add developer-focused content and documentation for API-led acquisition.</span></li></ol>
-      </section>
+      
 
       <section>
         <div class="section-head reveal">
@@ -297,6 +291,9 @@
       </div>
     </div>
     <script>
+      // Scroll to top on every page load — ignore browser scroll restoration
+      if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+      if (!window.location.hash) { window.scrollTo(0, 0); }
       const nav = document.getElementById('nav');
       const onScroll = () => (window.scrollY > 10 ? nav.classList.add('is-scrolled') : nav.classList.remove('is-scrolled'));
       window.addEventListener('scroll', onScroll, { passive: true });
