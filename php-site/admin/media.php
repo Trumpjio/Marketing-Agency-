@@ -19,6 +19,22 @@ if (isset($_GET['list'])) {
     exit;
 }
 
+// In-place upload used by the picker pop-up. Returns JSON, never redirects.
+if (isset($_GET['ajax']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    require_login();
+    header('Content-Type: application/json');
+    $f = $_FILES['file'] ?? null;
+    $ext = $f ? strtolower(pathinfo($f['name'], PATHINFO_EXTENSION)) : '';
+    if (!$f || $f['error'] !== UPLOAD_ERR_OK) { echo json_encode(['error' => 'Upload failed.']); exit; }
+    if (!in_array($ext, ['jpg','jpeg','png','gif','webp','svg'], true)) { echo json_encode(['error' => 'Please choose a JPG, PNG, WebP, GIF or SVG picture.']); exit; }
+    $base = slugify(pathinfo($f['name'], PATHINFO_FILENAME)) ?: 'image';
+    $safe = "$base.$ext"; $i = 1;
+    while (file_exists(UPLOADS_DIR . '/' . $safe)) { $safe = "$base-$i.$ext"; $i++; }
+    move_uploaded_file($f['tmp_name'], UPLOADS_DIR . '/' . $safe);
+    echo json_encode(['path' => 'uploads/' . $safe]);
+    exit;
+}
+
 require_once __DIR__ . '/_layout.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_FILES['file'])) {
