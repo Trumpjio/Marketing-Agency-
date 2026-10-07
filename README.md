@@ -102,7 +102,26 @@ To delete: click Delete in the list — removes the data entry and the HTML file
 Upload images (JPG, PNG, WebP, GIF, SVG). After upload, copy the path (e.g. `uploads/dubai.jpg`) and paste it into your blog post's Featured Image field, or use in your HTML body: `<img src="uploads/dubai.jpg">`
 
 ### Pages — `/admin/pages.php`
-Lists all 80 HTML pages with links to view each. For content changes beyond settings and blog posts, open the HTML file in Hostinger's File Manager editor and edit directly — the HTML is clean and readable.
+Every page on the site, grouped (Core, Services, Industries, Countries, Cities, Blog and so on) with a search box. Each page has two buttons:
+
+**Edit** opens the page editor:
+- **SEO**: the page title and Google description.
+- **Main headline**, the line under it, and the **main button** (words and link).
+- **Sections**: a switch to show or hide each section, and **Edit this section**, which opens a Word-style editor for that section's text, links and pictures. Only sections you actually change are rewritten.
+- **Undo my last save** brings back the version from before your last save.
+
+**Icons** opens the icon editor:
+- **Change icon** on any card: pick a built-in icon (60 included), type your own number, letter or emoji, or choose a picture from your Media Library.
+- Choose the **position** (above the title, or beside it on the same line), the **size** and the **alignment**.
+- **Cards without an icon** lists cards that have none, so you can add one.
+- To add a new built-in icon to the list, add one line to `admin/_icons.php`.
+
+If the same page is changed somewhere else while you have it open, the admin refuses to save and asks you to repeat the edit, so newer work is never overwritten.
+
+### Image picker
+Every picture button opens the same pop-up: choose an existing image, or upload a new one right there. Uploading inside the pop-up never takes you off the page, so unsaved edits are safe.
+
+> **Using GitHub deploys too?** The admin edits the live files directly. If you also push changes to the same page files through GitHub, Hostinger may refuse to pull. Use GitHub for code (`admin/`, `styles/`, `scripts/`) and the admin for content.
 
 ---
 

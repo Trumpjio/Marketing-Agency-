@@ -72,6 +72,7 @@ $search = trim($_GET['q'] ?? '');
           <td style="padding-left:1rem;width:60%;"><strong style="font-size:0.925rem;"><?= h($title) ?></strong><br><code style="font-size:0.7rem;color:#9ca3af;"><?= h($name) ?></code></td>
           <td style="text-align:right;padding-right:1rem;white-space:nowrap;">
             <a href="page-edit.php?file=<?= urlencode($name) ?>" class="btn" style="padding:0.4rem 0.9rem;font-size:0.8rem;">Edit</a>
+            <a href="page-icons.php?file=<?= urlencode($name) ?>" class="btn btn--ghost" style="padding:0.4rem 0.9rem;font-size:0.8rem;">Icons</a>
             <a href="../<?= h($name) ?>" target="_blank" class="btn btn--ghost" style="padding:0.4rem 0.9rem;font-size:0.8rem;">View</a>
           </td>
         </tr>

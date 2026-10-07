@@ -31,6 +31,21 @@ function build_apply_settings($old, $new) {
 }
 
 /**
+ * Pull the live header (with mobile menu) and footer out of index.html so that
+ * generated blog posts always match the rest of the site.
+ */
+function site_chrome() {
+    $idx = @file_get_contents(SITE_ROOT . '/index.html');
+    $nav = '';
+    $footer = '';
+    if ($idx) {
+        if (preg_match('/<header class="nav" id="nav">.*?<\/header>\s*<div class="nav__mobile-panel".*?<\/nav>\s*<\/div>/si', $idx, $m)) $nav = $m[0];
+        if (preg_match('/<footer\b.*?<\/footer>/si', $idx, $m)) $footer = $m[0];
+    }
+    return [$nav, $footer];
+}
+
+/**
  * Generate a blog post HTML file from the data entry.
  */
 function build_blog_html($post, $settings) {
@@ -45,9 +60,7 @@ function build_blog_html($post, $settings) {
     $cta_label = htmlspecialchars($settings['cta_label'], ENT_QUOTES);
     $base = rtrim($settings['base_url'], '/');
     $url = "$base/$slug.html";
-    $brand_tagline = htmlspecialchars($settings['brand_tagline'], ENT_QUOTES);
-    $copyright = htmlspecialchars($settings['footer_copyright'], ENT_QUOTES);
-    $email = htmlspecialchars($settings['email'], ENT_QUOTES);
+    [$nav_html, $footer_html] = site_chrome();
 
     $image_html = $image ? "<section class=\"section\"><div class=\"container\"><div class=\"article-visual reveal\" style=\"aspect-ratio:16/9;overflow:hidden;border-radius:var(--r-lg);\"><img src=\"$image\" alt=\"\" style=\"width:100%;height:100%;object-fit:cover;\" loading=\"lazy\"></div></div></section>" : '';
 
@@ -86,26 +99,7 @@ function build_blog_html($post, $settings) {
 <div class="page">
   <div class="orb orb-blue" style="top:220px;left:-280px;"></div>
   <div class="orb orb-cyan" style="top:1200px;right:-240px;"></div>
-  <header class="nav" id="nav">
-    <div class="container nav__inner">
-      <a href="index.html" class="brand">ORCA<span>PULSE</span></a>
-      <button class="nav__mobile-trigger" aria-expanded="false" aria-controls="mobile-menu" id="mobile-toggle">
-        <span class="burger"><span></span><span></span><span></span></span> Menu
-      </button>
-    </div>
-    <div class="nav__mobile-panel" id="mobile-menu">
-      <div class="nav__mobile-group">
-        <div class="nav__mobile-group-title">Explore</div>
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="work.html">Work</a>
-        <a href="insights.html">Insights</a>
-        <a href="about.html">About</a>
-        <a href="locations.html">Locations</a>
-      </div>
-      <a href="$cta_url" target="_blank" rel="noopener" class="btn btn--primary">$cta_label</a>
-    </div>
-  </header>
+  $nav_html
 
   <section class="section hero">
     <div class="container">
@@ -138,17 +132,9 @@ $body
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__brand">
-        <a href="index.html" class="brand">ORCA<span>PULSE</span></a>
-        <p class="footer__tag">$brand_tagline</p>
-      </div>
-    </div>
-    <div class="container footer__bottom">
-      <small>$copyright · <a href="mailto:$email">$email</a></small>
-    </div>
-  </footer>
+  <div class="container">
+  $footer_html
+  </div>
 </div>
 <script src="scripts/main.js" defer></script>
 </body>
@@ -176,9 +162,18 @@ function build_insights_listing($blogs, $settings) {
     $file = SITE_ROOT . '/insights.html';
     if (!file_exists($file)) return;
     $html = file_get_contents($file);
-    // Replace the first <section> block that contains the grid
-    $pattern = '/<section>\s*<div class="section-head reveal">.*?<\/section>\s*<section>.*?<\/section>\s*<section>.*?<\/section>/s';
-    $replacement = "<section><div class=\"section-head reveal\"><div class=\"kicker\">Writing</div><h2>Insights, playbooks, essays.</h2></div><div class=\"grid grid--3\">$cards</div></section>";
-    $new = preg_replace($pattern, $replacement, $html, 1);
-    if ($new) file_put_contents($file, $new);
+
+    $start = '<!--ADMIN-POSTS-START-->';
+    $end = '<!--ADMIN-POSTS-END-->';
+    // First run: add the marker block straight after the hero section.
+    if (strpos($html, $start) === false) {
+        $html = preg_replace_callback('/<section class="hero".*?<\/section>/s', function ($m) use ($start, $end) {
+            return $m[0] . "\n\n " . $start . $end;
+        }, $html, 1);
+    }
+    $block = $cards === '' ? '' : "\n<section><div class=\"section-head reveal\"><div class=\"kicker\">Latest</div><h2>New writing.</h2></div><div class=\"grid grid--3\">\n$cards</div></section>\n";
+    $html = preg_replace_callback('/' . preg_quote($start, '/') . '.*?' . preg_quote($end, '/') . '/s', function () use ($start, $end, $block) {
+        return $start . $block . $end;
+    }, $html, 1);
+    file_put_contents($file, $html);
 }

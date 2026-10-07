@@ -14,12 +14,20 @@ if ($is_new) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $post['title']   = trim($_POST['title']);
-    $post['slug']    = trim($_POST['slug']) ?: 'insight-' . slugify($post['title']);
+    $post['slug']    = slugify(trim($_POST['slug']) ?: 'insight-' . slugify($post['title']));
     $post['excerpt'] = trim($_POST['excerpt']);
     $post['body']    = $_POST['body'];
     $post['image']   = trim($_POST['image']);
     $post['date']    = trim($_POST['date']);
     $post['author']  = trim($_POST['author']);
+
+    // Never overwrite a page that isn't one of the admin's own blog posts.
+    $own = array_column($blogs, 'slug');
+    if ($post['slug'] === '' || (file_exists(SITE_ROOT . '/' . $post['slug'] . '.html') && !in_array($post['slug'], $own, true))) {
+        $_SESSION['flash'] = ['type' => 'err', 'msg' => 'That URL is already used by another page. Please choose a different URL slug.'];
+        header('Location: blog-edit.php' . ($editing_slug ? '?slug=' . urlencode($editing_slug) : ''));
+        exit;
+    }
 
     // Save to data
     $found = false;
@@ -96,6 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <script>
     tinymce.init({
       selector: '#blog-body',
+      license_key: 'gpl',
       height: 480,
       menubar: 'edit insert format table',
       plugins: 'autolink lists link image media table code help wordcount',
@@ -104,23 +113,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       branding: false,
       promotion: false,
       file_picker_types: 'image',
-      file_picker_callback: function(callback) {
-        window._tinyPickerCb = callback;
-        document.getElementById('media-modal').classList.add('is-open');
-        fetch('media.php?list=1').then(r => r.json()).then(files => {
-          document.getElementById('mp-grid').innerHTML = files.length
-            ? files.map(f => '<div class="mp-item" onclick="pickMediaForTiny(\'' + f + '\')"><img src="../' + f + '"><div class="mp-name">' + f.replace('uploads/','') + '</div></div>').join('')
-            : '<p style="color:#6b7280;grid-column:1/-1;">No images yet. Upload one above.</p>';
-        });
-      }
+      file_picker_callback: function (callback) { window._tinyPickerCb = callback; openMediaForTiny(); },
+      convert_urls: false,
+      entity_encoding: 'raw'
     });
-    function pickMediaForTiny(path) {
-      if (window._tinyPickerCb) {
-        window._tinyPickerCb('/' + path, { alt: '' });
-        window._tinyPickerCb = null;
-      }
-      closeMedia();
-    }
   </script>
 
   <div style="display:flex;gap:0.5rem;">

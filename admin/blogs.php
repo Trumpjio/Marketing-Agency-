@@ -3,10 +3,13 @@ require __DIR__ . '/_build.php';
 
 if (($_GET['action'] ?? '') === 'delete' && !empty($_GET['slug'])) {
     $blogs = blogs_load();
-    $blogs = array_values(array_filter($blogs, fn($b) => $b['slug'] !== $_GET['slug']));
-    blogs_save($blogs);
-    $file = SITE_ROOT . '/' . basename($_GET['slug']) . '.html';
-    if (file_exists($file)) unlink($file);
+    $known = array_column($blogs, 'slug');
+    if (in_array($_GET['slug'], $known, true)) {
+        $blogs = array_values(array_filter($blogs, fn($b) => $b['slug'] !== $_GET['slug']));
+        blogs_save($blogs);
+        $file = SITE_ROOT . '/' . basename($_GET['slug']) . '.html';
+        if (file_exists($file)) unlink($file);
+    }
     build_insights_listing($blogs, settings_load());
     $_SESSION['flash'] = ['type' => 'ok', 'msg' => 'Blog post deleted.'];
     header('Location: blogs.php');
