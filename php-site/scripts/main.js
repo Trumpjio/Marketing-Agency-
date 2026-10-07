@@ -86,7 +86,25 @@
       if (panel.classList.contains("is-open")) closeMobilePanel();
       else openMobilePanel();
     });
-    // Close panel when a link is clicked
+    // Enhance sections into accordions (wrap <a> siblings of heading into .items div)
+    panel.querySelectorAll(".nav__mobile-section").forEach((section) => {
+      const heading = section.querySelector(".nav__mobile-heading");
+      if (!heading || section.dataset.enhanced) return;
+      section.dataset.enhanced = "1";
+      // Collect sibling <a> elements after the heading
+      const items = Array.from(section.children).filter((n) => n !== heading && n.tagName === "A");
+      if (items.length === 0) return;
+      const wrap = document.createElement("div");
+      wrap.className = "nav__mobile-section__items";
+      items.forEach((it) => wrap.appendChild(it));
+      section.appendChild(wrap);
+      // Click heading to toggle
+      heading.addEventListener("click", (e) => {
+        e.stopPropagation();
+        section.classList.toggle("is-open");
+      });
+    });
+    // Close panel when a direct link is clicked (not the heading)
     panel.addEventListener("click", (e) => {
       if (e.target.tagName === "A") closeMobilePanel();
     });
