@@ -9,6 +9,8 @@ $current = basename($_SERVER['PHP_SELF'], '.php');
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Admin — OrcaPulse</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- TinyMCE WYSIWYG editor (free, no key needed in no-API mode) -->
+<script src="https://cdn.jsdelivr.net/npm/tinymce@7/tinymce.min.js" referrerpolicy="origin"></script>
 <style>
   :root { --blue: #635bff; --cyan: #18bfff; --bg: #f7f9fc; --ink: #0a0e27; --muted: #6b7280; --line: #e5e7eb; --surface: #fff; --danger: #dc2626; --ok: #059669; }
   * { box-sizing: border-box; }
@@ -53,11 +55,41 @@ $current = basename($_SERVER['PHP_SELF'], '.php');
   .toolbar { display: flex; gap: 0.5rem; margin-bottom: 1rem; align-items: center; flex-wrap: wrap; }
   .toolbar input { max-width: 320px; }
   .thumb { width: 80px; height: 60px; object-fit: cover; border-radius: 4px; }
-  .media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; }
-  .media-item { border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: #fff; }
-  .media-item img { width: 100%; height: 100px; object-fit: cover; display: block; }
-  .media-item .meta { padding: 0.4rem 0.5rem; font-size: 0.7rem; color: var(--muted); }
-  .media-item input { font-size: 0.7rem; padding: 0.3rem; }
+
+  /* Toggle switch */
+  .switch { position: relative; display: inline-block; width: 42px; height: 24px; flex-shrink: 0; }
+  .switch input { opacity: 0; width: 0; height: 0; }
+  .switch .slider { position: absolute; cursor: pointer; inset: 0; background: #cbd5e0; border-radius: 999px; transition: background 0.2s; }
+  .switch .slider::before { content: ""; position: absolute; height: 18px; width: 18px; left: 3px; top: 3px; background: white; border-radius: 50%; transition: transform 0.2s; }
+  .switch input:checked + .slider { background: var(--blue); }
+  .switch input:checked + .slider::before { transform: translateX(18px); }
+
+  /* Section-toggle row */
+  .section-row { display: flex; align-items: center; gap: 1rem; padding: 0.9rem 1rem; border: 1px solid var(--line); border-radius: 8px; margin-bottom: 0.5rem; background: #fff; }
+  .section-row.is-hidden { background: #f9fafb; opacity: 0.65; }
+  .section-row__info { flex: 1; min-width: 0; }
+  .section-row__title { font-weight: 600; font-size: 0.95rem; color: var(--ink); margin: 0 0 0.1rem; }
+  .section-row__meta { color: var(--muted); font-size: 0.75rem; }
+
+  /* Image picker modal */
+  .image-picker-field { display: flex; gap: 0.5rem; align-items: center; }
+  .image-picker-preview { width: 60px; height: 45px; object-fit: cover; border: 1px solid var(--line); border-radius: 4px; background: #f3f4f6; flex-shrink: 0; }
+  .image-picker-btn { padding: 0.5rem 0.75rem; font-size: 0.8rem; background: var(--bg); border: 1px solid var(--line); color: var(--ink); border-radius: 6px; cursor: pointer; white-space: nowrap; }
+  .image-picker-btn:hover { border-color: var(--blue); color: var(--blue); }
+
+  #media-modal { display: none; position: fixed; inset: 0; background: rgba(10,14,39,0.6); z-index: 1000; align-items: center; justify-content: center; padding: 1rem; }
+  #media-modal.is-open { display: flex; }
+  #media-modal .modal-box { background: #fff; border-radius: 12px; width: 100%; max-width: 760px; max-height: 85vh; overflow: hidden; display: flex; flex-direction: column; }
+  #media-modal .modal-head { padding: 1rem 1.5rem; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
+  #media-modal .modal-head h3 { margin: 0; font-size: 1.1rem; }
+  #media-modal .modal-close { background: transparent; border: 0; font-size: 1.5rem; cursor: pointer; color: var(--muted); line-height: 1; padding: 0.25rem 0.5rem; }
+  #media-modal .modal-body { padding: 1.5rem; overflow-y: auto; flex: 1; }
+  #media-modal .mp-upload { padding: 1rem; background: var(--bg); border: 2px dashed var(--line); border-radius: 8px; margin-bottom: 1rem; text-align: center; }
+  #media-modal .mp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.75rem; }
+  #media-modal .mp-item { border: 2px solid transparent; border-radius: 6px; overflow: hidden; cursor: pointer; background: #fff; transition: all 0.1s; }
+  #media-modal .mp-item:hover { border-color: var(--blue); transform: translateY(-2px); }
+  #media-modal .mp-item img { width: 100%; height: 90px; object-fit: cover; display: block; }
+  #media-modal .mp-item .mp-name { padding: 0.3rem 0.4rem; font-size: 0.7rem; color: var(--muted); text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
 </style>
 </head>
 <body>
@@ -67,9 +99,9 @@ $current = basename($_SERVER['PHP_SELF'], '.php');
     <nav>
       <a href="index.php" class="<?= $current==='index'?'active':'' ?>">Dashboard</a>
       <a href="settings.php" class="<?= $current==='settings'?'active':'' ?>">Site Settings</a>
+      <a href="pages.php" class="<?= in_array($current,['pages','page-edit'])?'active':'' ?>">Pages</a>
       <a href="blogs.php" class="<?= in_array($current,['blogs','blog-edit'])?'active':'' ?>">Blog Posts</a>
       <a href="media.php" class="<?= $current==='media'?'active':'' ?>">Media Library</a>
-      <a href="pages.php" class="<?= $current==='pages'?'active':'' ?>">Pages</a>
       <a href="../index.html" target="_blank">View Site →</a>
     </nav>
     <div class="logout">
@@ -78,6 +110,59 @@ $current = basename($_SERVER['PHP_SELF'], '.php');
   </aside>
   <main class="main">
     <?php if (!empty($_SESSION['flash'])): ?>
-      <div class="notice notice--<?= h($_SESSION['flash']['type']) ?>"><?= h($_SESSION['flash']['msg']) ?></div>
+      <div class="notice notice--<?= h($_SESSION['flash']['type']) ?>"><?= $_SESSION['flash']['msg'] ?></div>
       <?php unset($_SESSION['flash']); ?>
     <?php endif; ?>
+
+<!-- Shared media picker modal (used from any page) -->
+<div id="media-modal" role="dialog" aria-modal="true" aria-label="Media Library">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>Pick an image</h3>
+      <button type="button" class="modal-close" onclick="closeMedia()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <form class="mp-upload" method="post" action="media.php?return=modal" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" onchange="this.form.submit()">
+        <div class="help" style="margin-top:0.5rem;">or click an image below to use it</div>
+      </form>
+      <div class="mp-grid" id="mp-grid">Loading…</div>
+    </div>
+  </div>
+</div>
+<script>
+  var mpTarget = null;
+  function openMedia(inputId) {
+    mpTarget = inputId;
+    document.getElementById('media-modal').classList.add('is-open');
+    fetch('media.php?list=1').then(r => r.json()).then(files => {
+      var grid = document.getElementById('mp-grid');
+      if (!files.length) {
+        grid.innerHTML = '<p style="color:#6b7280;grid-column:1/-1;">No images yet. Upload one above.</p>';
+        return;
+      }
+      grid.innerHTML = files.map(function(f) {
+        return '<div class="mp-item" onclick="pickMedia(\'' + f + '\')">' +
+               '<img src="../' + f + '" alt=""><div class="mp-name">' + f.replace('uploads/','') + '</div></div>';
+      }).join('');
+    }).catch(function() {
+      document.getElementById('mp-grid').innerHTML = '<p style="color:#dc2626;">Failed to load images.</p>';
+    });
+  }
+  function closeMedia() {
+    document.getElementById('media-modal').classList.remove('is-open');
+    mpTarget = null;
+  }
+  function pickMedia(path) {
+    if (mpTarget) {
+      var el = document.getElementById(mpTarget);
+      if (el) {
+        el.value = path;
+        el.dispatchEvent(new Event('change'));
+        var preview = document.querySelector('[data-preview-for="' + mpTarget + '"]');
+        if (preview) preview.src = '../' + path;
+      }
+    }
+    closeMedia();
+  }
+</script>
