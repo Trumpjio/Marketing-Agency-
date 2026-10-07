@@ -1,6 +1,25 @@
-<?php require_once __DIR__ . '/_layout.php';
-
+<?php
+require_once __DIR__ . '/config.php';
 if (!is_dir(UPLOADS_DIR)) mkdir(UPLOADS_DIR, 0755, true);
+
+// JSON API — list all uploaded images
+if (isset($_GET['list'])) {
+    require_login();
+    header('Content-Type: application/json');
+    $files = glob(UPLOADS_DIR . '/*');
+    usort($files, fn($a, $b) => filemtime($b) - filemtime($a));
+    $out = [];
+    foreach ($files as $f) {
+        $ext = strtolower(pathinfo($f, PATHINFO_EXTENSION));
+        if (in_array($ext, ['jpg','jpeg','png','gif','webp','svg'])) {
+            $out[] = 'uploads/' . basename($f);
+        }
+    }
+    echo json_encode($out);
+    exit;
+}
+
+require_once __DIR__ . '/_layout.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_FILES['file'])) {
     $f = $_FILES['file'];
@@ -41,6 +60,7 @@ usort($files, fn($a, $b) => filemtime($b) - filemtime($a));
 ?>
 
 <h2>Media Library</h2>
+<p style="color:#6b7280;margin-bottom:1.5rem;">Upload images here, then use the <strong>Pick image</strong> button on any page to insert them. No need to type paths.</p>
 
 <div class="card">
   <form method="post" enctype="multipart/form-data">
@@ -55,16 +75,16 @@ usort($files, fn($a, $b) => filemtime($b) - filemtime($a));
 <?php if (empty($files)): ?>
   <p style="color:#6b7280;">No images uploaded yet.</p>
 <?php else: ?>
-  <div class="media-grid">
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1rem;">
     <?php foreach ($files as $file):
       $name = basename($file);
       $path = 'uploads/' . $name;
     ?>
-      <div class="media-item">
-        <img src="../<?= h($path) ?>" alt="">
-        <div class="meta">
-          <input type="text" value="<?= h($path) ?>" onclick="this.select()" readonly style="width:100%;border:0;background:transparent;">
-          <div style="display:flex;justify-content:space-between;margin-top:0.3rem;">
+      <div style="border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff;">
+        <img src="../<?= h($path) ?>" alt="" style="width:100%;height:110px;object-fit:cover;display:block;">
+        <div style="padding:0.5rem;">
+          <input type="text" value="<?= h($path) ?>" onclick="this.select()" readonly style="width:100%;font-size:0.7rem;border:0;padding:0.3rem;background:#f9fafb;border-radius:4px;">
+          <div style="display:flex;justify-content:space-between;margin-top:0.4rem;">
             <a href="../<?= h($path) ?>" target="_blank" style="color:#635bff;font-size:0.7rem;text-decoration:none;">View</a>
             <a href="?action=delete&file=<?= urlencode($name) ?>" onclick="return confirm('Delete this image?')" style="color:#dc2626;font-size:0.7rem;text-decoration:none;">Delete</a>
           </div>

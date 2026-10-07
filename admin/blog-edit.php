@@ -77,17 +77,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
     </div>
     <div class="field">
-      <label>Featured image URL (optional)</label>
-      <input type="text" name="image" value="<?= h($post['image']) ?>" placeholder="uploads/your-image.jpg or full URL">
-      <div class="help">Tip: upload an image in <a href="media.php">Media</a> first, copy the path.</div>
+      <label>Featured image (shown at top of blog + in cards)</label>
+      <div class="image-picker-field">
+        <img class="image-picker-preview" data-preview-for="blog-image" src="<?= $post['image'] ? '../' . h(ltrim($post['image'], '/')) : '' ?>" alt="" onerror="this.style.visibility='hidden'">
+        <input type="text" id="blog-image" name="image" value="<?= h($post['image']) ?>" placeholder="click Pick image →">
+        <button type="button" class="image-picker-btn" onclick="openMedia('blog-image')">📷 Pick image</button>
+      </div>
+      <div class="help">Click Pick image to browse the Media Library. Or type a path like <code>uploads/dubai.jpg</code>.</div>
     </div>
   </div>
 
   <div class="card">
-    <h3 style="margin-top:0;">Body (HTML)</h3>
-    <div class="help" style="margin-bottom:0.75rem;">Write in HTML. Use &lt;h2&gt; for section headings, &lt;p&gt; for paragraphs, &lt;strong&gt; for bold.</div>
-    <textarea name="body" rows="22" style="font-family:'SF Mono',monospace;font-size:0.825rem;"><?= h($post['body']) ?></textarea>
+    <h3 style="margin-top:0;">✏️ Body — write your article</h3>
+    <div class="help" style="margin-bottom:0.75rem;">Use the toolbar to format text, add headings, lists, links, and images — like Word. No HTML knowledge needed.</div>
+    <textarea id="blog-body" name="body" rows="22"><?= h($post['body']) ?></textarea>
   </div>
+
+  <script>
+    tinymce.init({
+      selector: '#blog-body',
+      height: 480,
+      menubar: 'edit insert format table',
+      plugins: 'autolink lists link image media table code help wordcount',
+      toolbar: 'undo redo | blocks | bold italic underline | forecolor | alignleft aligncenter alignright | bullist numlist | link image media | removeformat | code',
+      content_style: 'body { font-family: Inter, -apple-system, sans-serif; font-size: 15px; line-height: 1.6; } img { max-width: 100%; }',
+      branding: false,
+      promotion: false,
+      file_picker_types: 'image',
+      file_picker_callback: function(callback) {
+        window._tinyPickerCb = callback;
+        document.getElementById('media-modal').classList.add('is-open');
+        fetch('media.php?list=1').then(r => r.json()).then(files => {
+          document.getElementById('mp-grid').innerHTML = files.length
+            ? files.map(f => '<div class="mp-item" onclick="pickMediaForTiny(\'' + f + '\')"><img src="../' + f + '"><div class="mp-name">' + f.replace('uploads/','') + '</div></div>').join('')
+            : '<p style="color:#6b7280;grid-column:1/-1;">No images yet. Upload one above.</p>';
+        });
+      }
+    });
+    function pickMediaForTiny(path) {
+      if (window._tinyPickerCb) {
+        window._tinyPickerCb('/' + path, { alt: '' });
+        window._tinyPickerCb = null;
+      }
+      closeMedia();
+    }
+  </script>
 
   <div style="display:flex;gap:0.5rem;">
     <button type="submit" class="btn">Save & Publish</button>

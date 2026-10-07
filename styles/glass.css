@@ -2390,3 +2390,6 @@ html, body { overflow-x: hidden !important; max-width: 100vw; }
 .nav, .nav__inner, section, .container { max-width: 100vw; }
 .page { overflow-x: hidden; }
 
+
+/* Sections hidden from admin toggle */
+section[data-hidden="true"] { display: none !important; }
