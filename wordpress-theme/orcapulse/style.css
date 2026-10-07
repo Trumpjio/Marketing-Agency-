@@ -15,13 +15,9 @@ Tags: elementor, business, agency, marketing, custom-colors, custom-menu, featur
 */
 
 /* ============================================================
-   OrcaPulse — Full Design System
-   The glass aesthetic + Inter/Manrope + indigo/cyan.
+   OrcaPulse — WordPress-specific overrides.
+   The full design system is loaded from assets/glass.css via functions.php.
    ============================================================ */
-
-@import url("assets/glass.css");
-
-/* WordPress-specific overrides — keeps WP admin bar, Gutenberg, Elementor from breaking the design */
 
 body.admin-bar .nav { top: 32px; }
 @media (max-width: 782px) {

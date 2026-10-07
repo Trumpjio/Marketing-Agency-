@@ -73,11 +73,18 @@ function orcapulse_enqueue_assets() {
 		array(),
 		null
 	);
-	// Theme main style (loads glass.css via @import inside style.css).
+	// Full design system — loaded directly so it works even if style.css @import fails.
+	wp_enqueue_style(
+		'orcapulse-glass',
+		get_template_directory_uri() . '/assets/glass.css',
+		array( 'orcapulse-fonts' ),
+		ORCAPULSE_VERSION
+	);
+	// Theme style.css (WordPress required — must be enqueued even if minimal).
 	wp_enqueue_style(
 		'orcapulse-style',
 		get_stylesheet_uri(),
-		array(),
+		array( 'orcapulse-glass' ),
 		ORCAPULSE_VERSION
 	);
 	// Universal site script (sticky nav, mobile menu toggle, reveals).
@@ -90,6 +97,12 @@ function orcapulse_enqueue_assets() {
 	);
 }
 add_action( 'wp_enqueue_scripts', 'orcapulse_enqueue_assets' );
+
+/**
+ * Also enqueue on Elementor preview iframe (so edits look right).
+ */
+add_action( 'elementor/preview/enqueue_styles', 'orcapulse_enqueue_assets' );
+add_action( 'elementor/editor/after_enqueue_styles', 'orcapulse_enqueue_assets' );
 
 /**
  * Elementor compatibility — declares support so Elementor stops warning
