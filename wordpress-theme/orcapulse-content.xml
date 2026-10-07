@@ -10,7 +10,7 @@
 	<title>OrcaPulse</title>
 	<link>https://orcapulse.com</link>
 	<description>A specialist growth marketing agency for ambitious businesses.</description>
-	<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+	<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 	<language>en-US</language>
 	<wp:wxr_version>1.2</wp:wxr_version>
 	<wp:base_site_url>https://orcapulse.com</wp:base_site_url>
@@ -47,7 +47,7 @@
 	<item>
 		<title><![CDATA[About OrcaPulse | Specialist Growth Marketing Agency]]></title>
 		<link>https://orcapulse.com/about/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=100</guid>
 		<description></description>
@@ -115,8 +115,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a small, senior-led specialist growth marketing agency working across real estate, hospitality, fintech and clinical healthcare — globally. Learn how we work, who we serve, and what we refuse to do.]]></excerpt:encoded>
 		<wp:post_id>100</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[about]]></wp:post_name>
@@ -128,17 +128,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency in Abu Dhabi, UAE]]></title>
 		<link>https://orcapulse.com/city-abu-dhabi/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=101</guid>
 		<description></description>
@@ -253,8 +249,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a growth marketing agency in Abu Dhabi. We work with ADGM-based firms, government contractors, energy suppliers and cultural operators.]]></excerpt:encoded>
 		<wp:post_id>101</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[city-abu-dhabi]]></wp:post_name>
@@ -266,17 +262,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency in Auckland, New Zealand]]></title>
 		<link>https://orcapulse.com/city-auckland/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=102</guid>
 		<description></description>
@@ -363,8 +355,8 @@
       </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a GCC-native growth marketing agency with specialist experience in the Auckland market. We work with cross-corridor brands and GCC-connected clients.]]></excerpt:encoded>
 		<wp:post_id>102</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[city-auckland]]></wp:post_name>
@@ -376,17 +368,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency in Doha, Qatar]]></title>
 		<link>https://orcapulse.com/city-doha/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=103</guid>
 		<description></description>
@@ -501,8 +489,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a growth marketing agency in Doha. We work with real estate developers, hotel groups, QFC firms and tech startups across West Bay, Lusail and The Pearl.]]></excerpt:encoded>
 		<wp:post_id>103</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[city-doha]]></wp:post_name>
@@ -514,17 +502,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency in Dubai, UAE]]></title>
 		<link>https://orcapulse.com/city-dubai/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=104</guid>
 		<description></description>
@@ -639,8 +623,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a growth marketing agency in Dubai. We help property developers, hotels, retailers, clinics and SaaS firms get more customers.]]></excerpt:encoded>
 		<wp:post_id>104</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[city-dubai]]></wp:post_name>
@@ -652,17 +636,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency in Hawalli, Kuwait]]></title>
 		<link>https://orcapulse.com/city-hawalli/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=105</guid>
 		<description></description>
@@ -763,8 +743,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a growth marketing agency in Hawalli. We help electronics retailers, F&B operators, clinics and SMEs across Kuwait's densest commercial hub.]]></excerpt:encoded>
 		<wp:post_id>105</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[city-hawalli]]></wp:post_name>
@@ -776,17 +756,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency in Jeddah, Saudi Arabia]]></title>
 		<link>https://orcapulse.com/city-jeddah/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=106</guid>
 		<description></description>
@@ -901,8 +877,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a growth marketing agency in Jeddah. We work with retail family groups, hospitality operators, religious tourism and Red Sea developers.]]></excerpt:encoded>
 		<wp:post_id>106</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[city-jeddah]]></wp:post_name>
@@ -914,17 +890,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency in Kuwait City, Kuwait]]></title>
 		<link>https://orcapulse.com/city-kuwait-city/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=107</guid>
 		<description></description>
@@ -1025,8 +997,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a growth marketing agency in Kuwait City. We work with family-group conglomerates, banks, telecom operators and professional services firms.]]></excerpt:encoded>
 		<wp:post_id>107</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[city-kuwait-city]]></wp:post_name>
@@ -1038,17 +1010,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency in Lusail, Qatar]]></title>
 		<link>https://orcapulse.com/city-lusail/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=108</guid>
 		<description></description>
@@ -1149,8 +1117,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a growth marketing agency in Lusail. We work with new residential projects, Boulevard retail, hospitality and entertainment operators.]]></excerpt:encoded>
 		<wp:post_id>108</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[city-lusail]]></wp:post_name>
@@ -1162,17 +1130,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency in Manama, Bahrain]]></title>
 		<link>https://orcapulse.com/city-manama/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=109</guid>
 		<description></description>
@@ -1287,8 +1251,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a growth marketing agency in Manama. We help fintechs, banks, B2B SaaS and professional services firms grow across Bahrain and the wider GCC.]]></excerpt:encoded>
 		<wp:post_id>109</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[city-manama]]></wp:post_name>
@@ -1300,17 +1264,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency in Melbourne, Australia]]></title>
 		<link>https://orcapulse.com/city-melbourne/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=110</guid>
 		<description></description>
@@ -1397,8 +1357,8 @@
       </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a GCC-native growth marketing agency with specialist experience in the Melbourne market. We work with cross-corridor brands and GCC-connected clients.]]></excerpt:encoded>
 		<wp:post_id>110</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[city-melbourne]]></wp:post_name>
@@ -1410,17 +1370,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency in Miami, United States]]></title>
 		<link>https://orcapulse.com/city-miami/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=111</guid>
 		<description></description>
@@ -1507,8 +1463,8 @@
       </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a GCC-native growth marketing agency with specialist experience in the Miami market. We work with cross-corridor brands and GCC-connected clients.]]></excerpt:encoded>
 		<wp:post_id>111</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[city-miami]]></wp:post_name>
@@ -1520,17 +1476,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency in Muharraq, Bahrain]]></title>
 		<link>https://orcapulse.com/city-muharraq/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=112</guid>
 		<description></description>
@@ -1631,8 +1583,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a growth marketing agency in Muharraq. We work with aviation, logistics, construction and SMEs around Bahrain's second-largest city.]]></excerpt:encoded>
 		<wp:post_id>112</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[city-muharraq]]></wp:post_name>
@@ -1644,17 +1596,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency in New York, United States]]></title>
 		<link>https://orcapulse.com/city-new-york/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=113</guid>
 		<description></description>
@@ -1741,8 +1689,8 @@
       </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a GCC-native growth marketing agency with specialist experience in the New York market. We work with cross-corridor brands and GCC-connected clients.]]></excerpt:encoded>
 		<wp:post_id>113</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[city-new-york]]></wp:post_name>
@@ -1754,17 +1702,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency in Riyadh, Saudi Arabia]]></title>
 		<link>https://orcapulse.com/city-riyadh/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=114</guid>
 		<description></description>
@@ -1879,8 +1823,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a growth marketing agency in Riyadh. We work with Vision 2030 giga-project suppliers, fintechs, enterprise B2B and entertainment operators.]]></excerpt:encoded>
 		<wp:post_id>114</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[city-riyadh]]></wp:post_name>
@@ -1892,17 +1836,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency in Sydney, Australia]]></title>
 		<link>https://orcapulse.com/city-sydney/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=115</guid>
 		<description></description>
@@ -1989,8 +1929,8 @@
       </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a GCC-native growth marketing agency with specialist experience in the Sydney market. We work with cross-corridor brands and GCC-connected clients.]]></excerpt:encoded>
 		<wp:post_id>115</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[city-sydney]]></wp:post_name>
@@ -2002,17 +1942,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency in Toronto, Canada]]></title>
 		<link>https://orcapulse.com/city-toronto/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=116</guid>
 		<description></description>
@@ -2099,8 +2035,8 @@
       </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a GCC-native growth marketing agency with specialist experience in the Toronto market. We work with cross-corridor brands and GCC-connected clients.]]></excerpt:encoded>
 		<wp:post_id>116</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[city-toronto]]></wp:post_name>
@@ -2112,17 +2048,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency in Vancouver, Canada]]></title>
 		<link>https://orcapulse.com/city-vancouver/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=117</guid>
 		<description></description>
@@ -2209,8 +2141,8 @@
       </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a GCC-native growth marketing agency with specialist experience in the Vancouver market. We work with cross-corridor brands and GCC-connected clients.]]></excerpt:encoded>
 		<wp:post_id>117</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[city-vancouver]]></wp:post_name>
@@ -2222,17 +2154,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency in Wellington, New Zealand]]></title>
 		<link>https://orcapulse.com/city-wellington/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=118</guid>
 		<description></description>
@@ -2319,8 +2247,8 @@
       </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a GCC-native growth marketing agency with specialist experience in the Wellington market. We work with cross-corridor brands and GCC-connected clients.]]></excerpt:encoded>
 		<wp:post_id>118</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[city-wellington]]></wp:post_name>
@@ -2332,17 +2260,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Contact OrcaPulse | Book a Strategy Call]]></title>
 		<link>https://orcapulse.com/contact/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=119</guid>
 		<description></description>
@@ -2398,8 +2322,8 @@
       </div>]]></content:encoded>
 		<excerpt:encoded><![CDATA[Book a 30-minute strategy call with OrcaPulse. No form, no pitch deck. A frank conversation about your growth.]]></excerpt:encoded>
 		<wp:post_id>119</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[contact]]></wp:post_name>
@@ -2411,17 +2335,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency in Australia]]></title>
 		<link>https://orcapulse.com/country-australia/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=120</guid>
 		<description></description>
@@ -2436,8 +2356,8 @@
 </html>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a GCC-native growth marketing agency with specialist experience in the Australia market. We work with cross-corridor brands and GCC-connected clients.]]></excerpt:encoded>
 		<wp:post_id>120</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[country-australia]]></wp:post_name>
@@ -2449,17 +2369,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency in Bahrain]]></title>
 		<link>https://orcapulse.com/country-bahrain/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=121</guid>
 		<description></description>
@@ -2576,8 +2492,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a growth marketing agency in Bahrain. We work with fintechs, banks and B2B operators in Manama and Muharraq on pan-GCC growth.]]></excerpt:encoded>
 		<wp:post_id>121</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[country-bahrain]]></wp:post_name>
@@ -2589,17 +2505,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency in Canada]]></title>
 		<link>https://orcapulse.com/country-canada/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=122</guid>
 		<description></description>
@@ -2614,8 +2526,8 @@
 </html>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a GCC-native growth marketing agency with specialist experience in the Canada market. We work with cross-corridor brands and GCC-connected clients.]]></excerpt:encoded>
 		<wp:post_id>122</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[country-canada]]></wp:post_name>
@@ -2627,17 +2539,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency in Kuwait]]></title>
 		<link>https://orcapulse.com/country-kuwait/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=123</guid>
 		<description></description>
@@ -2754,8 +2662,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a growth marketing agency in Kuwait. We work with family-group retailers, banks, developers and SMEs in Kuwait City and Hawalli.]]></excerpt:encoded>
 		<wp:post_id>123</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[country-kuwait]]></wp:post_name>
@@ -2767,17 +2675,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency in New Zealand]]></title>
 		<link>https://orcapulse.com/country-new-zealand/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=124</guid>
 		<description></description>
@@ -2792,8 +2696,8 @@
 </html>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a GCC-native growth marketing agency with specialist experience in the New Zealand market. We work with cross-corridor brands and GCC-connected clients.]]></excerpt:encoded>
 		<wp:post_id>124</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[country-new-zealand]]></wp:post_name>
@@ -2805,17 +2709,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency in Qatar]]></title>
 		<link>https://orcapulse.com/country-qatar/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=125</guid>
 		<description></description>
@@ -2932,8 +2832,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a growth marketing agency in Qatar. We work with businesses in Doha and Lusail on real estate, hospitality, B2B services and more.]]></excerpt:encoded>
 		<wp:post_id>125</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[country-qatar]]></wp:post_name>
@@ -2945,17 +2845,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency in Saudi Arabia]]></title>
 		<link>https://orcapulse.com/country-saudi-arabia/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=126</guid>
 		<description></description>
@@ -3072,8 +2968,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a growth marketing agency in Saudi Arabia. We work with businesses in Riyadh and Jeddah on Vision 2030 campaigns, fintech, retail and entertainment.]]></excerpt:encoded>
 		<wp:post_id>126</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[country-saudi-arabia]]></wp:post_name>
@@ -3085,17 +2981,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency in the UAE]]></title>
 		<link>https://orcapulse.com/country-uae/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=127</guid>
 		<description></description>
@@ -3212,8 +3104,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a GCC-native growth marketing agency in the UAE. We work with businesses in Dubai and Abu Dhabi across real estate, hospitality, finance and more.]]></excerpt:encoded>
 		<wp:post_id>127</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[country-uae]]></wp:post_name>
@@ -3225,17 +3117,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency in the USA]]></title>
 		<link>https://orcapulse.com/country-usa/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=128</guid>
 		<description></description>
@@ -3250,8 +3138,8 @@
 </html>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a GCC-native growth marketing agency with specialist experience in the United States market. We work with cross-corridor brands and GCC-connected clients.]]></excerpt:encoded>
 		<wp:post_id>128</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[country-usa]]></wp:post_name>
@@ -3263,17 +3151,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Dental Clinic Marketing Agency in Dubai]]></title>
 		<link>https://orcapulse.com/dental-marketing-dubai/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=129</guid>
 		<description></description>
@@ -3349,8 +3233,8 @@
       <!-- FOOTER -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a specialist dental clinic marketing agency in Dubai, UAE. Named outcomes, flat fees, senior team.]]></excerpt:encoded>
 		<wp:post_id>129</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[dental-marketing-dubai]]></wp:post_name>
@@ -3362,17 +3246,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Dental Clinic Marketing Agency in Jeddah]]></title>
 		<link>https://orcapulse.com/dental-marketing-jeddah/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=130</guid>
 		<description></description>
@@ -3448,8 +3328,8 @@
       <!-- FOOTER -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a specialist dental clinic marketing agency in Jeddah, Saudi Arabia. Named outcomes, flat fees, senior team.]]></excerpt:encoded>
 		<wp:post_id>130</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[dental-marketing-jeddah]]></wp:post_name>
@@ -3461,17 +3341,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Dental Clinic Marketing Agency in Riyadh]]></title>
 		<link>https://orcapulse.com/dental-marketing-riyadh/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=131</guid>
 		<description></description>
@@ -3547,8 +3423,8 @@
       <!-- FOOTER -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a specialist dental clinic marketing agency in Riyadh, Saudi Arabia. Named outcomes, flat fees, senior team.]]></excerpt:encoded>
 		<wp:post_id>131</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[dental-marketing-riyadh]]></wp:post_name>
@@ -3560,17 +3436,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Fintech Marketing Agency in Dubai]]></title>
 		<link>https://orcapulse.com/fintech-marketing-dubai/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=132</guid>
 		<description></description>
@@ -3646,8 +3518,8 @@
       <!-- FOOTER -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a specialist fintech marketing agency in Dubai, UAE. Named outcomes, flat fees, senior team.]]></excerpt:encoded>
 		<wp:post_id>132</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[fintech-marketing-dubai]]></wp:post_name>
@@ -3659,17 +3531,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Fintech Marketing Agency in Manama]]></title>
 		<link>https://orcapulse.com/fintech-marketing-manama/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=133</guid>
 		<description></description>
@@ -3745,8 +3613,8 @@
       <!-- FOOTER -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a specialist fintech marketing agency in Manama, Bahrain. Named outcomes, flat fees, senior team.]]></excerpt:encoded>
 		<wp:post_id>133</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[fintech-marketing-manama]]></wp:post_name>
@@ -3758,17 +3626,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Fintech Marketing Agency in Riyadh]]></title>
 		<link>https://orcapulse.com/fintech-marketing-riyadh/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=134</guid>
 		<description></description>
@@ -3844,8 +3708,8 @@
       <!-- FOOTER -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a specialist fintech marketing agency in Riyadh, Saudi Arabia. Named outcomes, flat fees, senior team.]]></excerpt:encoded>
 		<wp:post_id>134</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[fintech-marketing-riyadh]]></wp:post_name>
@@ -3857,17 +3721,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Hospitality Marketing Agency in Doha]]></title>
 		<link>https://orcapulse.com/hospitality-marketing-doha/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=135</guid>
 		<description></description>
@@ -3943,8 +3803,8 @@
       <!-- FOOTER -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a specialist hospitality marketing agency in Doha, Qatar. Named outcomes, flat fees, senior team.]]></excerpt:encoded>
 		<wp:post_id>135</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[hospitality-marketing-doha]]></wp:post_name>
@@ -3956,17 +3816,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Hospitality Marketing Agency in Dubai]]></title>
 		<link>https://orcapulse.com/hospitality-marketing-dubai/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=136</guid>
 		<description></description>
@@ -4042,8 +3898,8 @@
       <!-- FOOTER -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a specialist hospitality marketing agency in Dubai, UAE. Named outcomes, flat fees, senior team.]]></excerpt:encoded>
 		<wp:post_id>136</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[hospitality-marketing-dubai]]></wp:post_name>
@@ -4055,17 +3911,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Hospitality Marketing Agency in Manama]]></title>
 		<link>https://orcapulse.com/hospitality-marketing-manama/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=137</guid>
 		<description></description>
@@ -4141,8 +3993,8 @@
       <!-- FOOTER -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a specialist hospitality marketing agency in Manama, Bahrain. Named outcomes, flat fees, senior team.]]></excerpt:encoded>
 		<wp:post_id>137</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[hospitality-marketing-manama]]></wp:post_name>
@@ -4154,17 +4006,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Specialist Growth Marketing Agency]]></title>
 		<link>https://orcapulse.com/home/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=138</guid>
 		<description></description>
@@ -4457,8 +4305,8 @@
  ============================================= -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a specialist growth marketing agency for ambitious businesses in real estate, hospitality, fintech and clinical healthcare. Working across the GCC, the US, Canada, Australia and New Zealand.]]></excerpt:encoded>
 		<wp:post_id>138</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[home]]></wp:post_name>
@@ -4470,17 +4318,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Dental Clinic Marketing Agency GCC]]></title>
 		<link>https://orcapulse.com/industry-dental-clinics/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=139</guid>
 		<description></description>
@@ -4635,8 +4479,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a specialist dental and aesthetic clinic marketing agency. We help multi-location clinics and aesthetic practices fill chairs with qualified patients globally.]]></excerpt:encoded>
 		<wp:post_id>139</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[industry-dental-clinics]]></wp:post_name>
@@ -4648,17 +4492,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Fintech Marketing Agency GCC]]></title>
 		<link>https://orcapulse.com/industry-fintech/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=140</guid>
 		<description></description>
@@ -4813,8 +4653,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a specialist fintech marketing agency. We work with payments, open banking, wealth and regtech brands globally — from Manama and Riyadh to New York, Toronto and Sydney.]]></excerpt:encoded>
 		<wp:post_id>140</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[industry-fintech]]></wp:post_name>
@@ -4826,17 +4666,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Hospitality Marketing Agency GCC]]></title>
 		<link>https://orcapulse.com/industry-hospitality/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=141</guid>
 		<description></description>
@@ -4991,8 +4827,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a specialist hospitality marketing agency. We work with hotels, F&B, DMCs and tourism operators across the GCC and globally — Dubai, Doha, Miami, Melbourne and beyond.]]></excerpt:encoded>
 		<wp:post_id>141</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[industry-hospitality]]></wp:post_name>
@@ -5004,17 +4840,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Real Estate Marketing Agency GCC]]></title>
 		<link>https://orcapulse.com/industry-real-estate/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=142</guid>
 		<description></description>
@@ -5169,8 +5001,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a specialist real estate marketing agency. We help developers, brokers and property platforms generate qualified leads globally — Dubai, Abu Dhabi, Riyadh, New York, Miami and Vancouver.]]></excerpt:encoded>
 		<wp:post_id>142</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[industry-real-estate]]></wp:post_name>
@@ -5182,17 +5014,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[What AEO actually looks like in practice. OrcaPulse]]></title>
 		<link>https://orcapulse.com/insight-aeo-geo-in-practice/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=143</guid>
 		<description></description>
@@ -5298,8 +5126,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[A working teardown of how one B2B brand in Riyadh went from invisible to cited across Perplexity, Google AI Overviews and ChatGPT Search.]]></excerpt:encoded>
 		<wp:post_id>143</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[insight-aeo-geo-in-practice]]></wp:post_name>
@@ -5311,17 +5139,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Arabic SEO in 2026: What Actually Moves Rankings]]></title>
 		<link>https://orcapulse.com/insight-arabic-seo-what-works/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=144</guid>
 		<description></description>
@@ -5423,8 +5247,8 @@
       </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[Arabic SEO is a quiet moat for GCC marketers who do it well. Here is what works in 2026, and what the typical translated-English programme gets wrong.]]></excerpt:encoded>
 		<wp:post_id>144</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[insight-arabic-seo-what-works]]></wp:post_name>
@@ -5436,17 +5260,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[How New Zealand Brands Market into the GCC: What Actually Works]]></title>
 		<link>https://orcapulse.com/insight-auckland-nz-brands-to-gcc/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=145</guid>
 		<description></description>
@@ -5461,8 +5281,8 @@
 </html>]]></content:encoded>
 		<excerpt:encoded><![CDATA[NZ dairy, meat, honey, tourism and SaaS all have real GCC demand. Here is how to market from Auckland into the Gulf credibly.]]></excerpt:encoded>
 		<wp:post_id>145</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[insight-auckland-nz-brands-to-gcc]]></wp:post_name>
@@ -5474,17 +5294,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Cross-Border Property Investment in Vancouver]]></title>
 		<link>https://orcapulse.com/insight-cross-border-property-vancouver/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=146</guid>
 		<description></description>
@@ -5499,8 +5315,8 @@
 </html>]]></content:encoded>
 		<excerpt:encoded><![CDATA[Vancouver's luxury property market runs on international buyer flows. Here is how to market cross-border property investment credibly, including to the growing Middle Eastern segment.]]></excerpt:encoded>
 		<wp:post_id>146</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[insight-cross-border-property-vancouver]]></wp:post_name>
@@ -5512,17 +5328,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[The death of the generalist agency in the GCC. OrcaPulse]]></title>
 		<link>https://orcapulse.com/insight-death-of-the-generalist-gcc/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=147</guid>
 		<description></description>
@@ -5608,8 +5420,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[Why 'full-service' is a loser's position in 2026 and what the strongest regional operators are doing instead.]]></excerpt:encoded>
 		<wp:post_id>147</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[insight-death-of-the-generalist-gcc]]></wp:post_name>
@@ -5621,17 +5433,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[How Dental Clinics in the GCC Fill Chairs in 2026]]></title>
 		<link>https://orcapulse.com/insight-dental-clinic-marketing-gcc/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=148</guid>
 		<description></description>
@@ -5733,8 +5541,8 @@
       </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[The marketing playbook that fills high-value chairs for dental and aesthetic clinics across Dubai, Riyadh, Jeddah and Doha.]]></excerpt:encoded>
 		<wp:post_id>148</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[insight-dental-clinic-marketing-gcc]]></wp:post_name>
@@ -5746,17 +5554,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Dubai vs Riyadh: where premium growth budgets are actually going. OrcaPulse]]></title>
 		<link>https://orcapulse.com/insight-dubai-vs-riyadh-budgets/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=149</guid>
 		<description></description>
@@ -5856,8 +5660,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[Comparable spend, different mandates. A read on where regional CMOs are placing their 2026 bets.]]></excerpt:encoded>
 		<wp:post_id>149</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[insight-dubai-vs-riyadh-budgets]]></wp:post_name>
@@ -5869,17 +5673,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[How we structure the first ninety days of every engagement. OrcaPulse]]></title>
 		<link>https://orcapulse.com/insight-first-ninety-days/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=150</guid>
 		<description></description>
@@ -5986,8 +5786,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[A field guide. The audits we run, the questions we ask, and the first deliverable that decides the next twelve months.]]></excerpt:encoded>
 		<wp:post_id>150</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[insight-first-ninety-days]]></wp:post_name>
@@ -5999,17 +5799,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Pricing a premium agency: a defence of flat fees. OrcaPulse]]></title>
 		<link>https://orcapulse.com/insight-flat-fees-defense/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=151</guid>
 		<description></description>
@@ -6094,8 +5890,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[Hourly billing is a tax on honesty. Flat quarterly retainers are not a pricing choice they are a positioning choice.]]></excerpt:encoded>
 		<wp:post_id>151</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[insight-flat-fees-defense]]></wp:post_name>
@@ -6107,17 +5903,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[The Hospitality Marketing Playbook for 2026: Beating OTA Leakage]]></title>
 		<link>https://orcapulse.com/insight-hospitality-direct-booking-playbook/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=152</guid>
 		<description></description>
@@ -6219,8 +6011,8 @@
       </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[How premium hotels and tourism operators grow direct-booking share — and what the OTA-dependent competitors keep getting wrong.]]></excerpt:encoded>
 		<wp:post_id>152</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[insight-hospitality-direct-booking-playbook]]></wp:post_name>
@@ -6232,17 +6024,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[LinkedIn for GCC B2B: The Playbook Most Agencies Get Wrong]]></title>
 		<link>https://orcapulse.com/insight-linkedin-gcc-b2b-playbook/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=153</guid>
 		<description></description>
@@ -6344,8 +6132,8 @@
       </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[GCC enterprise buyers are on LinkedIn, but the ANZ and US playbooks do not travel. Here is what works for B2B marketing to the Gulf.]]></excerpt:encoded>
 		<wp:post_id>153</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[insight-linkedin-gcc-b2b-playbook]]></wp:post_name>
@@ -6357,17 +6145,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing US Real Estate to GCC Investors: What Actually Works]]></title>
 		<link>https://orcapulse.com/insight-marketing-gcc-investors-us-real-estate/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=154</guid>
 		<description></description>
@@ -6382,8 +6166,8 @@
 </html>]]></content:encoded>
 		<excerpt:encoded><![CDATA[What GCC family offices and HNW buyers actually look for when buying US property — and how to market US real estate credibly to them.]]></excerpt:encoded>
 		<wp:post_id>154</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[insight-marketing-gcc-investors-us-real-estate]]></wp:post_name>
@@ -6395,17 +6179,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Miami Real Estate to International HNW Buyers]]></title>
 		<link>https://orcapulse.com/insight-marketing-international-hnw-miami/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=155</guid>
 		<description></description>
@@ -6420,8 +6200,8 @@
 </html>]]></content:encoded>
 		<excerpt:encoded><![CDATA[The Dubai-Miami property corridor is one of the busiest HNW real estate flows in the world. Here is what marketing to international buyers in Miami actually looks like.]]></excerpt:encoded>
 		<wp:post_id>155</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[insight-marketing-international-hnw-miami]]></wp:post_name>
@@ -6433,17 +6213,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Launching a GCC Brand into Melbourne: The Playbook]]></title>
 		<link>https://orcapulse.com/insight-melbourne-gcc-brand-launch/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=156</guid>
 		<description></description>
@@ -6458,8 +6234,8 @@
 </html>]]></content:encoded>
 		<excerpt:encoded><![CDATA[Melbourne is the natural launch city for GCC F&B, retail and lifestyle brands entering Australia. Here is what works — and what consistently fails.]]></excerpt:encoded>
 		<wp:post_id>156</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[insight-melbourne-gcc-brand-launch]]></wp:post_name>
@@ -6471,17 +6247,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[The one metric that decides whether a client stays. OrcaPulse]]></title>
 		<link>https://orcapulse.com/insight-one-metric-retention/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=157</guid>
 		<description></description>
@@ -6567,8 +6339,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[Spoiler: it is not ROAS. It is the client's own belief that you understand their business better than their last agency did.]]></excerpt:encoded>
 		<wp:post_id>157</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[insight-one-metric-retention]]></wp:post_name>
@@ -6580,17 +6352,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Real Estate Marketing in Dubai: What Actually Works in 2026]]></title>
 		<link>https://orcapulse.com/insight-real-estate-marketing-dubai-playbook/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=158</guid>
 		<description></description>
@@ -6692,8 +6460,8 @@
       </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[A practical playbook for developers and brokers in Dubai — channels, buyer segments, neighbourhoods, and the mistakes most campaigns still make.]]></excerpt:encoded>
 		<wp:post_id>158</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[insight-real-estate-marketing-dubai-playbook]]></wp:post_name>
@@ -6705,17 +6473,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Shariah-Compliant Marketing in Toronto: What Credibility Actually Looks Like]]></title>
 		<link>https://orcapulse.com/insight-shariah-compliant-marketing-toronto/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=159</guid>
 		<description></description>
@@ -6730,8 +6494,8 @@
 </html>]]></content:encoded>
 		<excerpt:encoded><![CDATA[Marketing Shariah-compliant finance, Islamic banking and halal brands to Toronto's Muslim community requires more than a halal certificate. Here is what works.]]></excerpt:encoded>
 		<wp:post_id>159</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[insight-shariah-compliant-marketing-toronto]]></wp:post_name>
@@ -6743,17 +6507,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Snapchat Marketing in Saudi Arabia: Still Underestimated in 2026]]></title>
 		<link>https://orcapulse.com/insight-snapchat-marketing-saudi-arabia/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=160</guid>
 		<description></description>
@@ -6855,8 +6615,8 @@
       </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[Snapchat is still the under-indexed platform in Saudi marketing plans. Here is what Saudi brands get right — and what agencies abroad consistently miss.]]></excerpt:encoded>
 		<wp:post_id>160</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[insight-snapchat-marketing-saudi-arabia]]></wp:post_name>
@@ -6868,17 +6628,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[The Sydney-Gulf Corridor: Marketing Across the APAC-GCC Trade Flow]]></title>
 		<link>https://orcapulse.com/insight-sydney-gcc-apac-corridor/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=161</guid>
 		<description></description>
@@ -6893,8 +6649,8 @@
 </html>]]></content:encoded>
 		<excerpt:encoded><![CDATA[Trade, investment and student flows between Sydney and the GCC are growing. Here is how to market credibly across the corridor.]]></excerpt:encoded>
 		<wp:post_id>161</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[insight-sydney-gcc-apac-corridor]]></wp:post_name>
@@ -6906,17 +6662,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Wellington B2B SaaS Marketing into the GCC and APAC]]></title>
 		<link>https://orcapulse.com/insight-wellington-b2b-saas-apac-gcc/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=162</guid>
 		<description></description>
@@ -6931,8 +6683,8 @@
 </html>]]></content:encoded>
 		<excerpt:encoded><![CDATA[Wellington has produced some of the Southern Hemisphere's best B2B SaaS. Here is how those brands market into the GCC — and why most ANZ playbooks fail there.]]></excerpt:encoded>
 		<wp:post_id>162</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[insight-wellington-b2b-saas-apac-gcc]]></wp:post_name>
@@ -6944,17 +6696,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency Insights]]></title>
 		<link>https://orcapulse.com/insights/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=163</guid>
 		<description></description>
@@ -7019,8 +6767,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[Essays and field notes on positioning, acquisition and the craft of growth from the team at OrcaPulse.]]></excerpt:encoded>
 		<wp:post_id>163</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[insights]]></wp:post_name>
@@ -7032,17 +6780,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency Locations — Global]]></title>
 		<link>https://orcapulse.com/locations/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=164</guid>
 		<description></description>
@@ -7137,8 +6881,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a specialist growth marketing agency working across the GCC, the US, Canada, Australia and New Zealand. See every market we work in.]]></excerpt:encoded>
 		<wp:post_id>164</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[locations]]></wp:post_name>
@@ -7150,17 +6894,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Privacy Policy]]></title>
 		<link>https://orcapulse.com/privacy-policy/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=165</guid>
 		<description></description>
@@ -7232,8 +6972,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[How OrcaPulse collects, uses and protects your personal information.]]></excerpt:encoded>
 		<wp:post_id>165</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[privacy-policy]]></wp:post_name>
@@ -7245,17 +6985,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Real Estate Marketing Agency in Abu Dhabi]]></title>
 		<link>https://orcapulse.com/real-estate-marketing-abu-dhabi/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=166</guid>
 		<description></description>
@@ -7331,8 +7067,8 @@
       <!-- FOOTER -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a specialist real estate marketing agency in Abu Dhabi, UAE. Named outcomes, flat fees, senior team.]]></excerpt:encoded>
 		<wp:post_id>166</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[real-estate-marketing-abu-dhabi]]></wp:post_name>
@@ -7344,17 +7080,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Real Estate Marketing Agency in Dubai]]></title>
 		<link>https://orcapulse.com/real-estate-marketing-dubai/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=167</guid>
 		<description></description>
@@ -7430,8 +7162,8 @@
       <!-- FOOTER -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a specialist real estate marketing agency in Dubai, UAE. Named outcomes, flat fees, senior team.]]></excerpt:encoded>
 		<wp:post_id>167</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[real-estate-marketing-dubai]]></wp:post_name>
@@ -7443,17 +7175,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Real Estate Marketing Agency in Riyadh]]></title>
 		<link>https://orcapulse.com/real-estate-marketing-riyadh/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=168</guid>
 		<description></description>
@@ -7529,8 +7257,8 @@
       <!-- FOOTER -->]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a specialist real estate marketing agency in Riyadh, Saudi Arabia. Named outcomes, flat fees, senior team.]]></excerpt:encoded>
 		<wp:post_id>168</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[real-estate-marketing-riyadh]]></wp:post_name>
@@ -7542,17 +7270,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Specialist Branding & Design Agency]]></title>
 		<link>https://orcapulse.com/service-brand-design/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=169</guid>
 		<description></description>
@@ -7744,8 +7468,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a specialist branding and design agency. Brand strategy, identity, design systems and the guidelines your team actually follows.]]></excerpt:encoded>
 		<wp:post_id>169</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[service-brand-design]]></wp:post_name>
@@ -7757,17 +7481,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Specialist Content Marketing Agency]]></title>
 		<link>https://orcapulse.com/service-content-editorial/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=170</guid>
 		<description></description>
@@ -7952,8 +7672,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a specialist content marketing agency. Long-form essays, case studies, newsletters and ghostwriting — the compounding asset that pays off for years.]]></excerpt:encoded>
 		<wp:post_id>170</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[service-content-editorial]]></wp:post_name>
@@ -7965,17 +7685,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Specialist Video Production Agency]]></title>
 		<link>https://orcapulse.com/service-film-motion/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=171</guid>
 		<description></description>
@@ -8154,8 +7870,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a specialist video production and motion design agency. Films that read premium at thumb-scroll speed and billboard scale alike.]]></excerpt:encoded>
 		<wp:post_id>171</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[service-film-motion]]></wp:post_name>
@@ -8167,17 +7883,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Specialist Paid Media Agency]]></title>
 		<link>https://orcapulse.com/service-paid-media/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=172</guid>
 		<description></description>
@@ -8372,8 +8084,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a specialist paid media agency. Google, Meta, LinkedIn, TikTok, Snapchat and programmatic — managed as one revenue portfolio across every market we work in.]]></excerpt:encoded>
 		<wp:post_id>172</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[service-paid-media]]></wp:post_name>
@@ -8385,17 +8097,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Specialist App & Product Development Agency]]></title>
 		<link>https://orcapulse.com/service-product-app/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=173</guid>
 		<description></description>
@@ -8588,8 +8296,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a specialist app and product development agency. iOS, Android and cross-platform — from scoped MVP to shipped product with the growth loop baked in.]]></excerpt:encoded>
 		<wp:post_id>173</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[service-product-app]]></wp:post_name>
@@ -8601,17 +8309,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Specialist SEO, AEO & GEO Agency]]></title>
 		<link>https://orcapulse.com/service-search-discovery/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=174</guid>
 		<description></description>
@@ -8797,8 +8501,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a specialist SEO, AEO and GEO agency for ambitious businesses. Rank in Google, Perplexity, ChatGPT Search and AI Overviews — across every market we work in.]]></excerpt:encoded>
 		<wp:post_id>174</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[service-search-discovery]]></wp:post_name>
@@ -8810,17 +8514,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Specialist Social Media Agency]]></title>
 		<link>https://orcapulse.com/service-social-presence/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=175</guid>
 		<description></description>
@@ -9011,8 +8711,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a specialist social media agency. Instagram, TikTok, LinkedIn, Snapchat and YouTube — strategy and daily operations by senior creators.]]></excerpt:encoded>
 		<wp:post_id>175</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[service-social-presence]]></wp:post_name>
@@ -9024,17 +8724,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Specialist Web & E-commerce Agency]]></title>
 		<link>https://orcapulse.com/service-web-commerce/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=176</guid>
 		<description></description>
@@ -9225,8 +8921,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[OrcaPulse is a specialist web and e-commerce agency. Marketing sites, Shopify stores, SaaS platforms and headless builds — built to convert, built to last.]]></excerpt:encoded>
 		<wp:post_id>176</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[service-web-commerce]]></wp:post_name>
@@ -9238,17 +8934,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Specialist Marketing Agency Services]]></title>
 		<link>https://orcapulse.com/services/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=177</guid>
 		<description></description>
@@ -9286,8 +8978,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[The eight services OrcaPulse offers — SEO, paid media, web, product, social, content, film and brand — delivered as one integrated team, globally.]]></excerpt:encoded>
 		<wp:post_id>177</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[services]]></wp:post_name>
@@ -9299,17 +8991,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Terms & Conditions]]></title>
 		<link>https://orcapulse.com/terms/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=178</guid>
 		<description></description>
@@ -9361,8 +9049,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[The terms governing use of the OrcaPulse website and our agency services.]]></excerpt:encoded>
 		<wp:post_id>178</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[terms]]></wp:post_name>
@@ -9374,17 +9062,13 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Marketing Agency Work & Case Studies]]></title>
 		<link>https://orcapulse.com/work/</link>
-		<pubDate>Wed, 07 Oct 2026 05:35:34 +0000</pubDate>
+		<pubDate>Wed, 07 Oct 2026 06:05:34 +0000</pubDate>
 		<dc:creator><![CDATA[orcapulse]]></dc:creator>
 		<guid isPermaLink="false">https://orcapulse.com/?page_id=179</guid>
 		<description></description>
@@ -9471,8 +9155,8 @@
  </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[Selected work and client outcomes from OrcaPulse — a specialist growth marketing agency working across the GCC, the US, Canada and APAC.]]></excerpt:encoded>
 		<wp:post_id>179</wp:post_id>
-		<wp:post_date><![CDATA[2026-10-07 05:35:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-10-07 05:35:34]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2026-10-07 06:05:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-10-07 06:05:34]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[work]]></wp:post_name>
@@ -9484,11 +9168,7 @@
 		<wp:is_sticky>0</wp:is_sticky>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-			<wp:meta_value><![CDATA[elementor_canvas]]></wp:meta_value>
-		</wp:postmeta>
-		<wp:postmeta>
-			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+			<wp:meta_value><![CDATA[elementor_header_footer]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 
