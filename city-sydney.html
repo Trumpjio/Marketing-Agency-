@@ -26,59 +26,110 @@
       <div class="orb orb-blue" style="top: 220px; left: -280px;"></div>
       <div class="orb orb-cyan" style="top: 1200px; right: -240px;"></div>
       <div class="orb orb-purple" style="top: 2200px; left: -260px;"></div>
-            <header class="nav" id="nav">
+      <header class="nav" id="nav">
         <div class="container nav__inner">
           <a href="index.html" class="brand">ORCA<span>PULSE</span></a>
-          <button class="nav__mobile-trigger" aria-expanded="false" aria-controls="mobile-menu" id="mobile-toggle">
-            <span class="burger"><span></span><span></span><span></span></span>
-            Menu
+          <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
           </button>
         </div>
-        <div class="nav__mobile-panel" id="mobile-menu">
-          <div class="nav__mobile-group">
-            <div class="nav__mobile-group-title">Services</div>
-            <a href="services.html">All services</a>
-            <a href="service-search-discovery.html">Search &amp; Discovery</a>
-            <a href="service-paid-media.html">Paid Media</a>
-            <a href="service-web-commerce.html">Web &amp; Commerce</a>
-            <a href="service-product-app.html">Product &amp; App</a>
-            <a href="service-social-presence.html">Social Presence</a>
-            <a href="service-content-editorial.html">Content &amp; Editorial</a>
-            <a href="service-film-motion.html">Film &amp; Motion</a>
-            <a href="service-brand-design.html">Brand &amp; Design</a>
-          </div>
-          <div class="nav__mobile-group">
-            <div class="nav__mobile-group-title">Industries</div>
-            <a href="industry-real-estate.html">Real Estate</a>
-            <a href="industry-hospitality.html">Hospitality</a>
-            <a href="industry-dental-clinics.html">Dental &amp; Aesthetic Clinics</a>
-            <a href="industry-fintech.html">Fintech</a>
-          </div>
-          <div class="nav__mobile-group">
-            <div class="nav__mobile-group-title">Locations — GCC</div>
-            <a href="locations.html">All locations</a>
-            <a href="country-uae.html">UAE</a>
-            <a href="country-saudi-arabia.html">Saudi Arabia</a>
-            <a href="country-qatar.html">Qatar</a>
-            <a href="country-kuwait.html">Kuwait</a>
-            <a href="country-bahrain.html">Bahrain</a>
-          </div>
-          <div class="nav__mobile-group">
-            <div class="nav__mobile-group-title">Locations — Global</div>
-            <a href="country-usa.html">United States</a>
-            <a href="country-canada.html">Canada</a>
-            <a href="country-australia.html">Australia</a>
-            <a href="country-new-zealand.html">New Zealand</a>
-          </div>
-          <div class="nav__mobile-group">
-            <div class="nav__mobile-group-title">Studio</div>
-            <a href="work.html">Work</a>
-            <a href="insights.html">Insights</a>
-            <a href="about.html">About</a>
-          </div>
-          <a href="https://calendly.com/orcapulse/intro-call" target="_blank" rel="noopener" class="btn btn--primary">Book a Call</a>
-        </div>
       </header>
+
+      <div class="nav__mobile-panel" id="mobilePanel" aria-hidden="true">
+        <div class="nav__mobile-inner">
+          <nav class="nav__mobile-nav" aria-label="Main">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="work.html">Work</a>
+            <a href="about.html">About</a>
+            <a href="locations.html">Locations</a>
+            <a href="insights.html">Insights</a>
+            <a href="https://calendly.com/orcapulse/intro-call" target="_blank" rel="noopener" class="btn btn--primary">Book a strategy call</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- HERO -->
+      <section class="section hero">
+        <div class="container">
+          <nav class="breadcrumb reveal" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+            <span>›</span>
+            <a href="locations.html">Locations</a>
+            <span>›</span>
+            <a href="country-australia.html">Australia</a>
+            <span>›</span>
+            <span>Sydney</span>
+          </nav>
+          <h1 class="reveal">Looking for a marketing agency in Sydney, Australia?</h1>
+          <p class="hero__sub reveal">Australia's financial capital and the Asia-Pacific base for GCC-connected trade, investment and HNW travel. OrcaPulse works with cross-corridor brands across Sydney.</p>
+          <div class="hero__actions reveal">
+            <a href="https://calendly.com/orcapulse/intro-call" target="_blank" rel="noopener" class="btn btn--primary">Book a strategy call</a>
+          </div>
+          <div class="hero__sub-links reveal">
+            <a href="country-australia.html">See more about Australia</a>
+            <span>·</span>
+            <a href="services.html">See services</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- INTRO -->
+      <section class="section">
+        <div class="container">
+          <div class="section-head reveal">
+            <div class="kicker">The Sydney market</div>
+            <h2>What makes Sydney different.</h2>
+          </div>
+          <div class="prose reveal">
+            <p>Sydney is Australia's financial capital, its most international city, and the most common Australian landing point for GCC investment flows, GCC HNW tourism and Australian brands selling into the Gulf. The Sydney-Gulf corridor is real and quietly growing.</p>
+            <p>OrcaPulse works in Sydney where the GCC-APAC corridor matters: Australian B2B SaaS and fintech selling into the Gulf, luxury property marketed to international buyers, universities marketing to GCC students, and lifestyle brands with Middle Eastern expansion plans.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHO WE WORK WITH -->
+      <section class="section">
+        <div class="container">
+          <div class="section-head reveal">
+            <div class="kicker">Who we work with</div>
+            <h2>In Sydney.</h2>
+          </div>
+          <ul class="chips reveal">
+            <li class="chip">B2B SaaS and fintech selling GCC-wide</li><li class="chip">Luxury real estate (Point Piper, Mosman, Bondi, Potts Point)</li><li class="chip">Universities and higher education</li><li class="chip">Hospitality groups with GCC guests</li><li class="chip">Professional services (law, accounting, finance)</li><li class="chip">D2C lifestyle and fashion</li><li class="chip">Clean tech and mining services</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- NEIGHBOURHOODS -->
+      <section class="section">
+        <div class="container">
+          <div class="section-head reveal">
+            <div class="kicker">Where we work in Sydney</div>
+            <h2>Neighbourhoods and districts.</h2>
+          </div>
+          <div class="grid grid--3 reveal">
+            <div class="glass reveal">
+              <h3 class="cap__title">Eastern Suburbs (Point Piper, Vaucluse)</h3>
+              <p class="cap__desc">Ultra-HNW residential</p>
+            </div><div class="glass reveal">
+              <h3 class="cap__title">Bondi + Bronte</h3>
+              <p class="cap__desc">Premium lifestyle residential</p>
+            </div><div class="glass reveal">
+              <h3 class="cap__title">CBD + Barangaroo</h3>
+              <p class="cap__desc">Finance, corporate, luxury hospitality</p>
+            </div><div class="glass reveal">
+              <h3 class="cap__title">Mosman + North Shore</h3>
+              <p class="cap__desc">Family-HNW residential</p>
+            </div><div class="glass reveal">
+              <h3 class="cap__title">Surry Hills + Potts Point</h3>
+              <p class="cap__desc">Design, creative, premium F&B</p>
+            </div><div class="glass reveal">
+              <h3 class="cap__title">Parramatta</h3>
+              <p class="cap__desc">Growing corporate + diaspora communities</p>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- CHANNELS -->

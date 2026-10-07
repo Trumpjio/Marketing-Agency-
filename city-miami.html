@@ -26,59 +26,110 @@
       <div class="orb orb-blue" style="top: 220px; left: -280px;"></div>
       <div class="orb orb-cyan" style="top: 1200px; right: -240px;"></div>
       <div class="orb orb-purple" style="top: 2200px; left: -260px;"></div>
-            <header class="nav" id="nav">
+      <header class="nav" id="nav">
         <div class="container nav__inner">
           <a href="index.html" class="brand">ORCA<span>PULSE</span></a>
-          <button class="nav__mobile-trigger" aria-expanded="false" aria-controls="mobile-menu" id="mobile-toggle">
-            <span class="burger"><span></span><span></span><span></span></span>
-            Menu
+          <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
           </button>
         </div>
-        <div class="nav__mobile-panel" id="mobile-menu">
-          <div class="nav__mobile-group">
-            <div class="nav__mobile-group-title">Services</div>
-            <a href="services.html">All services</a>
-            <a href="service-search-discovery.html">Search &amp; Discovery</a>
-            <a href="service-paid-media.html">Paid Media</a>
-            <a href="service-web-commerce.html">Web &amp; Commerce</a>
-            <a href="service-product-app.html">Product &amp; App</a>
-            <a href="service-social-presence.html">Social Presence</a>
-            <a href="service-content-editorial.html">Content &amp; Editorial</a>
-            <a href="service-film-motion.html">Film &amp; Motion</a>
-            <a href="service-brand-design.html">Brand &amp; Design</a>
-          </div>
-          <div class="nav__mobile-group">
-            <div class="nav__mobile-group-title">Industries</div>
-            <a href="industry-real-estate.html">Real Estate</a>
-            <a href="industry-hospitality.html">Hospitality</a>
-            <a href="industry-dental-clinics.html">Dental &amp; Aesthetic Clinics</a>
-            <a href="industry-fintech.html">Fintech</a>
-          </div>
-          <div class="nav__mobile-group">
-            <div class="nav__mobile-group-title">Locations — GCC</div>
-            <a href="locations.html">All locations</a>
-            <a href="country-uae.html">UAE</a>
-            <a href="country-saudi-arabia.html">Saudi Arabia</a>
-            <a href="country-qatar.html">Qatar</a>
-            <a href="country-kuwait.html">Kuwait</a>
-            <a href="country-bahrain.html">Bahrain</a>
-          </div>
-          <div class="nav__mobile-group">
-            <div class="nav__mobile-group-title">Locations — Global</div>
-            <a href="country-usa.html">United States</a>
-            <a href="country-canada.html">Canada</a>
-            <a href="country-australia.html">Australia</a>
-            <a href="country-new-zealand.html">New Zealand</a>
-          </div>
-          <div class="nav__mobile-group">
-            <div class="nav__mobile-group-title">Studio</div>
-            <a href="work.html">Work</a>
-            <a href="insights.html">Insights</a>
-            <a href="about.html">About</a>
-          </div>
-          <a href="https://calendly.com/orcapulse/intro-call" target="_blank" rel="noopener" class="btn btn--primary">Book a Call</a>
-        </div>
       </header>
+
+      <div class="nav__mobile-panel" id="mobilePanel" aria-hidden="true">
+        <div class="nav__mobile-inner">
+          <nav class="nav__mobile-nav" aria-label="Main">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="work.html">Work</a>
+            <a href="about.html">About</a>
+            <a href="locations.html">Locations</a>
+            <a href="insights.html">Insights</a>
+            <a href="https://calendly.com/orcapulse/intro-call" target="_blank" rel="noopener" class="btn btn--primary">Book a strategy call</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- HERO -->
+      <section class="section hero">
+        <div class="container">
+          <nav class="breadcrumb reveal" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+            <span>›</span>
+            <a href="locations.html">Locations</a>
+            <span>›</span>
+            <a href="country-usa.html">United States</a>
+            <span>›</span>
+            <span>Miami</span>
+          </nav>
+          <h1 class="reveal">Looking for a marketing agency in Miami, United States?</h1>
+          <p class="hero__sub reveal">A GCC-native agency with real understanding of the Dubai-Miami corridor. OrcaPulse works with luxury real estate, hospitality, fintech and HNW-targeted brands across South Florida.</p>
+          <div class="hero__actions reveal">
+            <a href="https://calendly.com/orcapulse/intro-call" target="_blank" rel="noopener" class="btn btn--primary">Book a strategy call</a>
+          </div>
+          <div class="hero__sub-links reveal">
+            <a href="country-usa.html">See more about United States</a>
+            <span>·</span>
+            <a href="services.html">See services</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- INTRO -->
+      <section class="section">
+        <div class="container">
+          <div class="section-head reveal">
+            <div class="kicker">The Miami market</div>
+            <h2>What makes Miami different.</h2>
+          </div>
+          <div class="prose reveal">
+            <p>Miami in 2026 is unrecognisable from a decade ago. It has become the Latin America gateway, a serious fintech and crypto hub, a major HNW destination, and a specific home for GCC capital flowing into US real estate. The Dubai-Miami corridor is real and growing.</p>
+            <p>OrcaPulse works in Miami where our GCC fluency matters: luxury real estate marketed to Gulf buyers, hospitality groups with Middle Eastern guests, GCC-origin fintech expanding into the Americas, and family offices with assets in both regions.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHO WE WORK WITH -->
+      <section class="section">
+        <div class="container">
+          <div class="section-head reveal">
+            <div class="kicker">Who we work with</div>
+            <h2>In Miami.</h2>
+          </div>
+          <ul class="chips reveal">
+            <li class="chip">Luxury real estate (Brickell, Downtown, Miami Beach, Fisher Island)</li><li class="chip">Hospitality groups and luxury hotels</li><li class="chip">Fintech and crypto brands with GCC connections</li><li class="chip">F&B and nightlife operators</li><li class="chip">Yacht and private aviation brokers</li><li class="chip">Private banking and wealth</li><li class="chip">Family offices with cross-regional assets</li><li class="chip">D2C luxury brands launching into the Americas</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- NEIGHBOURHOODS -->
+      <section class="section">
+        <div class="container">
+          <div class="section-head reveal">
+            <div class="kicker">Where we work in Miami</div>
+            <h2>Neighbourhoods and districts.</h2>
+          </div>
+          <div class="grid grid--3 reveal">
+            <div class="glass reveal">
+              <h3 class="cap__title">Brickell</h3>
+              <p class="cap__desc">Finance, fintech, premium residential</p>
+            </div><div class="glass reveal">
+              <h3 class="cap__title">Miami Beach + South of Fifth</h3>
+              <p class="cap__desc">Ultra-HNW international residential</p>
+            </div><div class="glass reveal">
+              <h3 class="cap__title">Fisher Island</h3>
+              <p class="cap__desc">Ultra-HNW private residential</p>
+            </div><div class="glass reveal">
+              <h3 class="cap__title">Downtown + Edgewater</h3>
+              <p class="cap__desc">Premium new-build residential</p>
+            </div><div class="glass reveal">
+              <h3 class="cap__title">Wynwood</h3>
+              <p class="cap__desc">Premium creative, F&B, lifestyle</p>
+            </div><div class="glass reveal">
+              <h3 class="cap__title">Coral Gables</h3>
+              <p class="cap__desc">Established-wealth residential + professional services</p>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- CHANNELS -->
