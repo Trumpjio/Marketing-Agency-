@@ -20,56 +20,120 @@
        <header class="nav" id="nav">
         <div class="container nav__inner">
           <a href="index.html" class="brand">ORCA<span>PULSE</span></a>
-          <button class="nav__mobile-trigger" aria-expanded="false" aria-controls="mobile-menu" id="mobile-toggle">
-            <span class="burger"><span></span><span></span><span></span></span>
-            Menu
+
+          <nav class="nav__desktop" aria-label="Primary">
+            <div class="nav__item">
+              <button class="nav__trigger" aria-haspopup="true" aria-expanded="false">Services</button>
+              <div class="nav__dropdown">
+                <div class="nav__dropdown-inner">
+                  <a href="services.html"><strong>All services</strong></a>
+                  <a href="service-search-discovery.html">Search &amp; Discovery</a>
+                  <a href="service-paid-media.html">Paid Media</a>
+                  <a href="service-web-commerce.html">Web &amp; Commerce</a>
+                  <a href="service-product-app.html">Product &amp; App</a>
+                  <a href="service-social-presence.html">Social Presence</a>
+                  <a href="service-content-editorial.html">Content &amp; Editorial</a>
+                  <a href="service-film-motion.html">Film &amp; Motion</a>
+                  <a href="service-brand-design.html">Brand &amp; Design</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav__item">
+              <button class="nav__trigger" aria-haspopup="true" aria-expanded="false">Industries</button>
+              <div class="nav__dropdown">
+                <div class="nav__dropdown-inner">
+                  <a href="industry-real-estate.html">Real Estate</a>
+                  <a href="industry-hospitality.html">Hospitality</a>
+                  <a href="industry-dental-clinics.html">Dental &amp; Clinics</a>
+                  <a href="industry-fintech.html">Fintech</a>
+                </div>
+              </div>
+            </div>
+            <div class="nav__item">
+              <button class="nav__trigger" aria-haspopup="true" aria-expanded="false">Locations</button>
+              <div class="nav__dropdown nav__dropdown--wide">
+                <div class="nav__dropdown-inner nav__dropdown-inner--cols">
+                  <div>
+                    <div class="nav__dropdown-title">GCC</div>
+                    <a href="country-uae.html">UAE</a>
+                    <a href="country-saudi-arabia.html">Saudi Arabia</a>
+                    <a href="country-qatar.html">Qatar</a>
+                    <a href="country-kuwait.html">Kuwait</a>
+                    <a href="country-bahrain.html">Bahrain</a>
+                  </div>
+                  <div>
+                    <div class="nav__dropdown-title">Global</div>
+                    <a href="country-usa.html">United States</a>
+                    <a href="country-canada.html">Canada</a>
+                    <a href="country-australia.html">Australia</a>
+                    <a href="country-new-zealand.html">New Zealand</a>
+                  </div>
+                </div>
+                <div class="nav__dropdown-footer"><a href="locations.html"><strong>All locations →</strong></a></div>
+              </div>
+            </div>
+            <a href="work.html" class="nav__link">Work</a>
+            <a href="insights.html" class="nav__link">Insights</a>
+            <a href="about.html" class="nav__link">About</a>
+          </nav>
+
+          <a href="https://calendly.com/orcapulse/intro-call" target="_blank" rel="noopener" class="btn btn--primary nav__cta">Book a Call</a>
+
+          <button class="nav__burger" id="mobile-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+            <span></span><span></span><span></span>
           </button>
         </div>
-        <div class="nav__mobile-panel" id="mobile-menu">
-          <div class="nav__mobile-group">
-            <div class="nav__mobile-group-title">Services</div>
-            <a href="services.html">All services</a>
-            <a href="service-search-discovery.html">Search &amp; Discovery</a>
-            <a href="service-paid-media.html">Paid Media</a>
-            <a href="service-web-commerce.html">Web &amp; Commerce</a>
-            <a href="service-product-app.html">Product &amp; App</a>
-            <a href="service-social-presence.html">Social Presence</a>
-            <a href="service-content-editorial.html">Content &amp; Editorial</a>
-            <a href="service-film-motion.html">Film &amp; Motion</a>
-            <a href="service-brand-design.html">Brand &amp; Design</a>
-          </div>
-          <div class="nav__mobile-group">
-            <div class="nav__mobile-group-title">Industries</div>
-            <a href="industry-real-estate.html">Real Estate</a>
-            <a href="industry-hospitality.html">Hospitality</a>
-            <a href="industry-dental-clinics.html">Dental &amp; Aesthetic Clinics</a>
-            <a href="industry-fintech.html">Fintech</a>
-          </div>
-          <div class="nav__mobile-group">
-            <div class="nav__mobile-group-title">Locations — GCC</div>
-            <a href="locations.html">All locations</a>
-            <a href="country-uae.html">UAE</a>
-            <a href="country-saudi-arabia.html">Saudi Arabia</a>
-            <a href="country-qatar.html">Qatar</a>
-            <a href="country-kuwait.html">Kuwait</a>
-            <a href="country-bahrain.html">Bahrain</a>
-          </div>
-          <div class="nav__mobile-group">
-            <div class="nav__mobile-group-title">Locations — Global</div>
-            <a href="country-usa.html">United States</a>
-            <a href="country-canada.html">Canada</a>
-            <a href="country-australia.html">Australia</a>
-            <a href="country-new-zealand.html">New Zealand</a>
-          </div>
-          <div class="nav__mobile-group">
-            <div class="nav__mobile-group-title">Studio</div>
-            <a href="work.html">Work</a>
-            <a href="insights.html">Insights</a>
-            <a href="about.html">About</a>
-          </div>
-          <a href="https://calendly.com/orcapulse/intro-call" target="_blank" rel="noopener" class="btn btn--primary">Book a Call</a>
-        </div>
       </header>
+
+      <div class="nav__mobile-panel" id="mobile-menu" aria-hidden="true">
+          <nav class="nav__mobile-nav" aria-label="Mobile">
+            <a href="index.html" class="nav__mobile-link">Home</a>
+
+            <div class="nav__mobile-section">
+              <div class="nav__mobile-heading">Services</div>
+              <a href="services.html">All services</a>
+              <a href="service-search-discovery.html">Search &amp; Discovery</a>
+              <a href="service-paid-media.html">Paid Media</a>
+              <a href="service-web-commerce.html">Web &amp; Commerce</a>
+              <a href="service-product-app.html">Product &amp; App</a>
+              <a href="service-social-presence.html">Social Presence</a>
+              <a href="service-content-editorial.html">Content &amp; Editorial</a>
+              <a href="service-film-motion.html">Film &amp; Motion</a>
+              <a href="service-brand-design.html">Brand &amp; Design</a>
+            </div>
+
+            <div class="nav__mobile-section">
+              <div class="nav__mobile-heading">Industries</div>
+              <a href="industry-real-estate.html">Real Estate</a>
+              <a href="industry-hospitality.html">Hospitality</a>
+              <a href="industry-dental-clinics.html">Dental &amp; Clinics</a>
+              <a href="industry-fintech.html">Fintech</a>
+            </div>
+
+            <div class="nav__mobile-section">
+              <div class="nav__mobile-heading">Locations</div>
+              <a href="locations.html">All locations</a>
+              <a href="country-uae.html">UAE</a>
+              <a href="country-saudi-arabia.html">Saudi Arabia</a>
+              <a href="country-qatar.html">Qatar</a>
+              <a href="country-kuwait.html">Kuwait</a>
+              <a href="country-bahrain.html">Bahrain</a>
+              <a href="country-usa.html">United States</a>
+              <a href="country-canada.html">Canada</a>
+              <a href="country-australia.html">Australia</a>
+              <a href="country-new-zealand.html">New Zealand</a>
+            </div>
+
+            <div class="nav__mobile-section">
+              <div class="nav__mobile-heading">Studio</div>
+              <a href="work.html">Work</a>
+              <a href="insights.html">Insights</a>
+              <a href="about.html">About</a>
+            </div>
+
+            <a href="https://calendly.com/orcapulse/intro-call" target="_blank" rel="noopener" class="btn btn--primary nav__mobile-cta">Book a Call</a>
+          </nav>
+        </div>
 
  <div class="container">
 
