@@ -28,6 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   button { width: 100%; padding: 0.75rem; background: #635bff; color: white; border: 0; border-radius: 6px; font: inherit; font-weight: 600; margin-top: 1rem; cursor: pointer; }
   button:hover { background: #4e46d9; }
   .err { color: #991b1b; background: #fee2e2; padding: 0.6rem; border-radius: 6px; margin-top: 1rem; font-size: 0.875rem; }
+  .forgot { text-align: center; margin-top: 1.25rem; font-size: 0.8125rem; }
+  .forgot a { color: #635bff; text-decoration: none; }
+  .forgot a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -37,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <input type="password" name="password" autofocus required>
   <button type="submit">Log in</button>
   <?php if ($error): ?><div class="err"><?= htmlspecialchars($error) ?></div><?php endif; ?>
+  <div class="forgot"><a href="forgot.php">Forgot password?</a></div>
 </form>
 </body>
 </html>
