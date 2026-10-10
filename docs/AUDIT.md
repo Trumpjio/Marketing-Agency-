@@ -272,15 +272,94 @@ including the "wireframe" images on insight hero pages (actually `article-visual
 
 ---
 
-## 7. Priority order for the next session
+## 7. Keyword plan — per page, with intent and timeline
 
-1. **Change the admin password** (10 min, by the user — not code).
-2. **Add `alt` attributes to images** (1 hr, scripted).
-3. **FAQPage schema on country/city/service pages** (30 min).
-4. **"Trusted by" logo row on homepage** (2 hr, needs logos from the user).
-5. **Insight listing: category filter chips + "last updated" date** (45 min).
-6. **Section image management** (2–3 hr).
-7. **MFA** (1 hr, if the user installs an authenticator).
-8. **Wikidata entry** (30 min).
+### Honest framing
+
+- **Head terms** ("marketing agency Dubai", "digital marketing GCC") take
+  6-12+ months on a new domain against incumbents with 10 years of
+  backlinks. Do not expect page-1 inside a quarter.
+- **Long-tail industry×city terms** ("real estate marketing agency Doha",
+  "hospitality marketing agency Riyadh") are reachable inside 4-12 weeks
+  if the page is well-targeted and gets 2-3 topic-adjacent backlinks.
+- **AEO citations** (Perplexity, ChatGPT Search, Google AI Overviews) can
+  appear inside 2-6 weeks if the page is structured for retrieval.
+
+### URL × target map (post this update)
+
+| Page | Primary keyword | Supporting long-tail | Realistic window |
+|---|---|---|---|
+| index.html | specialist growth marketing agency | senior-led marketing agency, flat-fee marketing agency | 6-9 mo |
+| about.html | OrcaPulse (branded) | — | days (branded) |
+| services.html | growth marketing services GCC | SEO AEO GEO services, paid media services GCC | 4-8 mo |
+| **country-uae.html** | marketing agency UAE | growth marketing agency UAE, specialist agency UAE | 4-8 mo |
+| country-saudi-arabia.html | marketing agency Saudi Arabia | Vision 2030 marketing agency | 4-8 mo |
+| country-qatar.html | marketing agency Qatar | hospitality marketing Qatar, property marketing Qatar | 3-6 mo |
+| country-bahrain.html | marketing agency Bahrain | fintech marketing agency Bahrain | 3-6 mo |
+| country-kuwait.html | marketing agency Kuwait | — | 4-8 mo |
+| country-usa.html | marketing agency USA GCC corridor | GCC investors US property marketing | 6-9 mo |
+| country-canada.html | marketing agency Canada GCC corridor | shariah compliant marketing Canada | 6-9 mo |
+| country-australia.html | marketing agency Australia GCC | APAC-GCC corridor marketing | 6-9 mo |
+| country-new-zealand.html | marketing agency NZ GCC | NZ to GCC export marketing | 6-9 mo |
+| **city-dubai.html** | Dubai marketing agency | specialist Dubai agency, senior-led Dubai agency | 4-8 mo |
+| city-riyadh.html | Riyadh marketing agency | Vision 2030 marketing Riyadh | 4-8 mo |
+| city-doha.html | Doha marketing agency | hospitality marketing Doha, property marketing Doha | 3-6 mo |
+| city-manama.html | Manama marketing agency | fintech marketing Manama | 3-6 mo |
+| city-abu-dhabi.html | Abu Dhabi marketing agency | ADGM marketing Abu Dhabi | 4-8 mo |
+| city-jeddah.html | Jeddah marketing agency | — | 4-8 mo |
+| city-lusail.html | Lusail marketing agency | property marketing Lusail | 3-6 mo |
+| **real-estate-marketing-dubai.html** | real estate marketing agency Dubai | off-plan marketing Dubai, developer marketing Dubai | 4-10 wk |
+| real-estate-marketing-abu-dhabi.html | real estate marketing agency Abu Dhabi | — | 6-12 wk |
+| real-estate-marketing-riyadh.html | real estate marketing agency Riyadh | Vision 2030 property marketing | 4-10 wk |
+| **real-estate-marketing-doha.html** (NEW) | real estate marketing agency Doha | Lusail property marketing | 4-8 wk |
+| **real-estate-marketing-jeddah.html** (NEW) | real estate marketing agency Jeddah | NEOM-adjacent property marketing | 6-12 wk |
+| dental-marketing-dubai.html | dental marketing agency Dubai | Invisalign marketing Dubai, aesthetic clinic marketing Dubai | 4-8 wk |
+| dental-marketing-riyadh.html | dental marketing agency Riyadh | — | 6-12 wk |
+| dental-marketing-jeddah.html | dental marketing agency Jeddah | — | 6-12 wk |
+| **dental-marketing-abu-dhabi.html** (NEW) | dental marketing agency Abu Dhabi | — | 6-12 wk |
+| hospitality-marketing-dubai.html | hospitality marketing agency Dubai | hotel direct booking Dubai | 4-8 wk |
+| hospitality-marketing-doha.html | hospitality marketing agency Doha | — | 4-8 wk |
+| hospitality-marketing-manama.html | hospitality marketing agency Manama | — | 6-12 wk |
+| **hospitality-marketing-riyadh.html** (NEW) | hospitality marketing agency Riyadh | Vision 2030 hospitality marketing | 4-8 wk |
+| **hospitality-marketing-abu-dhabi.html** (NEW) | hospitality marketing agency Abu Dhabi | — | 6-12 wk |
+| fintech-marketing-dubai.html | fintech marketing agency Dubai | DIFC fintech marketing | 4-10 wk |
+| fintech-marketing-riyadh.html | fintech marketing agency Riyadh | PIF fintech marketing | 4-10 wk |
+| fintech-marketing-manama.html | fintech marketing agency Manama | Bahrain regulatory sandbox marketing | 6-12 wk |
+| **fintech-marketing-abu-dhabi.html** (NEW) | fintech marketing agency Abu Dhabi | ADGM fintech marketing | 4-10 wk |
+| insight-* (all 20) | AEO/GEO citations | — | 2-6 wk for Perplexity, 4-8 wk for AI Overviews |
+
+Pages marked **bold** are the primary targets to request indexing in Google
+Search Console on day 1 after this push. Everything else can wait for
+natural discovery.
+
+### What now actually drives rankings (post this push)
+
+1. **Indexation** — Search Console → URL Inspection → Request Indexing on
+   the 10 bold URLs above. Does nothing on its own but gets Google
+   crawling the right pages first.
+2. **One high-authority backlink per 2-3 weeks**. Options: HARO replies on
+   agency/marketing questions, guest post on Growth Mentor / Kalungi /
+   Clutch directories, Wall of Love from a client. Nothing matters more.
+3. **AEO citation push**: pick 10 priority queries (e.g., "best real
+   estate marketing agency Dubai", "shariah-compliant marketing Toronto")
+   and manually check if we're cited by Perplexity + ChatGPT Search +
+   Google AI Overviews each week. Track the delta.
+4. **Branded search traffic**: ensure "OrcaPulse" dominates. GSC data
+   will show this inside days once connected.
+5. **Internal linking**: just added city → combo cross-links in this
+   push, but you can further strengthen by sprinkling contextual links
+   inside insight posts to the relevant combo page.
+
+### What NOT to do (common mistakes we are already avoiding)
+
+- Mass-generate 50 city×industry pages with same content. We built 6
+  honest combos, not 50 doorway pages.
+- Buy backlinks from PBNs or Fiverr "DA50 guest post" sellers. Google's
+  2024-2025 helpful-content updates have been merciless on this.
+- Stuff city names into unnatural places ("Dubai marketing agency Dubai
+  services Dubai"). We don't.
+- Add exact-match H1 duplication across many pages. We used varied H1
+  shapes: question / statement / proposition.
+- Create AMP pages. Dead format.
 
 End of audit.
