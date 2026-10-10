@@ -154,4 +154,243 @@
     const scrolled = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
     bar.style.width = scrolled + "%";
   }, { passive: true });
+
+
+  /* ==========================================================================
+     ORCAPULSE GUIDE — floating animated face + context-aware hints
+     --------------------------------------------------------------------------
+     - SVG face: eyes blink and change expression; mouth animates between
+       smile shapes; occasional joyful jump on help.
+     - Positions bottom-right, flips to left to avoid floating CTAs or forms.
+     - On scroll-stop ≥2s, if the current section has a hint, shows a tooltip.
+     - Click-to-help works immediately.
+     - Dismissed hints don't reappear this session. Disabling it is permanent
+       (localStorage).
+     ========================================================================== */
+  (function initGuide() {
+    const REDUCED_MOTION = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const LS_DISABLED = "op-guide:disabled";
+    const SS_DISMISSED = "op-guide:dismissed";
+
+    if (localStorage.getItem(LS_DISABLED) === "1") return;
+
+    // ---------- Section hints: use data-face-hint attribute, else derive from h2.
+    function hintFor(section) {
+      const explicit = section.getAttribute("data-face-hint");
+      if (explicit) return { kicker: "This section", body: explicit };
+      const h2 = section.querySelector("h2, h1");
+      if (!h2) return null;
+      const text = h2.textContent.trim().replace(/\s+/g, " ").replace(/\.$/, "");
+      if (!text || text.length < 6) return null;
+      return { kicker: "On this section", body: `About: “${text}”. Click to explore related reading, or scroll for the detail.` };
+    }
+
+    // ---------- Build the face.
+    // Note: avatar JSON gives us head + eyes but no mouth; we add our own.
+    const face = document.createElement("button");
+    face.className = "op-guide__face";
+    face.type = "button";
+    face.setAttribute("aria-label", "OrcaPulse guide — click for a hint about this section");
+    face.innerHTML = `
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <circle class="op-guide__cheek" cx="26" cy="62" r="7"/>
+        <circle class="op-guide__cheek" cx="74" cy="62" r="7"/>
+        <ellipse class="op-guide__eye op-guide__eye--l" cx="37" cy="46" rx="5" ry="9" fill="#111316"/>
+        <ellipse class="op-guide__eye op-guide__eye--r" cx="63" cy="46" rx="5" ry="9" fill="#111316"/>
+        <path class="op-guide__mouth" d="M 36 68 Q 50 76 64 68" fill="none" stroke="#111316" stroke-width="3" stroke-linecap="round"/>
+      </svg>`;
+
+    const tip = document.createElement("div");
+    tip.className = "op-guide__tip";
+    tip.setAttribute("role", "status");
+    tip.setAttribute("aria-live", "polite");
+    tip.setAttribute("data-open", "false");
+    tip.innerHTML = `
+      <div class="op-guide__tip-kicker"></div>
+      <div class="op-guide__tip-body"></div>
+      <div class="op-guide__tip-actions">
+        <button class="op-guide__tip-disable" type="button">Don't show these</button>
+        <button class="op-guide__tip-close" type="button" aria-label="Close hint">Close</button>
+      </div>`;
+
+    const guide = document.createElement("div");
+    guide.className = "op-guide";
+    guide.setAttribute("data-side", "right");
+    guide.appendChild(tip);
+    guide.appendChild(face);
+    document.body.appendChild(guide);
+
+    const eyeL = face.querySelector(".op-guide__eye--l");
+    const eyeR = face.querySelector(".op-guide__eye--r");
+    const mouth = face.querySelector(".op-guide__mouth");
+    const tipKicker = tip.querySelector(".op-guide__tip-kicker");
+    const tipBody = tip.querySelector(".op-guide__tip-body");
+    const btnClose = tip.querySelector(".op-guide__tip-close");
+    const btnDisable = tip.querySelector(".op-guide__tip-disable");
+
+    // ---------- Expression setters.
+    const EXPR = {
+      neutral:  { eye: { rx: 5,   ry: 9  }, mouth: "M 36 68 Q 50 76 64 68" },
+      happy:    { eye: { rx: 5.5, ry: 6  }, mouth: "M 32 65 Q 50 82 68 65" },  // bigger smile, happy eyes
+      excited:  { eye: { rx: 6,   ry: 10 }, mouth: "M 32 64 Q 50 86 68 64" },  // open smile
+      curious:  { eye: { rx: 5,   ry: 9  }, mouth: "M 38 70 Q 50 72 62 70" },  // small smile
+      playful:  { eye: { rx: 5,   ry: 8  }, mouth: "M 34 66 Q 50 80 66 66" },
+    };
+    function setExpression(name) {
+      const e = EXPR[name] || EXPR.neutral;
+      eyeL.setAttribute("rx", e.eye.rx); eyeL.setAttribute("ry", e.eye.ry);
+      eyeR.setAttribute("rx", e.eye.rx); eyeR.setAttribute("ry", e.eye.ry);
+      mouth.setAttribute("d", e.mouth);
+    }
+    setExpression("neutral");
+
+    // ---------- Blink loop (irregular, polite).
+    function blink() {
+      if (REDUCED_MOTION) return;
+      const prevRy = eyeL.getAttribute("ry");
+      eyeL.setAttribute("ry", 1.5); eyeR.setAttribute("ry", 1.5);
+      setTimeout(() => { eyeL.setAttribute("ry", prevRy); eyeR.setAttribute("ry", prevRy); }, 140);
+    }
+    function scheduleBlink() {
+      const wait = 2800 + Math.random() * 4200;
+      setTimeout(() => { blink(); scheduleBlink(); }, wait);
+    }
+    setTimeout(scheduleBlink, 1200);
+
+    // ---------- Jump.
+    function jump(expression) {
+      if (REDUCED_MOTION) return;
+      setExpression(expression || "excited");
+      face.setAttribute("data-anim", "jump");
+      setTimeout(() => { face.removeAttribute("data-anim"); setExpression("neutral"); }, 900);
+    }
+
+    // ---------- Tooltip open/close.
+    let openSection = null;
+    function openTip(hint, section) {
+      tipKicker.textContent = hint.kicker;
+      tipBody.textContent = hint.body;
+      tip.setAttribute("data-open", "true");
+      openSection = section;
+      jump("happy");
+    }
+    function closeTip() {
+      tip.setAttribute("data-open", "false");
+      openSection = null;
+    }
+
+    btnClose.addEventListener("click", () => {
+      if (openSection) {
+        const dismissed = JSON.parse(sessionStorage.getItem(SS_DISMISSED) || "[]");
+        const id = sectionId(openSection);
+        if (id && !dismissed.includes(id)) {
+          dismissed.push(id);
+          sessionStorage.setItem(SS_DISMISSED, JSON.stringify(dismissed));
+        }
+      }
+      closeTip();
+    });
+    btnDisable.addEventListener("click", () => {
+      localStorage.setItem(LS_DISABLED, "1");
+      guide.setAttribute("data-hidden", "true");
+    });
+
+    // ---------- Click face: open help on current section immediately.
+    face.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (tip.getAttribute("data-open") === "true") { closeTip(); return; }
+      const section = currentSection();
+      if (!section) { jump("playful"); return; }
+      const h = hintFor(section);
+      if (!h) { jump("playful"); return; }
+      openTip(h, section);
+    });
+
+    // ---------- Keyboard access on tooltip.
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && tip.getAttribute("data-open") === "true") closeTip();
+    });
+
+    // ---------- Section detection: find the section whose midpoint is nearest viewport midpoint.
+    function sectionId(section) {
+      const h = section.querySelector("h2, h1");
+      if (h) return (section.id || "s:") + (h.textContent.trim().slice(0, 80));
+      return section.id || null;
+    }
+    function allSections() {
+      return Array.from(document.querySelectorAll("section"));
+    }
+    // Return the nearest section-in-viewport that actually has a hint.
+    // Falls back to the nearest hint-bearing section above the viewport if
+    // the one in view (e.g. a bare stat tile row) has no h2.
+    function currentSection() {
+      const sections = allSections();
+      const vpMid = window.scrollY + window.innerHeight / 2;
+      // candidates: sections overlapping viewport AND with a hint
+      let best = null, bestDist = Infinity;
+      for (const s of sections) {
+        const r = s.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > window.innerHeight) continue;
+        if (!hintFor(s)) continue;
+        const mid = window.scrollY + r.top + r.height / 2;
+        const d = Math.abs(vpMid - mid);
+        if (d < bestDist) { bestDist = d; best = s; }
+      }
+      if (best) return best;
+      // Fallback: nearest hint-bearing section above the viewport
+      let fallback = null, fallbackTop = -Infinity;
+      for (const s of sections) {
+        if (!hintFor(s)) continue;
+        const r = s.getBoundingClientRect();
+        const absTop = window.scrollY + r.top;
+        if (absTop <= vpMid && absTop > fallbackTop) {
+          fallbackTop = absTop; fallback = s;
+        }
+      }
+      return fallback;
+    }
+
+    // ---------- Safe positioning: avoid floating CTAs and forms in viewport.
+    function reposition() {
+      // Default right. If there's a CTA block or form overlapping the bottom-right 220×220 rect, flip to left.
+      const vw = window.innerWidth, vh = window.innerHeight;
+      const probe = { right: 90, bottom: 90, size: 180 };
+      const brRect = { left: vw - probe.right - probe.size, top: vh - probe.bottom - probe.size, right: vw - probe.right, bottom: vh - probe.bottom };
+      const blockers = document.elementsFromPoint(brRect.left + probe.size / 2, brRect.top + probe.size / 2);
+      const isBlocked = blockers.some(el =>
+        el !== face && el !== tip && el !== guide &&
+        (el.closest(".cta") || el.closest(".cta-block") || el.closest("form") || el.closest(".nav__mobile-panel.is-open"))
+      );
+      guide.setAttribute("data-side", isBlocked ? "left" : "right");
+    }
+
+    // ---------- Inactivity rule: show hint ≥2s after scroll stops.
+    let scrollTimer = null;
+    let lastShown = 0;
+    const COOLDOWN_MS = 20000; // minimum between auto-shows
+    function onScrollStop() {
+      if (localStorage.getItem(LS_DISABLED) === "1") return;
+      if (tip.getAttribute("data-open") === "true") return;
+      if (Date.now() - lastShown < COOLDOWN_MS) return;
+      reposition();
+      const section = currentSection();
+      if (!section) return;
+      const id = sectionId(section);
+      const dismissed = JSON.parse(sessionStorage.getItem(SS_DISMISSED) || "[]");
+      if (id && dismissed.includes(id)) return;
+      const h = hintFor(section);
+      if (!h) return;
+      lastShown = Date.now();
+      openTip(h, section);
+    }
+    window.addEventListener("scroll", () => {
+      if (tip.getAttribute("data-open") === "true") { closeTip(); }
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(onScrollStop, 2000);
+    }, { passive: true });
+
+    // Initial reposition after layout settles.
+    setTimeout(reposition, 400);
+    window.addEventListener("resize", reposition, { passive: true });
+  })();
 })();
