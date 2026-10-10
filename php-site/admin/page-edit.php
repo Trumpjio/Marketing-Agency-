@@ -12,6 +12,7 @@ $self = 'page-edit.php?file=' . urlencode($file);
 
 /* ---------- Handle POST ---------- */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    csrf_check();
     if (($_POST['action'] ?? '') === 'undo') {
         $_SESSION['flash'] = page_undo($filepath)
             ? ['type' => 'ok', 'msg' => 'Went back to the previous version of this page.']
@@ -77,6 +78,7 @@ $page_name = preg_replace('/\s*\|\s*OrcaPulse\s*$/i', '', $cur_title) ?: $file;
 </p>
 
 <form method="post" id="page-form">
+  <?= csrf_field() ?>
   <input type="hidden" name="page_hash" value="<?= md5($html) ?>">
   <input type="hidden" name="sections_submitted" value="1">
 
@@ -153,6 +155,7 @@ $page_name = preg_replace('/\s*\|\s*OrcaPulse\s*$/i', '', $cur_title) ?: $file;
 
 <?php if ($has_undo): ?>
 <form method="post" style="margin-top:0.5rem;" onsubmit="return confirm('Go back to the version of this page from before your last save?');">
+  <?= csrf_field() ?>
   <input type="hidden" name="action" value="undo">
   <button type="submit" class="btn btn--ghost">↩ Undo my last save</button>
 </form>

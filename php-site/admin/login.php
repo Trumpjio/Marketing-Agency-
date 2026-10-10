@@ -2,9 +2,21 @@
 require_once __DIR__ . '/config.php';
 
 $error = '';
+$locked = false;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (($_POST['password'] ?? '') === $ADMIN_PASSWORD) {
-        $_SESSION['logged_in'] = true;
+    // CSRF
+    csrf_check();
+    // Honeypot
+    if (honeypot_tripped()) {
+        // Pretend it worked (don't give bots a signal)
+        $error = 'Wrong password.';
+    } elseif (!rate_limit('login', 10, 900)) {
+        // 10 attempts per 15 minutes per IP
+        $error = 'Too many sign-in attempts. Please wait 15 minutes and try again.';
+        $locked = true;
+    } elseif (auth_check($_POST['password'] ?? '', $ADMIN_PASSWORD)) {
+        rate_limit_clear('login');
+        session_login();
         header('Location: index.php');
         exit;
     } else {
@@ -34,11 +46,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </style>
 </head>
 <body>
-<form class="box" method="post">
+<form class="box" method="post" autocomplete="off">
   <h1>ORCA<span>PULSE</span> Admin</h1>
+  <?= csrf_field() ?>
+  <?= honeypot_field() ?>
   <label>Password</label>
-  <input type="password" name="password" autofocus required>
-  <button type="submit">Log in</button>
+  <input type="password" name="password" autofocus required <?= $locked ? 'disabled' : '' ?>>
+  <button type="submit" <?= $locked ? 'disabled' : '' ?>>Log in</button>
   <?php if ($error): ?><div class="err"><?= htmlspecialchars($error) ?></div><?php endif; ?>
   <div class="forgot"><a href="forgot.php">Forgot password?</a></div>
 </form>

@@ -2,6 +2,7 @@
 require __DIR__ . '/_build.php';
 
 if (($_GET['action'] ?? '') === 'delete' && !empty($_GET['slug'])) {
+    if (($_GET['_csrf'] ?? '') !== csrf_token()) { http_response_code(403); exit('Forbidden.'); }
     $blogs = blogs_load();
     $known = array_column($blogs, 'slug');
     if (in_array($_GET['slug'], $known, true)) {
@@ -49,7 +50,7 @@ usort($blogs, fn($a, $b) => strcmp($b['date'], $a['date']));
           <td>
             <a href="blog-edit.php?slug=<?= urlencode($post['slug']) ?>" class="btn btn--ghost" style="padding:0.4rem 0.7rem;font-size:0.75rem;">Edit</a>
             <a href="../<?= h($post['slug']) ?>.html" target="_blank" class="btn btn--ghost" style="padding:0.4rem 0.7rem;font-size:0.75rem;">View</a>
-            <a href="?action=delete&slug=<?= urlencode($post['slug']) ?>" onclick="return confirm('Delete this blog post?')" class="btn btn--danger" style="padding:0.4rem 0.7rem;font-size:0.75rem;">Delete</a>
+            <a href="?action=delete&slug=<?= urlencode($post['slug']) ?>&_csrf=<?= urlencode(csrf_token()) ?>" onclick="return confirm('Delete this blog post?')" class="btn btn--danger" style="padding:0.4rem 0.7rem;font-size:0.75rem;">Delete</a>
           </td>
         </tr>
       <?php endforeach; ?>

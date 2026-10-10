@@ -13,6 +13,7 @@ if ($is_new) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    csrf_check();
     $post['title']   = trim($_POST['title']);
     $post['slug']    = slugify(trim($_POST['slug']) ?: 'insight-' . slugify($post['title']));
     $post['excerpt'] = trim($_POST['excerpt']);
@@ -60,6 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <h2><?= $is_new ? 'New blog post' : 'Edit blog post' ?></h2>
 
 <form method="post">
+  <?= csrf_field() ?>
   <div class="card">
     <div class="field">
       <label>Title</label>

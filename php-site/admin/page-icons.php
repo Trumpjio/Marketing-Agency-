@@ -11,6 +11,7 @@ $html = file_get_contents($filepath);
 $self = 'page-icons.php?file=' . urlencode($file);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    csrf_check();
     if (($_POST['page_hash'] ?? '') !== md5($html)) {
         $_SESSION['flash'] = ['type' => 'err', 'msg' => 'This page was changed somewhere else after you opened it, so nothing was saved. Your screen has been refreshed. Please make your edit again.'];
         header('Location: ' . $self); exit;
@@ -65,6 +66,7 @@ function icon_layout_fields($prefix, $i, $pos, $size, $align) { ?>
 </p>
 
 <form method="post">
+  <?= csrf_field() ?>
   <input type="hidden" name="page_hash" value="<?= md5($html) ?>">
 
   <div class="card">
@@ -126,7 +128,8 @@ function icon_layout_fields($prefix, $i, $pos, $size, $align) { ?>
 </form>
 
 <?php if (is_file(page_backup_path($filepath))): ?>
-<form method="post" action="page-edit.php?file=<?= urlencode($file) ?>" style="margin-top:0.5rem;" onsubmit="return confirm('Go back to the version of this page from before your last save?');">
+<form method="post" action="page-edit.php?file=<?= urlencode($file) ?>
+  <?= csrf_field() ?>" style="margin-top:0.5rem;" onsubmit="return confirm('Go back to the version of this page from before your last save?');">
   <input type="hidden" name="action" value="undo">
   <button type="submit" class="btn btn--ghost">↩ Undo my last save</button>
 </form>
