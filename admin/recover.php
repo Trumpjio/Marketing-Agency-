@@ -8,6 +8,10 @@ $step = 'verify';   // verify -> change -> done
 $success = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    csrf_check();
+    if (!rate_limit('recover', 10, 900)) {
+        $error = 'Too many requests. Please wait 15 minutes.';
+    } else {
     $action = $_POST['action'] ?? '';
     if ($action === 'verify') {
         $provided = trim($_POST['code'] ?? '');
@@ -47,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
     }
+    } // end rate-limit else
 }
 ?><!doctype html>
 <html lang="en">
@@ -88,7 +93,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <?php elseif ($step === 'change'): ?>
     <h2>Set a new password</h2>
     <p>Verified. Choose a strong password — at least 10 characters.</p>
-    <form method="post">
+    <form method="post" autocomplete="off">
+      <?= csrf_field() ?>
       <input type="hidden" name="action" value="change">
       <label>New password</label>
       <input type="password" name="password1" required minlength="10" autofocus>
@@ -107,7 +113,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <li>Create a file at <code>data/.recovery</code> containing any text — a random phrase, your favourite word, anything.</li>
       <li>Come back here, paste <strong>exactly the same text</strong>, and click Verify.</li>
     </ol>
-    <form method="post">
+    <form method="post" autocomplete="off">
+      <?= csrf_field() ?>
       <input type="hidden" name="action" value="verify">
       <label>Contents of <code>data/.recovery</code></label>
       <textarea name="code" rows="3" required autofocus placeholder="Paste the exact text you put in the file"></textarea>

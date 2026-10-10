@@ -4,6 +4,7 @@ $design = design_load();
 $defaults = design_defaults();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    csrf_check();
     if (($_POST['action'] ?? '') === 'restore') {
         design_save($defaults);
         $_SESSION['flash'] = ['type' => 'ok', 'msg' => 'Design restored to defaults.'];
@@ -29,6 +30,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $new['grid_enabled']    = empty($_POST['grid_enabled']) ? 0 : 1;
     $new['grid_opacity']    = max(0, min(0.1, floatval($_POST['grid_opacity'] ?? 0.028)));
     $new['guide_enabled']   = empty($_POST['guide_enabled']) ? 0 : 1;
+    $new['hints_enabled']   = empty($_POST['hints_enabled']) ? 0 : 1;
+    $new['guide_where']     = in_array($_POST['guide_where'] ?? '', ['all','home','insights','off'], true) ? $_POST['guide_where'] : 'all';
+    $new['tip_style']       = in_array($_POST['tip_style'] ?? '', ['card','minimal'], true) ? $_POST['tip_style'] : 'card';
+    $new['guide_size']      = in_array($_POST['guide_size'] ?? '', ['sm','md','lg'], true) ? $_POST['guide_size'] : 'md';
+    foreach (['guide_face_color','guide_eye_color'] as $k) {
+        $v = trim($_POST[$k] ?? '');
+        if ($v !== '' && preg_match('/^#[0-9a-fA-F]{3,8}$/', $v)) $new[$k] = $v;
+    }
 
     design_save($new);
     $_SESSION['flash'] = ['type' => 'ok', 'msg' => 'Design settings saved. Changes apply to the live site immediately.'];
@@ -44,6 +53,7 @@ $fontOptions = ['Inter','Manrope','Space Grotesk','Playfair Display','IBM Plex S
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;align-items:start;">
 <form method="post" id="design-form" style="min-width:0;">
+  <?= csrf_field() ?>
 
   <div class="card">
     <h3 style="margin-top:0;">Colours</h3>
@@ -135,9 +145,55 @@ $fontOptions = ['Inter','Manrope','Space Grotesk','Playfair Display','IBM Plex S
         <input type="checkbox" name="guide_enabled" value="1" <?= $d['guide_enabled']?'checked':'' ?> data-design="guide_enabled" />
         <span class="slider"></span>
       </label>
-      <span>Show the floating OrcaPulse Guide to every visitor</span>
+      <span>Show the floating icon</span>
     </div>
-    <div class="help">Switch off to hide the floating animated face across the whole site. Visitors can also dismiss it themselves via the "Don't show these" button on its first tooltip (that's per-visitor; this switch is global).</div>
+    <div class="field" style="display:flex;align-items:center;gap:0.75rem;">
+      <label class="switch">
+        <input type="checkbox" name="hints_enabled" value="1" <?= $d['hints_enabled']?'checked':'' ?> data-design="hints_enabled" />
+        <span class="slider"></span>
+      </label>
+      <span>Allow the icon to pop up contextual hints</span>
+    </div>
+    <div class="help">Switch hints off and the icon still floats but never shows a tooltip unless the visitor clicks it.</div>
+
+    <div class="row">
+      <div class="field">
+        <label>Where should the icon appear?</label>
+        <select name="guide_where" data-design="guide_where">
+          <option value="all"      <?= $d['guide_where']==='all'?'selected':'' ?>>Everywhere</option>
+          <option value="home"     <?= $d['guide_where']==='home'?'selected':'' ?>>Homepage only</option>
+          <option value="insights" <?= $d['guide_where']==='insights'?'selected':'' ?>>Insights pages only</option>
+          <option value="off"      <?= $d['guide_where']==='off'?'selected':'' ?>>Nowhere (same as switching off)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Icon size</label>
+        <select name="guide_size" data-design="guide_size">
+          <option value="sm" <?= $d['guide_size']==='sm'?'selected':'' ?>>Small (36px)</option>
+          <option value="md" <?= $d['guide_size']==='md'?'selected':'' ?>>Medium (48px)</option>
+          <option value="lg" <?= $d['guide_size']==='lg'?'selected':'' ?>>Large (60px)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field" style="display:flex;align-items:center;gap:0.75rem;">
+      <label style="width:160px;margin:0;font-size:0.825rem;">Icon body colour</label>
+      <input type="color" value="<?= h($d['guide_face_color']) ?>" data-color-pair="guide_face_color" style="width:46px;height:38px;border:1px solid var(--line);padding:0;border-radius:4px;background:#fff;cursor:pointer;flex-shrink:0;" />
+      <input type="text" name="guide_face_color" value="<?= h($d['guide_face_color']) ?>" style="flex:1;font-family:monospace;font-size:0.825rem;" data-design="guide_face_color" />
+    </div>
+    <div class="field" style="display:flex;align-items:center;gap:0.75rem;">
+      <label style="width:160px;margin:0;font-size:0.825rem;">Icon eyes + mouth</label>
+      <input type="color" value="<?= h($d['guide_eye_color']) ?>" data-color-pair="guide_eye_color" style="width:46px;height:38px;border:1px solid var(--line);padding:0;border-radius:4px;background:#fff;cursor:pointer;flex-shrink:0;" />
+      <input type="text" name="guide_eye_color" value="<?= h($d['guide_eye_color']) ?>" style="flex:1;font-family:monospace;font-size:0.825rem;" data-design="guide_eye_color" />
+    </div>
+
+    <div class="field">
+      <label>Pop-up style</label>
+      <select name="tip_style" data-design="tip_style">
+        <option value="card"    <?= $d['tip_style']==='card'?'selected':'' ?>>Card — white rounded box, shadow, label and body</option>
+        <option value="minimal" <?= $d['tip_style']==='minimal'?'selected':'' ?>>Minimal — plain text bubble, no label, flat</option>
+      </select>
+    </div>
   </div>
 
   <div class="card">

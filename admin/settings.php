@@ -2,6 +2,7 @@
 $settings = settings_load();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    csrf_check();
     $old = $settings;
     foreach ($settings as $key => $val) {
         $settings[$key] = trim($_POST[$key] ?? $val);
@@ -19,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <p style="color:#6b7280;margin-bottom:1.5rem;">These settings apply site-wide. Saving will update every page automatically.</p>
 
 <form method="post">
+  <?= csrf_field() ?>
   <div class="card">
     <h3 style="margin-top:0;">Brand</h3>
     <div class="field">

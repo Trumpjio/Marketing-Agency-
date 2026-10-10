@@ -5,12 +5,19 @@ $flash = '';
 $flashType = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    csrf_check();
     $email = trim($_POST['email'] ?? '');
     // Neutral response regardless of whether the email matches, so the form
     // does not reveal which address is the admin's.
     $generic = 'If that email matches the admin account, a reset link has been sent. Check your inbox (and spam folder) within the next few minutes.';
 
-    if ($email !== '' && strtolower($email) === strtolower($ADMIN_EMAIL)) {
+    if (!rate_limit('forgot', 5, 900)) {
+        $flash = 'Too many requests. Please wait 15 minutes.';
+        $flashType = 'err';
+    } elseif (honeypot_tripped()) {
+        $flash = $generic;
+        $flashType = 'ok';
+    } elseif ($email !== '' && strtolower($email) === strtolower($ADMIN_EMAIL)) {
         $token = reset_token_create();
         // Build the reset URL from the current request.
         $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
@@ -27,9 +34,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $headers = "From: $ADMIN_EMAIL\r\nReply-To: $ADMIN_EMAIL\r\nContent-Type: text/plain; charset=UTF-8";
         // Suppress any mail() warnings; we show the neutral message either way.
         @mail($ADMIN_EMAIL, $subject, $body, $headers);
+        $flash = $generic;
+        $flashType = 'ok';
+    } else {
+        $flash = $generic;
+        $flashType = 'ok';
     }
-    $flash = $generic;
-    $flashType = 'ok';
 }
 ?><!doctype html>
 <html lang="en">
@@ -63,7 +73,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <h1>ORCA<span>PULSE</span> Admin</h1>
   <h2>Forgot password?</h2>
   <p>Enter the admin email address. If it matches, we'll send a password-reset link that works once and expires in 1 hour.</p>
-  <form method="post">
+  <form method="post" autocomplete="off">
+    <?= csrf_field() ?>
+    <?= honeypot_field() ?>
     <label>Email address</label>
     <input type="email" name="email" required autofocus placeholder="hello@orcapulse.com">
     <button type="submit">Send reset link</button>

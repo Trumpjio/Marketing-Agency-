@@ -3017,6 +3017,21 @@ section + section { padding-top: clamp(3rem, 6vw, 5.5rem); }
   font-weight: 700;
   margin-bottom: 4px;
 }
+/* Minimal tip variant: plain, no kicker, no shadow */
+.op-guide__tip[data-style="minimal"] {
+  background: rgba(29, 29, 31, 0.92);
+  color: #fff;
+  border: 0;
+  box-shadow: none;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.op-guide__tip[data-style="minimal"] .op-guide__tip-kicker { display: none; }
+.op-guide__tip[data-style="minimal"] .op-guide__tip-body { color: #fff; font-size: 0.825rem; }
+.op-guide__tip[data-style="minimal"] .op-guide__tip-close,
+.op-guide__tip[data-style="minimal"] .op-guide__tip-disable { color: rgba(255,255,255,0.75); }
+.op-guide__tip[data-style="minimal"] .op-guide__tip-close:hover,
+.op-guide__tip[data-style="minimal"] .op-guide__tip-disable:hover { color: #fff; background: rgba(255,255,255,0.1); }
 .op-guide__tip-body { color: var(--ap-ink-soft); }
 .op-guide__tip-actions { display: flex; gap: 8px; margin-top: 10px; justify-content: flex-end; align-items: center; }
 .op-guide__tip-close {

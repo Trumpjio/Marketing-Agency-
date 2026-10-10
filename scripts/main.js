@@ -172,9 +172,22 @@
     const LS_DISABLED = "op-guide:disabled";
     const SS_DISMISSED = "op-guide:dismissed";
 
-    // Global off-switch, set by scripts/custom-config.js from the admin Design panel.
+    // Config from scripts/custom-config.js (set by the admin Design panel).
+    const CFG = window.OP_GUIDE || {};
+    // Back-compat with the old simple flag
     if (window.OP_GUIDE_ENABLED === false) return;
+    if (CFG.enabled === false) return;
+    if (CFG.where === "off") return;
     if (localStorage.getItem(LS_DISABLED) === "1") return;
+
+    // Where-rule: show only on home / insights / everywhere.
+    const path = (location.pathname || "").toLowerCase().split("/").pop() || "index.html";
+    const isHome = (path === "" || path === "index.html");
+    const isInsight = (path === "insights.html" || path.startsWith("insight-"));
+    if (CFG.where === "home" && !isHome) return;
+    if (CFG.where === "insights" && !isInsight) return;
+
+    const HINTS_ENABLED = CFG.hintsEnabled !== false; // default true
 
     // ---------- Section hints: use data-face-hint attribute, else derive from h2.
     function hintFor(section) {
@@ -193,17 +206,26 @@
     face.className = "op-guide__face";
     face.type = "button";
     face.setAttribute("aria-label", "OrcaPulse guide — click for a hint about this section");
+    const faceColor = CFG.faceColor || "#F8F7F2";
+    const eyeColor  = CFG.eyeColor  || "#111316";
+    face.style.background = faceColor;
+    // Apply configured size: sm | md | lg
+    const sizeMap = { sm: 36, md: 48, lg: 60 };
+    const px = sizeMap[CFG.size] || sizeMap.md;
+    face.style.width = px + "px";
+    face.style.height = px + "px";
     face.innerHTML = `
       <svg viewBox="0 0 100 100" aria-hidden="true">
         <circle class="op-guide__cheek" cx="26" cy="62" r="7"/>
         <circle class="op-guide__cheek" cx="74" cy="62" r="7"/>
-        <ellipse class="op-guide__eye op-guide__eye--l" cx="37" cy="46" rx="5" ry="9" fill="#111316"/>
-        <ellipse class="op-guide__eye op-guide__eye--r" cx="63" cy="46" rx="5" ry="9" fill="#111316"/>
-        <path class="op-guide__mouth" d="M 36 68 Q 50 76 64 68" fill="none" stroke="#111316" stroke-width="3" stroke-linecap="round"/>
+        <ellipse class="op-guide__eye op-guide__eye--l" cx="37" cy="46" rx="5" ry="9" fill="${eyeColor}"/>
+        <ellipse class="op-guide__eye op-guide__eye--r" cx="63" cy="46" rx="5" ry="9" fill="${eyeColor}"/>
+        <path class="op-guide__mouth" d="M 36 68 Q 50 76 64 68" fill="none" stroke="${eyeColor}" stroke-width="3" stroke-linecap="round"/>
       </svg>`;
 
     const tip = document.createElement("div");
     tip.className = "op-guide__tip";
+    tip.setAttribute("data-style", CFG.tipStyle || "card");
     tip.setAttribute("role", "status");
     tip.setAttribute("aria-live", "polite");
     tip.setAttribute("data-open", "false");
@@ -484,6 +506,7 @@
       // regardless of whether we show a tooltip.
       reposition();
 
+      if (!HINTS_ENABLED) return;
       if (localStorage.getItem(LS_DISABLED) === "1") return;
       if (tip.getAttribute("data-open") === "true") return;
       if (Date.now() - lastShown < COOLDOWN_MS) return;

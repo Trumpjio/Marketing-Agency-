@@ -7,9 +7,14 @@ $error = '';
 $success = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $valid) {
+    csrf_check();
+    if (!rate_limit('reset', 10, 900)) {
+        $error = 'Too many requests. Please wait 15 minutes.';
+        $valid = false;
+    }
     $pw1 = $_POST['password1'] ?? '';
     $pw2 = $_POST['password2'] ?? '';
-    if (strlen($pw1) < 10) {
+    if (!$error && strlen($pw1) < 10) {
         $error = 'Password must be at least 10 characters.';
     } elseif ($pw1 !== $pw2) {
         $error = 'Passwords do not match.';
@@ -60,7 +65,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $valid) {
   <?php else: ?>
     <h2>Set a new password</h2>
     <p>Choose a strong password. At least 10 characters. Mix letters, numbers and symbols where you can.</p>
-    <form method="post">
+    <form method="post" autocomplete="off">
+      <?= csrf_field() ?>
       <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
       <label>New password</label>
       <input type="password" name="password1" required minlength="10" autofocus>
