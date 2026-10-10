@@ -216,8 +216,14 @@
     const guide = document.createElement("div");
     guide.className = "op-guide";
     guide.setAttribute("data-side", "right");
-    guide.appendChild(tip);
-    guide.appendChild(face);
+    guide.setAttribute("data-anchor", "br");
+    // Wrap the face + tip so the idle float animation can run on the wrap
+    // (otherwise it would fight the anchor transition on the outer element).
+    const wrap = document.createElement("div");
+    wrap.className = "op-guide__wrap";
+    wrap.appendChild(tip);
+    wrap.appendChild(face);
+    guide.appendChild(wrap);
     document.body.appendChild(guide);
 
     const eyeL = face.querySelector(".op-guide__eye--l");
@@ -350,29 +356,93 @@
       return fallback;
     }
 
-    // ---------- Safe positioning: avoid floating CTAs and forms in viewport.
+    // ---------- Safe positioning across 4 anchors.
+    // Anchors: br (bottom-right), bl (bottom-left), mr (mid-right), ml (mid-left).
+    // Picked based on which quadrant has the most whitespace in the viewport.
+    const EDGE = 20;
+    const MOBILE_EDGE = 14;
+    function anchorStyle(anchor) {
+      const edge = window.innerWidth < 560 ? MOBILE_EDGE : EDGE;
+      const styles = {
+        br: { top: "auto",   bottom: edge + "px", left: "auto",      right: edge + "px" },
+        bl: { top: "auto",   bottom: edge + "px", left: edge + "px", right: "auto"      },
+        mr: { top: "50%",    bottom: "auto",      left: "auto",      right: edge + "px" },
+        ml: { top: "50%",    bottom: "auto",      left: edge + "px", right: "auto"      },
+      };
+      return styles[anchor] || styles.br;
+    }
+    function anchorSide(anchor) {
+      return (anchor === "bl" || anchor === "ml") ? "left" : "right";
+    }
+    // How blocked is a given 220×220 probe region? Lower is better (more free).
+    function blockage(xCenter, yCenter) {
+      const PROBE = 110; // half-size
+      let hits = 0;
+      // Sample 5 points: center + 4 corners
+      const pts = [
+        [xCenter, yCenter],
+        [xCenter - PROBE, yCenter - PROBE], [xCenter + PROBE, yCenter - PROBE],
+        [xCenter - PROBE, yCenter + PROBE], [xCenter + PROBE, yCenter + PROBE],
+      ];
+      for (const [x, y] of pts) {
+        if (x < 0 || y < 0 || x > innerWidth || y > innerHeight) { hits += 2; continue; }
+        const els = document.elementsFromPoint(x, y);
+        const hit = els.some(el =>
+          el !== face && el !== tip && el !== guide && el !== wrap && !guide.contains(el) &&
+          (el.closest(".cta") || el.closest(".cta-block") || el.closest("form") ||
+           el.closest(".nav__mobile-panel.is-open") || el.closest("button") ||
+           el.matches("h1, h2, img") || el.closest(".hero__actions"))
+        );
+        if (hit) hits++;
+      }
+      return hits;
+    }
     function reposition() {
-      // Default right. If there's a CTA block or form overlapping the bottom-right 220×220 rect, flip to left.
       const vw = window.innerWidth, vh = window.innerHeight;
-      const probe = { right: 90, bottom: 90, size: 180 };
-      const brRect = { left: vw - probe.right - probe.size, top: vh - probe.bottom - probe.size, right: vw - probe.right, bottom: vh - probe.bottom };
-      const blockers = document.elementsFromPoint(brRect.left + probe.size / 2, brRect.top + probe.size / 2);
-      const isBlocked = blockers.some(el =>
-        el !== face && el !== tip && el !== guide &&
-        (el.closest(".cta") || el.closest(".cta-block") || el.closest("form") || el.closest(".nav__mobile-panel.is-open"))
-      );
-      guide.setAttribute("data-side", isBlocked ? "left" : "right");
+      const edge = vw < 560 ? MOBILE_EDGE : EDGE;
+      // Mobile: only use br / bl (mid anchors sit over content on small screens)
+      const anchors = vw < 560 ? ["br", "bl"] : ["br", "bl", "mr", "ml"];
+      // Candidate probe centers
+      const centers = {
+        br: [vw - edge - 110, vh - edge - 110],
+        bl: [edge + 110,      vh - edge - 110],
+        mr: [vw - edge - 110, vh / 2],
+        ml: [edge + 110,      vh / 2],
+      };
+      let best = anchors[0], bestScore = Infinity;
+      for (const a of anchors) {
+        const [x, y] = centers[a];
+        const s = blockage(x, y);
+        if (s < bestScore) { bestScore = s; best = a; }
+      }
+      // Only move if the new anchor is meaningfully better (hysteresis)
+      const cur = guide.getAttribute("data-anchor");
+      if (cur && cur !== best) {
+        const curScore = blockage(...centers[cur]);
+        if (bestScore >= curScore - 1) best = cur; // not clearly better, stay put
+      }
+      const style = anchorStyle(best);
+      guide.style.top = style.top;
+      guide.style.bottom = style.bottom;
+      guide.style.left = style.left;
+      guide.style.right = style.right;
+      guide.setAttribute("data-anchor", best);
+      guide.setAttribute("data-side", anchorSide(best));
     }
 
-    // ---------- Inactivity rule: show hint ≥2s after scroll stops.
+    // ---------- Scroll-stop handling: always reposition, sometimes show a hint.
     let scrollTimer = null;
+    let repositionTimer = null;
     let lastShown = 0;
     const COOLDOWN_MS = 20000; // minimum between auto-shows
     function onScrollStop() {
+      // Always consider repositioning when scrolling has calmed down,
+      // regardless of whether we show a tooltip.
+      reposition();
+
       if (localStorage.getItem(LS_DISABLED) === "1") return;
       if (tip.getAttribute("data-open") === "true") return;
       if (Date.now() - lastShown < COOLDOWN_MS) return;
-      reposition();
       const section = currentSection();
       if (!section) return;
       const id = sectionId(section);
@@ -383,8 +453,18 @@
       lastShown = Date.now();
       openTip(h, section);
     }
+    // Light repositioning during active scroll (every ~250ms, max).
+    // Keeps the face from floating over a block that just scrolled under it.
+    function throttledReposition() {
+      if (repositionTimer) return;
+      repositionTimer = setTimeout(() => {
+        repositionTimer = null;
+        if (tip.getAttribute("data-open") !== "true") reposition();
+      }, 300);
+    }
     window.addEventListener("scroll", () => {
       if (tip.getAttribute("data-open") === "true") { closeTip(); }
+      throttledReposition();
       clearTimeout(scrollTimer);
       scrollTimer = setTimeout(onScrollStop, 2000);
     }, { passive: true });

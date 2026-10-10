@@ -2583,10 +2583,19 @@ section[data-hidden="true"] { display: none !important; }
   --ap-shadow-lg: 0 12px 36px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
-/* Calm the canvas: pure white, no grid lines, no orbs */
+/* Calm the canvas: pure white, keep the subtle grid, no coloured orbs */
 body { background: var(--ap-bg); color: var(--ap-ink); }
 .page { background: var(--ap-bg); }
-.page::before { display: none; }
+/* Keep the thin background grid lines — just lighter for the Apple palette.
+   Overrides the colour defined in the earlier .page::before rule. */
+.page::before {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.028) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, #000 0%, #000 60%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 60%, transparent 100%);
+}
 .orb { display: none; }
 
 /* Section rhythm */
@@ -2915,17 +2924,35 @@ section + section { padding-top: clamp(3rem, 6vw, 5.5rem); }
 
 .op-guide {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
   z-index: 950;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
   gap: 10px;
   pointer-events: none;
-  transition: right 400ms var(--ease), bottom 400ms var(--ease), opacity 300ms var(--ease);
+  /* Smoothly transition between anchors. Movements are intentionally slow (680ms)
+     so the face reads as "gently floating", not teleporting. */
+  transition: top 680ms var(--ease), bottom 680ms var(--ease),
+              left 680ms var(--ease), right 680ms var(--ease),
+              opacity 300ms var(--ease);
+  /* Defaults (bottom-right); JS overrides */
+  right: 20px; bottom: 20px;
 }
 .op-guide[data-hidden="true"] { opacity: 0; pointer-events: none !important; visibility: hidden; }
+
+/* Idle float — tiny vertical oscillation inside the anchor, so it reads as alive */
+@keyframes op-guide-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+.op-guide__wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: op-guide-float 5200ms var(--ease) infinite;
+  pointer-events: none;
+}
+.op-guide[data-side="left"] .op-guide__wrap { align-items: flex-start; }
+.op-guide[data-side="right"] .op-guide__wrap { align-items: flex-end; }
 
 .op-guide__face {
   pointer-events: auto;
@@ -3005,8 +3032,11 @@ section + section { padding-top: clamp(3rem, 6vw, 5.5rem); }
 }
 .op-guide__tip-disable:hover { color: var(--ap-ink); text-decoration: underline; }
 
-/* Place face on the left when flipped */
-.op-guide[data-side="left"] { left: 20px; right: auto; align-items: flex-start; }
+/* When anchored to mid-left or mid-right, center vertically on the viewport */
+.op-guide[data-anchor="mr"],
+.op-guide[data-anchor="ml"] {
+  transform: translateY(-50%);
+}
 
 /* Mobile sizing */
 @media (max-width: 560px) {

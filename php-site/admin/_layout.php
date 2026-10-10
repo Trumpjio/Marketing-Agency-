@@ -135,6 +135,7 @@ $current = basename($_SERVER['PHP_SELF'], '.php');
     <nav>
       <a href="index.php" class="<?= $current==='index'?'active':'' ?>">Dashboard</a>
       <a href="settings.php" class="<?= $current==='settings'?'active':'' ?>">Site Settings</a>
+      <a href="design.php" class="<?= $current==='design'?'active':'' ?>">Design</a>
       <a href="pages.php" class="<?= in_array($current,['pages','page-edit'])?'active':'' ?>">Pages</a>
       <a href="blogs.php" class="<?= in_array($current,['blogs','blog-edit'])?'active':'' ?>">Blog Posts</a>
       <a href="media.php" class="<?= $current==='media'?'active':'' ?>">Media Library</a>
