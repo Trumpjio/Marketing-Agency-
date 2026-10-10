@@ -400,4 +400,19 @@
     <lastmod>2026-10-07</lastmod>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://orcapulse.com/sitemap.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://orcapulse.com/ai-instructions.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://orcapulse.com/accessibility-statement.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <priority>0.4</priority>
+  </url>
 </urlset>
