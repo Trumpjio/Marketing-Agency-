@@ -172,6 +172,8 @@
     const LS_DISABLED = "op-guide:disabled";
     const SS_DISMISSED = "op-guide:dismissed";
 
+    // Global off-switch, set by scripts/custom-config.js from the admin Design panel.
+    if (window.OP_GUIDE_ENABLED === false) return;
     if (localStorage.getItem(LS_DISABLED) === "1") return;
 
     // ---------- Section hints: use data-face-hint attribute, else derive from h2.
@@ -356,29 +358,42 @@
       return fallback;
     }
 
-    // ---------- Safe positioning across 4 anchors.
-    // Anchors: br (bottom-right), bl (bottom-left), mr (mid-right), ml (mid-left).
-    // Picked based on which quadrant has the most whitespace in the viewport.
+    // ---------- Positioning: the face actually wanders across the screen.
+    //
+    // 6 anchors: top-right, top-left, mid-right, mid-left, bottom-right, bottom-left.
+    // On each scroll-stop, pick the anchor assigned to the current section (index
+    // mod 6 — produces a satisfying left/right/up/down rhythm as the viewer
+    // scrolls down the page). If that anchor is heavily blocked by content,
+    // fall through the fallback list until we find a usable one.
     const EDGE = 20;
     const MOBILE_EDGE = 14;
+    const ANCHOR_ROTATION = ["tr", "ml", "br", "tl", "mr", "bl"];
+    const MOBILE_ROTATION = ["br", "bl", "tr", "tl"]; // keep face away from mid-screen on narrow
+
     function anchorStyle(anchor) {
       const edge = window.innerWidth < 560 ? MOBILE_EDGE : EDGE;
+      // Top anchors sit below the sticky nav (~70px tall) with a bit of breathing room
+      const topY = (window.innerWidth < 560 ? 72 : 84) + "px";
       const styles = {
-        br: { top: "auto",   bottom: edge + "px", left: "auto",      right: edge + "px" },
-        bl: { top: "auto",   bottom: edge + "px", left: edge + "px", right: "auto"      },
+        tr: { top: topY,     bottom: "auto",      left: "auto",      right: edge + "px" },
+        tl: { top: topY,     bottom: "auto",      left: edge + "px", right: "auto"      },
         mr: { top: "50%",    bottom: "auto",      left: "auto",      right: edge + "px" },
         ml: { top: "50%",    bottom: "auto",      left: edge + "px", right: "auto"      },
+        br: { top: "auto",   bottom: edge + "px", left: "auto",      right: edge + "px" },
+        bl: { top: "auto",   bottom: edge + "px", left: edge + "px", right: "auto"      },
       };
       return styles[anchor] || styles.br;
     }
     function anchorSide(anchor) {
-      return (anchor === "bl" || anchor === "ml") ? "left" : "right";
+      return (anchor === "bl" || anchor === "ml" || anchor === "tl") ? "left" : "right";
     }
-    // How blocked is a given 220×220 probe region? Lower is better (more free).
+
+    // How blocked is a given 220×220 probe region at (xCenter, yCenter)?
+    // Lower is better. Scores: 0 = fully clear, up to ~10.
     function blockage(xCenter, yCenter) {
-      const PROBE = 110; // half-size
+      const PROBE = 90; // half-size
       let hits = 0;
-      // Sample 5 points: center + 4 corners
+      // Sample 5 points: centre + 4 corners
       const pts = [
         [xCenter, yCenter],
         [xCenter - PROBE, yCenter - PROBE], [xCenter + PROBE, yCenter - PROBE],
@@ -391,43 +406,72 @@
           el !== face && el !== tip && el !== guide && el !== wrap && !guide.contains(el) &&
           (el.closest(".cta") || el.closest(".cta-block") || el.closest("form") ||
            el.closest(".nav__mobile-panel.is-open") || el.closest("button") ||
-           el.matches("h1, h2, img") || el.closest(".hero__actions"))
+           el.matches("h1, h2, img") || el.closest(".hero__actions") ||
+           el.closest(".btn") || el.closest("input") || el.closest("textarea") ||
+           el.closest("[role=dialog]"))
         );
         if (hit) hits++;
       }
       return hits;
     }
+
+    // Returns the index of the current section among all sections.
+    function sectionIndex() {
+      const sections = allSections();
+      const cur = currentSection();
+      if (!cur) {
+        // No section yet — base position on scroll depth (0..5 bands)
+        const d = Math.floor((window.scrollY / Math.max(1, document.documentElement.scrollHeight - innerHeight)) * 6);
+        return Math.max(0, Math.min(5, d));
+      }
+      return sections.indexOf(cur);
+    }
+
+    function centersFor(vw, vh, edge) {
+      // Centres of the 220×220 probe for each anchor
+      const topY = (vw < 560 ? 72 : 84) + 90;
+      return {
+        tr: [vw - edge - 110, topY],
+        tl: [edge + 110,      topY],
+        mr: [vw - edge - 110, vh / 2],
+        ml: [edge + 110,      vh / 2],
+        br: [vw - edge - 110, vh - edge - 110],
+        bl: [edge + 110,      vh - edge - 110],
+      };
+    }
+
     function reposition() {
       const vw = window.innerWidth, vh = window.innerHeight;
       const edge = vw < 560 ? MOBILE_EDGE : EDGE;
-      // Mobile: only use br / bl (mid anchors sit over content on small screens)
-      const anchors = vw < 560 ? ["br", "bl"] : ["br", "bl", "mr", "ml"];
-      // Candidate probe centers
-      const centers = {
-        br: [vw - edge - 110, vh - edge - 110],
-        bl: [edge + 110,      vh - edge - 110],
-        mr: [vw - edge - 110, vh / 2],
-        ml: [edge + 110,      vh / 2],
-      };
-      let best = anchors[0], bestScore = Infinity;
-      for (const a of anchors) {
-        const [x, y] = centers[a];
-        const s = blockage(x, y);
-        if (s < bestScore) { bestScore = s; best = a; }
+      const rotation = vw < 560 ? MOBILE_ROTATION : ANCHOR_ROTATION;
+      const idx = sectionIndex();
+      // Preferred anchor by section index (deterministic rhythm). We rotate
+      // the fallback order starting from the preferred one.
+      const preferred = rotation[((idx % rotation.length) + rotation.length) % rotation.length];
+      const ordered = [preferred];
+      for (const a of rotation) if (a !== preferred) ordered.push(a);
+      const centres = centersFor(vw, vh, edge);
+      // Try the preferred first; if its blockage is > 1 (any real overlap),
+      // walk the rotation and pick the first with blockage <= 1 (clearly clear).
+      // If none is clear, pick the least-blocked one in the rotation.
+      let chosen = ordered[0], chosenScore = blockage(...centres[chosen]);
+      if (chosenScore > 1) {
+        let bestFallback = chosen, bestScore = chosenScore;
+        for (let i = 1; i < ordered.length; i++) {
+          const a = ordered[i];
+          const s = blockage(...centres[a]);
+          if (s <= 1) { chosen = a; chosenScore = s; break; }
+          if (s < bestScore) { bestScore = s; bestFallback = a; }
+        }
+        if (chosenScore > 1) { chosen = bestFallback; chosenScore = bestScore; }
       }
-      // Only move if the new anchor is meaningfully better (hysteresis)
-      const cur = guide.getAttribute("data-anchor");
-      if (cur && cur !== best) {
-        const curScore = blockage(...centers[cur]);
-        if (bestScore >= curScore - 1) best = cur; // not clearly better, stay put
-      }
-      const style = anchorStyle(best);
+      const style = anchorStyle(chosen);
       guide.style.top = style.top;
       guide.style.bottom = style.bottom;
       guide.style.left = style.left;
       guide.style.right = style.right;
-      guide.setAttribute("data-anchor", best);
-      guide.setAttribute("data-side", anchorSide(best));
+      guide.setAttribute("data-anchor", chosen);
+      guide.setAttribute("data-side", anchorSide(chosen));
     }
 
     // ---------- Scroll-stop handling: always reposition, sometimes show a hint.

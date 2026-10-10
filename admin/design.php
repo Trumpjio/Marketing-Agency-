@@ -28,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $new['btn_radius']      = max(2, min(999, intval($_POST['btn_radius'] ?? 980)));
     $new['grid_enabled']    = empty($_POST['grid_enabled']) ? 0 : 1;
     $new['grid_opacity']    = max(0, min(0.1, floatval($_POST['grid_opacity'] ?? 0.028)));
+    $new['guide_enabled']   = empty($_POST['guide_enabled']) ? 0 : 1;
 
     design_save($new);
     $_SESSION['flash'] = ['type' => 'ok', 'msg' => 'Design settings saved. Changes apply to the live site immediately.'];
@@ -125,6 +126,18 @@ $fontOptions = ['Inter','Manrope','Space Grotesk','Playfair Display','IBM Plex S
       <input type="range" min="2" max="999" step="1" name="btn_radius" value="<?= $d['btn_radius'] ?>" data-design="btn_radius" oninput="document.querySelector('[data-echo=btn_radius]').textContent=this.value" />
       <div class="help">980 = fully pill-shaped. 8 = sharp Linear-style. 0 = square.</div>
     </div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0;">Floating guide (the animated face)</h3>
+    <div class="field" style="display:flex;align-items:center;gap:0.75rem;">
+      <label class="switch">
+        <input type="checkbox" name="guide_enabled" value="1" <?= $d['guide_enabled']?'checked':'' ?> data-design="guide_enabled" />
+        <span class="slider"></span>
+      </label>
+      <span>Show the floating OrcaPulse Guide to every visitor</span>
+    </div>
+    <div class="help">Switch off to hide the floating animated face across the whole site. Visitors can also dismiss it themselves via the "Don't show these" button on its first tooltip (that's per-visitor; this switch is global).</div>
   </div>
 
   <div class="card">

@@ -3032,10 +3032,17 @@ section + section { padding-top: clamp(3rem, 6vw, 5.5rem); }
 }
 .op-guide__tip-disable:hover { color: var(--ap-ink); text-decoration: underline; }
 
-/* When anchored to mid-left or mid-right, center vertically on the viewport */
+/* When anchored to mid-left or mid-right, centre vertically on the viewport */
 .op-guide[data-anchor="mr"],
 .op-guide[data-anchor="ml"] {
   transform: translateY(-50%);
+}
+/* Reset transform when NOT in a mid position so top/bottom anchors sit as declared */
+.op-guide[data-anchor="tr"],
+.op-guide[data-anchor="tl"],
+.op-guide[data-anchor="br"],
+.op-guide[data-anchor="bl"] {
+  transform: none;
 }
 
 /* Mobile sizing */
