@@ -9,7 +9,7 @@
  * password-reset flows (forgot.php / recover.php).
  */
 $ADMIN_PASSWORD = 'orcapulse2026';  // Initial password. Hashed on first login.
-$ADMIN_EMAIL    = 'hello@orcapulse.com';  // where password-reset emails are sent
+$ADMIN_EMAIL    = 'help@orcapulse.ai';  // where password-reset emails are sent
 
 define('DATA_DIR', __DIR__ . '/../data');
 define('UPLOADS_DIR', __DIR__ . '/../uploads');
@@ -125,10 +125,15 @@ function design_defaults() {
         'guide_enabled'    => 1,           // 1 = show the floating OrcaPulse Guide icon
         'hints_enabled'    => 1,           // 1 = allow the icon to pop up contextual hints
         'guide_where'      => 'all',       // all | home | insights | off
+        'guide_trigger'    => 'inactivity',// inactivity (2s scroll stop) | click (click-only, never auto) | error (only when a form error appears)
+        'guide_tail'       => 1,           // 1 = show the small pointer tail under the face
         'guide_face_color' => '#F8F7F2',   // icon body colour
         'guide_eye_color'  => '#111316',   // icon eye + mouth colour
         'tip_style'        => 'card',      // card | minimal
         'guide_size'       => 'md',        // sm | md | lg
+        // Background presets
+        'bg_preset'        => 'grid',      // grid | plain | dots | gradient | custom
+        'bg_custom_css'    => '',          // raw CSS appended when bg_preset == custom (admin-only)
     ];
 }
 
@@ -171,18 +176,41 @@ function design_write_css($d) {
     $css .= ".btn--primary:hover { background: " . $d['primary'] . "; }\n";
     $css .= ".cta .btn--primary { background: " . $d['btn_primary_bg'] . "; color: " . $d['btn_primary_text'] . "; }\n";
     $css .= ".cta .btn--primary:hover { background: " . $d['primary'] . "; }\n";
-    $css .= "\n/* Background grid */\n";
-    if (!$d['grid_enabled']) {
-        $css .= ".page::before { display: none !important; }\n";
-    } else {
-        $op = max(0, min(0.1, floatval($d['grid_opacity'])));
-        // Convert hex to rgba
-        $hex = ltrim($d['grid_color'], '#');
-        if (strlen($hex) === 3) $hex = $hex[0].$hex[0].$hex[1].$hex[1].$hex[2].$hex[2];
-        $r = hexdec(substr($hex, 0, 2));
-        $g = hexdec(substr($hex, 2, 2));
-        $b = hexdec(substr($hex, 4, 2));
-        $css .= ".page::before { background-image: linear-gradient(rgba($r, $g, $b, $op) 1px, transparent 1px), linear-gradient(90deg, rgba($r, $g, $b, $op) 1px, transparent 1px); }\n";
+    $css .= "\n/* Background preset */\n";
+    $preset = $d['bg_preset'] ?? 'grid';
+    // Shared helpers
+    $hex = ltrim($d['grid_color'], '#');
+    if (strlen($hex) === 3) $hex = $hex[0].$hex[0].$hex[1].$hex[1].$hex[2].$hex[2];
+    $gr = hexdec(substr($hex, 0, 2));
+    $gg = hexdec(substr($hex, 2, 2));
+    $gb = hexdec(substr($hex, 4, 2));
+    $op = max(0, min(0.1, floatval($d['grid_opacity'])));
+    switch ($preset) {
+        case 'plain':
+            // No decoration at all
+            $css .= ".page::before { display: none !important; }\n";
+            break;
+        case 'dots':
+            $css .= ".page::before { background-image: radial-gradient(circle, rgba($gr, $gg, $gb, " . max($op, 0.05) . ") 1.2px, transparent 1.2px) !important; background-size: 24px 24px !important; }\n";
+            break;
+        case 'gradient':
+            $css .= ".page::before { background-image: radial-gradient(1200px 600px at 10% 0%, rgba(" . hexdec(substr(ltrim($d['primary'],'#'),0,2)) . "," . hexdec(substr(ltrim($d['primary'],'#'),2,2)) . "," . hexdec(substr(ltrim($d['primary'],'#'),4,2)) . ",0.06), transparent 60%), radial-gradient(900px 500px at 90% 10%, rgba(" . hexdec(substr(ltrim($d['secondary'],'#'),0,2)) . "," . hexdec(substr(ltrim($d['secondary'],'#'),2,2)) . "," . hexdec(substr(ltrim($d['secondary'],'#'),4,2)) . ",0.06), transparent 60%) !important; background-size: auto !important; mask-image: none !important; -webkit-mask-image: none !important; }\n";
+            break;
+        case 'custom':
+            $raw = (string)($d['bg_custom_css'] ?? '');
+            // Strip anything that smells like script to keep CSP intact
+            $raw = preg_replace('/<\s*\/?\s*(script|style)[^>]*>/i', '', $raw);
+            $raw = str_replace(['expression(', 'javascript:'], '', $raw);
+            $css .= "/* Custom background CSS (admin-authored) */\n" . $raw . "\n";
+            break;
+        case 'grid':
+        default:
+            if (!$d['grid_enabled']) {
+                $css .= ".page::before { display: none !important; }\n";
+            } else {
+                $css .= ".page::before { background-image: linear-gradient(rgba($gr, $gg, $gb, $op) 1px, transparent 1px), linear-gradient(90deg, rgba($gr, $gg, $gb, $op) 1px, transparent 1px); }\n";
+            }
+            break;
     }
     file_put_contents(SITE_ROOT . '/styles/custom-design.css', $css);
     design_write_js($d);
@@ -192,13 +220,15 @@ function design_write_js($d) {
     $d = array_merge(design_defaults(), $d);
     $enabled   = empty($d['guide_enabled']) ? 'false' : 'true';
     $hints     = empty($d['hints_enabled']) ? 'false' : 'true';
+    $tail      = empty($d['guide_tail'])    ? 'false' : 'true';
+    $trigger   = json_encode($d['guide_trigger'] ?? 'inactivity');
     $where     = json_encode($d['guide_where'] ?? 'all');
     $faceBg    = json_encode($d['guide_face_color'] ?? '#F8F7F2');
     $faceInk   = json_encode($d['guide_eye_color']  ?? '#111316');
     $tipStyle  = json_encode($d['tip_style'] ?? 'card');
     $size      = json_encode($d['guide_size'] ?? 'md');
     $js  = "/* Generated by admin/design.php — do not edit by hand. */\n";
-    $js .= "window.OP_GUIDE = { enabled: $enabled, hintsEnabled: $hints, where: $where, faceColor: $faceBg, eyeColor: $faceInk, tipStyle: $tipStyle, size: $size };\n";
+    $js .= "window.OP_GUIDE = { enabled: $enabled, hintsEnabled: $hints, trigger: $trigger, tail: $tail, where: $where, faceColor: $faceBg, eyeColor: $faceInk, tipStyle: $tipStyle, size: $size };\n";
     // Back-compat for the simple on/off flag main.js previously checked.
     $js .= "window.OP_GUIDE_ENABLED = $enabled;\n";
     file_put_contents(SITE_ROOT . '/scripts/custom-config.js', $js);

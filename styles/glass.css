@@ -2981,6 +2981,8 @@ section + section { padding-top: clamp(3rem, 6vw, 5.5rem); }
 
 /* Red cheek dots */
 .op-guide__cheek { fill: rgba(220, 38, 38, 0.18); }
+/* Little tail/pointer under the face. Inherits face colour via fill set in JS. */
+.op-guide__tail { transition: transform 220ms var(--ease); }
 
 /* Eyes + mouth are controlled by inline attributes via JS; CSS gives transitions */
 .op-guide__eye,
