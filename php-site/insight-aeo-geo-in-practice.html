@@ -8,8 +8,8 @@
  <link rel="preconnect" href="https://fonts.googleapis.com" />
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Fraunces:wght@400;500;600;700&display=swap" rel="stylesheet" />
- <link rel="stylesheet" href="styles/glass.css?v=20261010d" />
- <link rel="stylesheet" href="styles/custom-design.css?v=20261010d" />
+ <link rel="stylesheet" href="styles/glass.css?v=20261011a" />
+ <link rel="stylesheet" href="styles/custom-design.css?v=20261011a" />
  </head>
  <body>
  <div class="page">
@@ -140,6 +140,12 @@
 
  <section class="hero" style="padding-bottom: var(--s-3); text-align: center;">
  <h1 class="reveal" style="max-width: 20ch; margin-left: auto; margin-right: auto;">What AEO actually looks like in practice.</h1>
+            <!-- OP-META-LINE -->
+            <p class="op-meta reveal" style="color:var(--muted);font-size:0.825rem;letter-spacing:0.03em;margin-top:0.5rem;max-width:60ch;margin-inline:auto;">
+              <time datetime="2026-10-10">Published October 2026</time> &nbsp;·&nbsp;
+              <time datetime="2026-10-11">Updated October 2026</time> &nbsp;·&nbsp;
+              By <a href="about.html" style="color:inherit;border-bottom:1px solid var(--line);">OrcaPulse Editorial</a>
+            </p>
  <p class="hero__sub reveal" style="max-width: 44ch; margin-left: auto; margin-right: auto;">A working teardown of how one B2B brand in Riyadh went from invisible to cited across Perplexity, Google AI Overviews and ChatGPT Search.</p>
  <div class="article-meta reveal" style="justify-content: center;">
  <span>Feb 2026</span>
@@ -169,10 +175,16 @@
         </div>
       </section>
 
+
+      <!-- OP-TOC -->
+      <aside class="op-toc" aria-label="On this page">
+        <div class="op-toc__kicker">On this page</div>
+        <ol><li><a href="#s0">What AEO actually is — and why most SEO teams are measuring the wrong things.</a></li><li><a href="#s1">The signals that get a brand into the AI citation pool.</a></li><li><a href="#s2">The surfaces that matter — and how they differ.</a></li><li><a href="#s3">The practical AEO work — what to actually do this quarter.</a></li><li><a href="#s4">What AEO maturity looks like in 2027 — a bet.</a></li></ol>
+      </aside>
       <section class="section">
         <div class="container">
           <article class="article reveal">
-            <h2>What AEO actually is — and why most SEO teams are measuring the wrong things.</h2>
+            <h2 id="s1">What AEO actually is — and why most SEO teams are measuring the wrong things.</h2>
             <p>AEO is the practice of being retrieved and cited by answer engines — Perplexity, ChatGPT Search, Google AI Overviews, Claude, Copilot, Grok — rather than appearing in a traditional ten-blue-links SERP. The success metric is not ranking position; it is citation share.</p>
 <p>This matters because a growing share of commercial research never reaches a traditional SERP. A buyer evaluating &quot;best marketing agencies for real estate in Dubai&quot; in 2026 may ask Perplexity, read a synthesised answer with five citations, and never click through. If your brand is not in the citation pool, you do not exist to that buyer.</p>
 <p>Most SEO teams in 2026 are still measuring position-tracking for a dozen head terms and reporting it as the full picture. The ground has shifted. Position-tracking is a declining signal; citation presence is the growing one.</p>
@@ -193,7 +205,7 @@
       <section class="section">
         <div class="container">
           <article class="article reveal">
-            <h2>The signals that get a brand into the AI citation pool.</h2>
+            <h2 id="s2">The signals that get a brand into the AI citation pool.</h2>
             <p><strong>Structured, factual, specific content.</strong> Pages that answer a question with a direct answer in the first paragraph, back it with specific numbers, and cite primary sources. LLMs retrieve from pages that look like structured encyclopaedia entries — not pages optimised for exact-match keyword density.</p>
 <p><strong>Entity presence.</strong> Wikipedia, Wikidata, Crunchbase, LinkedIn company pages, G2, Clutch, DesignRush, local chambers. The entity graph the LLM references is not Google's index — it is a different, overlapping, broader set.</p>
 <p><strong>Citation-shaped markup.</strong> FAQ schema, HowTo schema, Article schema with author entities, published dates, and clear topical hierarchy. This is not just SEO hygiene — it is the shape LLMs prefer to retrieve.</p>
@@ -214,7 +226,7 @@
       <section class="section">
         <div class="container">
           <article class="article reveal">
-            <h2>The surfaces that matter — and how they differ.</h2>
+            <h2 id="s3">The surfaces that matter — and how they differ.</h2>
             <p><strong>Perplexity</strong> is the most citation-visible of the major engines. Every answer surfaces 3-7 sources with visible attribution. Perplexity's crawler is one of the most important bots to allow in robots.txt in 2026.</p>
 <p><strong>ChatGPT Search</strong> cites sources but increasingly synthesises without citation on short queries. Being retrievable requires presence in OpenAI's web index, which overlaps with but is distinct from Google's.</p>
 <p><strong>Google AI Overviews</strong> blends traditional SERP signals with generative output. Being cited in AI Overviews correlates with high-authority traditional SEO performance, but is not identical.</p>
@@ -227,7 +239,7 @@
       <section class="section">
         <div class="container">
           <article class="article reveal">
-            <h2>The practical AEO work — what to actually do this quarter.</h2>
+            <h2 id="s4">The practical AEO work — what to actually do this quarter.</h2>
             <p><strong>Rebuild your top 20 pages for AEO.</strong> Direct-answer first paragraph. Specific numbers. Primary-source citations. FAQ schema. Clear topical hierarchy. Named author with Author schema and a LinkedIn-linked entity.</p>
 <p><strong>Allow the AI crawlers in robots.txt.</strong> PerplexityBot, ChatGPT-User, OAI-SearchBot, Googlebot (for AI Overviews), ClaudeBot. Many brands are silently blocked by legacy robots.txt rules that pre-date the 2024-2025 wave.</p>
 <p><strong>Fix entity presence.</strong> Wikipedia if genuinely notable, Wikidata always, LinkedIn with full profile, Crunchbase, your trade's authoritative directories. Audit for consistency across them.</p>
@@ -254,7 +266,7 @@
       <section class="section">
         <div class="container">
           <article class="article reveal">
-            <h2>What AEO maturity looks like in 2027 — a bet.</h2>
+            <h2 id="s5">What AEO maturity looks like in 2027 — a bet.</h2>
             <p>By 2027, we expect AEO citation share to be a primary KPI on marketing dashboards across the ambitious half of the market, with traditional SERP tracking relegated to a secondary signal in competitive categories. We expect purpose-built AEO tooling to replace Semrush and Ahrefs as the primary visibility suite for brands that take the discipline seriously.</p>
 <p>We also expect the gap between brands that invested in AEO in 2025-2026 and brands that waited until 2027 to be larger than the equivalent gap in SEO investment timing. The compounding is sharper, because the citation pool is small and growing selection-sensitive.</p>
 <p>The upside for GCC brands is specific: the AEO citation competition in Arabic is thinner than in English. A brand that invests in Arabic AEO in 2026 is competing for citations against a far smaller pool than the equivalent English market. This is the clearest leverage move we see for GCC marketers who read this and act within the quarter.</p>
@@ -348,7 +360,7 @@
  </div>
 
  
-     <script src="scripts/custom-config.js?v=20261010d"></script>
-    <script src="scripts/main.js?v=20261010d" defer></script>
+     <script src="scripts/custom-config.js?v=20261011a"></script>
+    <script src="scripts/main.js?v=20261011a" defer></script>
   </body>
 </html>
