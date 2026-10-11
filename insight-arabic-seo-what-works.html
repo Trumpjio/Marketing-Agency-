@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Fraunces:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles/glass.css?v=20261010d" />
- <link rel="stylesheet" href="styles/custom-design.css?v=20261010d" />
+    <link rel="stylesheet" href="styles/glass.css?v=20261011a" />
+ <link rel="stylesheet" href="styles/custom-design.css?v=20261011a" />
     <link rel="canonical" href="https://orcapulse.com/insight-arabic-seo-what-works.html" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Arabic SEO in 2026: What Actually Moves Rankings | OrcaPulse" />
@@ -154,6 +154,12 @@
             <a href="insights.html">Insights</a>
           </nav>
           <h1 class="reveal">Looking for an Arabic SEO playbook?</h1>
+            <!-- OP-META-LINE -->
+            <p class="op-meta reveal" style="color:var(--muted);font-size:0.825rem;letter-spacing:0.03em;margin-top:0.5rem;max-width:60ch;margin-inline:auto;">
+              <time datetime="2026-10-10">Published October 2026</time> &nbsp;·&nbsp;
+              <time datetime="2026-10-11">Updated October 2026</time> &nbsp;·&nbsp;
+              By <a href="about.html" style="color:inherit;border-bottom:1px solid var(--line);">OrcaPulse Editorial</a>
+            </p>
           <p class="hero__sub reveal">Arabic SEO is a quiet moat for GCC marketers who do it well. Here is what works in 2026, and what the typical translated-English programme gets wrong.</p>
           <div class="hero__actions reveal">
             <a href="https://calendly.com/orcapulse/intro-call" target="_blank" rel="noopener" class="btn btn--primary">Book a strategy call</a>
@@ -178,10 +184,16 @@
         </div>
       </section>
 
+
+      <!-- OP-TOC -->
+      <aside class="op-toc" aria-label="On this page">
+        <div class="op-toc__kicker">On this page</div>
+        <ol><li><a href="#s0">The question most English-first teams never ask about Arabic SEO.</a></li><li><a href="#s1">MSA vs dialect — a decision most content strategies get backwards.</a></li><li><a href="#s2">What Google's Arabic index actually rewards in 2026.</a></li><li><a href="#s3">The RTL question — technical SEO details that quietly tank rankings.</a></li><li><a href="#s4">The compounding moat for marketers who do it well.</a></li></ol>
+      </aside>
       <section class="section">
         <div class="container">
           <article class="article reveal">
-            <h2>The question most English-first teams never ask about Arabic SEO.</h2>
+            <h2 id="s1">The question most English-first teams never ask about Arabic SEO.</h2>
             <p>Most Western-headquartered SEO teams approach Arabic as a translation problem. They buy or AI-generate Arabic versions of their English pages, hreflang them correctly, and declare the Arabic site &quot;live&quot;. Six months later, nothing ranks, and the diagnosis is &quot;Arabic SEO is slow&quot;. It is not slow. The approach was wrong before it started.</p>
 <p>Arabic query behaviour is not the Arabic of the English content translated. Users search in a mix of MSA, dialect, English and &quot;Arabizi&quot; (Arabic in Latin characters with numerals), with no stable pattern across GCC countries. A &quot;dentist in Dubai&quot; query may appear in Arabic script, in English, in Latinised Arabic, or in a mix — and the SERP for each variant looks different.</p>
 <p>The teams that win in Arabic SEO in 2026 start with query behaviour and work backward to content. They do not start with English content and translate forward. The direction of the work decides the outcome.</p>
@@ -202,7 +214,7 @@
       <section class="section">
         <div class="container">
           <article class="article reveal">
-            <h2>MSA vs dialect — a decision most content strategies get backwards.</h2>
+            <h2 id="s2">MSA vs dialect — a decision most content strategies get backwards.</h2>
             <p><strong>Modern Standard Arabic (MSA)</strong> is the right language for substantive content, white papers, service pages and policy documents. It is universally understood, it is what people read in formal registers, and it is what Google's language model ranks and extracts snippets from. Writing a service page in Gulf dialect reads as uneducated to a Saudi lawyer and uneducated to a Jordanian software engineer; both are your reader.</p>
 <p><strong>Gulf, Levantine or Egyptian dialect</strong> is the right language for ad copy, meta descriptions, Instagram captions, video subtitles and short-form social. Dialect reads as friendly, local, and native. It converts higher on paid.</p>
 <p>The common mistake is the opposite: MSA on social (reads as a government press release) and dialect on service pages (reads as unprofessional). Flip it.</p>
@@ -213,7 +225,7 @@
       <section class="section">
         <div class="container">
           <article class="article reveal">
-            <h2>What Google's Arabic index actually rewards in 2026.</h2>
+            <h2 id="s3">What Google's Arabic index actually rewards in 2026.</h2>
             <p><strong>Entity signals.</strong> Arabic Wikipedia, Wikidata, Google Knowledge Panels and local directory presence do more lifting in Arabic than they do in English, because the ecosystem is thinner. A brand that exists on Arabic Wikipedia and is correctly entity-linked to its English counterpart via Wikidata ranks for brand terms almost immediately.</p>
 <p><strong>Topical depth over keyword density.</strong> Google's Arabic language model has improved sharply since 2023. Thin pages optimised for exact-match MSA keywords underperform substantive pages optimised for topic coverage.</p>
 <p><strong>Local backlinks.</strong> A link from Al Arabiya, Al Jazeera, Argaam, Mubasher, Khaleej Times' Arabic edition, or a top GCC business publication is worth 20 from a global SaaS marketing blog. The local link graph is small; its weight is large.</p>
@@ -234,7 +246,7 @@
       <section class="section">
         <div class="container">
           <article class="article reveal">
-            <h2>The RTL question — technical SEO details that quietly tank rankings.</h2>
+            <h2 id="s4">The RTL question — technical SEO details that quietly tank rankings.</h2>
             <p><strong>dir=&quot;rtl&quot; and lang=&quot;ar&quot; at the HTML level</strong>, not just via CSS. Rendering engines use the HTML attributes to decide text direction and language model; CSS-only RTL leaves Google guessing.</p>
 <p><strong>Hreflang pairs.</strong> ar-AE, ar-SA, ar-QA, ar-KW, ar-BH, and x-default. Not just &quot;ar&quot;. Google will choose the wrong country if you let it.</p>
 <p><strong>URL structure.</strong> Either /ar/ sub-folder (preferred for consolidating domain authority) or ar.domain.com sub-domain (acceptable with cross-linked hreflang). Avoid parameters or JavaScript-rendered language switches.</p>
@@ -261,7 +273,7 @@
       <section class="section">
         <div class="container">
           <article class="article reveal">
-            <h2>The compounding moat for marketers who do it well.</h2>
+            <h2 id="s5">The compounding moat for marketers who do it well.</h2>
             <p>Arabic SEO is slower to start than English — fewer tools, thinner data, more manual research — and compounds harder. A brand that invests seriously in Arabic SEO in 2026 is paying for topical authority that will be defensible in 2030 and 2032, when the market is twice as large and twice as competitive.</p>
 <p>The quiet moat is this: most Western-headquartered agencies will never do it properly, because the economics do not work for a one-market retainer. Most local agencies will not do it properly either, because they are over-weighted on paid. The small set of marketers who do both — technical SEO rigour and native Arabic content judgment — are rare, and the demand curve is steep.</p>
 <p>If you are building for the GCC, this is one of the clearest &quot;boring, compounding moves&quot; available in 2026.</p>
@@ -368,7 +380,7 @@
         </div>
       </footer>
     </div>
-    <script src="scripts/custom-config.js?v=20261010d"></script>
-    <script src="scripts/main.js?v=20261010d" defer></script>
+    <script src="scripts/custom-config.js?v=20261011a"></script>
+    <script src="scripts/main.js?v=20261011a" defer></script>
   </body>
 </html>
