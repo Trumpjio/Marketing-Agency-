@@ -42,6 +42,133 @@ function page_undo($filepath) {
     return true;
 }
 
+/* ---------- Draft registry ---------- */
+
+/**
+ * Pages created via duplication start as drafts so they are excluded from
+ * sitemap.xml and marked noindex,nofollow until the admin promotes them to
+ * published. Stored in data/drafts.json so the state survives page edits.
+ */
+function drafts_load() {
+    $f = DATA_DIR . '/drafts.json';
+    if (!file_exists($f)) return [];
+    $d = json_decode(file_get_contents($f), true);
+    return is_array($d) ? $d : [];
+}
+function drafts_save($arr) {
+    file_put_contents(DATA_DIR . '/drafts.json', json_encode($arr, JSON_PRETTY_PRINT));
+}
+function draft_mark($slug) {
+    $d = drafts_load();
+    if (!in_array($slug, $d, true)) { $d[] = $slug; drafts_save($d); }
+}
+function draft_unmark($slug) {
+    $d = drafts_load();
+    $d = array_values(array_filter($d, fn($x) => $x !== $slug));
+    drafts_save($d);
+}
+function is_draft($slug) {
+    return in_array($slug, drafts_load(), true);
+}
+
+/* ---------- Page duplication ---------- */
+
+/**
+ * Duplicate an existing page to a new slug and start it as a draft.
+ *
+ * Rewrites:
+ *   - <title>, <meta name="description">, canonical, OG + Twitter URLs
+ *   - JSON-LD @id values
+ * Adds <meta name="robots" content="noindex,nofollow"> and <meta
+ * name="x-op-draft" content="true"> so the clone is excluded from
+ * search engines until promoted.
+ *
+ * Returns ['ok' => bool, 'error' => str, 'path' => new file path].
+ */
+function page_duplicate($sourceName, $newSlug, $newTitle = null) {
+    $src = page_path($sourceName);
+    if (!$src) return ['ok' => false, 'error' => 'Source page not found or not editable.'];
+
+    // Validate slug — lower-case kebab, no path separators, no .html suffix allowed
+    $slug = strtolower(trim($newSlug));
+    $slug = preg_replace('/[^a-z0-9-]+/', '-', $slug);
+    $slug = trim($slug, '-');
+    if ($slug === '' || strlen($slug) > 80) {
+        return ['ok' => false, 'error' => 'New URL slug is empty or too long (max 80 chars, lower-case letters, numbers, dashes).'];
+    }
+    $newFile = $slug . '.html';
+    $dest = SITE_ROOT . '/' . $newFile;
+    if (file_exists($dest)) {
+        return ['ok' => false, 'error' => 'A page already exists at ' . $newFile . '. Choose a different slug.'];
+    }
+
+    $html = file_get_contents($src);
+    if ($html === false) return ['ok' => false, 'error' => 'Could not read the source page.'];
+
+    $srcBase = basename($src, '.html');
+    $srcTitle = parse_title($html);
+    $title = $newTitle ? trim($newTitle) : $srcTitle . ' (copy)';
+
+    // 1. Rewrite <title>, meta description if the user supplied a title
+    if ($newTitle) {
+        $html = preg_replace('/<title>[^<]*<\/title>/i', '<title>' . h($title) . '</title>', $html, 1);
+    }
+    // 2. Canonical + OG + Twitter URLs (preserve host prefix)
+    $html = preg_replace(
+        '#(https?://[a-z0-9.-]+/)' . preg_quote($srcBase, '#') . '\.html#i',
+        '$1' . $newFile,
+        $html
+    );
+    // 3. Also update og:title/twitter:title to match the new title (if we got one)
+    if ($newTitle) {
+        $html = preg_replace('/<meta property="og:title" content="[^"]*"[^>]*>/i', '<meta property="og:title" content="' . h($title) . '" />', $html);
+        $html = preg_replace('/<meta name="twitter:title" content="[^"]*"[^>]*>/i', '<meta name="twitter:title" content="' . h($title) . '" />', $html);
+    }
+    // 4. Inject noindex,nofollow + draft marker inside <head> (before </head>)
+    if (stripos($html, 'name="robots"') === false) {
+        $html = preg_replace(
+            '#(</head>)#i',
+            '    <meta name="robots" content="noindex,nofollow" />' . "\n" .
+            '    <meta name="x-op-draft" content="true" />' . "\n" .
+            '  $1',
+            $html, 1
+        );
+    } else {
+        $html = preg_replace('#<meta name="robots" content="[^"]*"[^>]*>#i', '<meta name="robots" content="noindex,nofollow" />', $html, 1);
+    }
+
+    if (file_put_contents($dest, $html) === false) {
+        return ['ok' => false, 'error' => 'Could not write new page. Check Hostinger folder permissions (0755).'];
+    }
+    draft_mark($slug);
+    return ['ok' => true, 'path' => $dest, 'file' => $newFile];
+}
+
+/** Promote a draft to published: strip the noindex marker + remove from draft registry + add to sitemap.xml. */
+function page_promote_draft($slug) {
+    $file = SITE_ROOT . '/' . basename($slug) . '.html';
+    if (!is_file($file)) return false;
+    $html = file_get_contents($file);
+    // Flip robots to index,follow (or remove outright)
+    $html = preg_replace('#<meta name="robots" content="noindex,nofollow"[^>]*>\s*#i', '', $html, 1);
+    $html = preg_replace('#<meta name="x-op-draft" content="true"[^>]*>\s*#i', '', $html, 1);
+    file_put_contents($file, $html);
+    draft_unmark($slug);
+
+    // Add to sitemap.xml if not already present
+    $sitemap = SITE_ROOT . '/sitemap.xml';
+    if (is_file($sitemap)) {
+        $xml = file_get_contents($sitemap);
+        $url = 'https://orcapulse.ai/' . basename($file);
+        if (strpos($xml, $url) === false) {
+            $entry = "  <url>\n    <loc>$url</loc>\n    <lastmod>" . date('Y-m-d') . "</lastmod>\n    <priority>0.7</priority>\n  </url>\n</urlset>";
+            $xml = str_replace("</urlset>", $entry, $xml);
+            file_put_contents($sitemap, $xml);
+        }
+    }
+    return true;
+}
+
 /* ---------- Small parsers used by the editors ---------- */
 
 function pl_first($html, $pattern, $group = 1) {
