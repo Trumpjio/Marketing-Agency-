@@ -173,6 +173,9 @@ section + section { padding-top: var(--s-6); }
   white-space: nowrap;
 }
 .brand span { color: var(--blue); }
+/* When a logo image is set in Admin Settings, it replaces the text brand */
+.brand img { height: 28px; width: auto; display: block; object-fit: contain; }
+.footer__brand .brand img, footer .brand img { height: 36px; }
 
 /* ========== DESKTOP NAV (≥901px) ========== */
 .nav__desktop {

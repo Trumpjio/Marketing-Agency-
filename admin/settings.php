@@ -26,6 +26,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="field">
       <label>Brand name (shown in nav + footer)</label>
       <input type="text" name="brand_name" value="<?= h($settings['brand_name']) ?>" required>
+      <div class="help">Shown as text if no logo image is uploaded.</div>
+    </div>
+    <div class="field">
+      <label>Logo image (optional — replaces the text brand in nav + footer when set)</label>
+      <div class="image-picker-field">
+        <img class="image-picker-preview" data-preview-for="brand_logo" src="<?= !empty($settings['brand_logo']) ? '../' . h(ltrim($settings['brand_logo'], '/')) : '' ?>" alt="" onerror="this.style.visibility='hidden'" style="max-height:40px;object-fit:contain;">
+        <input type="text" id="brand_logo" name="brand_logo" value="<?= h($settings['brand_logo'] ?? '') ?>" placeholder="click Pick image →">
+        <button type="button" class="image-picker-btn" onclick="openMedia('brand_logo')">📷 Pick logo</button>
+      </div>
+      <div class="help">Upload at Media Library (SVG preferred, 2:1 ratio works best). Max height on the live site is 32px nav / 40px footer.</div>
     </div>
     <div class="field">
       <label>Brand tagline (shown in footer)</label>
@@ -54,9 +64,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="email" name="email" value="<?= h($settings['email']) ?>">
       </div>
       <div class="field">
-        <label>Phone (optional)</label>
-        <input type="text" name="phone" value="<?= h($settings['phone']) ?>">
+        <label>Phone (optional, shown on Contact page)</label>
+        <input type="text" name="phone" value="<?= h($settings['phone']) ?>" placeholder="+971 50 123 4567">
       </div>
+    </div>
+    <div class="field">
+      <label>WhatsApp number (digits only, international format, no + or spaces)</label>
+      <input type="text" name="whatsapp" value="<?= h($settings['whatsapp'] ?? '') ?>" placeholder="971501234567" pattern="[0-9]*">
+      <div class="help">Used for the WhatsApp button on the Contact page. Leave blank to hide the button.</div>
     </div>
     <div class="field">
       <label>Address (optional)</label>

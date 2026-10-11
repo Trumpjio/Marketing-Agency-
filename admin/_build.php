@@ -15,6 +15,13 @@ function build_apply_settings($old, $new) {
         'brand_tagline' => true,
     ];
     $files = glob(SITE_ROOT . '/*.html');
+    $logo = trim($new['brand_logo'] ?? '');
+    $oldLogo = trim($old['brand_logo'] ?? '');
+    $logoChanged = ($logo !== $oldLogo);
+    $wa = trim($new['whatsapp'] ?? '');
+    $oldWa = trim($old['whatsapp'] ?? '');
+    $waChanged = ($wa !== $oldWa);
+
     foreach ($files as $file) {
         $html = file_get_contents($file);
         $orig = $html;
@@ -24,6 +31,48 @@ function build_apply_settings($old, $new) {
             $newv = $new[$key] ?? '';
             if ($oldv !== '' && $oldv !== $newv) {
                 $html = str_replace($oldv, $newv, $html);
+            }
+        }
+        // ---- Brand logo: replace the text brand content with an <img> when logo set,
+        //      and vice versa when logo cleared.
+        if ($logoChanged) {
+            if ($logo !== '') {
+                $imgTag = '<img src="' . htmlspecialchars($logo, ENT_QUOTES) . '" alt="' . htmlspecialchars($new['brand_name'] ?? 'OrcaPulse', ENT_QUOTES) . '">';
+                // Replace the ORCA<span>PULSE</span> pattern (and any image we already injected)
+                $html = preg_replace(
+                    '#(<a[^>]*class="brand"[^>]*>)(?:ORCA<span>PULSE</span>|<img[^>]*>)(</a>)#i',
+                    '$1' . $imgTag . '$2',
+                    $html
+                );
+                // Also the <div class="brand"> variant in footer
+                $html = preg_replace(
+                    '#(<div[^>]*class="brand"[^>]*>)(?:ORCA<span>PULSE</span>|<img[^>]*>)(</div>)#i',
+                    '$1' . $imgTag . '$2',
+                    $html
+                );
+            } else {
+                // Logo cleared → restore ORCA<span>PULSE</span>
+                $html = preg_replace(
+                    '#(<a[^>]*class="brand"[^>]*>)<img[^>]*>(</a>)#i',
+                    '$1ORCA<span>PULSE</span>$2',
+                    $html
+                );
+                $html = preg_replace(
+                    '#(<div[^>]*class="brand"[^>]*>)<img[^>]*>(</div>)#i',
+                    '$1ORCA<span>PULSE</span>$2',
+                    $html
+                );
+            }
+        }
+        // ---- WhatsApp phone: patch the hardcoded placeholder on contact.html
+        if ($waChanged && basename($file) === 'contact.html') {
+            // Replace the number inside wa.me/XXXXXXXX AND the human-readable tel line
+            if ($wa !== '') {
+                $html = preg_replace('#wa\.me/\d+#', 'wa.me/' . $wa, $html);
+                // Human-friendly format: 971501234567 → "+971 50 123 4567"
+                $pretty = '+' . substr($wa, 0, 3) . ' ' . substr($wa, 3, 2) . ' ' . substr($wa, 5, 3) . ' ' . substr($wa, 8);
+                $html = preg_replace('#\+971 50 000 0000#', $pretty, $html);
+                $html = preg_replace('#\+\d{1,3} \d{2,3} \d{3} \d{4}#', $pretty, $html);
             }
         }
         if ($html !== $orig) file_put_contents($file, $html);
