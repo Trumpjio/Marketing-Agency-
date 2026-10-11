@@ -68,11 +68,19 @@ $search = trim($_GET['q'] ?? '');
         $name = basename($file);
         $title = page_title($file);
       ?>
+        <?php
+        $slug = basename($name, '.html');
+        require_once __DIR__ . '/_pagelib.php';
+        $draft = is_draft($slug);
+        ?>
         <tr>
-          <td style="padding-left:1rem;width:60%;"><strong style="font-size:0.925rem;"><?= h($title) ?></strong><br><code style="font-size:0.7rem;color:#9ca3af;"><?= h($name) ?></code></td>
+          <td style="padding-left:1rem;width:60%;"><strong style="font-size:0.925rem;"><?= h($title) ?></strong>
+            <?php if ($draft): ?><span style="display:inline-block;padding:0.1rem 0.5rem;background:#fef3c7;color:#92400e;font-size:0.65rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;border-radius:999px;margin-left:0.5rem;">Draft</span><?php endif; ?>
+            <br><code style="font-size:0.7rem;color:#9ca3af;"><?= h($name) ?></code></td>
           <td style="text-align:right;padding-right:1rem;white-space:nowrap;">
             <a href="page-edit.php?file=<?= urlencode($name) ?>" class="btn" style="padding:0.4rem 0.9rem;font-size:0.8rem;">Edit</a>
             <a href="page-icons.php?file=<?= urlencode($name) ?>" class="btn btn--ghost" style="padding:0.4rem 0.9rem;font-size:0.8rem;">Icons</a>
+            <a href="page-duplicate.php?file=<?= urlencode($name) ?>" class="btn btn--ghost" style="padding:0.4rem 0.9rem;font-size:0.8rem;" title="Make a copy of this page as a draft">Duplicate</a>
             <a href="../<?= h($name) ?>" target="_blank" class="btn btn--ghost" style="padding:0.4rem 0.9rem;font-size:0.8rem;">View</a>
           </td>
         </tr>
