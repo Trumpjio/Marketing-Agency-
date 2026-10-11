@@ -31,6 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $new['grid_opacity']    = max(0, min(0.1, floatval($_POST['grid_opacity'] ?? 0.028)));
     $new['guide_enabled']   = empty($_POST['guide_enabled']) ? 0 : 1;
     $new['hints_enabled']   = empty($_POST['hints_enabled']) ? 0 : 1;
+    $new['guide_tail']      = empty($_POST['guide_tail']) ? 0 : 1;
+    $new['guide_trigger']   = in_array($_POST['guide_trigger'] ?? '', ['inactivity','click','error'], true) ? $_POST['guide_trigger'] : 'inactivity';
     $new['guide_where']     = in_array($_POST['guide_where'] ?? '', ['all','home','insights','off'], true) ? $_POST['guide_where'] : 'all';
     $new['tip_style']       = in_array($_POST['tip_style'] ?? '', ['card','minimal'], true) ? $_POST['tip_style'] : 'card';
     $new['guide_size']      = in_array($_POST['guide_size'] ?? '', ['sm','md','lg'], true) ? $_POST['guide_size'] : 'md';
@@ -38,6 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $v = trim($_POST[$k] ?? '');
         if ($v !== '' && preg_match('/^#[0-9a-fA-F]{3,8}$/', $v)) $new[$k] = $v;
     }
+    // Background preset + custom CSS
+    $new['bg_preset']       = in_array($_POST['bg_preset'] ?? '', ['grid','plain','dots','gradient','custom'], true) ? $_POST['bg_preset'] : 'grid';
+    $new['bg_custom_css']   = (string)($_POST['bg_custom_css'] ?? '');
 
     design_save($new);
     $_SESSION['flash'] = ['type' => 'ok', 'msg' => 'Design settings saved. Changes apply to the live site immediately.'];
@@ -156,6 +161,24 @@ $fontOptions = ['Inter','Manrope','Space Grotesk','Playfair Display','IBM Plex S
     </div>
     <div class="help">Switch hints off and the icon still floats but never shows a tooltip unless the visitor clicks it.</div>
 
+    <div class="field" style="display:flex;align-items:center;gap:0.75rem;">
+      <label class="switch">
+        <input type="checkbox" name="guide_tail" value="1" <?= $d['guide_tail']?'checked':'' ?> data-design="guide_tail" />
+        <span class="slider"></span>
+      </label>
+      <span>Show the small tail/pointer under the icon</span>
+    </div>
+
+    <div class="field">
+      <label>When should the icon activate?</label>
+      <select name="guide_trigger" data-design="guide_trigger">
+        <option value="inactivity" <?= $d['guide_trigger']==='inactivity'?'selected':'' ?>>Always (shows a hint 2 s after scrolling stops)</option>
+        <option value="click"      <?= $d['guide_trigger']==='click'?'selected':'' ?>>Only when the visitor clicks the face</option>
+        <option value="error"      <?= $d['guide_trigger']==='error'?'selected':'' ?>>Only when a form shows an error</option>
+      </select>
+      <div class="help">The icon itself is still always visible (unless hidden above). This controls when it tries to help the visitor.</div>
+    </div>
+
     <div class="row">
       <div class="field">
         <label>Where should the icon appear?</label>
@@ -197,23 +220,43 @@ $fontOptions = ['Inter','Manrope','Space Grotesk','Playfair Display','IBM Plex S
   </div>
 
   <div class="card">
-    <h3 style="margin-top:0;">Background grid</h3>
-    <div class="field" style="display:flex;align-items:center;gap:0.75rem;">
-      <label class="switch">
-        <input type="checkbox" name="grid_enabled" value="1" <?= $d['grid_enabled']?'checked':'' ?> data-design="grid_enabled" />
-        <span class="slider"></span>
-      </label>
-      <span>Show thin grid lines across the page background</span>
+    <h3 style="margin-top:0;">Background</h3>
+    <div class="field">
+      <label>Preset</label>
+      <select name="bg_preset" data-design="bg_preset" id="bg-preset">
+        <option value="grid"     <?= $d['bg_preset']==='grid'?'selected':'' ?>>Grid — thin lines (current OrcaPulse default)</option>
+        <option value="plain"    <?= $d['bg_preset']==='plain'?'selected':'' ?>>Plain — no decoration, pure white</option>
+        <option value="dots"     <?= $d['bg_preset']==='dots'?'selected':'' ?>>Dots — subtle dot grid</option>
+        <option value="gradient" <?= $d['bg_preset']==='gradient'?'selected':'' ?>>Gradient — soft brand-colour glows</option>
+        <option value="custom"   <?= $d['bg_preset']==='custom'?'selected':'' ?>>Custom — write your own CSS</option>
+      </select>
+      <div class="help">Pick a preset to change the look of the page background. "Custom" lets you paste your own CSS.</div>
     </div>
     <div class="field">
-      <label>Grid opacity — <span data-echo="grid_opacity"><?= $d['grid_opacity'] ?></span></label>
+      <label>Grid / dots opacity — <span data-echo="grid_opacity"><?= $d['grid_opacity'] ?></span></label>
       <input type="range" min="0" max="0.1" step="0.002" name="grid_opacity" value="<?= $d['grid_opacity'] ?>" data-design="grid_opacity" oninput="document.querySelector('[data-echo=grid_opacity]').textContent=this.value" />
+      <div class="help">Only applies to the Grid and Dots presets.</div>
     </div>
     <div class="field" style="display:flex;align-items:center;gap:0.75rem;">
-      <label style="width:160px;margin:0;font-size:0.825rem;">Grid line colour</label>
+      <label style="width:160px;margin:0;font-size:0.825rem;">Grid / dots colour</label>
       <input type="color" value="<?= h($d['grid_color']) ?>" data-color-pair="grid_color" style="width:46px;height:38px;border:1px solid var(--line);padding:0;border-radius:4px;background:#fff;cursor:pointer;flex-shrink:0;" />
       <input type="text" name="grid_color" value="<?= h($d['grid_color']) ?>" style="flex:1;font-family:monospace;font-size:0.825rem;" data-design="grid_color" />
     </div>
+    <!-- Keep hidden grid_enabled toggle for backward compatibility: Grid preset implies on -->
+    <input type="hidden" name="grid_enabled" value="1" data-design="grid_enabled" />
+    <div class="field" id="bg-custom-field" style="display:none;">
+      <label>Custom background CSS</label>
+      <textarea name="bg_custom_css" rows="6" style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:0.825rem;" data-design="bg_custom_css" placeholder=".page::before {&#10;  background-image: url(uploads/your-pattern.svg);&#10;  background-size: 60px 60px;&#10;}"><?= h($d['bg_custom_css']) ?></textarea>
+      <div class="help">Target <code>.page::before</code> or <code>body</code>. <code>&lt;script&gt;</code> tags and <code>javascript:</code> URLs are stripped on save.</div>
+    </div>
+    <script>
+      (function () {
+        var sel = document.getElementById('bg-preset');
+        var custom = document.getElementById('bg-custom-field');
+        function toggle() { custom.style.display = sel.value === 'custom' ? 'block' : 'none'; }
+        sel.addEventListener('change', toggle); toggle();
+      })();
+    </script>
   </div>
 
   <div style="display:flex;gap:0.5rem;position:sticky;bottom:0;background:var(--bg);padding:1rem 0;border-top:1px solid var(--line);flex-wrap:wrap;">

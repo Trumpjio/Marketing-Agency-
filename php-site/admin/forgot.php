@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?= csrf_field() ?>
     <?= honeypot_field() ?>
     <label>Email address</label>
-    <input type="email" name="email" required autofocus placeholder="hello@orcapulse.com">
+    <input type="email" name="email" required autofocus placeholder="help@orcapulse.ai">
     <button type="submit">Send reset link</button>
   </form>
   <?php if ($flash): ?><div class="ok"><?= htmlspecialchars($flash) ?></div><?php endif; ?>

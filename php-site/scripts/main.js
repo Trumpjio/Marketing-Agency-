@@ -188,6 +188,7 @@
     if (CFG.where === "insights" && !isInsight) return;
 
     const HINTS_ENABLED = CFG.hintsEnabled !== false; // default true
+    const TRIGGER = CFG.trigger || "inactivity";       // inactivity | click | error
 
     // ---------- Section hints: use data-face-hint attribute, else derive from h2.
     function hintFor(section) {
@@ -214,8 +215,10 @@
     const px = sizeMap[CFG.size] || sizeMap.md;
     face.style.width = px + "px";
     face.style.height = px + "px";
+    const showTail = CFG.tail !== false;
     face.innerHTML = `
-      <svg viewBox="0 0 100 100" aria-hidden="true">
+      <svg viewBox="0 0 100 100" aria-hidden="true" style="overflow:visible">
+        ${showTail ? `<path class="op-guide__tail" d="M 50 95 L 44 108 L 56 108 Z" fill="${faceColor}" stroke="rgba(0,0,0,0.08)" stroke-width="1" />` : ''}
         <circle class="op-guide__cheek" cx="26" cy="62" r="7"/>
         <circle class="op-guide__cheek" cx="74" cy="62" r="7"/>
         <ellipse class="op-guide__eye op-guide__eye--l" cx="37" cy="46" rx="5" ry="9" fill="${eyeColor}"/>
@@ -507,6 +510,8 @@
       reposition();
 
       if (!HINTS_ENABLED) return;
+      // Only auto-show on inactivity when the trigger mode allows it
+      if (TRIGGER !== "inactivity") return;
       if (localStorage.getItem(LS_DISABLED) === "1") return;
       if (tip.getAttribute("data-open") === "true") return;
       if (Date.now() - lastShown < COOLDOWN_MS) return;
@@ -539,5 +544,30 @@
     // Initial reposition after layout settles.
     setTimeout(reposition, 400);
     window.addEventListener("resize", reposition, { passive: true });
+
+    // ---------- Trigger: error-only mode ----------
+    // When the admin sets guide_trigger = 'error', the face stays quiet until
+    // a form field reports a validation error (native :invalid or an element
+    // gains an .is-error / .has-error class). Then it jumps and offers help.
+    if (TRIGGER === "error") {
+      function showErrorHint() {
+        if (!HINTS_ENABLED) return;
+        if (tip.getAttribute("data-open") === "true") return;
+        openTip({ kicker: "Need a hand?", body: "Looks like a field needs fixing. Email help@orcapulse.ai and we'll help you through." }, null);
+      }
+      document.addEventListener("invalid", showErrorHint, true);
+      // Observe any element toggling an error class
+      const observer = new MutationObserver(muts => {
+        for (const m of muts) {
+          if (m.type !== "attributes") continue;
+          const cls = m.target.className || "";
+          if (/\b(is-error|has-error|error)\b/.test(cls)) {
+            showErrorHint();
+            return;
+          }
+        }
+      });
+      observer.observe(document.body, { subtree: true, attributes: true, attributeFilter: ["class"] });
+    }
   })();
 })();
