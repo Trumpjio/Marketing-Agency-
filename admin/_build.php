@@ -125,7 +125,7 @@ function build_blog_html($post, $settings) {
         'url' => $url,
     ], JSON_UNESCAPED_SLASHES);
 
-    $cache = '20261013a';
+    $cache = '20261013b';
     $fmt = $post['date'] ? date('F Y', strtotime($post['date'])) : '';
     $ogimg = $image ? '<meta property="og:image" content="' . $base . '/' . ltrim($image, '/') . '">' : '';
     return <<<HTML

@@ -3070,7 +3070,8 @@ section + section { padding-top: clamp(3rem, 6vw, 5.5rem); }
   display: none;
   position: fixed;
   top: 110px;
-  right: calc(50% - 560px);
+  left: calc(50% + 412px);   /* just outside the 760px article column */
+  right: auto;
   width: 220px;
   max-height: 70vh;
   overflow-y: auto;
@@ -3081,7 +3082,7 @@ section + section { padding-top: clamp(3rem, 6vw, 5.5rem); }
   border-radius: 12px;
   box-shadow: var(--ap-shadow-xs);
 }
-@media (min-width: 1180px) {
+@media (min-width: 1420px) {
   .op-toc { display: block; }
 }
 .op-toc__kicker {
@@ -3289,7 +3290,7 @@ footer.footer .footer__bottom { display: flex; justify-content: space-between; a
 footer.footer .footer__legal { display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; margin: 0; padding: 0; list-style: none; }
 footer.footer .footer__legal a { color: var(--muted); text-decoration: none; }
 footer.footer .footer__legal a:hover { color: var(--blue); }
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
   footer.footer .footer__inner { grid-template-columns: 1fr; gap: var(--s-5); }
 }
 @media (max-width: 760px) {
@@ -3349,3 +3350,101 @@ main:focus { outline: none; }
 /* Four-step and three-step rows: two per row on tablets even when the page sets its own column count */
 @media (max-width: 820px) { .process { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
 @media (max-width: 480px) { .process { grid-template-columns: 1fr !important; } }
+
+/* ============================================================
+   LAYOUT POLISH — final rules (they come last on purpose)
+   One vertical rhythm, one heading alignment, one card grid,
+   one set of page margins. Phone, tablet and desktop share them.
+   ============================================================ */
+:root {
+  --gutter: clamp(1.25rem, 4vw, 2rem);
+  --gap: clamp(0.875rem, 2vw, 1.5rem);
+  --sec-y: clamp(2.5rem, 5.5vw, 4.5rem);
+}
+body[data-template="post"], body[data-template="legal"] { --sec-y: clamp(1.5rem, 3.5vw, 2.5rem); }
+
+/* Page margins: the same on every page, no double padding */
+.container { width: min(1120px, calc(100% - 2 * var(--gutter))); padding-inline: 0; }
+.nav .container, .nav__inner { padding-inline: 0; }
+
+/* Vertical rhythm: each section owns the space below it, so gaps never double up */
+main > section { padding-block: var(--sec-y); }
+main > section + section:not([data-op-bg]) { padding-top: 0; }
+main > section.hero { padding-top: clamp(1.75rem, 4.5vw, 3.25rem) !important; padding-bottom: clamp(1.5rem, 3.5vw, 2.75rem) !important; }
+main > section.hero + section { padding-top: 0; }
+main > section:last-of-type { padding-bottom: var(--sec-y); }
+footer.footer { margin-top: 0; }
+
+/* Headings: centred everywhere, with a tidy gap before the content */
+main .section-head { max-width: 760px; margin-inline: auto; margin-bottom: clamp(1.25rem, 3vw, 2.25rem); text-align: center; }
+main .section-head p { margin-inline: auto; max-width: 62ch; }
+main .section-head h2 { margin-bottom: 0.5rem; }
+main .section-head .kicker { display: block; margin-bottom: 0.6rem; }
+
+/* Blocks of reading text sit in a centred, comfortable column */
+main .prose { max-width: 72ch; margin-inline: auto; }
+
+/* Card grids: equal-height cards, last row centred, no lonely cards */
+.grid { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--gap); }
+.grid > * { min-width: 0; margin: 0; }
+.grid--2 > * { flex: 0 0 calc((100% - var(--gap)) / 2); }
+.grid--3 > * { flex: 0 0 calc((100% - 2 * var(--gap)) / 3); }
+.grid--4 > * { flex: 0 0 calc((100% - 3 * var(--gap)) / 4); }
+.grid--3:has(> :nth-child(4):last-child) > * { flex-basis: calc((100% - 3 * var(--gap)) / 4); }
+@media (max-width: 1000px) {
+  .grid--3 > *, .grid--4 > *, .grid--3:has(> :nth-child(4):last-child) > * { flex-basis: calc((100% - var(--gap)) / 2); }
+}
+@media (max-width: 640px) {
+  .grid--2 > *, .grid--3 > *, .grid--4 > *, .grid--3:has(> :nth-child(4):last-child) > * { flex-basis: 100%; }
+  .grid--compact > * { flex-basis: calc((100% - var(--gap)) / 2); }
+  .glass, .feature-card { padding: 1.25rem; }
+}
+
+/* Locations page: a country card with its cities listed inside it */
+.op-country { position: relative; display: flex; flex-direction: column; gap: 0.5rem; }
+.op-country h3 a { color: inherit; text-decoration: none; }
+.op-country h3 a::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.op-country .cap__desc { margin: 0; }
+.op-country__cities { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 1rem; margin-top: auto; padding-top: var(--s-2); border-top: 1px solid var(--line); font-size: 0.85rem; }
+.op-country__cities span { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.op-country__cities a { position: relative; z-index: 1; font-weight: 600; color: var(--blue); text-decoration: none; }
+.op-country__cities a:hover { text-decoration: underline; }
+
+/* Phones: smaller number badges and tighter cards, so lists of cards do not run on forever */
+@media (max-width: 640px) {
+  .glass .cap__icon, .feature-card .cap__icon { width: 34px; height: 34px; margin-bottom: 0.6rem; font-size: 0.85rem; }
+  .glass .cap__title { margin-bottom: 0.35rem; font-size: 1.02rem; }
+  .glass .cap__desc { font-size: 0.9rem; line-height: 1.5; }
+  .glass { padding: 1.1rem 1.15rem; }
+}
+
+/* Number tiles stay two across on phones */
+@media (max-width: 640px) {
+  .stats__grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 0.75rem; }
+  .stat { padding: 1rem; }
+  .stat__value { font-size: clamp(1.4rem, 7vw, 1.8rem); }
+  .stat__caption { font-size: 0.8rem; }
+}
+
+/* Step rows (3, 4, 5 or 6 steps): evenly spaced, last row centred, compact on phones */
+.process { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--gap); }
+.process > .step { flex: 0 0 calc((100% - 3 * var(--gap)) / 4); min-width: 0; margin: 0; }
+.process:has(> :nth-child(3):last-child) > .step { flex-basis: calc((100% - 2 * var(--gap)) / 3); }
+.process:has(> :nth-child(5):last-child) > .step { flex-basis: calc((100% - 4 * var(--gap)) / 5); }
+.process:has(> :nth-child(6):last-child) > .step { flex-basis: calc((100% - 2 * var(--gap)) / 3); }
+@media (max-width: 900px) { .process > .step, .process:has(> :nth-child(n)) > .step { flex-basis: calc((100% - var(--gap)) / 2) !important; } }
+@media (max-width: 560px) {
+  .process > .step, .process:has(> :nth-child(n)) > .step { flex-basis: 100% !important; padding: 1rem 0.25rem; }
+  .step__num { margin-bottom: 0.25rem; font-size: 0.85rem; }
+  .step__title { margin-bottom: 0.3rem; font-size: 1.02rem; }
+}
+
+/* Phones: article cards and blocks line up with the text, picture boxes are shorter */
+@media (max-width: 640px) {
+  .op-card .article-visual, .op-featured .article-visual { aspect-ratio: 16 / 9 !important; }
+  .op-card .article-visual__symbol, .op-featured .article-visual__symbol { font-size: 2.75rem !important; }
+  .insight-takeaway, .insight-steps, .insight-stats, .insight-callout { margin-inline: 0 !important; max-width: none; }
+}
+
+/* Chip lists sit in the middle of the page like everything else */
+main .chips { justify-content: center; }
