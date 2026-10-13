@@ -11,6 +11,8 @@ $is_new = !$post;
 if ($is_new) {
     $post = ['title' => '', 'slug' => '', 'excerpt' => '', 'body' => '', 'image' => '', 'date' => date('Y-m-d'), 'author' => 'OrcaPulse'];
 }
+$meta_now = blog_meta_load()[$editing_slug] ?? [];
+$cats = blog_categories();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     csrf_check();
@@ -38,6 +40,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$found) $blogs[] = $post;
     blogs_save($blogs);
 
+    // Topic, featured and popular live in the shared post list, so the Blog page can use them
+    $meta = blog_meta_load();
+    if ($editing_slug && $editing_slug !== $post['slug']) { $meta[$post['slug']] = $meta[$editing_slug] ?? []; unset($meta[$editing_slug]); }
+    $catSlugs = array_column(blog_categories(), 'slug');
+    $cat = (string) ($_POST['category'] ?? '');
+    $meta[$post['slug']]['category'] = in_array($cat, $catSlugs, true) ? $cat : '';
+    $meta[$post['slug']]['popular'] = !empty($_POST['popular']);
+    if (!empty($_POST['featured'])) { foreach ($meta as $k => $v) unset($meta[$k]['featured']); $meta[$post['slug']]['featured'] = true; }
+    else unset($meta[$post['slug']]['featured']);
+    blog_meta_save($meta);
+
     // Generate the HTML file
     $settings = settings_load();
     $html = build_blog_html($post, $settings);
@@ -49,8 +62,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (file_exists($oldFile)) unlink($oldFile);
     }
 
-    // Refresh insights listing
-    build_insights_listing($blogs, $settings);
+    // Search engines: list the new page, drop the old address if it changed
+    sitemap_add($post['slug'] . '.html');
+    if ($editing_slug && $editing_slug !== $post['slug']) sitemap_remove($editing_slug . '.html');
+
+    // Refresh the Blog page (featured, topics, newest, popular)
+    blog_regenerate();
 
     $_SESSION['flash'] = ['type' => 'ok', 'msg' => 'Blog post saved and published.'];
     header('Location: blogs.php');
@@ -84,6 +101,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <div class="field">
         <label>Date</label>
         <input type="date" name="date" value="<?= h($post['date']) ?>" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label>Topic</label>
+        <select name="category">
+          <option value="">Uncategorised</option>
+          <?php foreach ($cats as $c): ?><option value="<?= h($c['slug']) ?>" <?= ($meta_now['category'] ?? '') === $c['slug'] ? 'selected' : '' ?>><?= h($c['label']) ?></option><?php endforeach; ?>
+        </select>
+        <div class="help">Topics are the filter buttons on the Blog page. Edit them under <a href="blogs.php?tab=topics">Blog Posts → Topics</a>.</div>
+      </div>
+      <div class="field">
+        <label>Show it on the Blog page as</label>
+        <label style="font-weight:500;display:flex;gap:.5rem;align-items:center;"><input type="checkbox" name="featured" value="1" style="width:auto;" <?= !empty($meta_now['featured']) ? 'checked' : '' ?>> Featured post (big card at the top; only one at a time)</label>
+        <label style="font-weight:500;display:flex;gap:.5rem;align-items:center;"><input type="checkbox" name="popular" value="1" style="width:auto;" <?= !empty($meta_now['popular']) ? 'checked' : '' ?>> Popular post</label>
       </div>
     </div>
     <div class="field">

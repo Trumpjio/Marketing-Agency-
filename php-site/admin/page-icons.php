@@ -7,7 +7,8 @@ if (!$filepath) {
     $_SESSION['flash'] = ['type' => 'err', 'msg' => 'Page not found.'];
     header('Location: pages.php'); exit;
 }
-$html = file_get_contents($filepath);
+$html = page_working_html($file);
+$has_pending = page_has_pending($file);
 $self = 'page-icons.php?file=' . urlencode($file);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -16,8 +17,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['flash'] = ['type' => 'err', 'msg' => 'This page was changed somewhere else after you opened it, so nothing was saved. Your screen has been refreshed. Please make your edit again.'];
         header('Location: ' . $self); exit;
     }
-    page_save($filepath, apply_icon_changes($html, $_POST));
-    $_SESSION['flash'] = ['type' => 'ok', 'msg' => 'Icons saved. <a href="../' . h($file) . '" target="_blank">View the page →</a>'];
+    page_pending_save($file, apply_icon_changes($html, $_POST));
+    if (($_POST['action'] ?? '') === 'publish') {
+        page_publish($file);
+        $_SESSION['flash'] = ['type' => 'ok', 'msg' => 'Icons saved and published. <a href="../' . h($file) . '" target="_blank">View the live page →</a>'];
+    } else {
+        $_SESSION['flash'] = ['type' => 'ok', 'msg' => 'Icons saved to the draft. Visitors still see the old version until you publish. <a href="preview.php?file=' . urlencode($file) . '" target="_blank">Preview →</a>'];
+    }
     header('Location: ' . $self); exit;
 }
 
@@ -59,6 +65,7 @@ function icon_layout_fields($prefix, $i, $pos, $size, $align) { ?>
 ?>
 
 <h2 style="margin-bottom:0.25rem;">Icons: <?= h($title) ?></h2>
+<?php if ($has_pending): ?><div style="background:#fffbeb;border:1px solid #fde68a;color:#92400e;padding:.65rem 1rem;border-radius:10px;margin-bottom:1rem;font-size:.875rem;"><strong>This page has unpublished changes.</strong> Icon edits are added to the same draft. Publish from here or from <a href="page-edit.php?file=<?= urlencode($file) ?>">Edit text and sections</a>.</div><?php endif; ?>
 <p style="color:#6b7280;margin-top:0;margin-bottom:1.5rem;">
   <a href="pages.php">← back to pages</a> &nbsp;·&nbsp;
   <a href="../<?= h($file) ?>" target="_blank">view live →</a> &nbsp;·&nbsp;
@@ -121,17 +128,18 @@ function icon_layout_fields($prefix, $i, $pos, $size, $align) { ?>
   <?php endif; ?>
 
   <div style="display:flex;gap:0.5rem;position:sticky;bottom:0;background:var(--bg);padding:1rem 0;border-top:1px solid var(--line);flex-wrap:wrap;">
-    <button type="submit" class="btn">Save icons</button>
+    <button type="submit" name="action" value="save" class="btn btn--ghost" style="background:#fff;">Save draft</button>
+    <button type="submit" name="action" value="publish" class="btn">Save &amp; publish</button>
     <a href="pages.php" class="btn btn--ghost">Cancel</a>
-    <a href="../<?= h($file) ?>" target="_blank" class="btn btn--ghost">Preview live →</a>
+    <a href="preview.php?file=<?= urlencode($file) ?>" target="_blank" class="btn btn--ghost">Preview →</a>
   </div>
 </form>
 
-<?php if (is_file(page_backup_path($filepath))): ?>
-<form method="post" action="page-edit.php?file=<?= urlencode($file) ?>
-  <?= csrf_field() ?>" style="margin-top:0.5rem;" onsubmit="return confirm('Go back to the version of this page from before your last save?');">
+<?php if (!$has_pending && is_file(page_backup_path($filepath))): ?>
+<form method="post" action="page-edit.php?file=<?= urlencode($file) ?>" style="margin-top:0.5rem;" onsubmit="return confirm('Go back to the version of this page from before your last publish?');">
+  <?= csrf_field() ?>
   <input type="hidden" name="action" value="undo">
-  <button type="submit" class="btn btn--ghost">↩ Undo my last save</button>
+  <button type="submit" class="btn btn--ghost">↩ Undo last publish</button>
 </form>
 <?php endif; ?>
 

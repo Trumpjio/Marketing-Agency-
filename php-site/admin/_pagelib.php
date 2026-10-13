@@ -42,6 +42,40 @@ function page_undo($filepath) {
     return true;
 }
 
+/* ---------- Working copy (unpublished changes) ---------- */
+
+/**
+ * Edits made in the admin go to a working copy in data/pending/. The live
+ * page only changes when the working copy is published, so every change can
+ * be previewed first.
+ */
+function pending_path($file) {
+    $d = DATA_DIR . '/pending';
+    if (!is_dir($d)) @mkdir($d, 0755, true);
+    return $d . '/' . basename($file);
+}
+function page_has_pending($file) { return is_file(pending_path($file)); }
+function page_working_html($file) {
+    $pp = pending_path($file);
+    return is_file($pp) ? file_get_contents($pp) : file_get_contents(SITE_ROOT . '/' . basename($file));
+}
+function page_pending_save($file, $html) { return file_put_contents(pending_path($file), $html) !== false; }
+function page_discard($file) { $pp = pending_path($file); if (is_file($pp)) unlink($pp); }
+/** Copy the working copy over the live page (keeping one backup for Undo). */
+function page_publish($file) {
+    $pp = pending_path($file);
+    $live = SITE_ROOT . '/' . basename($file);
+    if (!is_file($pp) || !is_file($live)) return false;
+    $ok = page_save($live, file_get_contents($pp));
+    if ($ok) unlink($pp);
+    return $ok;
+}
+function pending_files() {
+    $out = [];
+    foreach (glob(DATA_DIR . '/pending/*.html') ?: [] as $f) $out[] = basename($f);
+    return $out;
+}
+
 /* ---------- Draft registry ---------- */
 
 /**
@@ -155,18 +189,32 @@ function page_promote_draft($slug) {
     file_put_contents($file, $html);
     draft_unmark($slug);
 
-    // Add to sitemap.xml if not already present
-    $sitemap = SITE_ROOT . '/sitemap.xml';
-    if (is_file($sitemap)) {
-        $xml = file_get_contents($sitemap);
-        $url = 'https://orcapulse.ai/' . basename($file);
-        if (strpos($xml, $url) === false) {
-            $entry = "  <url>\n    <loc>$url</loc>\n    <lastmod>" . date('Y-m-d') . "</lastmod>\n    <priority>0.7</priority>\n  </url>\n</urlset>";
-            $xml = str_replace("</urlset>", $entry, $xml);
-            file_put_contents($sitemap, $xml);
-        }
-    }
+    sitemap_add($file);
     return true;
+}
+
+/* ---------- sitemap.xml ---------- */
+
+function sitemap_url($file) {
+    $base = rtrim(settings_load()['base_url'] ?? 'https://orcapulse.com', '/');
+    return $base . '/' . basename($file);
+}
+/** Add a page to sitemap.xml (once). */
+function sitemap_add($file, $priority = '0.7') {
+    $sitemap = SITE_ROOT . '/sitemap.xml';
+    if (!is_file($sitemap)) return false;
+    $xml = file_get_contents($sitemap);
+    $url = sitemap_url($file);
+    if (str_contains($xml, '<loc>' . $url . '</loc>')) return true;
+    $entry = "  <url>\n    <loc>$url</loc>\n    <lastmod>" . date('Y-m-d') . "</lastmod>\n    <priority>$priority</priority>\n  </url>\n</urlset>";
+    return file_put_contents($sitemap, str_replace('</urlset>', $entry, $xml)) !== false;
+}
+function sitemap_remove($file) {
+    $sitemap = SITE_ROOT . '/sitemap.xml';
+    if (!is_file($sitemap)) return false;
+    $xml = file_get_contents($sitemap);
+    $new = preg_replace('#\s*<url>\s*<loc>' . preg_quote(sitemap_url($file), '#') . '</loc>.*?</url>#s', '', $xml);
+    return $new === $xml || file_put_contents($sitemap, $new) !== false;
 }
 
 /* ---------- Small parsers used by the editors ---------- */

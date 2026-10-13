@@ -267,7 +267,8 @@ $fontOptions = ['Inter','Manrope','Space Grotesk','Playfair Display','IBM Plex S
 </form>
 
 <div style="position:sticky;top:1rem;align-self:start;min-width:0;">
-  <div style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:0.5rem;">Live preview</div>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=Playfair+Display:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Fraunces:wght@400;500;600;700&display=swap" rel="stylesheet">
+<div style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:0.5rem;">Live preview</div>
   <div id="design-preview" style="border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;">
     <iframe id="preview-iframe" src="../index.html?preview=1" style="width:100%;height:70vh;border:0;background:#fff;" title="Design preview"></iframe>
   </div>

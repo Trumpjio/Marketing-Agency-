@@ -1,6 +1,9 @@
 <?php
 require_once __DIR__ . '/config.php';
 require_login();
+// Hold the page output until the script ends, so pages can still redirect
+// (header Location) after the layout has been included, e.g. after saving a form.
+ob_start();
 $current = basename($_SERVER['PHP_SELF'], '.php');
 ?><!doctype html>
 <html lang="en">
@@ -16,7 +19,7 @@ $current = basename($_SERVER['PHP_SELF'], '.php');
   * { box-sizing: border-box; }
   body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--ink); margin: 0; }
   .layout { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
-  @media (max-width: 820px) { .layout { grid-template-columns: 1fr; } .sidebar { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--line); } }
+  @media (max-width: 820px) { .layout { grid-template-columns: minmax(0, 1fr); } .sidebar, .main { min-width: 0; } }
   .sidebar { background: var(--surface); border-right: 1px solid var(--line); padding: 1.5rem 1rem; }
   .sidebar h1 { font-size: 1rem; margin: 0 0 1.5rem; font-weight: 800; letter-spacing: 0.02em; }
   .sidebar h1 span { color: var(--blue); }
@@ -25,6 +28,13 @@ $current = basename($_SERVER['PHP_SELF'], '.php');
   .sidebar a:hover { background: var(--bg); }
   .sidebar a.active { background: var(--blue); color: white; }
   .sidebar .logout { margin-top: auto; border-top: 1px solid var(--line); padding-top: 1rem; }
+  @media (max-width: 820px) {
+    .sidebar { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--line); padding: 0.6rem 1rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.35rem 1rem; }
+    .sidebar h1 { margin: 0; }
+    .sidebar nav { flex-direction: row; order: 3; width: 100%; overflow-x: auto; padding-bottom: 0.25rem; }
+    .sidebar nav a { white-space: nowrap; flex-shrink: 0; }
+    .sidebar .logout { margin: 0; padding: 0; border: 0; }
+  }
   .main { padding: 2rem; max-width: 1100px; }
   @media (max-width: 560px) { .main { padding: 1rem; } }
   h2 { font-size: 1.5rem; font-weight: 700; margin: 0 0 1rem; }
@@ -137,6 +147,8 @@ $current = basename($_SERVER['PHP_SELF'], '.php');
       <a href="settings.php" class="<?= $current==='settings'?'active':'' ?>">Site Settings</a>
       <a href="design.php" class="<?= $current==='design'?'active':'' ?>">Design</a>
       <a href="pages.php" class="<?= in_array($current,['pages','page-edit'])?'active':'' ?>">Pages</a>
+      <a href="library.php" class="<?= $current==='library'?'active':'' ?>">Content Library</a>
+      <a href="templates.php" class="<?= $current==='templates'?'active':'' ?>">Page Templates</a>
       <a href="blogs.php" class="<?= in_array($current,['blogs','blog-edit'])?'active':'' ?>">Blog Posts</a>
       <a href="media.php" class="<?= $current==='media'?'active':'' ?>">Media Library</a>
       <a href="subscribers.php" class="<?= $current==='subscribers'?'active':'' ?>">Subscribers</a>
