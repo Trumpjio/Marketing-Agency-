@@ -27,6 +27,16 @@ DirectoryIndex index.html index.php
   Require all denied
 </FilesMatch>
 
+# Files the admin regenerates: short cache so design changes reach visitors quickly
+<IfModule mod_expires.c>
+  <FilesMatch "^(custom-design|template-design)\.css$">
+    ExpiresByType text/css "access plus 5 minutes"
+  </FilesMatch>
+  <FilesMatch "^custom-config\.js$">
+    ExpiresByType application/javascript "access plus 5 minutes"
+  </FilesMatch>
+</IfModule>
+
 # Security headers
 <IfModule mod_headers.c>
   Header set X-Content-Type-Options "nosniff"
@@ -37,7 +47,7 @@ DirectoryIndex index.html index.php
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" "expr=%{HTTPS} == 'on'"
   # Modest Content-Security-Policy — tightened over time. 'unsafe-inline' kept
   # because inline styles are used throughout the design; move to nonces later.
-  Header set Content-Security-Policy "default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://cdn.tiny.cloud; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://calendly.com; connect-src 'self' https:;"
+  Header set Content-Security-Policy "default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://cdn.tiny.cloud; frame-src 'self' https://www.openstreetmap.org https://www.google.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://calendly.com; connect-src 'self' https:;"
   # Prevent the admin from loading inside a cross-origin iframe
   <FilesMatch "\.(php)$">
     Header set X-Frame-Options "DENY"
