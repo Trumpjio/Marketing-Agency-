@@ -1,0 +1,69 @@
+/*
+Theme Name: OrcaPulse
+Theme URI: https://orcapulse.com
+Author: OrcaPulse
+Author URI: https://orcapulse.com
+Description: OrcaPulse is a specialist growth marketing agency theme. Elementor-compatible. Comes with the full OrcaPulse design system — glass aesthetic, Inter + Manrope typography, indigo/cyan palette, scannable chip layouts, FAQ components. Globally positioned, with deep local-SEO structure for city/country/industry pages.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.5
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: orcapulse
+Tags: elementor, business, agency, marketing, custom-colors, custom-menu, featured-images, threaded-comments, translation-ready, right-sidebar, two-columns, full-width-template
+*/
+
+/* ============================================================
+   OrcaPulse — WordPress-specific overrides.
+   The full design system is loaded from assets/glass.css via functions.php.
+   ============================================================ */
+
+body.admin-bar .nav { top: 32px; }
+@media (max-width: 782px) {
+  body.admin-bar .nav { top: 46px; }
+}
+
+/* Elementor compatibility — restore container width inside Elementor sections */
+.elementor-section .container { width: 100%; max-width: var(--container-max, 1200px); }
+
+/* WP block editor compatibility */
+.wp-block-image img { max-width: 100%; height: auto; }
+.aligncenter { margin-inline: auto; display: block; }
+.alignleft { float: left; margin-right: var(--s-3); margin-bottom: var(--s-2); }
+.alignright { float: right; margin-left: var(--s-3); margin-bottom: var(--s-2); }
+
+/* Comment block (if ever used) */
+.comment-list { list-style: none; padding: 0; }
+.comment-list .comment { padding: var(--s-3); margin-bottom: var(--s-3); background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); }
+
+/* Screen reader text (WP standard) */
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+}
+.screen-reader-text:focus {
+  background-color: var(--bg);
+  clip: auto !important;
+  clip-path: none;
+  color: var(--ink);
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+}

@@ -1,0 +1,530 @@
+/* ============================================================
+   IOKA — Design system
+   Navy hero + white cards + rounded pills, built from the v8 reference.
+   Loaded AFTER glass.css so it wins on conflicts.
+   ============================================================ */
+
+:root {
+  --ioka-navy:        #202453;
+  --ioka-navy-deep:   #1e2250;
+  --ioka-ink:         #292c33;
+  --ioka-ink-soft:    #3c4048;
+  --ioka-muted:       #626977;
+  --ioka-faint:       #888e99;
+  --ioka-blue:        #3269d2;
+  --ioka-blue-dark:   #2858b5;
+  --ioka-blue-pale:   #e6f2ff;
+  --ioka-green:       #4da45a;
+  --ioka-green-dark:  #437e45;
+  --ioka-green-pale:  #e9f5e9;
+  --ioka-yellow:      #fff3c8;
+  --ioka-yellow-ink:  #8a4a20;
+  --ioka-paper:       #fff;
+  --ioka-mist:        #f6f8fb;
+  --ioka-mist-2:      #f7f8fa;
+  --ioka-line:        #dfe3e9;
+  --ioka-line-2:      #e0e4ea;
+
+  --ioka-content: 1180px;
+  --ioka-gutter: 34px;
+  --ioka-section-y: 108px;
+  --ioka-radius: 38px;
+  --ioka-radius-sm: 28px;
+  --ioka-radius-tag: 999px;
+
+  /* make the whole site use Ioka tokens */
+  --bg: #fff;
+  --ink: var(--ioka-ink);
+  --ink-soft: var(--ioka-ink-soft);
+  --muted: var(--ioka-muted);
+  --line: var(--ioka-line);
+  --line-strong: var(--ioka-line-2);
+  --blue: var(--ioka-blue);
+  --blue-deep: var(--ioka-blue-dark);
+  --ap-ink: var(--ioka-ink);
+  --ap-ink-soft: var(--ioka-ink-soft);
+  --ap-muted: var(--ioka-muted);
+  --ap-line: var(--ioka-line);
+  --ap-bg: #fff;
+  --ap-bg-soft: var(--ioka-mist);
+  --surface: #fff;
+}
+
+/* -------- Base -------- */
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+body { margin: 0; color: var(--ioka-ink); background: #fff; font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; -webkit-font-smoothing: antialiased; font-size: 16px; line-height: 1.6; }
+.page { max-width: none; }
+.page::before { display: none !important; }
+h1, h2, h3, h4, h5, .section-head h2, .hero h1 { color: var(--ioka-ink); font-family: Inter, Arial, sans-serif; font-weight: 800; letter-spacing: -0.02em; }
+a { color: inherit; }
+img { max-width: 100%; height: auto; }
+
+/* Hide the OrcaPulse guide face from the Ioka design */
+.op-guide { display: none !important; }
+
+/* The ambient coloured orbs were part of the old look */
+.orb { display: none !important; }
+
+/* -------- Container -------- */
+.ioka-wrap, .container, .wrap { width: min(var(--ioka-content), calc(100% - 2 * var(--ioka-gutter))); margin-inline: auto; padding-inline: 0; }
+
+/* -------- Nav -------- */
+.site-header { position: absolute; top: 0; left: 0; width: 100%; z-index: 10; color: #fff; background: transparent; }
+header.nav, .nav.ioka-nav { background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; border: 0; padding: 0; position: static; height: auto; }
+.nav .container.nav__inner, .ioka-nav .ioka-wrap { height: 112px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.nav .brand, a.brand, .ioka-brand { font-family: 'Barlow Condensed', 'Barlow', 'Inter', sans-serif !important; font-weight: 300 !important; font-size: 36px !important; letter-spacing: -0.8px !important; text-decoration: none !important; color: inherit !important; white-space: nowrap; text-transform: none; }
+.nav .brand span { color: inherit !important; font-weight: 300 !important; }
+.nav__desktop { display: flex; align-items: center; gap: 29px; }
+.nav__desktop > .nav__item, .nav__desktop a { font-size: 13px; font-weight: 600; text-decoration: none; color: inherit; }
+.nav__desktop a:hover, .nav__trigger:hover { text-decoration: underline; text-underline-offset: 5px; opacity: 1; }
+.nav__trigger { background: transparent; border: 0; color: inherit; font: inherit; font-size: 13px; font-weight: 600; padding: 0; cursor: pointer; }
+.nav__dropdown { background: #fff; color: var(--ioka-ink); border: 1px solid var(--ioka-line); border-radius: 16px; padding: 1rem; box-shadow: 0 24px 48px rgba(16, 24, 40, 0.14); }
+.nav__dropdown a { color: var(--ioka-ink) !important; }
+.nav__cta, a.nav__cta { border: 1px solid rgba(255, 255, 255, 0.75) !important; border-radius: 999px !important; padding: 12px 20px !important; background: transparent !important; color: inherit !important; font-size: 13px !important; font-weight: 600; }
+.nav__burger span { background: #fff; }
+.nav__mobile-panel { background: #fff; color: var(--ioka-ink); }
+.nav__mobile-panel a, .nav__mobile-link, .nav__mobile-heading { color: var(--ioka-ink); }
+.nav__mobile-cta { background: var(--ioka-blue); color: #fff; }
+
+/* Dark nav: when it sits over the navy hero */
+body[data-nav="light"] .site-header, body[data-nav="light"] header.nav { color: #fff; }
+
+/* -------- Hero (navy, centred) -------- */
+.hero { background: var(--ioka-navy); color: #fff; text-align: center; padding: 184px 0 62px; min-height: 680px; position: relative; }
+.hero > .container, .hero .wrap { position: relative; z-index: 1; }
+.hero h1 { max-width: 1040px; margin: 0 auto 34px; color: #fff !important; font-size: clamp(44px, 5.3vw, 72px); line-height: 1.12; font-weight: 800; letter-spacing: -2.6px; }
+.hero h1 .gradient-text, .hero h1 .ioka-under { background: none !important; -webkit-text-fill-color: #fff; color: #fff; position: relative; white-space: nowrap; display: inline-block; max-width: 100%; }
+@media (max-width: 420px) { .hero h1 .gradient-text, .hero h1 .ioka-under { white-space: normal; } }
+.hero h1 .ioka-under::after { content: ""; position: absolute; left: 0; right: 0; height: 8px; bottom: -3px; z-index: 0; background: linear-gradient(90deg, #4cc7e8, #6fdc92); transform: rotate(-0.6deg); }
+.hero__sub, .hero p.hero__sub { max-width: 960px; margin: 0 auto; color: #f4f5ff !important; font-size: clamp(19px, 2.15vw, 29px); line-height: 1.55; letter-spacing: 0.8px; font-weight: 400; }
+.hero__actions { display: flex; justify-content: center; gap: 0.6rem; flex-wrap: wrap; margin-top: 74px; }
+.hero .btn--primary, .hero-action { display: inline-flex; width: min(100%, 680px); min-height: 92px; align-items: center; justify-content: center; border-radius: 999px; background: #fff !important; color: #171717 !important; text-decoration: none; font-size: clamp(20px, 2.2vw, 30px); font-weight: 800; transition: transform 0.2s, box-shadow 0.2s; padding: 0 32px; border: 0; }
+.hero .btn--primary:hover, .hero-action:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(8, 13, 52, 0.25); background: #fff !important; color: #171717 !important; }
+.hero__scarcity { display: inline-flex; align-items: center; gap: 0.55rem; margin: 1.25rem auto 0 !important; padding: 10px 18px; background: rgba(255, 255, 255, 0.08); border-radius: 999px; color: #e8eaff !important; font-size: 14px; }
+.hero__scarcity strong { color: #fff; font-weight: 700; }
+.hero__dot { width: 8px; height: 8px; background: #4cc7e8; border-radius: 50%; }
+.hero .btn--ghost { border: 1px solid rgba(255,255,255,.75); color: #fff; background: transparent; }
+/* Breadcrumb inside hero reads over navy */
+.hero .breadcrumb, .hero .breadcrumb a { color: rgba(255, 255, 255, 0.78); }
+.hero .breadcrumb a:hover { color: #fff; }
+
+/* -------- Logo strip -------- */
+.ioka-logo-strip { height: 158px; display: flex; align-items: center; overflow: hidden; background: var(--ioka-mist-2); }
+.ioka-logo-track { display: flex; align-items: center; justify-content: space-around; gap: 74px; min-width: 100%; white-space: nowrap; color: #636a8e; width: 100%; padding-inline: var(--ioka-gutter); }
+.ioka-logo-word { font-size: clamp(21px, 2.5vw, 34px); font-weight: 800; letter-spacing: -1.4px; opacity: 0.96; }
+.ioka-logo-word.serif { font-family: Georgia, serif; font-weight: 700; }
+.ioka-logo-word.light { font-weight: 500; }
+
+/* -------- Sections -------- */
+main > section { padding: var(--ioka-section-y) 0; }
+main > section.soft, body section.soft { background: var(--ioka-mist); }
+main > section.hero { padding: 184px 0 62px; }
+main > section + section { padding-top: var(--ioka-section-y); }
+
+/* -------- Section head (pill + big heading + lead) -------- */
+.section-head { text-align: center; max-width: 980px; margin: 0 auto 58px; padding-inline: 8px; }
+.section-head h2 { margin: 27px 0 20px; font-size: clamp(38px, 5.1vw, 66px); line-height: 1.14; letter-spacing: -2.2px; font-weight: 800; }
+.section-head p { font-size: clamp(19px, 2.15vw, 28px); line-height: 1.55; margin: 0 auto; color: var(--ioka-ink-soft); max-width: 900px; }
+
+/* -------- Pill (eyebrow) -------- */
+.pill, .kicker { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 33px; border-radius: 999px; background: var(--ioka-blue-pale); color: #3269bd; font-size: 20px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; font-family: Inter, sans-serif; }
+.pill.green, .kicker.green, .pill--green { background: var(--ioka-green-pale); color: var(--ioka-green-dark); letter-spacing: 0.4px; }
+.pill.yellow, .pill--yellow { background: var(--ioka-yellow); color: var(--ioka-yellow-ink); letter-spacing: 0.4px; }
+
+/* -------- Cards grid (reuses .grid + .glass from the old system) -------- */
+.grid { display: grid; gap: 28px; }
+.grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.glass, .case-card, .article-card, .feature-card { background: #fff; border: 2px solid var(--ioka-line-2); border-radius: var(--ioka-radius); padding: 42px 48px; box-shadow: 0 10px 32px rgba(25, 35, 68, 0.055); color: var(--ioka-ink); text-decoration: none; display: block; transition: transform 0.18s ease, box-shadow 0.18s ease; }
+.glass:hover, .case-card:hover { transform: translateY(-3px); box-shadow: 0 20px 48px rgba(25, 35, 68, 0.1); border-color: #c3cad6; }
+.glass .cap__icon { width: 58px; height: 58px; border-radius: 10px; background: var(--ioka-blue-pale); color: var(--ioka-blue); font-family: Inter, sans-serif; font-weight: 800; font-size: 20px; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+.glass .cap__title, .cap__title { font-size: clamp(20px, 2vw, 24px); line-height: 1.3; letter-spacing: -0.4px; margin: 0 0 14px; font-weight: 800; color: var(--ioka-ink); }
+.glass .cap__desc, .cap__desc { font-size: 17px; line-height: 1.55; color: var(--ioka-muted); margin: 0; }
+
+/* -------- Tag row -------- */
+.tag-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; }
+.tag { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 28px; border-radius: 999px; font-size: 18px; font-weight: 800; }
+.tag.geo, .tag--yellow { background: var(--ioka-yellow); color: var(--ioka-yellow-ink); }
+.tag.seo, .tag--green { background: var(--ioka-green-pale); color: var(--ioka-green-dark); }
+.tag.blue, .tag--blue { background: var(--ioka-blue-pale); color: #3269bd; }
+
+/* -------- Blue link -------- */
+.link-blue { color: var(--ioka-blue); font-size: 22px; font-weight: 800; text-decoration: none; }
+.link-blue:hover { text-decoration: underline; text-underline-offset: 5px; }
+
+/* -------- Chips (locations etc.) -------- */
+.chips { display: flex; flex-wrap: wrap; gap: 10px; padding: 0; margin: 0; list-style: none; }
+.chips--center { justify-content: center; }
+.chip { padding: 10px 18px; border: 1.5px solid var(--ioka-line); border-radius: 999px; font-size: 14px; font-weight: 600; background: #fff; color: var(--ioka-ink); }
+.chip a { color: inherit; text-decoration: none; }
+.chip--plain { background: transparent; border-style: dashed; color: var(--ioka-muted); }
+
+/* -------- Buttons -------- */
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 54px; padding: 0 28px; border-radius: 999px; font-size: 16px; font-weight: 800; text-decoration: none; border: 0; cursor: pointer; transition: background 0.2s, transform 0.2s; }
+.btn--primary { background: var(--ioka-blue); color: #fff; }
+.btn--primary:hover { background: var(--ioka-blue-dark); color: #fff; transform: translateY(-1px); }
+.btn--ghost { background: #fff; color: var(--ioka-ink); border: 2px solid var(--ioka-line); }
+.btn--ghost:hover { border-color: var(--ioka-blue); color: var(--ioka-blue); background: #fff; }
+
+/* -------- Prose (article body) -------- */
+.prose { max-width: 72ch; margin-inline: auto; font-size: 18px; line-height: 1.7; color: var(--ioka-ink-soft); }
+.prose p { margin: 0 0 1.1rem; }
+.prose h2 { font-size: 30px; margin: 2rem 0 1rem; }
+.prose h3 { font-size: 24px; margin: 1.5rem 0 0.75rem; }
+.prose ul, .prose ol { padding-left: 1.3rem; margin: 0 0 1.1rem; }
+.prose li { margin-bottom: 0.4rem; }
+.prose a { color: var(--ioka-blue); text-decoration: underline; text-underline-offset: 3px; }
+
+/* -------- CTA block (section) -------- */
+.cta-block { background: var(--ioka-navy); color: #fff; padding: 56px 48px; border-radius: 38px; text-align: center; max-width: 920px; margin: 0 auto; }
+.cta-block h2 { color: #fff; font-size: clamp(32px, 4vw, 48px); margin: 0 0 1rem; letter-spacing: -1.4px; }
+.cta-block p { color: #e3e6f5; font-size: 19px; line-height: 1.55; margin: 0 0 1.5rem; max-width: 620px; margin-inline: auto; margin-bottom: 1.75rem; }
+.cta-block strong { color: #fff; }
+.cta-block .btn--primary { background: #fff; color: var(--ioka-navy); min-height: 68px; padding: 0 38px; font-size: 18px; }
+.cta-block .btn--primary:hover { background: #e6ecff; color: var(--ioka-navy); }
+
+/* -------- Section image / op-media -------- */
+.op-media { margin: 0 0 var(--s-4, 1.5rem); }
+.op-media img { border-radius: var(--ioka-radius-sm); }
+
+/* -------- FAQ -------- */
+.faq-list { display: flex; flex-direction: column; gap: 14px; max-width: 820px; margin: 0 auto; }
+.faq, details.faq { background: #fff; border: 2px solid var(--ioka-line-2); border-radius: 24px; overflow: hidden; }
+.faq summary { padding: 20px 28px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; cursor: pointer; font-size: 18px; font-weight: 700; color: var(--ioka-ink); list-style: none; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::marker { display: none; }
+.faq summary > span:first-child { flex: 1; }
+.faq__plus, .faq__sign { width: 28px; height: 28px; border-radius: 50%; background: var(--ioka-blue-pale); color: var(--ioka-blue); display: inline-flex; align-items: center; justify-content: center; font-weight: 800; flex-shrink: 0; }
+.faq[open] .faq__plus, .faq[open] .faq__sign { transform: rotate(45deg); }
+.faq__body { padding: 0 28px 24px; color: var(--ioka-ink-soft); font-size: 17px; line-height: 1.65; }
+.faq__body p { margin: 0 0 1rem; }
+.faq__body p:last-child { margin-bottom: 0; }
+
+/* -------- Content library cards -------- */
+.op-collection { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 28px; }
+.op-quote, .op-case, .op-person, .op-award { background: #fff; border: 2px solid var(--ioka-line-2); border-radius: var(--ioka-radius-sm); padding: 36px 36px 32px; box-shadow: 0 10px 32px rgba(25,35,68,.05); }
+.op-quote blockquote { font-family: Georgia, serif; font-size: clamp(21px, 2.2vw, 29px); line-height: 1.5; margin: 0 0 24px; color: var(--ioka-ink); }
+.op-quote figcaption { display: flex; align-items: center; gap: 12px; }
+.op-quote figcaption strong { color: var(--ioka-ink); font-weight: 800; font-size: 16px; }
+.op-quote figcaption span { color: var(--ioka-muted); font-size: 13px; display: block; }
+.op-quote__img { width: 48px; height: 48px; border-radius: 50%; }
+
+/* -------- Footer -------- */
+footer.footer, footer { background: var(--ioka-mist-2); color: var(--ioka-ink); padding: 68px 0 28px; margin-top: 0; border-top: 0; }
+footer .ioka-wrap, footer .container { }
+footer.footer .footer__inner { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 30px; max-width: var(--ioka-content); margin-inline: auto; align-items: start; }
+footer.footer .footer__brand { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
+footer.footer .footer__brand .brand { font-family: 'Barlow Condensed', sans-serif !important; font-weight: 300 !important; font-size: 32px !important; color: var(--ioka-navy) !important; letter-spacing: -0.8px; }
+footer.footer .footer__tag { color: #5e6574; font-size: 14px; max-width: 320px; margin: 0; line-height: 1.6; }
+footer.footer .footer__cta { background: var(--ioka-blue); color: #fff; border-radius: 999px; padding: 12px 22px; font-size: 14px; font-weight: 700; }
+footer.footer .footer__mail { color: #5e6574; font-size: 14px; text-decoration: none; }
+footer.footer .footer__mail:hover { color: var(--ioka-blue); text-decoration: underline; }
+footer.footer .footer__cols { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 30px; }
+footer.footer .footer__col { display: flex; flex-direction: column; gap: 10px; }
+footer.footer .footer__title { font-size: 13px; font-weight: 800; margin: 5px 0 10px; color: var(--ioka-ink); text-transform: none; letter-spacing: 0; }
+footer.footer .footer__col a { font-size: 14px; color: #5e6574; text-decoration: none; padding-block: 0; }
+footer.footer .footer__col a:hover { text-decoration: underline; color: var(--ioka-ink); }
+footer.footer .footer__bottom { max-width: var(--ioka-content); margin: 38px auto 0; padding-top: 20px; border-top: 1px solid var(--ioka-line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 12px; color: #828895; }
+footer.footer .footer__legal { list-style: none; display: flex; gap: 1.25rem; flex-wrap: wrap; padding: 0; margin: 0; }
+footer.footer .footer__legal a { color: #828895; text-decoration: none; font-size: 12px; }
+footer.footer .footer__legal a:hover { color: var(--ioka-ink); }
+
+/* -------- Content library sections hidden until something is in them -------- */
+section[data-op-empty="true"] { display: none !important; }
+
+/* -------- Section settings (admin per-section) -------- */
+section[data-op-bg] { background: var(--op-bg); }
+section[data-op-ink] :is(h1, h2, h3, h4, h5, p, li, summary) { color: var(--op-ink); }
+section[data-op-pad="sm"] { padding-block: 64px; }
+section[data-op-pad="md"] { padding-block: 96px; }
+section[data-op-pad="lg"] { padding-block: 140px; }
+section[data-op-align="center"] { text-align: center; }
+section[data-op-align="center"] .section-head { margin-inline: auto; text-align: center; }
+section[data-op-align="left"] { text-align: left; }
+section[data-op-align="left"] .section-head { margin-inline: 0; text-align: left; }
+
+/* Reveal animation: keep it on but gentle */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
+.reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+/* -------- Breadcrumb -------- */
+.breadcrumb { font-size: 13px; letter-spacing: 0.04em; color: var(--ioka-muted); margin-bottom: 1rem; }
+.breadcrumb a { color: inherit; text-decoration: none; opacity: 0.85; }
+.breadcrumb a:hover { opacity: 1; text-decoration: underline; }
+
+/* -------- Skip link -------- */
+.skip-link { position: absolute; left: -9999px; top: 0; z-index: 1000; padding: 0.7rem 1.1rem; background: #fff; color: var(--ioka-ink); font-weight: 700; border-radius: 0 0 10px 10px; }
+.skip-link:focus { left: 1rem; }
+
+/* -------- Responsive -------- */
+@media (max-width: 1000px) {
+  :root { --ioka-gutter: 26px; --ioka-section-y: 82px; }
+  .nav .container.nav__inner, .ioka-nav .ioka-wrap { height: 96px; }
+  .nav__desktop { gap: 18px; }
+  .hero, main > section.hero { padding: 165px 0 62px; min-height: 620px; }
+  .glass, .case-card { padding: 32px; }
+  .grid--3, .grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  footer.footer .footer__inner { grid-template-columns: 1fr; gap: 36px; }
+  footer.footer .footer__cols { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  :root { --ioka-gutter: 22px; --ioka-section-y: 76px; }
+  .hero, main > section.hero { padding: 170px 0 56px !important; min-height: 0 !important; text-align: center; }
+  .hero h1 { font-size: clamp(38px, 8.3vw, 58px); line-height: 1.16; letter-spacing: -1.7px; margin-bottom: 24px; }
+  .hero h1 .ioka-under::after { height: 6px; bottom: -1px; }
+  .hero__sub { font-size: clamp(18px, 4.3vw, 23px); line-height: 1.65; letter-spacing: 0.45px; }
+  .hero__actions { margin-top: 48px; }
+  .hero .btn--primary, .hero-action { min-height: 72px; width: 100%; font-size: 20px; }
+  .ioka-logo-strip { height: 128px; }
+  .ioka-logo-track { justify-content: flex-start; gap: 55px; width: max-content; min-width: 0; padding-left: 22px; }
+  .ioka-logo-word { font-size: 28px; }
+  .section-head { margin-bottom: 45px; }
+  .pill, .kicker { min-height: 48px; padding: 0 28px; font-size: 15px; letter-spacing: 1.4px; }
+  .section-head h2 { font-size: clamp(32px, 9vw, 44px); letter-spacing: -1.2px; line-height: 1.17; margin-top: 24px; }
+  .section-head p { font-size: 19px; line-height: 1.55; }
+  .glass, .case-card, .op-quote, .op-case, .op-person, .op-award { padding: 28px 26px; border-radius: 28px; }
+  .cta-block { padding: 36px 24px; border-radius: 28px; }
+  .cta-block h2 { font-size: 28px; }
+  .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; }
+  footer.footer .footer__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 20px; }
+  footer.footer .footer__bottom { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 420px) {
+  :root { --ioka-gutter: 18px; }
+  .hero, main > section.hero { padding-top: 150px !important; }
+  .hero h1 { font-size: 34px; }
+  footer.footer .footer__cols { grid-template-columns: 1fr; }
+}
+
+/* -------- Nav: on top of the navy hero -------- */
+/* The current markup uses <header class="nav">, which must sit over the navy hero. */
+header.nav, header.nav#nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; background: transparent !important; color: #fff; height: auto; min-height: 112px; backdrop-filter: none; -webkit-backdrop-filter: none; border: 0 !important; }
+header.nav .container.nav__inner, header.nav .nav__inner { display: flex; align-items: center; justify-content: space-between; height: 112px; padding-inline: 0; }
+header.nav .brand, header.nav a.brand { color: #fff !important; font-family: 'Barlow Condensed', 'Barlow', sans-serif !important; font-weight: 300 !important; font-size: 36px !important; letter-spacing: -0.8px !important; }
+header.nav .brand span { color: #fff !important; }
+header.nav .nav__desktop a, header.nav .nav__trigger { color: #fff; }
+header.nav .nav__cta { color: #fff; border-color: rgba(255,255,255,.75); }
+header.nav .nav__burger span { background: #fff; }
+.page > .orb { display: none !important; }
+
+/* Hero must sit flush under the nav */
+main > section.hero, .page section.hero { margin-top: 0; }
+body section.hero:first-of-type, .page > section.hero { margin-top: 0; }
+
+/* On pages where the top isn't a hero, give the nav a solid light look */
+body:not([data-nav="light"]) header.nav { background: rgba(255,255,255,0.96) !important; backdrop-filter: saturate(180%) blur(14px); -webkit-backdrop-filter: saturate(180%) blur(14px); border-bottom: 1px solid var(--ioka-line) !important; color: var(--ioka-ink); }
+body:not([data-nav="light"]) header.nav .brand { color: var(--ioka-navy) !important; }
+body:not([data-nav="light"]) header.nav .nav__desktop a, body:not([data-nav="light"]) header.nav .nav__trigger { color: var(--ioka-ink); }
+body:not([data-nav="light"]) header.nav .nav__cta { color: var(--ioka-ink); border-color: var(--ioka-line); }
+body:not([data-nav="light"]) header.nav .nav__burger span { background: var(--ioka-ink); }
+
+/* Pill: hug content, don't stretch */
+.pill, .kicker, .section-head .kicker { display: inline-flex !important; width: auto !important; max-width: 100%; }
+.section-head > .pill, .section-head > .kicker { align-self: center; }
+
+/* Compact service lists stay 2-up on phones */
+@media (max-width: 760px) {
+  .grid.grid--compact, .grid--4.grid--compact { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 14px; }
+  .grid--compact .glass { padding: 20px 18px; }
+  .grid--compact .cap__icon { width: 42px; height: 42px; margin-bottom: 12px; font-size: 16px; }
+  .grid--compact .cap__title { font-size: 16px; margin-bottom: 6px; }
+  .grid--compact .cap__desc { display: none; }
+}
+
+/* ============================================================
+   IOKA v8 — components ported from the reference verbatim
+   (scenario shell, dashboard mock, funnel, filter chips, work form)
+   ============================================================ */
+
+/* -------- Case cards: two-up grid with coloured tags -------- */
+.ioka-case-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.ioka-case { overflow: hidden; border: 2px solid var(--ioka-line-2); border-radius: var(--ioka-radius); background: #fff; padding: 0; display: flex; flex-direction: column; text-decoration: none; color: inherit; box-shadow: 0 10px 32px rgba(25,35,68,.055); }
+.ioka-case__logo { height: 210px; background: var(--ioka-mist-2); display: flex; align-items: center; justify-content: center; text-align: center; padding: 25px; color: #989db4; font-size: clamp(26px, 3vw, 40px); font-weight: 800; letter-spacing: -1.4px; gap: 12px; }
+.ioka-case__mark { display: inline-flex; align-items: center; justify-content: center; width: 58px; height: 58px; border-radius: 8px; background: #9ca2b9; color: #fff; font-family: Georgia, serif; font-size: 38px; }
+.ioka-case__body { padding: 42px 48px 48px; display: flex; flex-direction: column; gap: 0; }
+.ioka-case__tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; }
+.ioka-case__body h3 { font-size: clamp(23px, 2.6vw, 36px); line-height: 1.35; letter-spacing: -.8px; margin: 0 0 18px; font-weight: 800; color: var(--ioka-ink); }
+.ioka-case__body p { font-size: clamp(17px, 1.9vw, 24px); line-height: 1.55; color: var(--ioka-muted); margin: 0 0 35px; }
+
+/* -------- Two-column copy + visual (GEO, Services method-grid) -------- */
+.ioka-split { display: grid; grid-template-columns: 1fr 1fr; gap: 46px; align-items: center; }
+.ioka-split--services { grid-template-columns: 0.9fr 1.1fr; gap: 60px; }
+.ioka-split__copy { text-align: left; }
+.ioka-split__copy > .pill { margin-bottom: 20px; }
+.ioka-split__copy h2 { font-size: clamp(40px, 4.7vw, 60px); margin: 0 0 22px; line-height: 1.14; letter-spacing: -1.8px; font-weight: 800; color: var(--ioka-ink); }
+.ioka-split__copy h2 .ioka-green { color: var(--ioka-green); }
+.ioka-split__copy h2 .ioka-blue-accent { color: #55bce9; }
+.ioka-split__copy p { font-size: clamp(18px, 1.8vw, 24px); line-height: 1.55; color: #444953; margin: 0 0 18px; }
+
+/* -------- Scenario shell: search query + AI prompt card -------- */
+.ioka-scenario { padding: 34px; border-radius: 40px; background: #fff; box-shadow: 0 24px 55px rgba(32, 36, 83, .07); border: 1px solid var(--ioka-line); }
+.ioka-search-query { display: flex; align-items: center; justify-content: center; gap: 16px; border: 2px solid #ececef; background: #fafafa; border-radius: 999px; padding: 19px 18px; color: #6c6e75; font-size: clamp(15px, 1.65vw, 22px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ioka-google-g { font-size: 25px; font-weight: 800; color: #4285f4; flex-shrink: 0; }
+.ioka-connector { height: 36px; width: 2px; background: #d7d9e0; margin: 10px auto; }
+.ioka-prompt-card { border: 2px solid #dedfe7; border-radius: 35px; padding: 30px 32px; background: #fff; box-shadow: 0 15px 35px rgba(32, 36, 83, .05); }
+.ioka-prompt-card__icons { font-size: 22px; letter-spacing: 12px; margin-bottom: 15px; color: #55bce9; }
+.ioka-prompt-card p { font-size: clamp(19px, 2vw, 27px); line-height: 1.48; margin: 0; color: #2f3138; }
+.ioka-scenario__meta { border-top: 2px dashed #d9dce5; margin-top: 28px; padding-top: 24px; font-family: 'Roboto Mono', 'SF Mono', Menlo, monospace; font-size: 12px; line-height: 2.3; color: #777c87; overflow-wrap: anywhere; mask-image: linear-gradient(to bottom, #000 68%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, #000 68%, transparent 100%); }
+.ioka-scenario__meta strong { color: #4f545f; }
+
+/* -------- Dashboard mock -------- */
+.ioka-product-visual { border: 2px solid var(--ioka-line-2); border-radius: 36px; background: #fff; overflow: hidden; padding: 20px; box-shadow: 0 8px 28px rgba(32, 36, 83, .04); }
+.ioka-dashboard { display: grid; grid-template-columns: 220px 1fr; min-height: 365px; border: 1px solid #e2e4e9; border-radius: 24px; overflow: hidden; background: #f8f9fc; }
+.ioka-dash-side { background: #fff; border-right: 1px solid #e3e5eb; padding: 24px 18px; }
+.ioka-dash-logo { font-weight: 800; font-size: 16px; margin-bottom: 25px; color: var(--ioka-ink); }
+.ioka-dash-item { padding: 12px 10px; border-radius: 10px; color: #767c88; font-size: 13px; margin: 4px 0; }
+.ioka-dash-item.is-on { color: var(--ioka-blue); background: #eef4ff; font-weight: 700; }
+.ioka-dash-main { padding: 24px; }
+.ioka-dash-toolbar { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; color: #6b7280; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+.ioka-dash-tile { background: #fff; border: 1px solid #e3e5eb; border-radius: 16px; padding: 20px; margin-bottom: 14px; }
+.ioka-dash-tile strong { font-size: 18px; color: var(--ioka-ink); display: block; margin-bottom: 6px; }
+.ioka-dash-tile p { font-size: 12px; color: #858a95; margin: 0; line-height: 1.5; }
+.ioka-mini-bars { height: 92px; display: flex; align-items: end; gap: 12px; margin-top: 18px; }
+.ioka-mini-bars span { flex: 1; background: #4d74dc; border-radius: 6px 6px 0 0; }
+.ioka-mini-bars span:nth-child(1) { height: 36%; }
+.ioka-mini-bars span:nth-child(2) { height: 55%; }
+.ioka-mini-bars span:nth-child(3) { height: 47%; }
+.ioka-mini-bars span:nth-child(4) { height: 77%; }
+.ioka-mini-bars span:nth-child(5) { height: 66%; }
+.ioka-mini-bars span:nth-child(6) { height: 92%; }
+
+/* -------- Feature head (centred, bigger) -------- */
+.ioka-feature-head { text-align: center; max-width: 1000px; margin: 0 auto 46px; padding-inline: 8px; }
+.ioka-feature-head h2 { margin: 0 0 18px; font-size: clamp(37px, 4.8vw, 62px); font-weight: 800; letter-spacing: -2px; line-height: 1.15; color: var(--ioka-ink); }
+.ioka-feature-head h2 .ioka-blue-accent { color: #55bce9; }
+.ioka-feature-head p { font-size: clamp(19px, 2vw, 26px); color: #62666e; margin: 0; line-height: 1.5; }
+
+/* -------- Funnel card -------- */
+.ioka-funnel-card { border-radius: 36px; background: #f8f9fb; padding: 34px 25px; box-shadow: 0 10px 30px rgba(37, 42, 53, .07); border: 1px solid #edf0f3; }
+.ioka-funnel { max-width: 640px; margin: 0 auto; text-align: center; color: #fff; font-size: 14px; font-weight: 800; }
+.ioka-funnel-top { height: 130px; background: #777f91; clip-path: polygon(0 0, 100% 0, 84% 100%, 16% 100%); padding-top: 46px; }
+.ioka-funnel-mid { height: 115px; background: #4ca05a; clip-path: polygon(16% 0, 84% 0, 66% 100%, 34% 100%); margin-top: -1px; padding-top: 37px; }
+.ioka-funnel-top small, .ioka-funnel-mid small { display: block; font-weight: 500; margin-top: 4px; }
+.ioka-funnel-bottom { display: grid; grid-template-columns: 1fr 1fr; color: #4ca05a; gap: 10px; margin-top: 10px; }
+.ioka-funnel-bottom div { padding: 15px 8px; font-size: 13px; border-top: 2px solid #4ca05a; }
+.ioka-funnel-bottom div:first-child { border-right: 2px solid #4ca05a; }
+.ioka-funnel-bottom div::before { content: "↗"; display: block; font-size: 26px; color: #4ca05a; margin-bottom: 6px; }
+.ioka-funnel-bottom div:last-child::before { content: "↖"; }
+.ioka-funnel-bottom small { display: block; color: #5d616a; font-size: 11px; font-weight: 500; margin-top: 6px; }
+.ioka-funnel-axis { display: flex; flex-direction: column; justify-content: space-between; align-items: center; color: #777f91; font-size: 10px; padding: 4px 0 0; }
+.ioka-funnel-axis span:nth-child(2) { writing-mode: vertical-rl; transform: rotate(180deg); }
+.ioka-funnel-axis__hi { color: #4ca05a; font-weight: 800; }
+.ioka-funnel-wrap { display: grid; grid-template-columns: 34px 1fr; gap: 8px; align-items: stretch; }
+
+/* -------- Companies filter -------- */
+.ioka-company-head { text-align: center; margin-bottom: 50px; padding-inline: 8px; }
+.ioka-company-head h2 { font-size: clamp(38px, 4.8vw, 62px); max-width: 850px; margin: 0 auto 36px; letter-spacing: -2px; line-height: 1.14; color: var(--ioka-ink); }
+.ioka-company-head p { font-size: 17px; color: #888e99; text-transform: uppercase; letter-spacing: 0.08em; margin: 0; }
+.ioka-filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin: 30px auto 65px; }
+.ioka-filter { padding: 17px 27px; min-height: 64px; border: 2px solid #e0eafa; border-radius: 999px; background: #f8fbff; color: var(--ioka-blue); font-size: clamp(15px, 1.8vw, 23px); cursor: pointer; font-weight: 700; transition: all 0.18s ease; }
+.ioka-filter:hover { box-shadow: 0 5px 14px rgba(50, 105, 210, .12); }
+.ioka-filter[aria-pressed="true"] { background: var(--ioka-blue); color: #fff; border-color: var(--ioka-blue); }
+.ioka-client-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 42px 32px; align-items: center; }
+.ioka-client { min-height: 58px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: clamp(15px, 1.7vw, 22px); font-weight: 800; letter-spacing: -0.6px; color: #414d6c; }
+.ioka-client:nth-child(3n) { color: #438f61; }
+.ioka-client:nth-child(4n) { color: #24272d; }
+.ioka-client:nth-child(5n) { color: #3979c5; }
+.ioka-client small { display: block; font-size: 10px; letter-spacing: 0; font-weight: 500; }
+
+/* -------- Testimonials, Ioka v8 style -------- */
+.ioka-testimonials { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.ioka-testimonial { padding: 42px 44px; border: 2px solid var(--ioka-line-2); border-radius: 36px; background: #fff; box-shadow: 0 10px 32px rgba(25,35,68,.055); }
+.ioka-testimonial__label { display: inline-flex; padding: 13px 24px; background: var(--ioka-yellow); color: var(--ioka-yellow-ink); border-radius: 999px; font-size: 15px; font-weight: 800; margin-bottom: 24px; }
+.ioka-testimonial blockquote { font-family: Georgia, serif; font-size: clamp(21px, 2.2vw, 29px); line-height: 1.5; margin: 0 0 28px; color: var(--ioka-ink); }
+.ioka-person { display: flex; align-items: center; gap: 16px; color: #373b68; font-size: 20px; font-weight: 800; }
+.ioka-person-mark { width: 54px; height: 54px; display: flex; align-items: center; justify-content: center; background: #e6eaf7; border-radius: 50%; font-size: 22px; color: #373b68; flex-shrink: 0; }
+.ioka-person small { display: block; color: #81879e; font-size: 14px; font-weight: 500; }
+
+/* -------- Work with us (contact form) -------- */
+.ioka-work-section { background: var(--ioka-navy); color: #fff; }
+.ioka-work-section h2 { color: #fff; font-size: clamp(38px, 4.5vw, 58px); margin: 25px 0 20px; letter-spacing: -1.6px; }
+.ioka-work-section p { font-size: 19px; line-height: 1.55; color: #e3e6f5; margin: 0 0 1rem; }
+.ioka-work-section .pill { background: rgba(255,255,255,.14); color: #fff; letter-spacing: 1.6px; }
+.ioka-work-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 55px; align-items: start; }
+.ioka-work-list { border-top: 1px solid rgba(255,255,255,.25); margin-top: 30px; }
+.ioka-work-list div { padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.25); font-size: 16px; }
+.ioka-work-form { background: #fff; color: var(--ioka-ink); padding: 34px; border-radius: 28px; min-width: 0; }
+.ioka-work-form .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.ioka-work-form .field { display: grid; gap: 8px; margin-bottom: 14px; }
+.ioka-work-form .field.full { grid-column: 1 / -1; }
+.ioka-work-form label { font-size: 13px; font-weight: 700; margin: 0; color: var(--ioka-ink); display: block; }
+.ioka-work-form input, .ioka-work-form select, .ioka-work-form textarea { width: 100%; padding: 13px 14px; border: 1px solid #d3d8e0; border-radius: 9px; background: #fff; color: var(--ioka-ink); font: inherit; font-size: 14px; min-height: 49px; }
+.ioka-work-form textarea { min-height: 126px; resize: vertical; }
+.ioka-work-form input:focus, .ioka-work-form select:focus, .ioka-work-form textarea:focus { outline: 3px solid #8db7ff; outline-offset: 3px; }
+.ioka-form-submit { width: 100%; border: 0; border-radius: 999px; background: var(--ioka-blue); color: #fff; padding: 17px; font-weight: 800; cursor: pointer; min-height: 54px; }
+.ioka-form-submit:hover { background: var(--ioka-blue-dark); }
+.ioka-form-note { font-size: 12px; color: #727783; margin: 12px 0 0; }
+
+/* -------- Founders / team cards -------- */
+.ioka-founders { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 25px; }
+.ioka-founder { border-radius: 28px; border: 1px solid var(--ioka-line); padding: 32px; background: #fff; }
+.ioka-founder .ioka-portrait { height: 190px; border-radius: 18px; background: linear-gradient(135deg, #e5eafa, #f5f7fb); display: flex; align-items: center; justify-content: center; font-size: 52px; font-weight: 800; color: #7b83a7; margin-bottom: 22px; }
+.ioka-founder h3 { margin: 0 0 5px; font-size: 24px; color: var(--ioka-ink); }
+.ioka-founder p { margin: 0; color: var(--ioka-muted); font-size: 15px; line-height: 1.5; }
+
+/* -------- Recruit CTA (horizontal card) -------- */
+.ioka-recruit { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 36px 42px; border: 1px solid var(--ioka-line); border-radius: 28px; background: #fff; }
+.ioka-recruit h3 { font-size: clamp(24px, 3vw, 36px); margin: 0 0 8px; color: var(--ioka-ink); }
+.ioka-recruit p { margin: 0; color: var(--ioka-muted); font-size: 16px; }
+.ioka-recruit .btn { background: var(--ioka-blue); color: #fff; min-width: 180px; min-height: 68px; font-size: 18px; padding: 0 32px; }
+
+/* -------- Logo strip (used on home) -------- */
+/* defined above */
+
+/* ============================================================
+   Responsive adjustments for the Ioka v8 components
+   ============================================================ */
+@media (max-width: 1000px) {
+  .ioka-split, .ioka-split--services { grid-template-columns: 1fr; gap: 36px; }
+  .ioka-dashboard { grid-template-columns: 160px 1fr; }
+  .ioka-dash-side { padding: 20px 12px; }
+  .ioka-client-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 18px; }
+  .ioka-work-grid { grid-template-columns: 1fr; gap: 36px; }
+}
+@media (max-width: 760px) {
+  .ioka-case-grid { grid-template-columns: 1fr; gap: 24px; }
+  .ioka-case__body { padding: 32px 28px 36px; }
+  .ioka-case__logo { height: 170px; }
+  .ioka-scenario { padding: 22px 16px; border-radius: 32px; }
+  .ioka-search-query { font-size: 14px; padding: 15px 12px; gap: 10px; white-space: normal; text-align: left; }
+  .ioka-prompt-card { padding: 24px 20px; border-radius: 28px; }
+  .ioka-prompt-card p { font-size: 18px; line-height: 1.5; }
+  .ioka-dashboard { grid-template-columns: 1fr; min-height: 0; }
+  .ioka-dash-side { display: none; }
+  .ioka-dash-main { padding: 16px; }
+  .ioka-funnel-card { padding: 24px 10px; border-radius: 28px; }
+  .ioka-funnel-top { height: 110px; padding-top: 38px; }
+  .ioka-funnel-mid { height: 100px; padding-top: 31px; }
+  .ioka-feature-head { margin-bottom: 36px; }
+  .ioka-feature-head h2 { font-size: clamp(32px, 8vw, 44px); letter-spacing: -1.2px; }
+  .ioka-feature-head p { font-size: 18px; }
+  .ioka-filters { gap: 10px; margin: 28px auto 48px; }
+  .ioka-filter { min-height: 54px; padding: 12px 20px; font-size: 15px; border-radius: 999px; }
+  .ioka-client-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 14px; }
+  .ioka-client { font-size: 16px; }
+  .ioka-testimonials { grid-template-columns: 1fr; gap: 20px; }
+  .ioka-testimonial { padding: 28px 24px; border-radius: 28px; }
+  .ioka-testimonial blockquote { font-size: 20px; line-height: 1.5; }
+  .ioka-person { font-size: 17px; }
+  .ioka-work-form { padding: 24px 20px; }
+  .ioka-work-form .fields { grid-template-columns: 1fr; gap: 0; }
+  .ioka-work-form .field.full { grid-column: auto; }
+  .ioka-founders { grid-template-columns: 1fr; }
+  .ioka-founder { padding: 24px; }
+  .ioka-recruit { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
+  .ioka-recruit .btn { width: 100%; min-height: 56px; font-size: 16px; }
+  .ioka-split__copy h2 { font-size: clamp(32px, 8vw, 44px); letter-spacing: -1.3px; }
+  .ioka-split__copy p { font-size: 18px; }
+}
+@media (max-width: 420px) {
+  .ioka-case__body { padding: 28px 22px; }
+  .ioka-case__logo { height: 155px; font-size: 24px; }
+  .ioka-scenario { padding: 18px 12px; }
+  .ioka-prompt-card { padding: 20px 16px; }
+  .ioka-filters { gap: 8px; }
+  .ioka-filter { font-size: 14px; padding: 10px 16px; min-height: 48px; }
+  .ioka-dash-main { padding: 12px; }
+}
