@@ -264,7 +264,7 @@ section[data-op-align="left"] .section-head { margin-inline: 0; text-align: left
   :root { --ioka-gutter: 26px; --ioka-section-y: 82px; }
   .nav .container.nav__inner, .ioka-nav .ioka-wrap { height: 96px; }
   .nav__desktop { gap: 18px; }
-  .hero { padding-top: 165px; min-height: 620px; }
+  .hero, main > section.hero { padding: 165px 0 62px; min-height: 620px; }
   .glass, .case-card { padding: 32px; }
   .grid--3, .grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   footer.footer .footer__inner { grid-template-columns: 1fr; gap: 36px; }
@@ -272,7 +272,7 @@ section[data-op-align="left"] .section-head { margin-inline: 0; text-align: left
 }
 @media (max-width: 760px) {
   :root { --ioka-gutter: 22px; --ioka-section-y: 76px; }
-  .hero { padding: 240px 0 62px; min-height: 0; text-align: center; }
+  .hero, main > section.hero { padding: 170px 0 56px !important; min-height: 0 !important; text-align: center; }
   .hero h1 { font-size: clamp(38px, 8.3vw, 58px); line-height: 1.16; letter-spacing: -1.7px; margin-bottom: 24px; }
   .hero h1 .ioka-under::after { height: 6px; bottom: -1px; }
   .hero__sub { font-size: clamp(18px, 4.3vw, 23px); line-height: 1.65; letter-spacing: 0.45px; }
@@ -294,7 +294,7 @@ section[data-op-align="left"] .section-head { margin-inline: 0; text-align: left
 }
 @media (max-width: 420px) {
   :root { --ioka-gutter: 18px; }
-  .hero { padding-top: 220px; }
+  .hero, main > section.hero { padding-top: 150px !important; }
   .hero h1 { font-size: 34px; }
   footer.footer .footer__cols { grid-template-columns: 1fr; }
 }
@@ -332,4 +332,199 @@ body:not([data-nav="light"]) header.nav .nav__burger span { background: var(--io
   .grid--compact .cap__icon { width: 42px; height: 42px; margin-bottom: 12px; font-size: 16px; }
   .grid--compact .cap__title { font-size: 16px; margin-bottom: 6px; }
   .grid--compact .cap__desc { display: none; }
+}
+
+/* ============================================================
+   IOKA v8 — components ported from the reference verbatim
+   (scenario shell, dashboard mock, funnel, filter chips, work form)
+   ============================================================ */
+
+/* -------- Case cards: two-up grid with coloured tags -------- */
+.ioka-case-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.ioka-case { overflow: hidden; border: 2px solid var(--ioka-line-2); border-radius: var(--ioka-radius); background: #fff; padding: 0; display: flex; flex-direction: column; text-decoration: none; color: inherit; box-shadow: 0 10px 32px rgba(25,35,68,.055); }
+.ioka-case__logo { height: 210px; background: var(--ioka-mist-2); display: flex; align-items: center; justify-content: center; text-align: center; padding: 25px; color: #989db4; font-size: clamp(26px, 3vw, 40px); font-weight: 800; letter-spacing: -1.4px; gap: 12px; }
+.ioka-case__mark { display: inline-flex; align-items: center; justify-content: center; width: 58px; height: 58px; border-radius: 8px; background: #9ca2b9; color: #fff; font-family: Georgia, serif; font-size: 38px; }
+.ioka-case__body { padding: 42px 48px 48px; display: flex; flex-direction: column; gap: 0; }
+.ioka-case__tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; }
+.ioka-case__body h3 { font-size: clamp(23px, 2.6vw, 36px); line-height: 1.35; letter-spacing: -.8px; margin: 0 0 18px; font-weight: 800; color: var(--ioka-ink); }
+.ioka-case__body p { font-size: clamp(17px, 1.9vw, 24px); line-height: 1.55; color: var(--ioka-muted); margin: 0 0 35px; }
+
+/* -------- Two-column copy + visual (GEO, Services method-grid) -------- */
+.ioka-split { display: grid; grid-template-columns: 1fr 1fr; gap: 46px; align-items: center; }
+.ioka-split--services { grid-template-columns: 0.9fr 1.1fr; gap: 60px; }
+.ioka-split__copy { text-align: left; }
+.ioka-split__copy > .pill { margin-bottom: 20px; }
+.ioka-split__copy h2 { font-size: clamp(40px, 4.7vw, 60px); margin: 0 0 22px; line-height: 1.14; letter-spacing: -1.8px; font-weight: 800; color: var(--ioka-ink); }
+.ioka-split__copy h2 .ioka-green { color: var(--ioka-green); }
+.ioka-split__copy h2 .ioka-blue-accent { color: #55bce9; }
+.ioka-split__copy p { font-size: clamp(18px, 1.8vw, 24px); line-height: 1.55; color: #444953; margin: 0 0 18px; }
+
+/* -------- Scenario shell: search query + AI prompt card -------- */
+.ioka-scenario { padding: 34px; border-radius: 40px; background: #fff; box-shadow: 0 24px 55px rgba(32, 36, 83, .07); border: 1px solid var(--ioka-line); }
+.ioka-search-query { display: flex; align-items: center; justify-content: center; gap: 16px; border: 2px solid #ececef; background: #fafafa; border-radius: 999px; padding: 19px 18px; color: #6c6e75; font-size: clamp(15px, 1.65vw, 22px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ioka-google-g { font-size: 25px; font-weight: 800; color: #4285f4; flex-shrink: 0; }
+.ioka-connector { height: 36px; width: 2px; background: #d7d9e0; margin: 10px auto; }
+.ioka-prompt-card { border: 2px solid #dedfe7; border-radius: 35px; padding: 30px 32px; background: #fff; box-shadow: 0 15px 35px rgba(32, 36, 83, .05); }
+.ioka-prompt-card__icons { font-size: 22px; letter-spacing: 12px; margin-bottom: 15px; color: #55bce9; }
+.ioka-prompt-card p { font-size: clamp(19px, 2vw, 27px); line-height: 1.48; margin: 0; color: #2f3138; }
+.ioka-scenario__meta { border-top: 2px dashed #d9dce5; margin-top: 28px; padding-top: 24px; font-family: 'Roboto Mono', 'SF Mono', Menlo, monospace; font-size: 12px; line-height: 2.3; color: #777c87; overflow-wrap: anywhere; mask-image: linear-gradient(to bottom, #000 68%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, #000 68%, transparent 100%); }
+.ioka-scenario__meta strong { color: #4f545f; }
+
+/* -------- Dashboard mock -------- */
+.ioka-product-visual { border: 2px solid var(--ioka-line-2); border-radius: 36px; background: #fff; overflow: hidden; padding: 20px; box-shadow: 0 8px 28px rgba(32, 36, 83, .04); }
+.ioka-dashboard { display: grid; grid-template-columns: 220px 1fr; min-height: 365px; border: 1px solid #e2e4e9; border-radius: 24px; overflow: hidden; background: #f8f9fc; }
+.ioka-dash-side { background: #fff; border-right: 1px solid #e3e5eb; padding: 24px 18px; }
+.ioka-dash-logo { font-weight: 800; font-size: 16px; margin-bottom: 25px; color: var(--ioka-ink); }
+.ioka-dash-item { padding: 12px 10px; border-radius: 10px; color: #767c88; font-size: 13px; margin: 4px 0; }
+.ioka-dash-item.is-on { color: var(--ioka-blue); background: #eef4ff; font-weight: 700; }
+.ioka-dash-main { padding: 24px; }
+.ioka-dash-toolbar { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; color: #6b7280; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+.ioka-dash-tile { background: #fff; border: 1px solid #e3e5eb; border-radius: 16px; padding: 20px; margin-bottom: 14px; }
+.ioka-dash-tile strong { font-size: 18px; color: var(--ioka-ink); display: block; margin-bottom: 6px; }
+.ioka-dash-tile p { font-size: 12px; color: #858a95; margin: 0; line-height: 1.5; }
+.ioka-mini-bars { height: 92px; display: flex; align-items: end; gap: 12px; margin-top: 18px; }
+.ioka-mini-bars span { flex: 1; background: #4d74dc; border-radius: 6px 6px 0 0; }
+.ioka-mini-bars span:nth-child(1) { height: 36%; }
+.ioka-mini-bars span:nth-child(2) { height: 55%; }
+.ioka-mini-bars span:nth-child(3) { height: 47%; }
+.ioka-mini-bars span:nth-child(4) { height: 77%; }
+.ioka-mini-bars span:nth-child(5) { height: 66%; }
+.ioka-mini-bars span:nth-child(6) { height: 92%; }
+
+/* -------- Feature head (centred, bigger) -------- */
+.ioka-feature-head { text-align: center; max-width: 1000px; margin: 0 auto 46px; padding-inline: 8px; }
+.ioka-feature-head h2 { margin: 0 0 18px; font-size: clamp(37px, 4.8vw, 62px); font-weight: 800; letter-spacing: -2px; line-height: 1.15; color: var(--ioka-ink); }
+.ioka-feature-head h2 .ioka-blue-accent { color: #55bce9; }
+.ioka-feature-head p { font-size: clamp(19px, 2vw, 26px); color: #62666e; margin: 0; line-height: 1.5; }
+
+/* -------- Funnel card -------- */
+.ioka-funnel-card { border-radius: 36px; background: #f8f9fb; padding: 34px 25px; box-shadow: 0 10px 30px rgba(37, 42, 53, .07); border: 1px solid #edf0f3; }
+.ioka-funnel { max-width: 640px; margin: 0 auto; text-align: center; color: #fff; font-size: 14px; font-weight: 800; }
+.ioka-funnel-top { height: 130px; background: #777f91; clip-path: polygon(0 0, 100% 0, 84% 100%, 16% 100%); padding-top: 46px; }
+.ioka-funnel-mid { height: 115px; background: #4ca05a; clip-path: polygon(16% 0, 84% 0, 66% 100%, 34% 100%); margin-top: -1px; padding-top: 37px; }
+.ioka-funnel-top small, .ioka-funnel-mid small { display: block; font-weight: 500; margin-top: 4px; }
+.ioka-funnel-bottom { display: grid; grid-template-columns: 1fr 1fr; color: #4ca05a; gap: 10px; margin-top: 10px; }
+.ioka-funnel-bottom div { padding: 15px 8px; font-size: 13px; border-top: 2px solid #4ca05a; }
+.ioka-funnel-bottom div:first-child { border-right: 2px solid #4ca05a; }
+.ioka-funnel-bottom div::before { content: "↗"; display: block; font-size: 26px; color: #4ca05a; margin-bottom: 6px; }
+.ioka-funnel-bottom div:last-child::before { content: "↖"; }
+.ioka-funnel-bottom small { display: block; color: #5d616a; font-size: 11px; font-weight: 500; margin-top: 6px; }
+.ioka-funnel-axis { display: flex; flex-direction: column; justify-content: space-between; align-items: center; color: #777f91; font-size: 10px; padding: 4px 0 0; }
+.ioka-funnel-axis span:nth-child(2) { writing-mode: vertical-rl; transform: rotate(180deg); }
+.ioka-funnel-axis__hi { color: #4ca05a; font-weight: 800; }
+.ioka-funnel-wrap { display: grid; grid-template-columns: 34px 1fr; gap: 8px; align-items: stretch; }
+
+/* -------- Companies filter -------- */
+.ioka-company-head { text-align: center; margin-bottom: 50px; padding-inline: 8px; }
+.ioka-company-head h2 { font-size: clamp(38px, 4.8vw, 62px); max-width: 850px; margin: 0 auto 36px; letter-spacing: -2px; line-height: 1.14; color: var(--ioka-ink); }
+.ioka-company-head p { font-size: 17px; color: #888e99; text-transform: uppercase; letter-spacing: 0.08em; margin: 0; }
+.ioka-filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin: 30px auto 65px; }
+.ioka-filter { padding: 17px 27px; min-height: 64px; border: 2px solid #e0eafa; border-radius: 999px; background: #f8fbff; color: var(--ioka-blue); font-size: clamp(15px, 1.8vw, 23px); cursor: pointer; font-weight: 700; transition: all 0.18s ease; }
+.ioka-filter:hover { box-shadow: 0 5px 14px rgba(50, 105, 210, .12); }
+.ioka-filter[aria-pressed="true"] { background: var(--ioka-blue); color: #fff; border-color: var(--ioka-blue); }
+.ioka-client-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 42px 32px; align-items: center; }
+.ioka-client { min-height: 58px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: clamp(15px, 1.7vw, 22px); font-weight: 800; letter-spacing: -0.6px; color: #414d6c; }
+.ioka-client:nth-child(3n) { color: #438f61; }
+.ioka-client:nth-child(4n) { color: #24272d; }
+.ioka-client:nth-child(5n) { color: #3979c5; }
+.ioka-client small { display: block; font-size: 10px; letter-spacing: 0; font-weight: 500; }
+
+/* -------- Testimonials, Ioka v8 style -------- */
+.ioka-testimonials { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.ioka-testimonial { padding: 42px 44px; border: 2px solid var(--ioka-line-2); border-radius: 36px; background: #fff; box-shadow: 0 10px 32px rgba(25,35,68,.055); }
+.ioka-testimonial__label { display: inline-flex; padding: 13px 24px; background: var(--ioka-yellow); color: var(--ioka-yellow-ink); border-radius: 999px; font-size: 15px; font-weight: 800; margin-bottom: 24px; }
+.ioka-testimonial blockquote { font-family: Georgia, serif; font-size: clamp(21px, 2.2vw, 29px); line-height: 1.5; margin: 0 0 28px; color: var(--ioka-ink); }
+.ioka-person { display: flex; align-items: center; gap: 16px; color: #373b68; font-size: 20px; font-weight: 800; }
+.ioka-person-mark { width: 54px; height: 54px; display: flex; align-items: center; justify-content: center; background: #e6eaf7; border-radius: 50%; font-size: 22px; color: #373b68; flex-shrink: 0; }
+.ioka-person small { display: block; color: #81879e; font-size: 14px; font-weight: 500; }
+
+/* -------- Work with us (contact form) -------- */
+.ioka-work-section { background: var(--ioka-navy); color: #fff; }
+.ioka-work-section h2 { color: #fff; font-size: clamp(38px, 4.5vw, 58px); margin: 25px 0 20px; letter-spacing: -1.6px; }
+.ioka-work-section p { font-size: 19px; line-height: 1.55; color: #e3e6f5; margin: 0 0 1rem; }
+.ioka-work-section .pill { background: rgba(255,255,255,.14); color: #fff; letter-spacing: 1.6px; }
+.ioka-work-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 55px; align-items: start; }
+.ioka-work-list { border-top: 1px solid rgba(255,255,255,.25); margin-top: 30px; }
+.ioka-work-list div { padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.25); font-size: 16px; }
+.ioka-work-form { background: #fff; color: var(--ioka-ink); padding: 34px; border-radius: 28px; min-width: 0; }
+.ioka-work-form .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.ioka-work-form .field { display: grid; gap: 8px; margin-bottom: 14px; }
+.ioka-work-form .field.full { grid-column: 1 / -1; }
+.ioka-work-form label { font-size: 13px; font-weight: 700; margin: 0; color: var(--ioka-ink); display: block; }
+.ioka-work-form input, .ioka-work-form select, .ioka-work-form textarea { width: 100%; padding: 13px 14px; border: 1px solid #d3d8e0; border-radius: 9px; background: #fff; color: var(--ioka-ink); font: inherit; font-size: 14px; min-height: 49px; }
+.ioka-work-form textarea { min-height: 126px; resize: vertical; }
+.ioka-work-form input:focus, .ioka-work-form select:focus, .ioka-work-form textarea:focus { outline: 3px solid #8db7ff; outline-offset: 3px; }
+.ioka-form-submit { width: 100%; border: 0; border-radius: 999px; background: var(--ioka-blue); color: #fff; padding: 17px; font-weight: 800; cursor: pointer; min-height: 54px; }
+.ioka-form-submit:hover { background: var(--ioka-blue-dark); }
+.ioka-form-note { font-size: 12px; color: #727783; margin: 12px 0 0; }
+
+/* -------- Founders / team cards -------- */
+.ioka-founders { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 25px; }
+.ioka-founder { border-radius: 28px; border: 1px solid var(--ioka-line); padding: 32px; background: #fff; }
+.ioka-founder .ioka-portrait { height: 190px; border-radius: 18px; background: linear-gradient(135deg, #e5eafa, #f5f7fb); display: flex; align-items: center; justify-content: center; font-size: 52px; font-weight: 800; color: #7b83a7; margin-bottom: 22px; }
+.ioka-founder h3 { margin: 0 0 5px; font-size: 24px; color: var(--ioka-ink); }
+.ioka-founder p { margin: 0; color: var(--ioka-muted); font-size: 15px; line-height: 1.5; }
+
+/* -------- Recruit CTA (horizontal card) -------- */
+.ioka-recruit { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 36px 42px; border: 1px solid var(--ioka-line); border-radius: 28px; background: #fff; }
+.ioka-recruit h3 { font-size: clamp(24px, 3vw, 36px); margin: 0 0 8px; color: var(--ioka-ink); }
+.ioka-recruit p { margin: 0; color: var(--ioka-muted); font-size: 16px; }
+.ioka-recruit .btn { background: var(--ioka-blue); color: #fff; min-width: 180px; min-height: 68px; font-size: 18px; padding: 0 32px; }
+
+/* -------- Logo strip (used on home) -------- */
+/* defined above */
+
+/* ============================================================
+   Responsive adjustments for the Ioka v8 components
+   ============================================================ */
+@media (max-width: 1000px) {
+  .ioka-split, .ioka-split--services { grid-template-columns: 1fr; gap: 36px; }
+  .ioka-dashboard { grid-template-columns: 160px 1fr; }
+  .ioka-dash-side { padding: 20px 12px; }
+  .ioka-client-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 18px; }
+  .ioka-work-grid { grid-template-columns: 1fr; gap: 36px; }
+}
+@media (max-width: 760px) {
+  .ioka-case-grid { grid-template-columns: 1fr; gap: 24px; }
+  .ioka-case__body { padding: 32px 28px 36px; }
+  .ioka-case__logo { height: 170px; }
+  .ioka-scenario { padding: 22px 16px; border-radius: 32px; }
+  .ioka-search-query { font-size: 14px; padding: 15px 12px; gap: 10px; white-space: normal; text-align: left; }
+  .ioka-prompt-card { padding: 24px 20px; border-radius: 28px; }
+  .ioka-prompt-card p { font-size: 18px; line-height: 1.5; }
+  .ioka-dashboard { grid-template-columns: 1fr; min-height: 0; }
+  .ioka-dash-side { display: none; }
+  .ioka-dash-main { padding: 16px; }
+  .ioka-funnel-card { padding: 24px 10px; border-radius: 28px; }
+  .ioka-funnel-top { height: 110px; padding-top: 38px; }
+  .ioka-funnel-mid { height: 100px; padding-top: 31px; }
+  .ioka-feature-head { margin-bottom: 36px; }
+  .ioka-feature-head h2 { font-size: clamp(32px, 8vw, 44px); letter-spacing: -1.2px; }
+  .ioka-feature-head p { font-size: 18px; }
+  .ioka-filters { gap: 10px; margin: 28px auto 48px; }
+  .ioka-filter { min-height: 54px; padding: 12px 20px; font-size: 15px; border-radius: 999px; }
+  .ioka-client-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 14px; }
+  .ioka-client { font-size: 16px; }
+  .ioka-testimonials { grid-template-columns: 1fr; gap: 20px; }
+  .ioka-testimonial { padding: 28px 24px; border-radius: 28px; }
+  .ioka-testimonial blockquote { font-size: 20px; line-height: 1.5; }
+  .ioka-person { font-size: 17px; }
+  .ioka-work-form { padding: 24px 20px; }
+  .ioka-work-form .fields { grid-template-columns: 1fr; gap: 0; }
+  .ioka-work-form .field.full { grid-column: auto; }
+  .ioka-founders { grid-template-columns: 1fr; }
+  .ioka-founder { padding: 24px; }
+  .ioka-recruit { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
+  .ioka-recruit .btn { width: 100%; min-height: 56px; font-size: 16px; }
+  .ioka-split__copy h2 { font-size: clamp(32px, 8vw, 44px); letter-spacing: -1.3px; }
+  .ioka-split__copy p { font-size: 18px; }
+}
+@media (max-width: 420px) {
+  .ioka-case__body { padding: 28px 22px; }
+  .ioka-case__logo { height: 155px; font-size: 24px; }
+  .ioka-scenario { padding: 18px 12px; }
+  .ioka-prompt-card { padding: 20px 16px; }
+  .ioka-filters { gap: 8px; }
+  .ioka-filter { font-size: 14px; padding: 10px 16px; min-height: 48px; }
+  .ioka-dash-main { padding: 12px; }
 }

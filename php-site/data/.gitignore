@@ -4,6 +4,7 @@
 .recovery
 backups/
 blog-categories.json
+leads/
 library/
 pending/
 post-meta.json
