@@ -19,10 +19,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $valid) {
     } elseif (!$error && $pw1 !== $pw2) {
         $error = 'Passwords do not match.';
     } elseif (!$error) {
-        if (admin_update_password($pw1) && reset_token_consume($token)) {
+        // Consume first so a successful password write can never leave a reusable token.
+        // If the password write fails, the user can request a fresh reset link.
+        if (reset_token_consume($token) && admin_update_password($pw1)) {
             $success = true;
         } else {
-            $error = 'Could not update the password hash. Check that the data directory is writable by the PHP process, then try again.';
+            $error = 'The reset could not be completed. Request a new link and try again; if the issue persists, check server logs and data-directory permissions.';
+            $valid = false;
         }
     }
 }
