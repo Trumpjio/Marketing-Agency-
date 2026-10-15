@@ -1,0 +1,71 @@
+name: Source quality checks
+
+on:
+  pull_request:
+    branches: [deploy]
+  push:
+    branches: [fix/orcapulse-source-audit-remediation]
+
+permissions:
+  contents: read
+
+jobs:
+  syntax-and-security:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: none
+
+      - name: Lint PHP files
+        shell: bash
+        run: |
+          set -euo pipefail
+          find admin -type f -name '*.php' -print0 | xargs -0 -n1 php -l
+
+      - name: Check JavaScript syntax
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node --check scripts/main.js
+
+      - name: Validate sitemap XML and report host mismatch
+        shell: python
+        run: |
+          import collections
+          import urllib.parse
+          import xml.etree.ElementTree as ET
+
+          root = ET.parse("sitemap.xml").getroot()
+          ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+          urls = [node.text.strip() for node in root.findall(".//sm:loc", ns) if node.text]
+          if not urls:
+              raise SystemExit("Sitemap contains no URL entries")
+          hosts = collections.Counter(urllib.parse.urlparse(url).netloc.lower() for url in urls)
+          print(f"Validated {len(urls)} sitemap URLs; hosts: {dict(hosts)}")
+          if set(hosts) != {"orcapulse.io"}:
+              print("::warning::Sitemap host does not match confirmed production domain orcapulse.io. Source ownership and page inventory must be verified before release.")
+
+      - name: Guard against known security regressions
+        shell: python
+        run: |
+          from pathlib import Path
+
+          config = Path("admin/config.php").read_text()
+          forgot = Path("admin/forgot.php").read_text()
+          robots = Path("robots.txt").read_text()
+          failures = []
+          if "orcapulse2026" in config:
+              failures.append("Committed default admin password remains in config")
+          if "$_SERVER['HTTP_HOST']" in forgot or '$_SERVER["HTTP_HOST"]' in forgot:
+              failures.append("Password reset URL still trusts HTTP_HOST")
+          if "Sitemap:" in robots:
+              failures.append("robots.txt advertises a sitemap before production sitemap identity is verified")
+          if failures:
+              raise SystemExit("\n".join(failures))
+          print("Security regression guards passed")
