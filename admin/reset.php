@@ -16,13 +16,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $valid) {
     $pw2 = $_POST['password2'] ?? '';
     if (!$error && strlen($pw1) < 10) {
         $error = 'Password must be at least 10 characters.';
-    } elseif ($pw1 !== $pw2) {
+    } elseif (!$error && $pw1 !== $pw2) {
         $error = 'Passwords do not match.';
-    } else {
+    } elseif (!$error) {
         if (admin_update_password($pw1) && reset_token_consume($token)) {
             $success = true;
         } else {
-            $error = 'Could not update password — the admin/config.php file may not be writable by the web server. Set it to 0644 in Hostinger File Manager and try again.';
+            $error = 'Could not update the password hash. Check that the data directory is writable by the PHP process, then try again.';
         }
     }
 }
@@ -45,7 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $valid) {
   button { width: 100%; padding: 0.75rem; background: #1d1d1f; color: white; border: 0; border-radius: 980px; font: inherit; font-weight: 600; margin-top: 1rem; cursor: pointer; }
   button:hover { background: #635bff; }
   .err { color: #991b1b; background: #fee2e2; padding: 0.75rem; border-radius: 8px; margin-top: 1rem; font-size: 0.875rem; }
-  .ok { color: #065f46; background: #d1fae5; padding: 0.75rem; border-radius: 8px; margin-top: 1rem; font-size: 0.875rem; }
   .back { text-align: center; margin-top: 1.25rem; font-size: 0.8125rem; }
   .back a { color: #635bff; text-decoration: none; }
   .req { color: #6b7280; font-size: 0.75rem; margin-top: 0.4rem; }
@@ -67,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $valid) {
     <p>Choose a strong password. At least 10 characters. Mix letters, numbers and symbols where you can.</p>
     <form method="post" autocomplete="off">
       <?= csrf_field() ?>
-      <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
+      <input type="hidden" name="token" value="<?= htmlspecialchars($token, ENT_QUOTES, 'UTF-8') ?>">
       <label>New password</label>
       <input type="password" name="password1" required minlength="10" autofocus>
       <div class="req">Minimum 10 characters.</div>
@@ -75,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $valid) {
       <input type="password" name="password2" required minlength="10">
       <button type="submit">Change password</button>
     </form>
-    <?php if ($error): ?><div class="err"><?= htmlspecialchars($error) ?></div><?php endif; ?>
+    <?php if ($error): ?><div class="err"><?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?></div><?php endif; ?>
     <div class="back"><a href="login.php">← back to sign in</a></div>
   <?php endif; ?>
 </div>
