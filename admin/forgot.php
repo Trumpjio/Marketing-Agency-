@@ -6,7 +6,8 @@ $flashType = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     csrf_check();
-    $email = trim($_POST['email'] ?? '');
+    $emailInput = $_POST['email'] ?? '';
+    $email = is_string($emailInput) ? trim($emailInput) : '';
     // Neutral response regardless of whether the email matches, so the form
     // does not reveal which address is the admin's.
     $generic = 'If that email matches the admin account, a reset link has been sent. Check your inbox (and spam folder) within the next few minutes.';
