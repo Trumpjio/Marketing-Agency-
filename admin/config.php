@@ -148,7 +148,7 @@ function auth_check($submitted, $plainTextFallback = '') {
         }
         return false;
     }
-    // First-time setup must supply an environment password, never a committed default.
+    // One-time migration from server-configured credential only; no source default.
     if (!is_string($plainTextFallback) || $plainTextFallback === '' || !is_string($submitted)) return false;
     if (hash_equals($plainTextFallback, $submitted)) {
         auth_save(['hash' => password_hash($submitted, PASSWORD_DEFAULT)]);
@@ -156,6 +156,7 @@ function auth_check($submitted, $plainTextFallback = '') {
     }
     return false;
 }
+
 function auth_set_password($new) {
     if (!is_string($new) || strlen($new) < 10) return false;
     $auth = auth_load();
