@@ -1,6 +1,8 @@
-# OrcaPulse — Static HTML Site + Simple Admin Panel
+# Website source — Static HTML + PHP admin
 
-Fast, SEO-optimised, mobile-responsive marketing agency website with a simple PHP admin for editing settings, blog posts and images. Hosts on any PHP host — Hostinger, SiteGround, Namecheap, etc.
+> **Release warning:** The current page content, settings and sitemap identify Ioka / ioka.online, not the confirmed OrcaPulse production domain. Do not upload this repository over a live site or change production DNS until the production document root and correct source branch are verified. Preserve a full backup before any deployment.
+
+Fast, SEO-optimised, mobile-responsive marketing-agency site with a simple PHP admin for editing settings, blog posts and images. Hosts on PHP hosting such as Hostinger, SiteGround or Namecheap.
 
 ## What's inside
 
@@ -10,7 +12,7 @@ Fast, SEO-optimised, mobile-responsive marketing agency website with a simple PH
 ├── styles/glass.css     Full design system
 ├── scripts/main.js      Site JavaScript (sticky nav, hamburger menu, animations)
 ├── robots.txt           Allows crawlers (GPT, Perplexity, Claude, Google)
-├── sitemap.xml          80 URLs for Google
+├── sitemap.xml          Current legacy sitemap (verify domain and URL inventory before use)
 ├── llms.txt             AI-crawler site index
 ├── .htaccess            Caching + compression + security headers
 ├── admin/               Password-protected admin panel
@@ -31,10 +33,10 @@ Two options:
 
 **Option A — Hostinger File Manager (easiest)**
 1. Log in to Hostinger → **Websites → Manage** → **File Manager**
-2. Navigate to `public_html` (or your domain's root folder)
-3. Delete anything already in there (usually an empty `index.html`)
-4. Drag the entire unzipped folder contents into `public_html`
-5. Wait for upload to finish
+2. Identify the exact document root for the intended domain.
+3. Download a full backup of the current document root before changing anything.
+4. Test the candidate source in a staging directory or staging domain first.
+5. Only replace production files after confirming source identity, reviewing the diff, and completing staging tests. Never delete existing site files just to make an upload fit.
 
 **Option B — FTP (faster for large uploads)**
 1. Get FTP credentials from Hostinger → **Advanced → FTP Accounts**
