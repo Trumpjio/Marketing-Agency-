@@ -1,7 +1,8 @@
 <?php
 require_once __DIR__ . '/config.php';
 
-$token = $_GET['token'] ?? $_POST['token'] ?? '';
+$tokenInput = $_GET['token'] ?? $_POST['token'] ?? '';
+$token = is_string($tokenInput) ? $tokenInput : '';
 $valid = $token !== '' && reset_token_valid($token);
 $error = '';
 $success = false;
@@ -12,8 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $valid) {
         $error = 'Too many requests. Please wait 15 minutes.';
         $valid = false;
     }
-    $pw1 = $_POST['password1'] ?? '';
-    $pw2 = $_POST['password2'] ?? '';
+    $pw1Input = $_POST['password1'] ?? '';
+    $pw2Input = $_POST['password2'] ?? '';
+    $pw1 = is_string($pw1Input) ? $pw1Input : '';
+    $pw2 = is_string($pw2Input) ? $pw2Input : '';
     if (!$error && strlen($pw1) < 10) {
         $error = 'Password must be at least 10 characters.';
     } elseif (!$error && $pw1 !== $pw2) {
