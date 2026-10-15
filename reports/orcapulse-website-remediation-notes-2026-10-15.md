@@ -19,7 +19,7 @@ The historical `ioka.online` host was used for testing and must not be treated a
 | ID | Severity | Finding | Status / action |
 |---|---|---|---|
 | SRC-01 | P0 release blocker | Source-of-truth mismatch: `deploy` site is Ioka, not a verified OrcaPulse production site | Open; compare deployed files and commit first |
-| SEO-01 | P1 | `robots.txt` points at `orcapulse.com/sitemap.xml` | Patched on remediation branch to `https://orcapulse.io/sitemap.xml` |
+| SEO-01 | P1 | `robots.txt` pointed at `orcapulse.com/sitemap.xml` while the sitemap itself uses `ioka.online` | Removed the sitemap directive from the remediation branch until the production source and correct sitemap are verified |
 | SEO-02 | P1 | Sitemap has 89 entries, all on `ioka.online` | Open; regenerate only after the real OrcaPulse page inventory is confirmed |
 | SEO-03 | P1 | Titles, canonicals, OG, JSON-LD, footer, settings and page content consistently identify Ioka/`ioka.online` | Open; do not bulk-rebrand until source parity is verified |
 | SEC-01 | P1 critical | `admin/config.php` includes a committed plaintext initial password | Patched on remediation branch: removes hardcoded default; initial password can be read from server env var `ORCAPULSE_ADMIN_PASSWORD`; rotate any credential that may have been exposed |
