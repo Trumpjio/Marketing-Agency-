@@ -91,14 +91,9 @@
       const heading = section.querySelector(".nav__mobile-heading");
       if (!heading || section.dataset.enhanced) return;
       section.dataset.enhanced = "1";
-      // Collect sibling <a> elements after the heading
+      // Collect sibling links and expose the group as an accessible accordion.
       const items = Array.from(section.children).filter((n) => n !== heading && n.tagName === "A");
       if (items.length === 0) return;
-      const wrap = document.createElement("div");
-      wrap.className = "nav__mobile-section__items";
-      items.forEach((it) => wrap.appendChild(it));
-      section.appendChild(wrap);
-      // Convert the visual heading into a native, keyboard-operable button.
       const button = document.createElement("button");
       button.type = "button";
       button.className = heading.className;
