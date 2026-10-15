@@ -53,7 +53,8 @@ Important caveats:
 - This is a proposal branch and PR #3, not production. Nothing was merged or deployed.
 - The live production document root / deployed commit for `orcapulse.io` has not been supplied or verified in this connector session. The `deploy` branch's homepage, settings and sitemap are consistently Ioka-branded / `ioka.online`; do not bulk-rebrand this 89-URL site without proving it is the intended OrcaPulse source.
 - The sitemap itself remains a legacy Ioka sitemap and must be rebuilt from the verified production page inventory. Removing the robots directive prevents this branch from actively advertising the wrong sitemap; it does not fix existing indexed URLs or production canonicals.
-- The new workflow has been committed, but it has not yet reported a run. PHP lint, browser QA, mail delivery, auth/recovery end-to-end tests, live host checks, and production SEO validation remain unverified.
+- GitHub Actions run `38772438160` passed on commit `37e4d6fdab83b78427560c69a00d2475c1ff3c2d`: PHP syntax lint passed for all admin PHP files, JavaScript syntax passed, sitemap XML parsed, and security regression guards passed. The first run caught a duplicate `const wrap` declaration in the mobile accordion patch; that defect was corrected before the passing run.
+- Browser QA, mail delivery, auth/recovery end-to-end tests, live host checks, and production SEO validation remain unverified.
 - Before any deployment, configure server-side `ORCAPULSE_ADMIN_PASSWORD`, `ORCAPULSE_BASE_URL=https://orcapulse.io`, and `ORCAPULSE_ADMIN_EMAIL` if required; verify login, reset, recovery, and file permissions on staging. Treat the previously committed credential as exposed and rotate it.
 - Existing design and guide code was preserved; test mobile menu behavior in a rendered browser before merging.
 
