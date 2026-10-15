@@ -39,7 +39,7 @@ The historical `ioka.online` host was used for testing and must not be treated a
 
 Branch: `fix/orcapulse-source-audit-remediation`
 
-1. `admin/config.php`: removed the committed default password fallback, made initial credential environment-configured, tightened auth helper validation and file writes.
+1. `admin/config.php`: removed the committed default password fallback and made initial credentials environment-configured while preserving the original admin design/helper implementations.
 2. `admin/forgot.php`: password reset link built from trusted `ORCAPULSE_BASE_URL` (HTTPS), never request Host; email delivery failure is logged.
 3. `admin/reset.php`: corrected failure guidance to reference the password-hash storage directory.
 4. `admin/recover.php`: corrected failure guidance and consistently escaped displayed errors.
