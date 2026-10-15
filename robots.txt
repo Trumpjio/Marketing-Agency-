@@ -14,4 +14,6 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://orcapulse.io/sitemap.xml
+# Historical test-site settings: do not submit this sitemap as OrcaPulse production.
+# Update only after this source is verified as the deployed production site.
+Sitemap: https://ioka.online/sitemap.xml
