@@ -69,6 +69,7 @@ function reset_token_create() {
 }
 
 function reset_token_consume($token) {
+    if (!is_string($token) || $token === '') return false;
     $tokens = reset_tokens_load();
     if (empty($tokens[$token])) return false;
     $t = $tokens[$token];
@@ -78,6 +79,7 @@ function reset_token_consume($token) {
 }
 
 function reset_token_valid($token) {
+    if (!is_string($token) || $token === '') return false;
     $tokens = reset_tokens_load();
     if (empty($tokens[$token])) return false;
     $t = $tokens[$token];
@@ -273,6 +275,7 @@ function auth_save($data) {
  * configured initial password into a hash in data/.auth.json.
  */
 function auth_check($submitted, $plainTextFallback) {
+    if (!is_string($submitted)) return false;
     $auth = auth_load();
     // Prefer the stored hash
     if (!empty($auth['hash'])) {
