@@ -14,7 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $action = $_POST['action'] ?? '';
         if ($action === 'verify') {
-            $provided = trim($_POST['code'] ?? '');
+            $providedInput = $_POST['code'] ?? '';
+            $provided = is_string($providedInput) ? trim($providedInput) : '';
             if (!$fileExists) {
                 $error = 'The recovery file does not exist on the server. Create data/.recovery first via your hosting file manager.';
             } else {
@@ -34,8 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $step = 'verify';
                 unset($_SESSION['recovery_verified_at']);
             } else {
-                $pw1 = $_POST['password1'] ?? '';
-                $pw2 = $_POST['password2'] ?? '';
+                $pw1Input = $_POST['password1'] ?? '';
+                $pw2Input = $_POST['password2'] ?? '';
+                $pw1 = is_string($pw1Input) ? $pw1Input : '';
+                $pw2 = is_string($pw2Input) ? $pw2Input : '';
                 if (strlen($pw1) < 10) { $error = 'Password must be at least 10 characters.'; $step = 'change'; }
                 elseif ($pw1 !== $pw2) { $error = 'Passwords do not match.'; $step = 'change'; }
                 elseif (!admin_update_password($pw1)) {
