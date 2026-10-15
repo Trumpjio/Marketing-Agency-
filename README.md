@@ -23,14 +23,8 @@ Fast, SEO-optimised, mobile-responsive marketing agency website with a simple PH
 ### 1. Download and unzip
 Unzip `orcapulse-site.zip` on your computer. You'll see the folder structure above.
 
-### 2. Change the admin password (important)
-Open `admin/config.php` in any text editor. On line 6:
-
-```php
-$ADMIN_PASSWORD = 'orcapulse2026';
-```
-
-Change `orcapulse2026` to your own strong password. Save the file.
+### 2. Configure the initial admin password securely (required)
+Do not put an admin password in source code or commit it to Git. Configure `ORCAPULSE_ADMIN_PASSWORD` in the hosting environment using a unique password of at least 10 characters. Also set `ORCAPULSE_BASE_URL=https://orcapulse.io` only after verifying that this deployment serves the OrcaPulse production site. On first successful login, the password is stored as a hash in `data/.auth.json`. Remove the initial-password environment variable after verifying the hash-based login works.
 
 ### 3. Upload to Hostinger
 Two options:
@@ -52,7 +46,7 @@ In Hostinger File Manager, right-click these folders and set permissions:
 - `data/` → **755** (admin needs to write JSON)
 - `uploads/` → **755** (admin needs to upload images)
 
-If you see "permission denied" errors in the admin, bump these to **777** temporarily.
+Do not use `777`. Keep directories at the least privilege needed (normally `755` where PHP runs as the owner, or a host-specific owner/group permission such as `750`). Never make credential or data files publicly readable; ask hosting support to correct ownership rather than opening permissions broadly.
 
 ### 5. Visit your site
 - Homepage: `https://yourdomain.com/`
