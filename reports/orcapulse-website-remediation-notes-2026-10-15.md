@@ -39,19 +39,23 @@ The historical `ioka.online` host was used for testing and must not be treated a
 
 Branch: `fix/orcapulse-source-audit-remediation`
 
-1. `admin/config.php`: removed the committed default password fallback and made initial credentials environment-configured while preserving the original admin design/helper implementations.
-2. `admin/forgot.php`: password reset link built from trusted `ORCAPULSE_BASE_URL` (HTTPS), never request Host; email delivery failure is logged.
-3. `admin/reset.php`: corrected failure guidance to reference the password-hash storage directory.
-4. `admin/recover.php`: corrected failure guidance and consistently escaped displayed errors.
-5. `robots.txt`: sitemap directive changed to the confirmed production host.
-6. `scripts/main.js`: mobile navigation accordion headings are enhanced into real buttons with `aria-expanded`, `aria-controls` and keyboard support.
+1. `admin/config.php`: removed the committed default admin password; initial login requires server-side `ORCAPULSE_ADMIN_PASSWORD`. Auth hash writes now use a temporary file + atomic rename, restrictive file permissions, and explicit success/failure returns. Password and CSRF helpers reject malformed array inputs rather than throwing PHP type errors.
+2. Reset-token storage in `admin/config.php`: writes are atomic and use restrictive permissions; token creation/consumption fails closed if persistence fails; tokens are validated as strings.
+3. `admin/forgot.php`: reset URLs use trusted HTTPS `ORCAPULSE_BASE_URL`, never request `HTTP_HOST`; malformed email values are rejected; no token is created when the trusted base URL is invalid; mail failures are logged while the response remains neutral to avoid account enumeration.
+4. `admin/reset.php`: validates token/password input types, consumes the token before attempting the password write so a successful write cannot leave a reusable token, and gives actionable failure guidance. If the write fails after consumption, the user must request a new link.
+5. `admin/recover.php`: validates submitted values and corrects password-storage failure guidance; the existing recovery flow remains.
+6. `scripts/main.js`: mobile accordion headings are native buttons with `aria-expanded`, `aria-controls`, hidden-panel state and Escape handling. The existing guide code was preserved.
+7. `robots.txt`: removed the stale/misleading sitemap directive until the production sitemap and source identity are verified.
+8. `README.md`: removed the hardcoded password setup instructions, removed unsafe advice to use permissions `777`, added an explicit source-mismatch release warning, and removed instructions to delete the existing Hostinger document root before upload.
+9. `.github/workflows/quality-checks.yml`: added PHP syntax checks, JavaScript syntax validation, sitemap XML parsing, a warning for non-production sitemap hosts, and guards against reintroducing the known hardcoded password, Host-header reset URLs, or unverified robots sitemap directives.
 
 Important caveats:
-- This is a proposal branch, not production.
-- Domain/brand content and the 89-entry sitemap were intentionally not bulk-rewritten because this source may belong to a separate site.
-- Browser QA, PHP lint, mail delivery, auth/recovery end-to-end tests and live host checks have not been run from this connector session.
-- Before deployment, set server-side environment values `ORCAPULSE_ADMIN_PASSWORD`, `ORCAPULSE_ADMIN_EMAIL` (if needed), and `ORCAPULSE_BASE_URL=https://orcapulse.io`; then verify password initialization/reset on staging. Treat the previously committed credential as exposed and rotate it.
-- The `scripts/main.js` patch must be reviewed against the current deployed bundle before merge to confirm the OrcaPulse Guide is loaded separately; its code comments indicate it may be split, but that was not proven at runtime.
+- This is a proposal branch and PR #3, not production. Nothing was merged or deployed.
+- The live production document root / deployed commit for `orcapulse.io` has not been supplied or verified in this connector session. The `deploy` branch's homepage, settings and sitemap are consistently Ioka-branded / `ioka.online`; do not bulk-rebrand this 89-URL site without proving it is the intended OrcaPulse source.
+- The sitemap itself remains a legacy Ioka sitemap and must be rebuilt from the verified production page inventory. Removing the robots directive prevents this branch from actively advertising the wrong sitemap; it does not fix existing indexed URLs or production canonicals.
+- The new workflow has been committed, but it has not yet reported a run. PHP lint, browser QA, mail delivery, auth/recovery end-to-end tests, live host checks, and production SEO validation remain unverified.
+- Before any deployment, configure server-side `ORCAPULSE_ADMIN_PASSWORD`, `ORCAPULSE_BASE_URL=https://orcapulse.io`, and `ORCAPULSE_ADMIN_EMAIL` if required; verify login, reset, recovery, and file permissions on staging. Treat the previously committed credential as exposed and rotate it.
+- Existing design and guide code was preserved; test mobile menu behavior in a rendered browser before merging.
 
 ## Public product-site copy finding
 
