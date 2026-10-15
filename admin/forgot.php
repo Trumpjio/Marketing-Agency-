@@ -18,14 +18,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $flash = $generic;
         $flashType = 'ok';
     } elseif ($email !== '' && strtolower($email) === strtolower($ADMIN_EMAIL)) {
-        $token = reset_token_create();
         // Use a trusted configured origin, never the untrusted Host request header.
         $baseUrl = rtrim(getenv('ORCAPULSE_BASE_URL') ?: 'https://orcapulse.io', '/');
         if (!preg_match('~^https://[a-z0-9.-]+(?::[0-9]+)?$~i', $baseUrl)) {
             error_log('Invalid ORCAPULSE_BASE_URL; password reset email not sent.');
             $baseUrl = '';
         }
-        $resetUrl = $baseUrl !== '' ? $baseUrl . '/admin/reset.php?token=' . rawurlencode($token) : '';
+        $token = $baseUrl !== '' ? reset_token_create() : false;
+        $resetUrl = ($token !== false && $token !== '')
+            ? $baseUrl . '/admin/reset.php?token=' . rawurlencode($token)
+            : '';
 
         if ($resetUrl !== '') {
             $subject = 'OrcaPulse admin — password reset';
