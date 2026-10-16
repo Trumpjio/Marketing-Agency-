@@ -3375,7 +3375,7 @@ body[data-template="post"], body[data-template="legal"] { --sec-y: clamp(1.5rem,
 /* Vertical rhythm: each section owns the space below it, so gaps never double up */
 main > section { padding-block: var(--sec-y); }
 main > section + section:not([data-op-bg]) { padding-top: 0; }
-main > section.hero { padding-top: clamp(1.75rem, 4.5vw, 3.25rem) !important; padding-bottom: clamp(1.5rem, 3.5vw, 2.75rem) !important; }
+main > section.hero { padding-top: clamp(7rem, 10vw, 9rem) !important; padding-bottom: clamp(2.5rem, 4vw, 3.5rem) !important; }
 main > section.hero + section { padding-top: 0; }
 main > section:last-of-type { padding-bottom: var(--sec-y); }
 footer.footer { margin-top: 0; }
