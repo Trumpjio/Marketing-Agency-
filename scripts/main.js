@@ -133,6 +133,94 @@
     });
   }
 
+  // ---- Remove truly empty CMS sections before reveal observers run ----
+  (function removeEmptyContentSlots() {
+    function hideSection(section) {
+      if (!section || section.hidden) return;
+      section.hidden = true;
+      section.setAttribute("aria-hidden", "true");
+    }
+
+    // The CMS marks known empty team, award, testimonial and blog sections.
+    document.querySelectorAll('[data-op-empty="true"]').forEach(function (marker) {
+      hideSection(marker.closest("section") || marker);
+    });
+
+    // Static pages can also contain empty collection comment pairs. Hide their
+    // containing section only when nothing was rendered between the markers.
+    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_COMMENT);
+    var comments = [];
+    while (walker.nextNode()) comments.push(walker.currentNode);
+
+    comments.forEach(function (start) {
+      var text = (start.nodeValue || "").trim();
+      var opening = text.match(/^OP-(COLLECTION|BLOG):/);
+      if (!opening) return;
+
+      var family = opening[1];
+      var closePattern = family === "BLOG" ? /^\/OP-BLOG\b/ : /^\/OP-COLLECTION\b/;
+      var node = start.nextSibling;
+      var close = null;
+      var hasContent = false;
+
+      while (node) {
+        if (node.nodeType === Node.COMMENT_NODE && closePattern.test((node.nodeValue || "").trim())) {
+          close = node;
+          break;
+        }
+        if (node.nodeType === Node.TEXT_NODE && (node.textContent || "").trim()) {
+          hasContent = true;
+          break;
+        }
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          if (node.matches("img,svg,video,iframe,canvas,button,input,select,textarea,a") ||
+              (node.textContent || "").trim()) {
+            hasContent = true;
+            break;
+          }
+        }
+        node = node.nextSibling;
+      }
+
+      if (close && !hasContent) {
+        var section = start.parentElement && start.parentElement.closest("section");
+        hideSection(section);
+      }
+    });
+  })();
+
+  // Show the result returned by admin/lead.php after the server redirects.
+  // Never put personal form data in the URL.
+  (function showLeadSubmissionFeedback() {
+    var params = new URLSearchParams(window.location.search);
+    var state = params.get("sent");
+    var feedback = document.getElementById("lead-feedback");
+    if (!state || !feedback) return;
+
+    var messages = {
+      "1": { text: "Thank you. Your enquiry has been received.", kind: "success" },
+      "0": { text: "Please complete the required fields and check your email address, then try again.", kind: "error" },
+      "invalid": { text: "Please review the form fields and try again.", kind: "error" },
+      "rate": { text: "Too many submissions were received from this connection. Please wait a few minutes or book a call directly.", kind: "error" },
+      "error": { text: "We could not save your enquiry. Please try again or book a call directly.", kind: "error" }
+    };
+    var result = messages[state];
+    if (!result) return;
+
+    feedback.textContent = result.text;
+    feedback.hidden = false;
+    feedback.classList.remove("is-success", "is-error");
+    feedback.classList.add(result.kind === "success" ? "is-success" : "is-error");
+    feedback.setAttribute("role", result.kind === "success" ? "status" : "alert");
+    feedback.setAttribute("tabindex", "-1");
+
+    params.delete("sent");
+    var query = params.toString();
+    var cleanUrl = window.location.pathname + (query ? "?" + query : "") + window.location.hash;
+    window.history.replaceState({}, document.title, cleanUrl);
+    feedback.focus({ preventScroll: true });
+  })();
+
   // ---- Reveal-on-scroll animations ----
   const revealEls = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
@@ -170,7 +258,8 @@
   document.body.appendChild(bar);
   window.addEventListener("scroll", () => {
     const h = document.documentElement;
-    const scrolled = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+    const maxScroll = h.scrollHeight - h.clientHeight;
+    const scrolled = maxScroll > 0 ? Math.min(100, Math.max(0, (h.scrollTop / maxScroll) * 100)) : 0;
     bar.style.width = scrolled + "%";
   }, { passive: true });
 
