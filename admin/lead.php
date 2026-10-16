@@ -134,4 +134,48 @@ if (!$written) {
 }
 @chmod($file, 0600);
 
+// Optional email notification: only send when the owner has configured a
+// verified recipient and a sender from the marketing site's own domain.
+// The saved admin inbox is the system of record; notification failure never
+// discards a valid enquiry.
+$notifyTo = getenv('ORCAPULSE_LEAD_NOTIFY_EMAIL') ?: '';
+$notifyFrom = getenv('ORCAPULSE_LEAD_NOTIFY_FROM') ?: '';
+$fromDomain = strtolower(substr(strrchr($notifyFrom, '@') ?: '', 1));
+if (
+    $notifyTo !== '' &&
+    $notifyFrom !== '' &&
+    filter_var($notifyTo, FILTER_VALIDATE_EMAIL) &&
+    filter_var($notifyFrom, FILTER_VALIDATE_EMAIL) &&
+    $fromDomain === 'orcapulse.io' &&
+    function_exists('mail')
+) {
+    $subject = 'New OrcaPulse website enquiry';
+    $body = implode("\\n", [
+        'A new enquiry was submitted through the Contact Us form.',
+        '',
+        'Name: ' . $name,
+        'Email: ' . $email,
+        'Company: ' . $company,
+        'Website: ' . ($website !== '' ? $website : '(not provided)'),
+        '',
+        'What they want to improve:',
+        $goals,
+        '',
+        'Source: ' . $source,
+        'Received: ' . date('c'),
+        '',
+        'Review the authenticated admin Enquiries inbox for the saved record.'
+    ]);
+    $headers = [
+        'From: OrcaPulse Website <' . $notifyFrom . '>',
+        'Reply-To: ' . $email,
+        'MIME-Version: 1.0',
+        'Content-Type: text/plain; charset=UTF-8',
+        'X-Content-Type-Options: nosniff'
+    ];
+    if (!@mail($notifyTo, $subject, $body, implode("\\r\\n", $headers))) {
+        error_log('OrcaPulse lead capture: enquiry saved, but email notification could not be sent.');
+    }
+}
+
 lead_response('1');
