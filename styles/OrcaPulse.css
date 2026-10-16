@@ -106,14 +106,23 @@ body[data-nav="light"] .site-header, body[data-nav="light"] header.nav { color: 
 .hero__scarcity strong { color: #fff; font-weight: 700; }
 .hero__dot { width: 7px; height: 7px; background: #93c5fd; border-radius: 50%; flex: 0 0 7px; }
 .hero .btn--ghost { border: 1px solid rgba(255,255,255,.75); color: #fff; background: transparent; }
+.hero .link-blue,
+.hero .hero__sub-links a:not(.btn) {
+  color: #dbeafe !important;
+  text-decoration: underline;
+  text-decoration-color: rgba(219,234,254,.7);
+  text-underline-offset: 4px;
+}
+.hero .link-blue:hover,
+.hero .hero__sub-links a:not(.btn):hover { color: #fff !important; text-decoration-color: #fff; }
 /* Breadcrumb inside hero reads over navy */
 .hero .breadcrumb, .hero .breadcrumb a { color: rgba(255, 255, 255, 0.78); }
 .hero .breadcrumb a:hover { color: #fff; }
 
 /* -------- Logo strip -------- */
-.OrcaPulse-logo-strip { height: 158px; display: flex; align-items: center; overflow: hidden; background: var(--OrcaPulse-mist-2); }
-.OrcaPulse-logo-track { display: flex; align-items: center; justify-content: space-around; gap: 74px; min-width: 100%; white-space: nowrap; color: #636a8e; width: 100%; padding-inline: var(--OrcaPulse-gutter); }
-.OrcaPulse-logo-word { font-size: clamp(21px, 2.5vw, 34px); font-weight: 800; letter-spacing: -1.4px; opacity: 0.96; }
+.OrcaPulse-logo-strip { height: auto; min-height: 88px; padding-block: 22px; display: flex; align-items: center; overflow: hidden; background: var(--OrcaPulse-mist-2); }
+.OrcaPulse-logo-track { display: flex; align-items: center; justify-content: space-around; gap: clamp(18px, 3vw, 42px); min-width: 100%; white-space: nowrap; color: #505c73; width: 100%; padding-inline: var(--OrcaPulse-gutter); }
+.OrcaPulse-logo-word { font-size: clamp(17px, 1.6vw, 22px); font-weight: 700; letter-spacing: -0.35px; opacity: 1; }
 .OrcaPulse-logo-word.serif { font-family: Georgia, serif; font-weight: 700; }
 .OrcaPulse-logo-word.light { font-weight: 500; }
 
