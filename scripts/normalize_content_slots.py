@@ -337,6 +337,68 @@ def replace_unsupported_copy(path: Path, source: str):
             changes += count
     return source, changes
 
+
+UNVERIFIED_FIRST_PARTY = re.compile(
+    r"\b(?:in our \d{4}|our \d{4}[-–]\d{2} (?:audit|case|benchmark)|"
+    r"by our \d{4}|we (?:routinely )?see|we've (?:audited|worked on|seen)|"
+    r"accounts we've|agencies we audit|we would describe|our best estimate|"
+    r"in our book|in our scrape|in our audits|in our case tracking|"
+    r"categories we track|by our .*audit|our audit work|in the categories we track|"
+    r"in our \d{4}[-–]\d{2} audit|in our clients|our 2024)",
+    re.I,
+)
+STAT_CARD = re.compile(
+    r'<div class="insight-stat">\s*'
+    r'<div class="insight-stat__value">([\s\S]*?)</div>\s*'
+    r'<div class="insight-stat__label">([\s\S]*?)</div>\s*</div>',
+    re.I,
+)
+
+
+def replace_unverified_metric_cards(source: str):
+    corrected = 0
+
+    def rewrite(match):
+        nonlocal corrected
+        value = visible_text(match.group(1))
+        label = visible_text(match.group(2))
+        if not UNVERIFIED_FIRST_PARTY.search(label):
+            return match.group(0)
+
+        combined = (value + " " + label).lower()
+        if any(term in combined for term in ("retention", "client book", "client retention")):
+            title = "Retention cohort"
+            detail = "Define the cohort and period; compare renewals with documented recommendations and service context without implying causation."
+        elif any(term in combined for term in ("reach", "engagement", "uplift", "cpm", "creative", "video", "reels")):
+            title = "Matched creative test"
+            detail = "Compare formats using the same audience, spend, dates and conversion definition; report a numerical difference only when the source data can be shared."
+        elif any(term in combined for term in ("margin", "over-budget", "fee premium", "hourly", "cost efficiency")):
+            title = "Scope comparison"
+            detail = "Compare equivalent scopes, direct costs and delivery periods; disclose the sample and method before claiming a margin or pricing effect."
+        elif any(term in combined for term in ("insurer", "visits", "billing", "appointment", "clinic")):
+            title = "Channel contribution"
+            detail = "Measure verified appointments and visits by acquisition path and period rather than inferring results from a channel's availability."
+        elif any(term in combined for term in ("market", "capital flow", "trade value", "purchasing power", "population")):
+            title = "Market baseline"
+            detail = "Use a dated public source and define the geography and scope before publishing a market-size or cross-border-flow estimate."
+        elif any(term in combined for term in ("best estimate", "when agencies", "will be", "2027", "2028")):
+            title = "Scenario to test"
+            detail = "Treat forward-looking timing as a hypothesis, not a forecast, until a reproducible source supports it."
+        else:
+            title = "Evidence standard"
+            detail = "Publish numerical outcomes only when the source dataset, sample size, date range and metric definition can be substantiated."
+        corrected += 1
+        return (
+            '<div class="insight-stat"><div class="insight-stat__value">'
+            + title
+            + '</div><div class="insight-stat__label">'
+            + detail
+            + '</div></div>'
+        )
+
+    return STAT_CARD.sub(rewrite, source), corrected
+
+
 def main():
     page_count = 0
     changed_pages = 0
@@ -420,6 +482,8 @@ def main():
         updated, count = replace_unverified_stats(path, updated)
         unsupported_claims_corrected += count
         updated, count = replace_unsupported_copy(path, updated)
+        unsupported_claims_corrected += count
+        updated, count = replace_unverified_metric_cards(updated)
         unsupported_claims_corrected += count
 
         updated, count = normalize_editorial_art(path, updated)
