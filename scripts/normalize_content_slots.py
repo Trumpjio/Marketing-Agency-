@@ -353,6 +353,9 @@ UNVERIFIED_FIRST_PARTY = re.compile(
     r"share of a mid-market gcc clinic's visits|"
     r"rule of thumb: \$1 of extra qualified|"
     r"hotel audit,? \d{4}|"
+    r"share of an existing client book|fee ceiling specialists can charge|"
+    r"achievable ota tax share|share of mobile direct-booking sessions lost|"
+    r"realistic direct-share gain|"
     r"reported share .* from gcc capital)",
     re.I,
 )
