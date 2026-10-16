@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Normalize legacy Ioka brand/domain references for the OrcaPulse production site."""
+"""Normalize legacy brand/domain references; schema and local-site checks run afterward."""
 from pathlib import Path
 import json
 import re
