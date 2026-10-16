@@ -1682,8 +1682,8 @@ a.glass:visited, a.case:visited, a.capability:visited { color: inherit; }
   overflow: hidden;
   margin: 0 auto var(--s-4);
   max-width: 980px;
-  border: 1px solid var(--line);
-  background: linear-gradient(135deg, rgba(99, 91, 255, 0.14), rgba(24, 191, 255, 0.08));
+  border: 1px solid #d7e2f2;
+  background: linear-gradient(135deg, #f3f7ff 0%, #e7effc 100%);
 }
 .article-visual__symbol {
   position: absolute;
@@ -1691,22 +1691,27 @@ a.glass:visited, a.case:visited, a.capability:visited { color: inherit; }
   display: grid;
   place-items: center;
   font-family: var(--font-display);
-  font-weight: 300;
-  font-size: clamp(5rem, 15vw, 11rem);
-  color: var(--blue);
-  opacity: 0.22;
+  font-weight: 500;
+  font-size: clamp(4.5rem, 10vw, 7rem);
+  color: #285fc7;
+  opacity: 0.42;
   letter-spacing: -0.04em;
   line-height: 1;
 }
 .article-visual__label {
   position: absolute;
-  top: var(--s-3);
-  left: var(--s-3);
-  font-size: 0.7rem;
-  letter-spacing: 0.18em;
+  top: 12px;
+  left: 12px;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--muted);
-  font-weight: 600;
+  color: #202453;
+  font-weight: 700;
+  background: rgba(255,255,255,.9);
+  border: 1px solid rgba(32,36,83,.08);
+  border-radius: 999px;
+  padding: 6px 10px;
+  z-index: 2;
 }
 
 .article-meta {
