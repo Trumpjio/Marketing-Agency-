@@ -56,7 +56,7 @@ function recordIssue(label, detail) {
           }
           const overflow = [];
           for (const el of document.querySelectorAll("body *")) {
-            if (el.closest('[aria-hidden="true"]') || el.hidden) continue;
+            if (el.closest('[aria-hidden="true"]') || el.hidden || el.classList.contains("skip-link")) continue;
             const style = getComputedStyle(el);
             if (style.display === "none" || style.visibility === "hidden" || style.position === "fixed" && el.id !== "nav") continue;
             const rect = el.getBoundingClientRect();
@@ -130,7 +130,7 @@ function recordIssue(label, detail) {
 
   // Exercise the public form endpoint in this disposable CI checkout.
   const postLead = async (fields) => page.request.post(base + "/admin/lead.php", {
-    data: new URLSearchParams(fields),
+    form: fields,
     headers: { Accept: "application/json" }
   });
   try {
