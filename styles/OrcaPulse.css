@@ -898,3 +898,73 @@ textarea:focus-visible, select:focus-visible, summary:focus-visible {
   .op-featured__visual { min-width: 0; }
   .op-featured .article-visual { aspect-ratio: 16 / 9 !important; }
 }
+
+
+/* Contact form is the only public lead form; booking remains the primary CTA elsewhere. */
+.OrcaPulse-home-booking {
+  max-width: 900px;
+  text-align: center;
+}
+.OrcaPulse-home-booking .kicker {
+  margin-bottom: 12px;
+  background: rgba(255,255,255,.12);
+  color: #dbeafe;
+}
+.OrcaPulse-home-booking h2 {
+  max-width: 20ch;
+  margin-inline: auto;
+  text-wrap: balance;
+}
+.OrcaPulse-home-booking p {
+  margin-inline: auto;
+}
+.OrcaPulse-home-booking .btn--primary {
+  min-width: 210px;
+}
+.OrcaPulse-home-contact-note {
+  margin: 14px 0 0 !important;
+  font-size: 0.9rem !important;
+  color: #dbe5f7 !important;
+}
+.OrcaPulse-home-contact-note a {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.OrcaPulse-contact-copy .OrcaPulse-contact-direct {
+  margin-top: 1.5rem;
+  font-size: 0.93rem;
+  line-height: 1.65;
+  color: var(--OrcaPulse-muted);
+}
+.OrcaPulse-contact-copy .OrcaPulse-contact-direct a {
+  color: var(--OrcaPulse-blue);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.OrcaPulse-honeypot {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+.OrcaPulse-form-note {
+  max-width: 62ch;
+  margin: 0.9rem 0 0;
+  color: var(--OrcaPulse-muted);
+  font-size: 0.84rem;
+  line-height: 1.6;
+}
+.OrcaPulse-form-note a {
+  color: var(--OrcaPulse-blue);
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
