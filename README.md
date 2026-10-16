@@ -51,6 +51,10 @@ Never commit passwords, tokens, reset data, or runtime authentication files. Con
 - `ORCAPULSE_ADMIN_PASSWORD` — first-time admin password initialization
 - `ORCAPULSE_BASE_URL=https://orcapulse.io` — trusted password-reset origin
 - `ORCAPULSE_ADMIN_EMAIL` — verified address used for admin recovery
+- `ORCAPULSE_LEAD_NOTIFY_EMAIL` — optional verified recipient for new website-enquiry notifications
+- `ORCAPULSE_LEAD_NOTIFY_FROM` — optional verified sender address on the `orcapulse.io` domain; notification mail is skipped unless both lead-notification settings are valid and PHP `mail()` is available
+
+Lead enquiries are saved to the authenticated admin Enquiries inbox first. Email notification is best-effort and cannot replace the saved inbox record. Configure and test the notification recipient/sender in Hostinger before relying on email alerts; do not reuse a product-domain recovery email unless the business owner has explicitly verified that routing.
 
 Preserve an existing valid `data/.auth.json` across deployments if it contains the active password hash. Back it up securely before any deployment that could replace or remove runtime files. Confirm environment-variable support and file persistence in Hostinger before relying on password recovery. Do not put secrets in the repository, web-accessible settings, or logs.
 
