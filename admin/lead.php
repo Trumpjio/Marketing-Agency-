@@ -109,7 +109,6 @@ $all[] = [
     'website' => $website,
     'goals' => strip_tags($goals),
     'source' => preg_replace('/[^a-zA-Z0-9._-]/', '', $source),
-    'ip' => $_SERVER['REMOTE_ADDR'] ?? '',
 ];
 
 $json = json_encode($all, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
