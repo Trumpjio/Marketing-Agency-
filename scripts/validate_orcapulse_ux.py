@@ -34,7 +34,7 @@ require("removeEmptyContentSlots" in main_js and 'data-op-empty="true"' in main_
         "empty CMS sections are handled before reveal animations")
 require("submitContactLeadForm" in main_js and 'id="lead-feedback"' in contact,
         "Contact Us enquiry form has accessible success/failure feedback")
-require(not re.search(r"<form\\b", home, re.I) and 'id="lead-form"' in contact,
+require(not re.search(r"<form\b", home, re.I) and 'id="lead-form"' in contact,
         "homepage is booking-only and Contact Us holds the public enquiry form")
 require('name="source" value="contact-page"' in contact and "../contact.html?sent=" in lead_php,
         "enquiry source and no-JavaScript fallback both target Contact Us")
