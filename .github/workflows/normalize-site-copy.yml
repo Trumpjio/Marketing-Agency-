@@ -8,6 +8,8 @@ on:
     paths:
       - scripts/normalize_site_copy.py
       - scripts/normalize_layout_assets.py
+      - scripts/normalize_content_slots.py
+      - assets/illustrations/editorial-*.svg
       - .github/workflows/normalize-site-copy.yml
 
 permissions:
@@ -30,6 +32,8 @@ jobs:
         run: python scripts/normalize_site_copy.py
       - name: Normalize redundant stylesheet includes
         run: python scripts/normalize_layout_assets.py
+      - name: Remove empty content slots and add editorial artwork
+        run: python scripts/normalize_content_slots.py
       - name: Commit normalized HTML pages
         run: |
           if git diff --quiet -- '*.html'; then
