@@ -5,8 +5,10 @@ on:
     branches: [deploy]
   push:
     branches:
+      - deploy
       - fix/orcapulse-source-audit-remediation
       - fix/orcapulse-hostinger-release
+      - fix/orcapulse-post-merge-hardening
 
 permissions:
   contents: read
@@ -41,7 +43,7 @@ jobs:
       - name: Validate site links, sitemap, settings, and structured data
         run: python3 scripts/validate_orcapulse_site.py
 
-      - name: Validate sitemap XML and report host mismatch
+      - name: Validate sitemap XML and enforce canonical host
         shell: bash
         run: |
           python3 - <<'PY'
@@ -54,10 +56,15 @@ jobs:
           urls = [node.text.strip() for node in root.findall(".//sm:loc", ns) if node.text]
           if not urls:
               raise SystemExit("Sitemap contains no URL entries")
+          if len(urls) != len(set(urls)):
+              duplicates = [url for url, count in collections.Counter(urls).items() if count > 1]
+              raise SystemExit("Duplicate sitemap URLs: " + ", ".join(duplicates))
           hosts = collections.Counter(urllib.parse.urlparse(url).netloc.lower() for url in urls)
-          print(f"Validated {len(urls)} sitemap URLs; hosts: {dict(hosts)}")
+          print(f"Validated {len(urls)} unique sitemap URLs; hosts: {dict(hosts)}")
           if set(hosts) != {"orcapulse.io"}:
-              print("::warning::Sitemap host does not match confirmed production domain orcapulse.io. Verify the production source and page inventory before release.")
+              raise SystemExit(f"Sitemap hosts must be exactly {{'orcapulse.io'}}, found: {dict(hosts)}")
+          if any(urllib.parse.urlparse(url).scheme != "https" for url in urls):
+              raise SystemExit("All sitemap URLs must use HTTPS")
           PY
 
       - name: Guard against known security regressions
@@ -76,9 +83,9 @@ jobs:
               failures.append("Password reset URL still trusts HTTP_HOST")
           if "Sitemap: https://orcapulse.io/sitemap.xml" not in robots:
               failures.append("robots.txt must advertise the verified production sitemap https://orcapulse.io/sitemap.xml")
-          if "ioka.online" in robots.lower():
-              failures.append("robots.txt still references the legacy test domain")
+          if "ioka.online" in robots.lower() or "orcapulse.com" in robots.lower():
+              failures.append("robots.txt still references a legacy host")
           if failures:
-              raise SystemExit("\n".join(failures))
+              raise SystemExit("\\n".join(failures))
           print("Security regression guards passed")
           PY
