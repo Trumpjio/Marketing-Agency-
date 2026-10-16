@@ -338,31 +338,76 @@ function rate_limit($bucket, $maxAttempts = 10, $windowSec = 900) {
     $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
     $file = DATA_DIR . '/.rate_' . preg_replace('/[^a-z0-9_]/', '', $bucket) . '.json';
     $now = time();
-    $data = file_exists($file) ? (json_decode(file_get_contents($file), true) ?: []) : [];
-    // Prune anything older than the window
-    foreach ($data as $k => $hits) {
-        $data[$k] = array_values(array_filter($hits, fn($t) => $t > $now - $windowSec));
-        if (empty($data[$k])) unset($data[$k]);
-    }
-    $data[$ip] = $data[$ip] ?? [];
-    if (count($data[$ip]) >= $maxAttempts) {
-        file_put_contents($file, json_encode($data));
+    $handle = @fopen($file, 'c+');
+    if ($handle === false) return false;
+    if (!flock($handle, LOCK_EX)) {
+        fclose($handle);
         return false;
     }
-    $data[$ip][] = $now;
-    file_put_contents($file, json_encode($data));
+
+    $raw = stream_get_contents($handle);
+    $data = ($raw === false || trim($raw) === '') ? [] : json_decode($raw, true);
+    if (!is_array($data)) {
+        flock($handle, LOCK_UN);
+        fclose($handle);
+        return false;
+    }
+
+    // Prune old hits while holding the file lock so concurrent requests cannot
+    // overwrite each other's counters and bypass the configured limit.
+    foreach ($data as $key => $hits) {
+        if (!is_array($hits)) {
+            unset($data[$key]);
+            continue;
+        }
+        $data[$key] = array_values(array_filter($hits, fn($t) => is_numeric($t) && (int) $t > $now - $windowSec));
+        if (empty($data[$key])) unset($data[$key]);
+    }
+
+    $data[$ip] = $data[$ip] ?? [];
+    $allowed = count($data[$ip]) < max(1, (int) $maxAttempts);
+    if ($allowed) $data[$ip][] = $now;
+
+    $json = json_encode($data);
+    $written = false;
+    if ($json !== false) {
+        rewind($handle);
+        $written = ftruncate($handle, 0) && fwrite($handle, $json) === strlen($json) && fflush($handle);
+    }
+    flock($handle, LOCK_UN);
+    fclose($handle);
     @chmod($file, 0600);
-    return true;
+
+    // Fail closed when the counter store cannot be written.
+    return $allowed && $written;
 }
 
 /** Clear rate-limit hits for the current IP in this bucket (on successful auth). */
 function rate_limit_clear($bucket) {
     $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
     $file = DATA_DIR . '/.rate_' . preg_replace('/[^a-z0-9_]/', '', $bucket) . '.json';
-    if (!file_exists($file)) return;
-    $data = json_decode(file_get_contents($file), true) ?: [];
-    unset($data[$ip]);
-    file_put_contents($file, json_encode($data));
+    $handle = @fopen($file, 'c+');
+    if ($handle === false) return;
+    if (!flock($handle, LOCK_EX)) {
+        fclose($handle);
+        return;
+    }
+    $raw = stream_get_contents($handle);
+    $data = ($raw === false || trim($raw) === '') ? [] : json_decode($raw, true);
+    if (is_array($data)) {
+        unset($data[$ip]);
+        $json = json_encode($data);
+        if ($json !== false) {
+            rewind($handle);
+            if (ftruncate($handle, 0)) {
+                fwrite($handle, $json);
+                fflush($handle);
+            }
+        }
+    }
+    flock($handle, LOCK_UN);
+    fclose($handle);
+    @chmod($file, 0600);
 }
 
 /* ---------- Secure session regeneration ---------- */
