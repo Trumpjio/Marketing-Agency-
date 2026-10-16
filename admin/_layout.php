@@ -152,6 +152,7 @@ $current = basename($_SERVER['PHP_SELF'], '.php');
       <a href="blogs.php" class="<?= in_array($current,['blogs','blog-edit'])?'active':'' ?>">Blog Posts</a>
       <a href="media.php" class="<?= $current==='media'?'active':'' ?>">Media Library</a>
       <a href="subscribers.php" class="<?= $current==='subscribers'?'active':'' ?>">Subscribers</a>
+      <a href="leads.php" class="<?= $current==='leads'?'active':'' ?>">Enquiries</a>
       <a href="../index.html" target="_blank">View Site →</a>
     </nav>
     <div class="logout">
