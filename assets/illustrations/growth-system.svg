@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 430" role="img" aria-labelledby="title desc">
+  <title id="title">OrcaPulse growth system</title>
+  <desc id="desc">A conceptual dashboard connects search and AI discovery, paid media, web experience, and qualified demand into one measurement workflow. No client performance figures are shown.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f4f8ff"/>
+      <stop offset="100%" stop-color="#eef4ff"/>
+    </linearGradient>
+    <linearGradient id="flow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3269d2" stop-opacity=".25"/>
+      <stop offset="100%" stop-color="#4da45a" stop-opacity=".65"/>
+    </linearGradient>
+  </defs>
+  <rect width="1100" height="430" rx="28" fill="url(#bg)"/>
+  <g stroke="#dfe8f6" stroke-width="1">
+    <path d="M0 70H1100M0 140H1100M0 210H1100M0 280H1100M0 350H1100"/>
+    <path d="M70 0V430M140 0V430M210 0V430M280 0V430M350 0V430M420 0V430M490 0V430M560 0V430M630 0V430M700 0V430M770 0V430M840 0V430M910 0V430M980 0V430M1050 0V430"/>
+  </g>
+  <rect x="35" y="28" width="1030" height="374" rx="22" fill="#ffffff" stroke="#d8e3f3"/>
+  <text x="70" y="68" fill="#202453" font-family="Inter,Arial,sans-serif" font-weight="700" font-size="18">One connected growth system</text>
+  <text x="70" y="91" fill="#626977" font-family="Inter,Arial,sans-serif" font-size="12">Illustrative workflow — actual priorities depend on your business</text>
+  <g>
+    <rect x="65" y="130" width="205" height="104" rx="16" fill="#f0f6ff" stroke="#cfe0fb"/>
+    <circle cx="97" cy="160" r="15" fill="#3269d2"/>
+    <path d="M91 160h12M97 154v12" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+    <text x="88" y="192" fill="#202453" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="700">Discovery</text>
+    <text x="88" y="212" fill="#626977" font-family="Inter,Arial,sans-serif" font-size="11">Search · AI answers · intent</text>
+  </g>
+  <g>
+    <rect x="303" y="130" width="205" height="104" rx="16" fill="#f5f2ff" stroke="#dcd4fb"/>
+    <circle cx="335" cy="160" r="15" fill="#7164cf"/>
+    <path d="M329 159l4 4 8-9" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="326" y="192" fill="#202453" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="700">Acquisition</text>
+    <text x="326" y="212" fill="#626977" font-family="Inter,Arial,sans-serif" font-size="11">Paid media · creative · tests</text>
+  </g>
+  <g>
+    <rect x="541" y="130" width="205" height="104" rx="16" fill="#fff8e8" stroke="#f0dfad"/>
+    <circle cx="573" cy="160" r="15" fill="#bd8b2c"/>
+    <path d="M566 156h14M566 161h14M566 166h9" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+    <text x="564" y="192" fill="#202453" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="700">Experience</text>
+    <text x="564" y="212" fill="#626977" font-family="Inter,Arial,sans-serif" font-size="11">Website · landing page · UX</text>
+  </g>
+  <g>
+    <rect x="779" y="130" width="245" height="104" rx="16" fill="#eefbf4" stroke="#b9e6ce"/>
+    <circle cx="811" cy="160" r="15" fill="#4da45a"/>
+    <path d="M804 162l5 5 10-12" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="802" y="192" fill="#202453" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="700">Qualified demand</text>
+    <text x="802" y="212" fill="#626977" font-family="Inter,Arial,sans-serif" font-size="11">Enquiries · pipeline · outcomes</text>
+  </g>
+  <g fill="none" stroke="#3269d2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M270 182H296l-7-6m7 6-7 6"/>
+    <path d="M508 182H534l-7-6m7 6-7 6"/>
+    <path d="M746 182H772l-7-6m7 6-7 6"/>
+  </g>
+  <path d="M900 248V286H170V248" fill="none" stroke="url(#flow)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7"/>
+  <rect x="314" y="270" width="445" height="44" rx="13" fill="#202453"/>
+  <text x="536" y="297" fill="#ffffff" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="700" text-anchor="middle">Measure · learn · prioritize the next change</text>
+  <g fill="#626977" font-family="Inter,Arial,sans-serif" font-size="11">
+    <text x="70" y="350">Strategy</text><text x="185" y="350">Execution</text><text x="320" y="350">Measurement</text><text x="485" y="350">Continuous improvement</text>
+  </g>
+  <path d="M70 366H210M185 366H285M320 366H440M485 366H680" stroke="#dfe8f6" stroke-width="2" stroke-linecap="round"/>
+</svg>
