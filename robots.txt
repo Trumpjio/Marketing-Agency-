@@ -14,5 +14,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-# Sitemap directive intentionally omitted until the production source and
-# canonical sitemap for https://orcapulse.io are verified.
+Sitemap: https://orcapulse.io/sitemap.xml
