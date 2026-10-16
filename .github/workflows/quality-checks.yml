@@ -10,6 +10,7 @@ on:
       - fix/orcapulse-hostinger-release
       - fix/orcapulse-post-merge-hardening
       - fix/orcapulse-comprehensive-site-polish
+      - fix/orcapulse-professional-layout
 
 permissions:
   contents: read
@@ -135,4 +136,13 @@ jobs:
 
       - name: Test all HTML pages at five viewport widths
         run: node scripts/smoke_site_responsive.cjs
+
+      - name: Upload visual audit screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: orcapulse-design-audit-screenshots
+          path: artifacts/design-audit/
+          if-no-files-found: warn
+          retention-days: 7
 
