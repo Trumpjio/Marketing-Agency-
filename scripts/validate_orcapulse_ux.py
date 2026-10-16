@@ -59,7 +59,6 @@ unwired = [p.name for p in pages if "scripts/main.js" not in p.read_text(encodin
 require(not unwired, "shared JavaScript loads on every HTML page" + (f" (missing: {', '.join(unwired[:10])})" if unwired else ""))
 
 # Guard common source copy defects corrected by the site-wide normalization script.
-source = "\\n".join(p.read_text(encoding="utf-8", errors="replace") for p in pages)
 for bad in [
     "Thirty minutes, no pitch a frank conversation",
     "the problem , not just keywords",
@@ -68,7 +67,11 @@ for bad in [
     "scoping to shipped",
     "premium at thumb-scroll speed",
 ]:
-    require(bad.lower() not in source.lower(), f"obsolete copy removed: {bad}")
+    hits = [
+        p.name for p in pages
+        if bad.lower() in p.read_text(encoding="utf-8", errors="replace").lower()
+    ]
+    require(not hits, f"obsolete copy removed: {bad}" + (f" (found in: {', '.join(hits)})" if hits else ""))
 
 if failures:
     print("UX/content regression checks FAILED:")
