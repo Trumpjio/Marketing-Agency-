@@ -11,6 +11,14 @@ EXCLUDED_PARTS = {".git", "node_modules", "vendor", "reports", "docs", "AUDITS"}
 def normalize(text: str) -> str:
     text = re.sub(r"ioka\.online", "orcapulse.io", text, flags=re.IGNORECASE)
     text = re.sub(r"\bioka\b", "OrcaPulse", text, flags=re.IGNORECASE)
+    # After removing unverified email/WhatsApp links, also remove the leftover
+    # visual wrapper if it contains only a separator and whitespace.
+    text = re.sub(
+        r'<div\b(?=[^>]*class=["\'][^"\']*\bhero__sub-links\b[^"\']*["\'])[^>]*>\s*(?:&nbsp;\s*·\s*&nbsp;)?\s*</div>',
+        '',
+        text,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
     # The Ioka email and zero-filled WhatsApp number were never verified for
     # OrcaPulse. Remove their links rather than inventing replacement details.
     text = re.sub(
