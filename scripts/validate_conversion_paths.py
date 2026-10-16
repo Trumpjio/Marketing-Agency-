@@ -33,6 +33,19 @@ for page in pages:
     if re.search(r"<section\b[^>]*\bdata-op-empty\s*=\s*['\"]true['\"]", source, re.I):
         errors.append(f"{page.name}: static HTML still contains an explicitly empty CMS section; remove the section, not just hide it with CSS.")
 
+    # All pages must use the same two local style layers in the intended order.
+    stylesheet_links = re.findall(r'<link\\b[^>]*rel=["\\']stylesheet["\\'][^>]*>', source, re.I)
+    local_stylesheets = []
+    for link in stylesheet_links:
+        match = re.search(r'\\bhref=["\\']([^"\\']+)["\\']', link, re.I)
+        if match and match.group(1).startswith("styles/"):
+            local_stylesheets.append(match.group(1))
+    expected_styles = ["styles/glass.css?v=20261016c", "styles/OrcaPulse.css?v=20261016c"]
+    if local_stylesheets != expected_styles:
+        errors.append(f"{page.name}: expected only the shared structural and brand CSS in order {expected_styles}; found {local_stylesheets}.")
+    if "styles/custom-design.css" in source or "styles/template-design.css" in source:
+        errors.append(f"{page.name}: redundant empty stylesheet import remains.")
+
     # Empty dynamic-content anchors are allowed only when they render visible content.
     for match in re.finditer(r"<!--\s*OP-(COLLECTION|BLOG):[^>]*-->([\s\S]*?)<!--\s*/OP-\1\s*-->", source, re.I):
         body = match.group(2)
