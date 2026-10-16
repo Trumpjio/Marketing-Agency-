@@ -69,8 +69,10 @@ jobs:
               failures.append("Committed default admin password remains in config")
           if "$_SERVER['HTTP_HOST']" in forgot or '$_SERVER["HTTP_HOST"]' in forgot:
               failures.append("Password reset URL still trusts HTTP_HOST")
-          if "Sitemap:" in robots:
-              failures.append("robots.txt advertises a sitemap before production sitemap identity is verified")
+          if "Sitemap: https://orcapulse.io/sitemap.xml" not in robots:
+              failures.append("robots.txt must advertise the verified production sitemap https://orcapulse.io/sitemap.xml")
+          if "ioka.online" in robots.lower():
+              failures.append("robots.txt still references the legacy test domain")
           if failures:
               raise SystemExit("\n".join(failures))
           print("Security regression guards passed")
