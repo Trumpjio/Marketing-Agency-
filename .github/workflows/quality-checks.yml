@@ -95,3 +95,44 @@ jobs:
               raise SystemExit("\\n".join(failures))
           print("Security regression guards passed")
           PY
+
+  browser-responsive:
+    needs: syntax-and-security
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v7
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: none
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+
+      - name: Install browser test dependencies
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+
+      - name: Start the local PHP website
+        shell: bash
+        run: |
+          php -S 127.0.0.1:8000 -t . > /tmp/orcapulse-php-server.log 2>&1 &
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:8000/index.html >/dev/null; then
+              echo "Local site ready."
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/orcapulse-php-server.log
+          exit 1
+
+      - name: Test all HTML pages at five viewport widths
+        run: node scripts/smoke_site_responsive.cjs
+
