@@ -541,7 +541,7 @@ body:not([data-nav="light"]) header.nav .nav__burger span { background: var(--Or
   --OrcaPulse-content: 1180px;
 }
 
-[hidden] { display: none !important; }
+[hidden], [data-op-empty="true"] { display: none !important; }
 html { width: 100%; overflow-x: clip; scroll-padding-top: 92px; }
 body { width: 100%; min-width: 320px; overflow-x: clip; }
 .page { overflow: visible; }
