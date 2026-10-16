@@ -735,3 +735,31 @@ textarea:focus-visible, select:focus-visible, summary:focus-visible {
 .OrcaPulse-method-card .cap__icon { align-self: flex-start; }
 .OrcaPulse-method-card .cap__title { margin-bottom: 0; }
 .OrcaPulse-method-card .cap__desc { margin-top: 0; }
+
+
+/* Homepage visual: connect the core services without inventing results */
+.OrcaPulse-home-visual {
+  position: relative;
+  z-index: 3;
+  margin-top: clamp(-3.5rem, -4vw, -1.5rem);
+  margin-bottom: clamp(2.25rem, 4vw, 3.75rem);
+}
+.OrcaPulse-home-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #dce5f2;
+  border-radius: clamp(16px, 2vw, 26px);
+  box-shadow: 0 22px 60px rgba(32, 36, 83, 0.10);
+  background: #f5f8fd;
+}
+@media (max-width: 760px) {
+  .OrcaPulse-home-visual {
+    margin-top: -1.1rem;
+    margin-bottom: 1.75rem;
+  }
+  .OrcaPulse-home-visual img {
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(32, 36, 83, 0.08);
+  }
+}
