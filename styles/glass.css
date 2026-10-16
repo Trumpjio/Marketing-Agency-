@@ -2520,8 +2520,6 @@ a.glass:visited, a.case:visited, a.capability:visited { color: inherit; }
   .orb { display: none; }
 }
 
-/* Prevent overflow from any wayward content */
-html, body { overflow-x: hidden; }
 img, video { max-width: 100%; height: auto; }
 
 /* Smoother focus states for accessibility */
@@ -2542,10 +2540,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .hero h1, .hero__sub, .section-head h2, .section-head p { max-width: 100%; }
 
-/* Force no horizontal overflow site-wide */
-html, body { overflow-x: hidden !important; max-width: 100vw; }
-.nav, .nav__inner, section, .container { max-width: 100vw; }
-.page { overflow-x: hidden; }
 
 
 /* Sections hidden from admin toggle */
