@@ -1,4 +1,4 @@
-name: Normalize OrcaPulse production branding
+name: Normalize OrcaPulse production branding (site-wide release pass)
 
 on:
   push:
