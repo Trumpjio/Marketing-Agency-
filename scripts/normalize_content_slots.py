@@ -231,16 +231,16 @@ METRIC_GUIDANCE = {
         ("Search overlap", "Measure traditional ranking and answer-engine citations separately; do not assume one predicts the other.")
     ]
 }
-DIV_TOKEN = re.compile(r"</?div\\b[^>]*>", re.I)
+DIV_TOKEN = re.compile(r"</?div\b[^>]*>", re.I)
 STATS_OPEN = re.compile(
-    r"<div\\b(?=[^>]*\\bclass\\s*=\\s*(['\\"])[^'\\"]*\\binsight-stats\\b[^'\\"]*\\1)[^>]*>",
+    r"<div\b(?=[^>]*\bclass\s*=\s*(['\"])[^'\"]*\binsight-stats\b[^'\"]*\1)[^>]*>",
     re.I
 )
 
 
 def div_block_end(source: str, start: int) -> int:
     """Find the matching closing </div> for a div at start, including nesting."""
-    first = re.search(r"<div\\b[^>]*>", source[start:], re.I)
+    first = re.search(r"<div\b[^>]*>", source[start:], re.I)
     if not first:
         return start
     begin = start + first.start()
@@ -263,13 +263,13 @@ def replace_unverified_stats(path: Path, source: str):
     if not openings:
         return source, 0
     replacement = (
-        '<div class="insight-stats reveal">\\n'
-        + "\\n".join(
+        '<div class="insight-stats reveal">\n'
+        + "\n".join(
             f'  <div class="insight-stat"><div class="insight-stat__value">{title}</div>'
             f'<div class="insight-stat__label">{label}</div></div>'
             for title, label in guidance
         )
-        + "\\n</div>"
+        + "\n</div>"
     )
     # Replace the first metric row only. Re-run is idempotent because the
     # generated cards do not contain an additional .insight-stats wrapper.
