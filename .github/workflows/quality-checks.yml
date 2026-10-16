@@ -9,6 +9,7 @@ on:
       - fix/orcapulse-source-audit-remediation
       - fix/orcapulse-hostinger-release
       - fix/orcapulse-post-merge-hardening
+      - fix/orcapulse-comprehensive-site-polish
 
 permissions:
   contents: read
@@ -42,6 +43,11 @@ jobs:
 
       - name: Validate site links, sitemap, settings, and structured data
         run: python3 scripts/validate_orcapulse_site.py
+
+      - name: Validate UI, accessibility-related behavior, copy, and lead flow
+        run: |
+          python3 -m py_compile scripts/validate_orcapulse_site.py scripts/validate_orcapulse_ux.py scripts/normalize_site_copy.py
+          python3 scripts/validate_orcapulse_ux.py
 
       - name: Validate sitemap XML and enforce canonical host
         shell: bash
