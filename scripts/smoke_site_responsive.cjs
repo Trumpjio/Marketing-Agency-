@@ -158,6 +158,55 @@ function recordIssue(label, detail) {
     fs.rmSync(path.join(root, "data", ".rate_lead.json"), { force: true });
   }
 
+  // Capture real rendered views for design review; these are CI artifacts,
+  // not production screenshots. Capture the hero, mid-page and final content.
+  const auditRoutes = [
+    "index.html",
+    "services.html",
+    "service-paid-media.html",
+    "industry-real-estate.html",
+    "real-estate-marketing-dubai.html",
+    "about.html",
+    "work.html",
+    "insights.html",
+    "contact.html"
+  ];
+  const screenshotDir = path.join(root, "artifacts", "design-audit");
+  fs.mkdirSync(screenshotDir, { recursive: true });
+  for (const width of [390, 768, 1440]) {
+    await page.setViewportSize({ width, height: width === 390 ? 844 : width === 768 ? 900 : 1000 });
+    for (const file of auditRoutes) {
+      const shortName = file.replace(/\.html$/, "");
+      try {
+        await page.goto(base + "/" + encodeURI(file), { waitUntil: "networkidle" });
+        await page.evaluate(() => document.fonts && document.fonts.ready);
+        const maxScroll = await page.evaluate(() => Math.max(0, document.documentElement.scrollHeight - window.innerHeight));
+        const points = [
+          ["hero", 0],
+          ["middle", Math.round(maxScroll * 0.48)],
+          ["end", maxScroll]
+        ];
+        for (const [label, y] of points) {
+          await page.evaluate((scrollY) => window.scrollTo(0, scrollY), y);
+          await page.waitForTimeout(180);
+          const filename = shortName + "-" + width + "-" + label + ".png";
+          await page.screenshot({ path: path.join(screenshotDir, filename), fullPage: false });
+        }
+        // Full-page desktop overview for the main pages so the vertical rhythm
+        // can be inspected in one image where the source page is not extreme.
+        if (width === 1440 && ["index.html", "services.html", "service-paid-media.html", "industry-real-estate.html", "work.html", "insights.html"].includes(file)) {
+          const maxHeight = await page.evaluate(() => document.documentElement.scrollHeight);
+          if (maxHeight <= 9500) {
+            await page.evaluate(() => window.scrollTo(0, 0));
+            await page.screenshot({ path: path.join(screenshotDir, shortName + "-1440-full.png"), fullPage: true });
+          }
+        }
+      } catch (error) {
+        recordIssue("design screenshot failed", file + " at " + width + "px: " + error.message);
+      }
+    }
+  }
+
   await browser.close();
 
   console.log("Responsive viewport sweep: " + pages.length + " pages × " + viewports.length + " widths = " + (pages.length * viewports.length) + " checks.");
