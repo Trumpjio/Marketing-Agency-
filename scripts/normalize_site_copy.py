@@ -27,6 +27,10 @@ REPLACEMENTS = {
         "Campaign films, social creative and motion design designed for fast-scrolling feeds and larger screens.",
     "Target each separately don't bundle.":
         "Target each separately; do not bundle them.",
+    "iOS, Android, cross-platform scoping to shipped, with the growth loop baked in.":
+        "iOS, Android and cross-platform apps developed from initial scope through launch, with a clear growth plan.",
+    "production, editing and motion design premium at thumb-scroll speed.":
+        "production, editing and motion design designed for fast-scrolling feeds.",
 }
 SCARCITY = re.compile(
     r"We take on\s*<strong>3 new partnerships per quarter\.</strong>\s*Current quarter is open\.",
