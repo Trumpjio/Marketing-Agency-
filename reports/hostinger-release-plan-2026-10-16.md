@@ -1,65 +1,51 @@
 # OrcaPulse Hostinger Release Plan
 
-**Date:** 16 October 2026  
+**Updated:** 16 October 2026  
 **Repository:** `Trumpjio/Marketing-Agency-`  
 **Production domain:** `https://orcapulse.io`  
 **Historical test domain:** `https://ioka.online`  
-**Implementation branch:** `fix/orcapulse-hostinger-release`  
-**Deployment target:** Hostinger Git deployment / website document root  
-**Status:** Implementation branch created; no production changes or deployment performed.
+**Release branch:** `fix/orcapulse-hostinger-release`  
+**Hostinger deployment branch:** `deploy`  
+**Hostinger install directory:** `public_html`  
+**Status:** Source changes and static validation are prepared. Production deployment still requires a Hostinger backup, a check of the existing admin password hash/configuration, and the manual Hostinger redeploy.
 
-## Release objective
+## Implemented on the release branch
 
-Publish the approved public marketing website directly through Hostinger, without using Render. Preserve the existing agency page structure and content while correcting brand/domain consistency, admin security, SEO metadata, accessibility, and deployment safety.
+- Normalized the website's Ioka branding and `ioka.online` canonical/social/structured-data URLs to OrcaPulse and `https://orcapulse.io`.
+- Updated `data/settings.json`, `robots.txt`, and the 89-entry XML sitemap. Sitemap URLs now use `orcapulse.io`; `lastmod` was refreshed to 16 October 2026 for the entries that were previously dated 7 October.
+- Fixed the normalized stylesheet filename reference by supplying `styles/OrcaPulse.css`, so pages resolve the stylesheet on case-sensitive hosting.
+- Removed the unverified legacy public email and zero-filled WhatsApp links; no replacement contact information was invented. The existing Calendly call-to-action remains.
+- Removed the empty separator wrapper left on the contact page.
+- Hardened admin password initialization, password hashing/token storage and password recovery; removed the committed default admin password; avoided trust in request `HTTP_HOST` when building reset URLs.
+- Updated the mobile navigation accordion to use keyboard-operable buttons and ARIA state.
+- Added missing `og:url` and `BlogPosting` metadata to insight articles where absent.
+- Replaced service-area `LocalBusiness` structured-data nodes with `Service` nodes using `areaServed`, avoiding claims of unverified staffed offices.
+- Added validation for JSON-LD, local HTML/assets, settings, sitemap, PHP/JavaScript syntax, and known security regressions.
 
-## Confirmed source findings
+## Validation evidence
 
-- The `deploy` branch has 89 sitemap URLs, all using `ioka.online`.
-- `index.html` metadata, JSON-LD, shared styles and settings identify Ioka / `ioka.online`.
-- `robots.txt` points to `orcapulse.com/sitemap.xml`, which conflicts with the confirmed production domain `orcapulse.io`.
-- `data/settings.json` uses Ioka brand and email settings; the CTA points to an OrcaPulse Calendly URL.
-- The `main` branch contains only a README, so it is not a deployable website source.
-- Security/accessibility remediations are prepared on `fix/orcapulse-source-audit-remediation`; GitHub Actions passed on the latest recorded remediation commit.
-- The exact Hostinger document root, connected branch, and deployed commit have not yet been verified.
+Latest completed site-wide normalization and validation run: [GitHub Actions](https://github.com/Trumpjio/Marketing-Agency-/actions/runs/38860264917).
 
-## Implementation checklist
+The run reported:
+- 89 HTML pages.
+- 89 sitemap URLs.
+- 9,044 local HTML/asset references checked.
+- 27 service-area `LocalBusiness` schema nodes converted.
+- No legacy Ioka brand/domain references or known placeholder public contact details remaining in scanned site text.
+- Validation passed.
 
-### P0 — Source and release safety
-- [ ] Verify Hostinger's configured repository, branch, deployment directory and currently deployed commit.
-- [ ] Back up the current Hostinger document root before release.
-- [ ] Compare the live site files with this source branch; do not replace a different site.
-- [ ] Keep all work on this implementation branch until tests and review pass.
+The release validation workflow also passed PHP lint, JavaScript syntax, sitemap XML, settings, local links/assets, structured-data checks and security regression guards on the preceding source revision. After the final sitemap and documentation edits, rerun the workflow before merging.
 
-### P1 — Brand, domain, conversion and security
-- [ ] Use `OrcaPulse` and `https://orcapulse.io` consistently in page titles, canonical tags, Open Graph/Twitter metadata, JSON-LD, absolute internal URLs, settings and sitemap.
-- [ ] Replace historical `ioka.online` contact details only with verified OrcaPulse contact details.
-- [ ] Remove placeholder phone/WhatsApp values; do not invent business contact data.
-- [ ] Preserve the intended Calendly destination only after confirming it is the correct production booking link.
-- [ ] Keep the security remediation for admin credentials, password recovery, reset-token persistence and least-privilege file permissions.
-- [ ] Rotate any administrator credential previously committed in source.
+## Hostinger deployment checklist
 
-### P2 — SEO, accessibility and quality
-- [ ] Rebuild sitemap from the actual published page inventory and confirm all URLs use the production origin.
-- [ ] Align `robots.txt` with the verified sitemap URL.
-- [ ] Add accurate article social metadata and structured data where missing.
-- [ ] Review city/country schema so it does not imply unverified physical offices.
-- [ ] Test mobile navigation, keyboard operation, responsive widths, focus states and horizontal overflow.
-- [ ] Run PHP syntax, JavaScript syntax, sitemap XML and security regression checks.
+1. Before deployment, make a full backup of the current `public_html` directory. The Hostinger Git integration can overwrite existing files.
+2. Hostinger is configured for repository `Trumpjio/Marketing-Agency-`, branch `deploy`, install directory `public_html`, with manual deployment. Merge this reviewed release to `deploy`, then manually click Hostinger's **Redeploy**.
+3. Admin login: the old committed password has been removed. Preserve the existing ignored runtime file `data/.auth.json` if it contains a valid password hash. If no hash exists, configure `ORCAPULSE_ADMIN_PASSWORD` securely before the first admin login; otherwise initial login will be unavailable. Never restore the old hardcoded password.
+4. Public email, phone, WhatsApp and address remain blank until the owner provides verified production details. The Calendly CTA is still present and needs a real browser click test after deployment.
+5. After redeploy, verify homepage and inner pages, stylesheet and images, HTTPS and redirects, admin login/recovery, page editing/uploads, canonical URLs, contact CTA, and `https://orcapulse.io/sitemap.xml` in a browser.
 
-### P3 — Hostinger release
-- [ ] Configure `ORCAPULSE_BASE_URL=https://orcapulse.io` and a new secure `ORCAPULSE_ADMIN_PASSWORD` in the hosting environment if supported by the PHP hosting setup.
-- [ ] Test admin login, password reset/recovery, content editing, image uploads and booking/contact actions in staging.
-- [ ] Deploy the reviewed branch through Hostinger Git integration, not Render.
-- [ ] Verify HTTPS, redirects, canonical URLs, key pages, sitemap and browser cache behavior after deployment.
+## Remaining external verification
 
-## Explicit exclusions
-
-- Do not modify the separate `Trumpjio/Ai-` Business OS repository.
-- Do not change DNS or production files during source review.
-- Do not deploy the Ioka-branded `deploy` branch as-is.
-- Do not fabricate contact details, certifications, performance claims or local office addresses.
-- Do not claim live/browser/end-to-end tests passed unless they were actually run.
-
-## Current blocker
-
-The repository contains a complete marketing-site source, but its identity is inconsistent with the confirmed production domain. The Hostinger repository/branch/document-root mapping must be verified before production replacement. Work can proceed safely on this branch; production deployment remains blocked until source mapping and staging verification are complete.
+- No connected Hostinger action is available here, so the manual Hostinger deployment itself cannot be triggered or confirmed from GitHub.
+- Live browser rendering, real PHP/admin interaction, email delivery, existing runtime-file persistence and post-deployment smoke tests must be checked in Hostinger after the backup/redeploy.
+- Product-site pricing/claim findings for `orcapulse.ai` are outside this repository and must be fixed in that product-site source separately.
