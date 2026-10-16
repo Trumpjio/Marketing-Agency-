@@ -72,7 +72,7 @@ function build_apply_settings($old, $new) {
                 $html = preg_replace('#wa\.me/\d+#', 'wa.me/' . $wa, $html);
                 // Human-friendly format: 971501234567 → "+971 50 123 4567"
                 $pretty = '+' . substr($wa, 0, 3) . ' ' . substr($wa, 3, 2) . ' ' . substr($wa, 5, 3) . ' ' . substr($wa, 8);
-                $html = preg_replace('#\+971 50 000 0000#', $pretty, $html);
+                $html = preg_replace('#\#', $pretty, $html);
                 $html = preg_replace('#\+\d{1,3} \d{2,3} \d{3} \d{4}#', $pretty, $html);
             }
         }

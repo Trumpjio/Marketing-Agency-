@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-# AI crawlers — allow (set to Disallow if you want to opt out)
+# AI crawlers — allowed; change only if the site owner intentionally opts out.
 User-agent: GPTBot
 Allow: /
 
@@ -14,4 +14,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://orcapulse.com/sitemap.xml
+Sitemap: https://orcapulse.io/sitemap.xml

@@ -6,7 +6,8 @@ $flashType = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     csrf_check();
-    $email = trim($_POST['email'] ?? '');
+    $emailInput = $_POST['email'] ?? '';
+    $email = is_string($emailInput) ? trim($emailInput) : '';
     // Neutral response regardless of whether the email matches, so the form
     // does not reveal which address is the admin's.
     $generic = 'If that email matches the admin account, a reset link has been sent. Check your inbox (and spam folder) within the next few minutes.';
@@ -18,22 +19,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $flash = $generic;
         $flashType = 'ok';
     } elseif ($email !== '' && strtolower($email) === strtolower($ADMIN_EMAIL)) {
-        $token = reset_token_create();
-        // Build the reset URL from the current request.
-        $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
-        $host = $_SERVER['HTTP_HOST'] ?? 'ioka.online';
-        $dir = rtrim(dirname($_SERVER['REQUEST_URI']), '/');
-        $resetUrl = "$scheme://$host$dir/reset.php?token=$token";
+        // Use a trusted configured origin, never the untrusted Host request header.
+        $baseUrl = rtrim(getenv('ORCAPULSE_BASE_URL') ?: 'https://orcapulse.io', '/');
+        if (!preg_match('~^https://[a-z0-9.-]+(?::[0-9]+)?$~i', $baseUrl)) {
+            error_log('Invalid ORCAPULSE_BASE_URL; password reset email not sent.');
+            $baseUrl = '';
+        }
+        $token = $baseUrl !== '' ? reset_token_create() : false;
+        $resetUrl = ($token !== false && $token !== '')
+            ? $baseUrl . '/admin/reset.php?token=' . rawurlencode($token)
+            : '';
 
-        $subject = 'OrcaPulse admin — password reset';
-        $body    = "A password reset was requested for your OrcaPulse admin account.\n\n"
-                 . "Click this link to set a new password (expires in 1 hour, single use):\n\n"
-                 . $resetUrl . "\n\n"
-                 . "If you did not request this, you can ignore this email.\n\n"
-                 . "— OrcaPulse Admin";
-        $headers = "From: $ADMIN_EMAIL\r\nReply-To: $ADMIN_EMAIL\r\nContent-Type: text/plain; charset=UTF-8";
-        // Suppress any mail() warnings; we show the neutral message either way.
-        @mail($ADMIN_EMAIL, $subject, $body, $headers);
+        if ($resetUrl !== '') {
+            $subject = 'OrcaPulse admin — password reset';
+            $body = "A password reset was requested for your OrcaPulse admin account.\n\n"
+                  . "Use this HTTPS link to set a new password (expires in 1 hour, single use):\n\n"
+                  . $resetUrl . "\n\n"
+                  . "If you did not request this, you can ignore this email.\n\n"
+                  . "— OrcaPulse Admin";
+            $headers = "From: $ADMIN_EMAIL\r\nReply-To: $ADMIN_EMAIL\r\nContent-Type: text/plain; charset=UTF-8";
+            $sent = @mail($ADMIN_EMAIL, $subject, $body, $headers);
+            if (!$sent) error_log('OrcaPulse password reset email delivery failed.');
+        }
         $flash = $generic;
         $flashType = 'ok';
     } else {

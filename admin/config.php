@@ -2,14 +2,12 @@
 /**
  * Admin config.
  *
- * The password lives below. On first login after upgrading, the plain-text
- * password is automatically hashed and the hash stored in data/.auth.json.
- * From then on, this file holds no secret and the plain-text value is
- * ignored (you can clear it if you want). Change the password via the
- * password-reset flows (forgot.php / recover.php).
+ * Set ORCAPULSE_ADMIN_PASSWORD in the server environment for first-time setup.
+ * On successful first login it is migrated to a password hash in data/.auth.json.
+ * Never store or commit a plaintext admin password in this file.
  */
-$ADMIN_PASSWORD = 'orcapulse2026';  // Initial password. Hashed on first login.
-$ADMIN_EMAIL    = 'help@orcapulse.ai';  // where password-reset emails are sent
+$ADMIN_PASSWORD = getenv('ORCAPULSE_ADMIN_PASSWORD') ?: '';  // Set securely in server environment during initialization.
+$ADMIN_EMAIL    = getenv('ORCAPULSE_ADMIN_EMAIL') ?: 'help@orcapulse.ai';  // where password-reset emails are sent
 
 define('DATA_DIR', __DIR__ . '/../data');
 define('UPLOADS_DIR', __DIR__ . '/../uploads');
@@ -35,10 +33,8 @@ if (!defined('OP_NO_SESSION') && session_status() === PHP_SESSION_NONE) {
 /* ---------- Password reset helpers ---------- */
 
 function admin_update_password($newPassword) {
-    // Store the bcrypt hash in data/.auth.json. The web server does not need
-    // write access to admin/config.php any more.
-    auth_set_password($newPassword);
-    return true;
+    // Store the password hash in data/.auth.json; never rewrite this PHP file.
+    return auth_set_password($newPassword);
 }
 
 function reset_tokens_load() {
@@ -48,7 +44,17 @@ function reset_tokens_load() {
 }
 
 function reset_tokens_save($data) {
-    file_put_contents(DATA_DIR . '/reset_tokens.json', json_encode($data, JSON_PRETTY_PRINT));
+    $json = json_encode($data, JSON_PRETTY_PRINT);
+    if ($json === false) return false;
+    $path = DATA_DIR . '/reset_tokens.json';
+    $tmp = tempnam(DATA_DIR, '.reset-');
+    if ($tmp === false) return false;
+    $written = file_put_contents($tmp, $json, LOCK_EX);
+    if ($written === false) { @unlink($tmp); return false; }
+    @chmod($tmp, 0600);
+    if (!@rename($tmp, $path)) { @unlink($tmp); return false; }
+    @chmod($path, 0600);
+    return true;
 }
 
 function reset_token_create() {
@@ -58,21 +64,22 @@ function reset_token_create() {
     $tokens = array_filter($tokens, fn($t) => ($t['expires'] ?? 0) > $now);
     $token = bin2hex(random_bytes(24));
     $tokens[$token] = ['created' => $now, 'expires' => $now + 3600, 'used' => false];
-    reset_tokens_save($tokens);
+    if (!reset_tokens_save($tokens)) return false;
     return $token;
 }
 
 function reset_token_consume($token) {
+    if (!is_string($token) || $token === '') return false;
     $tokens = reset_tokens_load();
     if (empty($tokens[$token])) return false;
     $t = $tokens[$token];
     if (($t['used'] ?? false) || ($t['expires'] ?? 0) < time()) return false;
     $tokens[$token]['used'] = true;
-    reset_tokens_save($tokens);
-    return true;
+    return reset_tokens_save($tokens);
 }
 
 function reset_token_valid($token) {
+    if (!is_string($token) || $token === '') return false;
     $tokens = reset_tokens_load();
     if (empty($tokens[$token])) return false;
     $t = $tokens[$token];
@@ -251,15 +258,24 @@ function auth_load() {
 }
 
 function auth_save($data) {
-    file_put_contents(AUTH_FILE, json_encode($data, JSON_PRETTY_PRINT));
+    $json = json_encode($data, JSON_PRETTY_PRINT);
+    if ($json === false) return false;
+    $tmp = tempnam(DATA_DIR, '.auth-');
+    if ($tmp === false) return false;
+    $written = file_put_contents($tmp, $json, LOCK_EX);
+    if ($written === false) { @unlink($tmp); return false; }
+    @chmod($tmp, 0600);
+    if (!@rename($tmp, AUTH_FILE)) { @unlink($tmp); return false; }
     @chmod(AUTH_FILE, 0600);
+    return true;
 }
 
 /**
- * Check a submitted password. First login after upgrade migrates the
- * plain-text $ADMIN_PASSWORD into a bcrypt hash in data/.auth.json.
+ * Check a submitted password. First successful login migrates the server-
+ * configured initial password into a hash in data/.auth.json.
  */
 function auth_check($submitted, $plainTextFallback) {
+    if (!is_string($submitted)) return false;
     $auth = auth_load();
     // Prefer the stored hash
     if (!empty($auth['hash'])) {
@@ -273,13 +289,10 @@ function auth_check($submitted, $plainTextFallback) {
         }
         return false;
     }
-    // Migration path: no stored hash yet — compare to the plain-text constant,
-    // and on success store the hash so this branch never runs again.
-    if (hash_equals($plainTextFallback, $submitted)) {
-        auth_save(['hash' => password_hash($submitted, PASSWORD_DEFAULT)]);
-        return true;
-    }
-    return false;
+    // First-time setup requires an explicitly configured server-side password.
+    if (!is_string($plainTextFallback) || $plainTextFallback === '' || !is_string($submitted)) return false;
+    if (!hash_equals($plainTextFallback, $submitted)) return false;
+    return auth_save(['hash' => password_hash($submitted, PASSWORD_DEFAULT)]);
 }
 
 /**
@@ -287,16 +300,16 @@ function auth_check($submitted, $plainTextFallback) {
  * stays simple and never has to be rewritten by the web server.
  */
 function auth_set_password($new) {
+    if (!is_string($new) || strlen($new) < 10) return false;
     $auth = auth_load();
     $auth['hash'] = password_hash($new, PASSWORD_DEFAULT);
-    auth_save($auth);
+    return auth_save($auth);
 }
 
 /** Replace the old file-rewriting approach with the hash-store approach. */
 if (!function_exists('admin_set_password')) {
     function admin_set_password($newPassword) {
-        auth_set_password($newPassword);
-        return true;
+        return auth_set_password($newPassword);
     }
 }
 

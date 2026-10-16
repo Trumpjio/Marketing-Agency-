@@ -1,0 +1,39 @@
+name: Normalize OrcaPulse production branding (site-wide release pass (valid JSON retry))
+
+on:
+  push:
+    branches:
+      - fix/orcapulse-hostinger-release
+    paths:
+      - scripts/normalize_orcapulse_brand.py
+      - .github/workflows/normalize-orcapulse-brand.yml
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/orcapulse-hostinger-release
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Normalize legacy brand and production domain across site files
+        run: python scripts/normalize_orcapulse_brand.py
+      - name: Validate internal links and clean optional empty JSON-LD fields
+        run: python scripts/validate_orcapulse_site.py
+      - name: Commit normalized website files
+        run: |
+          if git diff --quiet; then
+            echo "No changes required."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add '*.html' '*.php' '*.css' '*.js' '*.json' '*.xml' '*.txt' '*.svg'
+          git commit -m "fix: normalize OrcaPulse branding across website pages"
+          git push origin fix/orcapulse-hostinger-release

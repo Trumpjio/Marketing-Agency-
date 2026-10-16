@@ -91,17 +91,36 @@
       const heading = section.querySelector(".nav__mobile-heading");
       if (!heading || section.dataset.enhanced) return;
       section.dataset.enhanced = "1";
-      // Collect sibling <a> elements after the heading
+      // Collect sibling links and expose the group as an accessible accordion.
       const items = Array.from(section.children).filter((n) => n !== heading && n.tagName === "A");
       if (items.length === 0) return;
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = heading.className;
+      button.textContent = heading.textContent;
+      const panelId = "mobile-nav-group-" + Array.from(panel.querySelectorAll(".nav__mobile-section")).indexOf(section);
+      button.setAttribute("aria-expanded", "false");
+      button.setAttribute("aria-controls", panelId);
       const wrap = document.createElement("div");
       wrap.className = "nav__mobile-section__items";
+      wrap.id = panelId;
+      wrap.hidden = true;
       items.forEach((it) => wrap.appendChild(it));
+      heading.replaceWith(button);
       section.appendChild(wrap);
-      // Click heading to toggle
-      heading.addEventListener("click", (e) => {
-        e.stopPropagation();
-        section.classList.toggle("is-open");
+      button.addEventListener("click", () => {
+        const expanded = button.getAttribute("aria-expanded") === "true";
+        button.setAttribute("aria-expanded", String(!expanded));
+        wrap.hidden = expanded;
+        section.classList.toggle("is-open", !expanded);
+      });
+      button.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          button.setAttribute("aria-expanded", "false");
+          wrap.hidden = true;
+          section.classList.remove("is-open");
+          button.focus();
+        }
       });
     });
     // Close panel when a direct link is clicked (not the heading)
