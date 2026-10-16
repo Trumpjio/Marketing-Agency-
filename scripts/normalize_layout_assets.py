@@ -5,9 +5,7 @@ import re
 
 ROOT = Path(".")
 REMOVE = re.compile(
-    r"<link\\b(?=[^>]*\\brel=[\"']stylesheet[\"'])"
-    r"(?=[^>]*\\bhref=[\"']styles/(?:custom-design|template-design)\\.css(?:\\?[^\"']*)?[\"'])"
-    r"[^>]*>\\s*",
+    r'<link\b(?=[^>]*\brel="stylesheet")(?=[^>]*\bhref="styles/(?:custom-design|template-design)\.css(?:\?[^"]*)?")[^>]*>\s*',
     re.I,
 )
 OLD_VERSION = "20261014b"
@@ -19,16 +17,16 @@ def main():
     references_updated = 0
     for page in sorted(ROOT.glob("*.html")):
         original = page.read_text(encoding="utf-8", errors="replace")
-        updated, removed = REMOVE.subn("", original)
+        content, removed = REMOVE.subn("", original)
         links_removed += removed
         for name in ("glass.css", "OrcaPulse.css"):
             old = f"styles/{name}?v={OLD_VERSION}"
             new = f"styles/{name}?v={NEW_VERSION}"
-            count = updated.count(old)
+            count = content.count(old)
             references_updated += count
-            updated = updated.replace(old, new)
-        if updated != original:
-            page.write_text(updated, encoding="utf-8")
+            content = content.replace(old, new)
+        if content != original:
+            page.write_text(content, encoding="utf-8")
             changed += 1
             print(f"Updated shared CSS links in {page.name}")
     print(
