@@ -38,6 +38,9 @@ jobs:
       - name: Check JavaScript syntax
         run: node --check scripts/main.js
 
+      - name: Validate site links, sitemap, settings, and structured data
+        run: python3 scripts/validate_orcapulse_site.py
+
       - name: Validate sitemap XML and report host mismatch
         shell: bash
         run: |
