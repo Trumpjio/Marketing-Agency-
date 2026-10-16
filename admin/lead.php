@@ -18,7 +18,7 @@ function lead_response($state) {
         echo json_encode(['ok' => $state === '1', 'state' => $state, 'message' => $message]);
         exit;
     }
-    header('Location: ../index.html?sent=' . rawurlencode($state) . '#work-with-us', true, 303);
+    header('Location: ../contact.html?sent=' . rawurlencode($state) . '#contact-form-section', true, 303);
     exit;
 }
 
