@@ -225,6 +225,20 @@ function recordIssue(label, detail) {
             };
           });
           layoutDiagnostics.push({ page: file, width, diagnostics });
+          const d = diagnostics;
+          const top = d.navInner && d.navInner.bottom;
+          if (d.h1 && typeof top === "number" && d.h1.top < top + 10) {
+            fail("desktop header/hero collision", width + "px " + file + ": H1 begins at y=" + d.h1.top + " while navigation ends at y=" + top);
+          }
+          if (width >= 1100 && d.heroAction && d.heroAction.width > 480) {
+            fail("oversized hero CTA", width + "px " + file + ": primary hero CTA is " + d.heroAction.width + "px wide");
+          }
+          if (width >= 1100 && d.footerInner && d.footerCols && d.footerCols.width < d.footerInner.width * 0.55) {
+            fail("compressed desktop footer", width + "px " + file + ": footer links occupy " + d.footerCols.width + "px of " + d.footerInner.width + "px footer width");
+          }
+          if (width >= 1100 && !d.heroAction && d.hero && d.hero.height > 560) {
+            fail("excessive text-only hero height", width + "px " + file + ": hero reserves " + d.hero.height + "px despite having no primary hero CTA");
+          }
         }
         const maxScroll = await page.evaluate(() => Math.max(0, document.documentElement.scrollHeight - window.innerHeight));
         const points = [
