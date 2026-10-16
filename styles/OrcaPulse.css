@@ -567,8 +567,8 @@ body:not([data-nav="light"]) header.nav .nav__burger span { background: var(--Or
 }
 
 [hidden], [data-op-empty="true"] { display: none !important; }
-html { width: 100%; overflow-x: clip; scroll-padding-top: 92px; }
-body { width: 100%; min-width: 320px; overflow-x: clip; }
+html { width: 100%; scroll-padding-top: 92px; }
+body { width: 100%; min-width: 320px; }
 .page { overflow: visible; }
 .container {
   width: min(calc(100% - (2 * var(--OrcaPulse-gutter))), var(--OrcaPulse-content));
@@ -1080,3 +1080,18 @@ textarea:focus-visible, select:focus-visible, summary:focus-visible {
   .OrcaPulse-principle-card,
   .OrcaPulse-page-visual { transition: none !important; }
 }
+
+
+/* Editorial art is a decorative, locally hosted SVG—not a client-result image. */
+.article-visual { isolation: isolate; }
+.article-visual__art {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  border-radius: inherit;
+}
+.op-card .article-visual__art { border-radius: 12px; }
