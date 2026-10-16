@@ -2,9 +2,8 @@
 (function () {
   "use strict";
 
-  // ---- Scroll restoration ----
-  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-  if (!window.location.hash) window.scrollTo(0, 0);
+  // Preserve the browser's native back/forward scroll restoration.
+  if ("scrollRestoration" in history) history.scrollRestoration = "auto";
 
   // ---- Sticky nav shrink on scroll ----
   const nav = document.querySelector(".nav");
