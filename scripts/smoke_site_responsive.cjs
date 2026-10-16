@@ -71,7 +71,10 @@ function recordIssue(label, detail) {
               });
             }
           }
-          const emptyMarkers = Array.from(document.querySelectorAll('[data-op-empty="true"]')).filter((el) => !el.hidden).length;
+          const emptyMarkers = Array.from(document.querySelectorAll('[data-op-empty="true"]')).filter((el) => {
+            const section = el.closest("section") || el;
+            return !section.hidden && getComputedStyle(section).display !== "none";
+          }).length;
           const main = document.querySelector("main");
           const h1 = main ? main.querySelectorAll("h1").length : 0;
           return { overflow: overflow.slice(0, 8), emptyMarkers, h1 };
