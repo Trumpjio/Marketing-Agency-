@@ -34,10 +34,10 @@ for page in pages:
         errors.append(f"{page.name}: static HTML still contains an explicitly empty CMS section; remove the section, not just hide it with CSS.")
 
     # All pages must use the same two local style layers in the intended order.
-    stylesheet_links = re.findall(r'<link\\b[^>]*rel=["\\']stylesheet["\\'][^>]*>', source, re.I)
+    stylesheet_links = re.findall(r'<link\b[^>]*rel=["\']stylesheet["\'][^>]*>', source, re.I)
     local_stylesheets = []
     for link in stylesheet_links:
-        match = re.search(r'\\bhref=["\\']([^"\\']+)["\\']', link, re.I)
+        match = re.search(r'\bhref=["\']([^"\']+)["\']', link, re.I)
         if match and match.group(1).startswith("styles/"):
             local_stylesheets.append(match.group(1))
     expected_styles = ["styles/glass.css?v=20261016c", "styles/OrcaPulse.css?v=20261016c"]
