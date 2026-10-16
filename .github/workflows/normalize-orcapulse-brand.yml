@@ -24,6 +24,8 @@ jobs:
           python-version: "3.12"
       - name: Normalize legacy brand and production domain across site files
         run: python scripts/normalize_orcapulse_brand.py
+      - name: Validate internal links and clean optional empty JSON-LD fields
+        run: python scripts/validate_orcapulse_site.py
       - name: Commit normalized website files
         run: |
           if git diff --quiet; then
