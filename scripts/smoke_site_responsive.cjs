@@ -128,6 +128,36 @@ function recordIssue(label, detail) {
     fail("mobile navigation", "#mobile-toggle was not found");
   }
 
+  // Verify the public form is available on Contact Us only and works through
+  // the same browser-facing asynchronous path visitors use.
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(base + "/index.html", { waitUntil: "domcontentloaded" });
+  const homeFormCount = await page.locator("form").count();
+  if (homeFormCount !== 0) fail("form placement", "homepage must be booking-only; found " + homeFormCount + " form(s)");
+
+  await page.goto(base + "/contact.html#contact-form-section", { waitUntil: "domcontentloaded" });
+  const contactForms = page.locator("form");
+  if (await contactForms.count() !== 1) {
+    fail("form placement", "Contact Us must contain exactly one public form; found " + await contactForms.count());
+  } else {
+    const form = page.locator("#lead-form");
+    if (!(await form.isVisible())) fail("Contact Us form", "lead form is not visible");
+    await page.locator("#lead-name").fill("Browser Test");
+    await page.locator("#lead-email").fill("browser-test@example.com");
+    await page.locator("#lead-company").fill("Validation");
+    await page.locator("#lead-website").fill("https://example.com");
+    await page.locator("#lead-goals").fill("Verify Contact Us form submission and accessible feedback.");
+    await page.locator("#lead-form button[type=submit]").click();
+    try {
+      await page.locator("#lead-feedback.is-success").waitFor({ state: "visible", timeout: 8000 });
+    } catch {
+      fail("Contact Us form", "successful browser submission did not display the success feedback");
+    }
+    if (!(await page.locator("#lead-feedback").innerText()).includes("received")) {
+      fail("Contact Us form", "success message text was missing or unexpected");
+    }
+  }
+
   // Exercise the public form endpoint in this disposable CI checkout.
   const postLead = async (fields) => page.request.post(base + "/admin/lead.php", {
     form: fields,
@@ -142,7 +172,8 @@ function recordIssue(label, detail) {
     const successData = await success.json().catch(() => ({}));
     if (success.status() !== 200 || !successData.ok) fail("lead form submission", "expected successful JSON response, got " + success.status() + " " + JSON.stringify(successData));
 
-    for (let i = 0; i < 8; i++) {
+    // One successful browser form submission has already consumed one hit.
+    for (let i = 0; i < 7; i++) {
       const response = await postLead({ ...goodFields, email: "qa+" + i + "@example.com" });
       if (response.status() !== 200) fail("lead form rate-limit setup", "request " + (i + 1) + " returned " + response.status());
       await response.body();
