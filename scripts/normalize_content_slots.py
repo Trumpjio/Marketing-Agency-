@@ -351,8 +351,8 @@ UNVERIFIED_FIRST_PARTY = re.compile(
     r"in our \d{4}[-–]\d{2} audit|in our clients|our 2024|"
     r"three-year client retention in agencies|"
     r"share of a mid-market gcc clinic's visits|"
-    r"rule of thumb: \\\$1 of extra qualified|"
-    r"hotel audit,? \\\\d{4}|"
+    r"rule of thumb: \$1 of extra qualified|"
+    r"hotel audit,? \d{4}|"
     r"reported share .* from gcc capital)",
     re.I,
 )
