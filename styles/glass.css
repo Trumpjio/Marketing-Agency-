@@ -1,7 +1,7 @@
 /* ============================================================
-   MAISON — GLASS DESIGN SYSTEM
-   Light background · indigo/cyan accents · Inter + Manrope
-   Inspired by Stripe, Linear, Vercel. Marketing-agency content.
+   ORCAPULSE — SHARED STRUCTURAL DESIGN LAYER
+   Layout primitives, base components, spacing and responsive behavior.
+   OrcaPulse.css loads after this file and owns the final brand overrides.
    ============================================================ */
 
 :root {
