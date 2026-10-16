@@ -384,6 +384,7 @@
                 <input type="hidden" name="source" value="home-work-form">
               </div>
               <button class="OrcaPulse-form-submit" type="submit">Send enquiry</button>
+              <div class="OrcaPulse-form-feedback" id="lead-feedback" role="status" aria-live="polite" tabindex="-1" hidden></div>
               <p class="OrcaPulse-form-note" id="lead-status">Or <a href="https://calendly.com/orcapulse/intro-call" target="_blank" rel="noopener" style="color:var(--OrcaPulse-blue);font-weight:700;">book a 30-minute call</a> directly.</p>
             </form>
           </div>
@@ -494,15 +495,28 @@
       clients.forEach(function(c){ c.hidden = (f !== 'all' && c.dataset.kind !== f); });
     });
   });
-  // Lead form: AJAX-ish fallback (just UX)
+  // Lead form: preserve the booking option and show a separate live status.
   var form = document.getElementById('lead-form');
-  if (!form) return;
-  form.addEventListener('submit', function(e){
-    var honey = form.querySelector('input[name=website_url]');
-    if (honey && honey.value) { e.preventDefault(); return; }
-    var status = document.getElementById('lead-status');
-    status.textContent = 'Sending...';
-  });
+  if (form) {
+    form.addEventListener('submit', function(e){
+      var honey = form.querySelector('input[name="website_url"]');
+      var feedback = document.getElementById('lead-feedback');
+      var submit = form.querySelector('button[type="submit"]');
+      if (honey && honey.value) { e.preventDefault(); return; }
+      if (feedback) {
+        feedback.hidden = false;
+        feedback.classList.remove('is-success', 'is-error');
+        feedback.textContent = 'Sending your enquiry…';
+        feedback.setAttribute('role', 'status');
+      }
+      if (submit) {
+        submit.disabled = true;
+        submit.setAttribute('aria-busy', 'true');
+        submit.dataset.originalText = submit.textContent;
+        submit.textContent = 'Sending…';
+      }
+    });
+  }
 })();
 </script>
 </body>
