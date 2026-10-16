@@ -172,6 +172,7 @@ function recordIssue(label, detail) {
     "contact.html"
   ];
   const screenshotDir = path.join(root, "artifacts", "design-audit");
+  const layoutDiagnostics = [];
   fs.mkdirSync(screenshotDir, { recursive: true });
   for (const width of [390, 768, 1440]) {
     await page.setViewportSize({ width, height: width === 390 ? 844 : width === 768 ? 900 : 1000 });
@@ -180,6 +181,51 @@ function recordIssue(label, detail) {
       try {
         await page.goto(base + "/" + encodeURI(file), { waitUntil: "networkidle" });
         await page.evaluate(() => document.fonts && document.fonts.ready);
+        if (["index.html", "services.html", "service-paid-media.html", "industry-real-estate.html", "real-estate-marketing-dubai.html", "work.html", "insights.html", "contact.html"].includes(file) && ["index.html", "services.html", "industry-real-estate.html"].includes(file)) {
+          const diagnostics = await page.evaluate(() => {
+            const select = (selector) => {
+              const el = document.querySelector(selector);
+              if (!el) return null;
+              const style = getComputedStyle(el);
+              const rect = el.getBoundingClientRect();
+              return {
+                selector,
+                top: Math.round(rect.top),
+                bottom: Math.round(rect.bottom),
+                left: Math.round(rect.left),
+                right: Math.round(rect.right),
+                width: Math.round(rect.width),
+                height: Math.round(rect.height),
+                position: style.position,
+                paddingTop: style.paddingTop,
+                paddingBottom: style.paddingBottom,
+                marginTop: style.marginTop,
+                fontSize: style.fontSize,
+                lineHeight: style.lineHeight,
+                fontFamily: style.fontFamily,
+                color: style.color,
+                background: style.backgroundColor,
+                minHeight: style.minHeight,
+                borderRadius: style.borderRadius
+              };
+            };
+            return {
+              viewport: { width: innerWidth, height: innerHeight, scrollY: Math.round(scrollY) },
+              document: { height: document.documentElement.scrollHeight, bodyHeight: document.body.scrollHeight },
+              header: select("header.nav"),
+              navInner: select(".nav__inner"),
+              hero: select("main > section.hero"),
+              h1: select("main > section.hero h1"),
+              heroSub: select("main > section.hero .hero__sub"),
+              heroAction: select("main > section.hero .hero__actions a"),
+              scarcity: select("main > section.hero .hero__scarcity"),
+              growthVisual: select(".OrcaPulse-home-visual"),
+              footerInner: select(".footer__inner"),
+              footerCols: select(".footer__cols")
+            };
+          });
+          layoutDiagnostics.push({ page: file, width, diagnostics });
+        }
         const maxScroll = await page.evaluate(() => Math.max(0, document.documentElement.scrollHeight - window.innerHeight));
         const points = [
           ["hero", 0],
@@ -207,8 +253,10 @@ function recordIssue(label, detail) {
     }
   }
 
+  fs.writeFileSync(path.join(screenshotDir, "layout-diagnostics.json"), JSON.stringify(layoutDiagnostics, null, 2));
   await browser.close();
 
+  console.log("Saved computed layout diagnostics for " + layoutDiagnostics.length + " route/viewport combinations.");
   console.log("Responsive viewport sweep: " + pages.length + " pages × " + viewports.length + " widths = " + (pages.length * viewports.length) + " checks.");
   console.log("Additional checks: mobile nav/accordion, form success/validation/rate-limit, JS errors, local request errors.");
   for (const issue of issues) console.log("REVIEW: " + issue.label + " — " + issue.detail);
