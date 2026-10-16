@@ -1,4 +1,4 @@
-name: Normalize OrcaPulse production branding (site-wide release pass (retry))
+name: Normalize OrcaPulse production branding (site-wide release pass (valid JSON retry))
 
 on:
   push:
