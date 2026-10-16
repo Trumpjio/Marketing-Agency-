@@ -81,7 +81,7 @@ function recordIssue(label, detail) {
         });
 
         if (result.overflow.length) {
-          recordIssue("potential horizontal overflow", width + "px " + file + ": " + JSON.stringify(result.overflow));
+          fail("horizontal overflow", width + "px " + file + ": " + JSON.stringify(result.overflow));
         }
         if (result.emptyMarkers) {
           fail("empty section visible", width + "px " + file + ": " + result.emptyMarkers + " marked empty elements remain visible");
