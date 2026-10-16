@@ -327,6 +327,10 @@ def replace_unsupported_copy(path: Path, source: str):
         "insight-aeo-geo-in-practice.html": [
             ("A working teardown of how one B2B brand in Riyadh went from invisible to cited across Perplexity, Google AI Overviews and ChatGPT Search.",
              "A practical teardown of the technical and editorial signals that can make B2B content easier for answer engines to find, interpret and cite.")
+        ],
+        "insights.html": [
+            ("From invisible to cited across Perplexity, AI Overviews and ChatGPT Search.",
+             "A practical guide to helping answer engines find, interpret and cite B2B content.")
         ]
     }
     changes = 0
@@ -344,7 +348,12 @@ UNVERIFIED_FIRST_PARTY = re.compile(
     r"accounts we've|agencies we audit|we would describe|our best estimate|"
     r"in our book|in our scrape|in our audits|in our case tracking|"
     r"categories we track|by our .*audit|our audit work|in the categories we track|"
-    r"in our \d{4}[-–]\d{2} audit|in our clients|our 2024)",
+    r"in our \d{4}[-–]\d{2} audit|in our clients|our 2024|"
+    r"three-year client retention in agencies|"
+    r"share of a mid-market gcc clinic's visits|"
+    r"rule of thumb: \\\$1 of extra qualified|"
+    r"hotel audit,? \\\\d{4}|"
+    r"reported share .* from gcc capital)",
     re.I,
 )
 STAT_CARD = re.compile(
@@ -366,7 +375,10 @@ def replace_unverified_metric_cards(source: str):
             return match.group(0)
 
         combined = (value + " " + label).lower()
-        if any(term in combined for term in ("retention", "client book", "client retention")):
+        if any(term in combined for term in ("three-year client retention in agencies without", "client retention in agencies without")):
+            title = "Cohort comparison"
+            detail = "Compare retention cohorts only when cohort definitions, sample sizes, measurement period and confounding factors are documented."
+        elif any(term in combined for term in ("retention", "client book", "client retention")):
             title = "Retention cohort"
             detail = "Define the cohort and period; compare renewals with documented recommendations and service context without implying causation."
         elif any(term in combined for term in ("reach", "engagement", "uplift", "cpm", "creative", "video", "reels")):
