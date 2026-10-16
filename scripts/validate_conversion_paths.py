@@ -33,6 +33,34 @@ for page in pages:
     if re.search(r"<section\b[^>]*\bdata-op-empty\s*=\s*['\"]true['\"]", source, re.I):
         errors.append(f"{page.name}: static HTML still contains an explicitly empty CMS section; remove the section, not just hide it with CSS.")
 
+    # User-facing empty-state copy must not survive in released HTML. Maps may
+    # remain only when their real embed/link is present; it is not an admin slot.
+    if re.search(r"Switch this section on in the admin when you want to show a map\.", source, re.I):
+        errors.append(f"{page.name}: visible map-admin placeholder copy remains.")
+    if re.search(r"<p\b[^>]*>\s*Related reading\.\s*</p>", source, re.I):
+        errors.append(f"{page.name}: generic 'Related reading.' filler remains in a related-content card.")
+    for map_section in re.finditer(r"<section\b(?=[^>]*\bdata-op-source\s*=\s*['\"]map['\"])[^>]*>", source, re.I):
+        if re.search(r"\bdata-hidden\s*=\s*['\"]true['\"]", map_section.group(0), re.I):
+            errors.append(f"{page.name}: map section is still marked hidden although the static page contains a real map embed.")
+
+    # Internal performance cards must not present undocumented client-book,
+    # audit, uplift or benchmark numbers as proof.
+    stat_card_re = re.compile(
+        r'<div class="insight-stat">\s*<div class="insight-stat__value">([\s\S]*?)</div>\s*<div class="insight-stat__label">([\s\S]*?)</div>\s*</div>',
+        re.I,
+    )
+    for stat_card in stat_card_re.finditer(source):
+        label = text_content(stat_card.group(2)).lower()
+        if re.search(
+            r"in our \d{4}|by our \d{4}|we routinely see|we've (?:audited|worked on|seen)|"
+            r"accounts we've|agencies we audit|we would describe|our best estimate|in our book|"
+            r"in our scrape|in our audits|case tracking|three-year client retention in agencies|"
+            r"share of a mid-market gcc clinic's visits|reported share .* from gcc capital",
+            label,
+            re.I,
+        ):
+            errors.append(f"{page.name}: unsupported first-party performance statistic remains: {label[:120]!r}.")
+
     # All pages must use the same two local style layers in the intended order.
     link_tags = re.findall(r"<link\b[^>]*>", source, re.I)
     stylesheet_links = [tag for tag in link_tags if attrs(tag).get("rel", "").lower() == "stylesheet"]
@@ -91,6 +119,15 @@ if FORM_RE.search(home):
 if "contact.html#contact-form-section" not in home:
     errors.append("Homepage must retain a working link to the Contact Us form section.")
 
+if 'class="pill">Case studies</span>' in home:
+    errors.append("Homepage must not present illustrative process cards as published case studies.")
+
+a = Path("styles/glass.css").read_text(encoding="utf-8", errors="replace")
+b = Path("styles/OrcaPulse.css").read_text(encoding="utf-8", errors="replace")
+for css_name, css_text in [("styles/glass.css", a), ("styles/OrcaPulse.css", b)]:
+    if re.search(r"(?m)^\s*(?:html\s*,\s*body|\.page)\s*\{[^}]*overflow-x\s*:\s*(?:hidden|clip)", css_text, re.I):
+        errors.append(f"{css_name}: global overflow clipping is masking horizontal-layout defects; fix the overflowing component instead.")
+
 if errors:
     print(f"Conversion/content regression checks FAILED: {len(errors)} issue(s).")
     for error in errors:
@@ -100,4 +137,4 @@ if errors:
 print(f"Conversion/content regression checks passed: {len(pages)} HTML pages scanned.")
 print("- Contact Us is the sole public form.")
 print("- All primary CTA links point to Cal.com or Calendly.")
-print("- No empty CMS sections or empty comment-delimited content slots remain.")
+print("- No empty CMS sections, map-admin placeholders, generic related-copy filler or unsupported first-party metric cards remain.")
