@@ -1,7 +1,23 @@
 <?php
 require_once __DIR__ . '/config.php';
 
-function lead_redirect($state) {
+function lead_response($state) {
+    $messages = [
+        '1' => 'Thank you. Your enquiry has been received.',
+        'invalid' => 'Please review the required fields and check the website URL.',
+        'rate' => 'Too many submissions were received from this connection. Please wait a few minutes or book a call directly.',
+        'error' => 'We could not save your enquiry. Please try again or book a call directly.',
+    ];
+    $message = $messages[$state] ?? $messages['error'];
+    $accept = strtolower((string) ($_SERVER['HTTP_ACCEPT'] ?? ''));
+    if (strpos($accept, 'application/json') !== false) {
+        $codes = ['1' => 200, 'invalid' => 422, 'rate' => 429, 'error' => 500];
+        http_response_code($codes[$state] ?? 500);
+        header('Content-Type: application/json; charset=UTF-8');
+        header('Cache-Control: no-store');
+        echo json_encode(['ok' => $state === '1', 'state' => $state, 'message' => $message]);
+        exit;
+    }
     header('Location: ../index.html?sent=' . rawurlencode($state) . '#work-with-us', true, 303);
     exit;
 }
@@ -14,12 +30,12 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'POST') {
 
 // Bots receive a neutral success response but their submission is never stored.
 if (!empty($_POST['website_url'] ?? '')) {
-    lead_redirect('1');
+    lead_response('1');
 }
 
 // Enforce the rate limiter instead of discarding its result.
 if (!rate_limit('lead', 10, 600)) {
-    lead_redirect('rate');
+    lead_response('rate');
 }
 
 function lead_field($key, $maxBytes) {
@@ -44,18 +60,25 @@ if (
     $goals === null || $goals === '' ||
     $website === null || $source === null
 ) {
-    lead_redirect('invalid');
+    lead_response('invalid');
 }
 
-if ($website !== '' && !filter_var($website, FILTER_VALIDATE_URL)) {
-    lead_redirect('invalid');
+if ($website !== '') {
+    $websiteParts = parse_url($website);
+    if (
+        !filter_var($website, FILTER_VALIDATE_URL) ||
+        !is_array($websiteParts) ||
+        !in_array(strtolower($websiteParts['scheme'] ?? ''), ['http', 'https'], true)
+    ) {
+        lead_response('invalid');
+    }
 }
 
 // Keep the stored lead list private under data/.htaccess and restrict file permissions.
 $dir = DATA_DIR . '/leads';
 if (!is_dir($dir) && !@mkdir($dir, 0700, true) && !is_dir($dir)) {
     error_log('OrcaPulse lead capture: could not create private lead directory.');
-    lead_redirect('error');
+    lead_response('error');
 }
 
 $file = $dir . '/leads.json';
@@ -63,7 +86,7 @@ $handle = @fopen($file, 'c+');
 if ($handle === false || !flock($handle, LOCK_EX)) {
     if (is_resource($handle)) fclose($handle);
     error_log('OrcaPulse lead capture: could not lock the lead store.');
-    lead_redirect('error');
+    lead_response('error');
 }
 
 $raw = stream_get_contents($handle);
@@ -72,7 +95,7 @@ if (!is_array($all)) {
     flock($handle, LOCK_UN);
     fclose($handle);
     error_log('OrcaPulse lead capture: existing lead store is not valid JSON; no data overwritten.');
-    lead_redirect('error');
+    lead_response('error');
 }
 
 $all[] = [
@@ -98,7 +121,7 @@ fclose($handle);
 
 if (!$written) {
     error_log('OrcaPulse lead capture: write to lead store failed.');
-    lead_redirect('error');
+    lead_response('error');
 }
 
-lead_redirect('1');
+lead_response('1');
