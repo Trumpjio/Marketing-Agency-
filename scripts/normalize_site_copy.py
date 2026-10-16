@@ -21,6 +21,10 @@ REPLACEMENTS = {
         "Long-form content, briefings and owned media—built as assets that can compound over time.",
     "Production, editing and motion design premium at thumb-scroll speed.":
         "Production, editing and motion design built to hold attention in fast-moving feeds.",
+    "Films that read premium at thumb-scroll speed and billboard scale alike.":
+        "Campaign films, social creative and motion design built for short-form feeds, campaigns and larger screens.",
+    "Films that read premium at thumb-scroll speed.":
+        "Campaign films, social creative and motion design designed for fast-scrolling feeds and larger screens.",
     "Target each separately don't bundle.":
         "Target each separately; do not bundle them.",
 }
