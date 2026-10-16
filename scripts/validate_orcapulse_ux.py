@@ -37,8 +37,8 @@ require("Sending your enquiry" in home and 'id="lead-status"' in home,
         "submission state is separate from the booking link")
 require("if (!rate_limit('lead', 10, 600))" in lead_php,
         "lead rate-limit failures are enforced")
-require("flock($handle, LOCK_EX)" in lead_php and "ftruncate($handle, 0)" in lead_php,
-        "lead storage uses an exclusive lock and checked write")
+require("flock($lockHandle, LOCK_EX)" in lead_php and "tempnam($dir, '.lead-store-')" in lead_php and "@rename($tmp, $file)" in lead_php,
+        "lead storage uses a separate lock file and atomic replacement")
 require("require_login();" in lead_viewer and "Export CSV" in lead_viewer,
         "lead inbox and CSV export are admin-protected")
 require("href=\"leads.php\"" in layout and "Require all denied" in data_htaccess,
