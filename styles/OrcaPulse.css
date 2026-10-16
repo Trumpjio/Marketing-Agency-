@@ -763,3 +763,63 @@ textarea:focus-visible, select:focus-visible, summary:focus-visible {
     box-shadow: 0 12px 32px rgba(32, 36, 83, 0.08);
   }
 }
+
+
+.OrcaPulse-growth-visual-mobile { display: none; }
+.OrcaPulse-growth-step {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 10px;
+  row-gap: 4px;
+  min-width: 0;
+  padding: 15px 12px;
+  background: #f8faff;
+  border: 1px solid #dce5f2;
+  border-radius: 14px;
+}
+.OrcaPulse-growth-step > span {
+  display: grid;
+  place-items: center;
+  grid-row: span 2;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: #e6f2ff;
+  color: #234f93;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+.OrcaPulse-growth-step strong {
+  color: var(--OrcaPulse-navy);
+  font-size: 0.94rem;
+  line-height: 1.25;
+}
+.OrcaPulse-growth-step small {
+  color: var(--OrcaPulse-muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+.OrcaPulse-growth-measure {
+  margin: 12px 0 0;
+  padding: 13px 15px;
+  background: var(--OrcaPulse-navy);
+  color: #fff;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: center;
+}
+@media (max-width: 560px) {
+  .OrcaPulse-growth-visual-desktop { display: none !important; }
+  .OrcaPulse-growth-visual-mobile {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    padding: 14px;
+    background: #fff;
+    border: 1px solid #dce5f2;
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(32, 36, 83, 0.08);
+  }
+}
