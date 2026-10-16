@@ -54,7 +54,7 @@ EMPTY_SLOT_SOURCES = {
     "team", "teams", "award", "awards", "testimonial", "testimonials",
     "case-study", "case-studies", "client-work", "related-services",
     "popular-posts", "popular-articles", "recent-posts", "featured-posts",
-    "people", "proof", "results",
+    "people", "proof", "results", "blog", "services", "map",
 }
 PLACEHOLDER_COPY = re.compile(
     r"^(?:"
