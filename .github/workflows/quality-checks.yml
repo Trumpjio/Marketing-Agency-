@@ -1,4 +1,4 @@
-name: Source quality checks
+name: OrcaPulse Hostinger release validation
 
 on:
   pull_request:
