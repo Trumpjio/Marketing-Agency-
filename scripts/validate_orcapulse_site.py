@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Validate OrcaPulse static-site structure before Hostinger release."""
+from html import unescape
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse, unquote
@@ -19,25 +20,85 @@ class RefParser(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
         self.refs = []
-        self.jsonld = []
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
         for key in ("href", "src", "action", "poster"):
             value = attrs.get(key)
             if value:
                 self.refs.append((tag, key, value.strip()))
-        if tag.lower() == "script" and attrs.get("type", "").lower() == "application/ld+json":
-            self.jsonld.append("start")
 
 def ignored(path: Path) -> bool:
     return any(part in EXCLUDED_DIRS for part in path.parts)
 
+def attr(tag: str, name: str):
+    match = re.search(r"\b" + re.escape(name) + r"\s*=\s*([\"'])(.*?)\1", tag, re.IGNORECASE | re.DOTALL)
+    return match.group(2).strip() if match else ""
+
+def plain_text(markup: str) -> str:
+    return re.sub(r"\s+", " ", unescape(re.sub(r"<[^>]+>", " ", markup))).strip()
+
 def clean_jsonld(value):
     if isinstance(value, dict):
-        return {k: clean_jsonld(v) for k, v in value.items() if v != ""}
+        obj = dict(value)
+        # These URLs are service-area landing pages, not verified staffed offices.
+        # A Service node with areaServed is truthful without implying a local address.
+        if obj.get("@type") == "LocalBusiness":
+            obj["@type"] = "Service"
+            service_url = obj.get("url", "")
+            obj["@id"] = service_url + "#service" if service_url else "https://orcapulse.io/#service"
+            obj["provider"] = obj.pop("parentOrganization", {"@id": "https://orcapulse.io/#organization"})
+            obj["serviceType"] = "Marketing services"
+        return {k: clean_jsonld(v) for k, v in obj.items() if v != ""}
     if isinstance(value, list):
-        return [clean_jsonld(v) for v in value]
+        return [clean_jsonld(v) for v in value if v != ""]
     return value
+
+def set_article_metadata(path: Path, html: str) -> str:
+    if not path.name.startswith("insight-"):
+        return html
+
+    canonical = ""
+    image_url = ""
+    description = ""
+    title = ""
+    for tag in re.findall(r"<link\b[^>]*>", html, re.IGNORECASE):
+        if attr(tag, "rel").lower() == "canonical":
+            canonical = attr(tag, "href")
+            break
+    for tag in re.findall(r"<meta\b[^>]*>", html, re.IGNORECASE):
+        name = attr(tag, "name").lower()
+        prop = attr(tag, "property").lower()
+        if name == "description":
+            description = attr(tag, "content")
+        elif prop == "og:image":
+            image_url = attr(tag, "content")
+    h1 = re.search(r"<h1\b[^>]*>(.*?)</h1\s*>", html, re.IGNORECASE | re.DOTALL)
+    page_title = re.search(r"<title\b[^>]*>(.*?)</title\s*>", html, re.IGNORECASE | re.DOTALL)
+    title = plain_text(h1.group(1)) if h1 else (plain_text(page_title.group(1)) if page_title else path.stem.replace("-", " "))
+
+    if not canonical:
+        canonical = f"{PRODUCTION_ORIGIN}/{path.as_posix()}"
+    if not re.search(r'<meta\b(?=[^>]*property=["\']og:url["\'])', html, re.IGNORECASE):
+        tag = f'<meta property="og:url" content="{canonical}" />\n'
+        html = re.sub(r"</head\s*>", tag + "</head>", html, count=1, flags=re.IGNORECASE)
+
+    existing_article_type = re.search(r'"@type"\s*:\s*"(?:Article|BlogPosting|NewsArticle)"', html, re.IGNORECASE)
+    if not existing_article_type:
+        article = {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": title,
+            "mainEntityOfPage": {"@type": "WebPage", "@id": canonical},
+            "url": canonical,
+            "publisher": {"@type": "Organization", "@id": f"{PRODUCTION_ORIGIN}/#organization", "name": "OrcaPulse"},
+        }
+        if description:
+            article["description"] = description
+        if image_url:
+            article["image"] = [image_url]
+        block = '<script type="application/ld+json">' + json.dumps(article, ensure_ascii=False, separators=(",", ":")) + "</script>\n"
+        html = re.sub(r"</head\s*>", block + "</head>", html, count=1, flags=re.IGNORECASE)
+    return html
 
 def check_site():
     errors = []
@@ -55,8 +116,6 @@ def check_site():
     except Exception as exc:
         errors.append(f"data/settings.json is invalid: {exc}")
 
-    # Every URL in the production sitemap must use the canonical production
-    # origin and map to a real file in this deployed directory.
     sitemap_path = ROOT / "sitemap.xml"
     sitemap_urls = []
     try:
@@ -71,43 +130,23 @@ def check_site():
                 errors.append(f"Sitemap URL is not on the canonical production origin: {url}")
                 continue
             rel = unquote(parsed.path.lstrip("/")) or "index.html"
-            target = ROOT / rel
-            if not target.is_file():
+            if not (ROOT / rel).is_file():
                 errors.append(f"Sitemap URL does not map to a file: {url} -> {rel}")
     except Exception as exc:
         errors.append(f"sitemap.xml is invalid: {exc}")
 
-    # Verify local links and assets do not point at nonexistent files.
     checked_refs = 0
-    for html_path in html_files:
-        html = html_path.read_text(encoding="utf-8", errors="replace")
-        parser = RefParser()
-        parser.feed(html)
-        for tag, attr, raw in parser.refs:
-            value = raw.strip()
-            if not value or value.startswith("#"):
-                continue
-            parsed = urlparse(value)
-            if parsed.scheme or parsed.netloc:
-                if parsed.scheme.lower() in {"http", "https"} and parsed.netloc.lower() in {"ioka.online", "www.ioka.online", "orcapulse.com", "www.orcapulse.com"}:
-                    errors.append(f"{html_path}: legacy host in {attr}: {value}")
-                continue
-            local_path = unquote(parsed.path)
-            if not local_path:
-                continue
-            if local_path.startswith("/"):
-                local_path = local_path.lstrip("/")
-            else:
-                local_path = (html_path.parent / local_path).as_posix()
-            candidate = ROOT / local_path
-            if Path(local_path).suffix.lower() not in ASSET_SUFFIXES:
-                continue
-            checked_refs += 1
-            if not candidate.is_file():
-                errors.append(f"{html_path}: missing local {attr} target: {raw} (checked {local_path})")
+    changed_html = 0
+    converted_localbusiness = 0
+    article_metadata_added = 0
 
-        # Validate every JSON-LD block and remove empty-valued properties
-        # from structured data to avoid publishing blank email/address fields.
+    for html_path in html_files:
+        original = html_path.read_text(encoding="utf-8", errors="replace")
+        html = set_article_metadata(html_path, original)
+        if html != original:
+            article_metadata_added += 1
+        before_localbusiness = html.count('"@type":"LocalBusiness"') + html.count('"@type": "LocalBusiness"')
+
         def replace_jsonld(match):
             raw = match.group(2)
             try:
@@ -116,25 +155,58 @@ def check_site():
             except Exception as exc:
                 errors.append(f"{html_path}: invalid JSON-LD: {exc}")
                 return match.group(0)
-        cleaned = re.sub(
-            r'(<script\\b[^>]*type=["\\\']application/ld\\+json["\\\'][^>]*>)(.*?)(</script\\s*>)',
+
+        html = re.sub(
+            r'(<script\b[^>]*type=["\']application/ld\+json["\'][^>]*>)(.*?)(</script\s*>)',
             replace_jsonld,
             html,
             flags=re.IGNORECASE | re.DOTALL,
         )
-        if cleaned != html:
-            html_path.write_text(cleaned, encoding="utf-8")
+        if before_localbusiness:
+            converted_localbusiness += before_localbusiness
 
-    # robots.txt must advertise the sitemap that this build actually ships.
+        parser = RefParser()
+        parser.feed(html)
+        for tag, key, raw in parser.refs:
+            value = raw.strip()
+            if not value or value.startswith("#"):
+                continue
+            parsed = urlparse(value)
+            if parsed.scheme or parsed.netloc:
+                if parsed.scheme.lower() in {"http", "https"} and parsed.netloc.lower() in {"ioka.online", "www.ioka.online", "orcapulse.com", "www.orcapulse.com"}:
+                    errors.append(f"{html_path}: legacy host in {key}: {value}")
+                continue
+            local_path = unquote(parsed.path)
+            if not local_path:
+                continue
+            local_path = local_path.lstrip("/") if local_path.startswith("/") else (html_path.parent / local_path).as_posix()
+            if Path(local_path).suffix.lower() not in ASSET_SUFFIXES:
+                continue
+            checked_refs += 1
+            if not (ROOT / local_path).is_file():
+                errors.append(f"{html_path}: missing local {key} target: {raw} (checked {local_path})")
+
+        if html != original:
+            html_path.write_text(html, encoding="utf-8")
+            changed_html += 1
+
     robots = (ROOT / "robots.txt").read_text(encoding="utf-8")
     if "Sitemap: https://orcapulse.io/sitemap.xml" not in robots:
         errors.append("robots.txt must declare Sitemap: https://orcapulse.io/sitemap.xml.")
-    if re.search(r"ioka\\.online|orcapulse\\.com", robots, re.IGNORECASE):
+    if re.search(r"ioka\.online|orcapulse\.com", robots, re.IGNORECASE):
         errors.append("robots.txt still includes a legacy host.")
+
+    # Fail if any service-area page continues to publish a LocalBusiness type.
+    for html_path in html_files:
+        html = html_path.read_text(encoding="utf-8", errors="replace")
+        if '"@type":"LocalBusiness"' in html or '"@type": "LocalBusiness"' in html:
+            errors.append(f"{html_path}: LocalBusiness schema remains on a service-area page.")
 
     print(f"HTML pages: {len(html_files)}")
     print(f"Sitemap URLs: {len(sitemap_urls)}")
     print(f"Local HTML/asset references checked: {checked_refs}")
+    print(f"HTML files updated with article metadata/JSON-LD cleanup: {changed_html}")
+    print(f"Service-area LocalBusiness schema nodes converted: {converted_localbusiness}")
     if errors:
         print("Release validation errors:")
         for err in errors:
