@@ -194,6 +194,149 @@ def normalize_editorial_art(path: Path, source: str):
     return source, changed
 
 
+
+# These pages contained internal performance ratios without a public source,
+# sample size or measurement window. Preserve the editorial point, not an
+# unsupported number. Replace the entire visual stats row with measurement
+# methods that a reader could actually reproduce.
+METRIC_GUIDANCE = {
+    "insight-arabic-seo-what-works.html": [
+        ("Query set", "Compare local and global domains across the same commercial queries, language variants, market and search date."),
+        ("Script variants", "Track MSA, Gulf dialect, English, Arabizi and mixed-script queries separately; do not assume they behave alike."),
+        ("Local presence", "Audit the map pack, business profile and local-intent features for the same priority-query set.")
+    ],
+    "insight-one-metric-retention.html": [
+        ("Recommendation log", "Record each evidence-backed recommendation, the rationale and whether the client acted on it."),
+        ("Quarterly review", "Review documented observations alongside renewal cohorts; do not infer causation from correlation alone."),
+        ("Research cadence", "Schedule external benchmarking and internal diagnostics into the account's operating rhythm.")
+    ],
+    "insight-linkedin-gcc-b2b-playbook.html": [
+        ("Executive voice", "Compare named-executive and company-page posts using the same audience, period and content format."),
+        ("Pipeline cycle", "Track sourced and assisted opportunities through the complete enterprise buying cycle."),
+        ("Format test", "Compare video, captions and language using qualified conversations—not a universal reach multiple.")
+    ],
+    "insight-real-estate-marketing-dubai-playbook.html": [
+        ("Lead quality", "Compare cost per qualified lead using one definition, attribution window and reporting period."),
+        ("Creative test", "Test Reels and static creative against qualified gallery visits rather than assuming a fixed uplift."),
+        ("Channel mix", "Build the mix from CRM-attributed qualified visits; separate first-touch and assisted influence.")
+    ],
+    "insight-dental-clinic-marketing-gcc.html": [
+        ("Local discovery", "Measure local-result visibility for a defined set of service and location queries."),
+        ("Review quality", "Track review recency, relevance and legitimate patient feedback alongside local visibility."),
+        ("First response", "Set a working-hours response target, then compare actual response time with qualified appointment outcomes.")
+    ],
+    "insight-aeo-geo-in-practice.html": [
+        ("Citation share", "Run a fixed set of high-intent queries and record whether the brand is cited, by engine and date."),
+        ("Answer coverage", "Track which priority questions return answer surfaces and whether the content answers them directly."),
+        ("Search overlap", "Measure traditional ranking and answer-engine citations separately; do not assume one predicts the other.")
+    ]
+}
+DIV_TOKEN = re.compile(r"</?div\\b[^>]*>", re.I)
+STATS_OPEN = re.compile(
+    r"<div\\b(?=[^>]*\\bclass\\s*=\\s*(['\\"])[^'\\"]*\\binsight-stats\\b[^'\\"]*\\1)[^>]*>",
+    re.I
+)
+
+
+def div_block_end(source: str, start: int) -> int:
+    """Find the matching closing </div> for a div at start, including nesting."""
+    first = re.search(r"<div\\b[^>]*>", source[start:], re.I)
+    if not first:
+        return start
+    begin = start + first.start()
+    depth = 0
+    for match in DIV_TOKEN.finditer(source, begin):
+        if match.group(0).lower().startswith("</"):
+            depth -= 1
+            if depth == 0:
+                return match.end()
+        else:
+            depth += 1
+    return len(source)
+
+
+def replace_unverified_stats(path: Path, source: str):
+    guidance = METRIC_GUIDANCE.get(path.name)
+    if not guidance:
+        return source, 0
+    openings = list(STATS_OPEN.finditer(source))
+    if not openings:
+        return source, 0
+    replacement = (
+        '<div class="insight-stats reveal">\\n'
+        + "\\n".join(
+            f'  <div class="insight-stat"><div class="insight-stat__value">{title}</div>'
+            f'<div class="insight-stat__label">{label}</div></div>'
+            for title, label in guidance
+        )
+        + "\\n</div>"
+    )
+    # Replace the first metric row only. Re-run is idempotent because the
+    # generated cards do not contain an additional .insight-stats wrapper.
+    match = openings[0]
+    end = div_block_end(source, match.start())
+    return source[:match.start()] + replacement + source[end:], 1
+
+
+def replace_unsupported_copy(path: Path, source: str):
+    replacements = {
+        "insight-arabic-seo-what-works.html": [
+            ("Google in Arabic now ranks GCC domains above global generalist domains for roughly 70% of commercial GCC queries we track.",
+             "Arabic search strategy should account for local domains, dialect and intent; validate patterns against a dated query set for each target market."),
+            ("Hosting in the GCC region, with a GCC CDN edge, and a correctly configured ccTLD (.ae, .sa, .qa, .kw, .bh), produces a measurable ranking uplift against identical content on a .com hosted in Europe.",
+             "Choose hosting for reliability and measured user experience. Assess page speed, crawlability, hreflang and geographic relevance separately; a hosting region or ccTLD alone does not guarantee a ranking gain.")
+        ],
+        "insight-one-metric-retention.html": [
+            ("The one metric that decides whether a client stays.", "A question that can strengthen client retention."),
+            ("The one metric that predicts whether a client stays is not ROAS, not CPL, not brand lift — it is &quot;did we show them something unexpected this quarter?&quot;",
+             "One useful retention question is whether the agency surfaced an evidence-backed observation the client had not considered that quarter; it should be evaluated alongside performance, service quality and renewal data."),
+            ("The one metric that actually predicts whether a client stays is a question, not a number:",
+             "A useful question for a client-retention review is not a single predictor, but:"),
+            ("The relationship is predictive.", "Use the relationship as a hypothesis to test against a defined renewal cohort."),
+            ("Your repeat-purchase rate on the Riyadh customer cohort is 2.3x the Dubai cohort, but you are spending 4x more in Dubai acquisition. We think you have a geography-mix problem.",
+             "Compare repeat-purchase rates across Riyadh and Dubai cohorts with acquisition spend; if the observed difference holds after checking sample size and attribution, investigate the geography mix before reallocating budget."),
+            ("your email conversion dropped 40% in the last two months",
+             "your email conversion dropped materially over the last two months")
+        ],
+        "insight-linkedin-gcc-b2b-playbook.html": [
+            ("The reach is 10x lower and the content reads as corporate.",
+             "It can be harder to establish personal credibility from a company page alone; compare reach and qualified conversations using a consistent audience and period."),
+            ("native video with Arabic captions produces a measurable engagement lift across GCC national audiences",
+             "native video with Arabic captions is worth testing with GCC national audiences; compare retention, qualified responses and downstream outcomes against a consistent control")
+        ],
+        "insight-real-estate-marketing-dubai-playbook.html": [
+            ("Static feed creative underperforms Reels by a factor of three to five in 2025 benchmarks.",
+             "Compare static feed creative and Reels in controlled tests against cost per qualified lead or booked gallery visit; performance varies by audience, creative and attribution window."),
+            ("A useful rule of thumb from our 2024-2025 audit work: in a healthy Dubai developer paid programme, 55-70% of qualified gallery visits are first touched by Google (branded or neighbourhood intent), 15-25% first touched by Meta or YouTube video, and 10-20% first touched by broker-driven offline. If your mix is skewed heavily to Meta, you are probably over-buying the top of the funnel and under-serving the lower.",
+             "Build the channel mix from CRM-attributed qualified sales-gallery visits. Define the attribution window, distinguish first-touch from assisted influence and compare the measured contribution before changing spend."),
+            ("A rival takes your top-of-funnel brand searches for roughly the price of a decent lunch.",
+             "Competitors can bid on brand-related queries; review search-term reports and impression share before deciding whether defensive bidding is justified.")
+        ],
+        "insight-dental-clinic-marketing-gcc.html": [
+            ("The three pillars that outperform triple the paid-media budget.",
+             "The three pillars that complement paid media."),
+            ("Three listings get almost all the clicks.",
+             "The map pack can be an important local-discovery surface; confirm its prominence with the clinic's target-query set."),
+            ("A clinic with 400 reviews, last one 11 months ago, loses to one with 180 reviews, last one two days ago, every single time.",
+             "A high review count may not compensate for stale feedback. Assess recency, relevance, prominence and conversion quality together."),
+            ("a review-collection system that produces 10-20 new reviews per month, every month, forever",
+             "a review-collection process that consistently invites genuine patient feedback without incentives or pressure"),
+            ("direct-billing arrangements with Daman, AXA, Oman Insurance, Bupa Arabia, Allianz and the big TPA networks drive 40-70% of a mid-market clinic's visits.",
+             "direct-billing arrangements can be a meaningful acquisition and retention channel, but their contribution should be measured from verified appointment and visit data rather than assumed from partner names alone.")
+        ],
+        "insight-aeo-geo-in-practice.html": [
+            ("A working teardown of how one B2B brand in Riyadh went from invisible to cited across Perplexity, Google AI Overviews and ChatGPT Search.",
+             "A practical teardown of the technical and editorial signals that can make B2B content easier for answer engines to find, interpret and cite.")
+        ]
+    }
+    changes = 0
+    for old, new in replacements.get(path.name, []):
+        count = source.count(old)
+        if count:
+            source = source.replace(old, new)
+            changes += count
+    return source, changes
+
 def main():
     page_count = 0
     changed_pages = 0
@@ -272,6 +415,12 @@ def main():
         if count:
             unsupported_claims_corrected += count
             updated = updated.replace(old_claim, new_claim)
+
+
+        updated, count = replace_unverified_stats(path, updated)
+        unsupported_claims_corrected += count
+        updated, count = replace_unsupported_copy(path, updated)
+        unsupported_claims_corrected += count
 
         updated, count = normalize_editorial_art(path, updated)
         visuals_added += count
