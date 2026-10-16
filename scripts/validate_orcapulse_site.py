@@ -139,9 +139,22 @@ def check_site():
     changed_html = 0
     converted_localbusiness = 0
     article_metadata_added = 0
+    empty_marked_sections = 0
 
     for html_path in html_files:
         original = html_path.read_text(encoding="utf-8", errors="replace")
+        # Empty CMS slots must be removed from published source rather than relying
+        # on runtime CSS/JavaScript to hide placeholder headings and reserved gaps.
+        empty_slots = [
+            tag for tag in re.findall(r"<section\b[^>]*>", original, flags=re.IGNORECASE)
+            if attr(tag, "data-op-empty").lower() == "true"
+        ]
+        if empty_slots:
+            empty_marked_sections += len(empty_slots)
+            errors.append(
+                f"{html_path}: {len(empty_slots)} empty CMS section(s) remain; "
+                "remove them or populate them with verified content."
+            )
         html = set_article_metadata(html_path, original)
         if html != original:
             article_metadata_added += 1
@@ -207,6 +220,7 @@ def check_site():
     print(f"Local HTML/asset references checked: {checked_refs}")
     print(f"HTML files updated with article metadata/JSON-LD cleanup: {changed_html}")
     print(f"Service-area LocalBusiness schema nodes converted: {converted_localbusiness}")
+    print(f"Empty CMS sections remaining: {empty_marked_sections}")
     if errors:
         print("Release validation errors:")
         for err in errors:
