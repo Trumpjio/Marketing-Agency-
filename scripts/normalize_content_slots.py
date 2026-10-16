@@ -438,6 +438,34 @@ def replace_unverified_metric_cards(source: str):
     return STAT_CARD.sub(rewrite, source), corrected
 
 
+
+BRAND_PALETTE_REPLACEMENTS = [
+    ("#635bff", "#285fc7"),
+    ("#4f46e5", "#204da8"),
+    ("#8b5cf6", "#285fc7"),
+    ("#18bfff", "#93c5fd"),
+    ("#35d39a", "#4da45a"),
+    ("rgba(99, 91, 255", "rgba(40, 95, 199"),
+    ("rgba(99,91,255", "rgba(40,95,199"),
+    ("rgba(24, 191, 255", "rgba(147, 197, 253"),
+    ("rgba(24,191,255", "rgba(147,197,253"),
+    ("rgba(139, 92, 246", "rgba(40, 95, 199"),
+    ("rgba(139,92,246", "rgba(40,95,199"),
+    ("rgba(53, 211, 154", "rgba(77, 164, 90"),
+    ("rgba(53,211,154", "rgba(77,164,90"),
+]
+
+
+def normalize_brand_palette(source: str):
+    count = 0
+    for old, new in BRAND_PALETTE_REPLACEMENTS:
+        occurrences = source.count(old)
+        if occurrences:
+            source = source.replace(old, new)
+            count += occurrences
+    return source, count
+
+
 def main():
     page_count = 0
     changed_pages = 0
@@ -449,11 +477,15 @@ def main():
     visuals_added = 0
     homepage_replacements = 0
     unsupported_claims_corrected = 0
+    palette_replacements = 0
+    illustration_files_changed = 0
 
     for path in HTML_FILES:
         original = path.read_text(encoding="utf-8", errors="replace")
         updated = original
         page_count += 1
+        updated, palette_count = normalize_brand_palette(updated)
+        palette_replacements += palette_count
 
         updated, count = remove_matching_sections(
             updated,
@@ -533,6 +565,19 @@ def main():
             changed_pages += 1
             print(f"Normalized {path.name}")
 
+    # Apply the same palette to local illustration assets; these are source
+    # SVGs, not screenshots, and remain editable text-based vector artwork.
+    illustration_dir = ROOT / "assets" / "illustrations"
+    if illustration_dir.exists():
+        for asset in sorted(illustration_dir.glob("*.svg")):
+            original_svg = asset.read_text(encoding="utf-8", errors="replace")
+            updated_svg, count = normalize_brand_palette(original_svg)
+            if updated_svg != original_svg:
+                asset.write_text(updated_svg, encoding="utf-8")
+                illustration_files_changed += 1
+                palette_replacements += count
+                print(f"Normalized illustration palette in {asset.name}")
+
     print(f"Content-slot normalization scanned {page_count} HTML pages.")
     print(f"Removed {empty_marked_removed} explicitly empty CMS sections.")
     print(f"Removed {empty_source_removed} empty source-driven sections.")
@@ -542,6 +587,8 @@ def main():
     print(f"Added {visuals_added} category-specific editorial SVG images.")
     print(f"Corrected {homepage_replacements} homepage proof-label/copy fragments.")
     print(f"Reworded {unsupported_claims_corrected} broad spend-waste claims.")
+    print(f"Brand-palette replacements applied: {palette_replacements}.")
+    print(f"Illustration SVG assets changed: {illustration_files_changed}.")
     print(f"Content-slot normalization changed {changed_pages} HTML pages.")
 
 
