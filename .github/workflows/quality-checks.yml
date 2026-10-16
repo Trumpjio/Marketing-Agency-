@@ -47,8 +47,9 @@ jobs:
 
       - name: Validate UI, accessibility-related behavior, copy, and lead flow
         run: |
-          python3 -m py_compile scripts/validate_orcapulse_site.py scripts/validate_orcapulse_ux.py scripts/normalize_site_copy.py
+          python3 -m py_compile scripts/validate_orcapulse_site.py scripts/validate_orcapulse_ux.py scripts/validate_conversion_paths.py scripts/normalize_site_copy.py
           python3 scripts/validate_orcapulse_ux.py
+          python3 scripts/validate_conversion_paths.py
 
       - name: Validate sitemap XML and enforce canonical host
         shell: bash
