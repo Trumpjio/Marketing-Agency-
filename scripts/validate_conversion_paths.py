@@ -34,7 +34,7 @@ for page in pages:
         errors.append(f"{page.name}: static HTML still contains an explicitly empty CMS section; remove the section, not just hide it with CSS.")
 
     # All pages must use the same two local style layers in the intended order.
-    link_tags = re.findall(r"<link\\b[^>]*>", source, re.I)
+    link_tags = re.findall(r"<link\b[^>]*>", source, re.I)
     stylesheet_links = [tag for tag in link_tags if attrs(tag).get("rel", "").lower() == "stylesheet"]
     local_stylesheets = [
         attrs(tag).get("href", "")
