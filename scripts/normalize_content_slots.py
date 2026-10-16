@@ -331,6 +331,30 @@ def replace_unsupported_copy(path: Path, source: str):
         "insights.html": [
             ("From invisible to cited across Perplexity, AI Overviews and ChatGPT Search.",
              "A practical guide to helping answer engines find, interpret and cite B2B content.")
+        ],
+        "service-paid-media.html": [
+            ("Winners: scale budget 20–40% per month until CAC pressure returns.",
+             "Increase budgets in measured increments only while marginal acquisition cost remains within the agreed target; pause scaling when unit economics deteriorate."),
+            ("Losers: cut within 10–14 days. No second chances.",
+             "Pause or rework underperforming tests after the agreed evaluation window if they miss pre-set thresholds; do not keep them running without evidence.")
+        ],
+        "service-product-app.html": [
+            ("Double down on acquisition channels where LTV > 3× CAC.",
+             "Prioritize channels only when measured lifetime value exceeds acquisition cost by the required margin and the payback period fits the business.")
+        ],
+        "service-search-discovery.html": [
+            ("You need results in 30 days.",
+             "You need a guaranteed ranking or AI citation within 30 days.")
+        ],
+        "service-web-commerce.html": [
+            ("Core Web Vitals (LCP < 2.0s, CLS < 0.05, INP < 150ms).",
+             "Core Web Vitals (LCP, CLS and INP) measured on mobile and desktop using field and lab data.")
+        ],
+        "index.html": [
+            ('id="case-studies"', 'id="workstreams"'),
+            ("<!-- 3. CASE STUDIES / WORK -->", "<!-- 3. ILLUSTRATIVE WORKSTREAMS -->"),
+            ('href="#case-studies"', 'href="#workstreams"'),
+            ('href="index.html#case-studies"', 'href="index.html#workstreams"')
         ]
     }
     changes = 0
