@@ -25,7 +25,7 @@ REPLACEMENTS = {
         "Target each separately; do not bundle them.",
 }
 SCARCITY = re.compile(
-    r"We take on\\s*<strong>3 new partnerships per quarter\\.</strong>\\s*Current quarter is open\\.",
+    r"We take on\s*<strong>3 new partnerships per quarter\.</strong>\s*Current quarter is open\.",
     re.IGNORECASE,
 )
 SCARCITY_REPLACEMENT = "Start with a focused 30-minute strategy call. No obligation, clear next steps."
