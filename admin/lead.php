@@ -81,19 +81,22 @@ if (!is_dir($dir) && !@mkdir($dir, 0700, true) && !is_dir($dir)) {
     lead_response('error');
 }
 
+@chmod($dir, 0700);
 $file = $dir . '/leads.json';
-$handle = @fopen($file, 'c+');
-if ($handle === false || !flock($handle, LOCK_EX)) {
-    if (is_resource($handle)) fclose($handle);
+$lockPath = $dir . '/.leads.lock';
+$lockHandle = @fopen($lockPath, 'c');
+if ($lockHandle === false || !flock($lockHandle, LOCK_EX)) {
+    if (is_resource($lockHandle)) fclose($lockHandle);
     error_log('OrcaPulse lead capture: could not lock the lead store.');
     lead_response('error');
 }
+@chmod($lockPath, 0600);
 
-$raw = stream_get_contents($handle);
-$all = ($raw === false || trim($raw) === '') ? [] : json_decode($raw, true);
+$raw = is_file($file) ? file_get_contents($file) : '';
+$all = ($raw === false || trim((string) $raw) === '') ? [] : json_decode($raw, true);
 if (!is_array($all)) {
-    flock($handle, LOCK_UN);
-    fclose($handle);
+    flock($lockHandle, LOCK_UN);
+    fclose($lockHandle);
     error_log('OrcaPulse lead capture: existing lead store is not valid JSON; no data overwritten.');
     lead_response('error');
 }
@@ -111,17 +114,25 @@ $all[] = [
 
 $json = json_encode($all, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 $written = false;
+$tmp = false;
 if ($json !== false) {
-    rewind($handle);
-    $written = ftruncate($handle, 0) && fwrite($handle, $json) === strlen($json) && fflush($handle);
+    $tmp = tempnam($dir, '.lead-store-');
+    if ($tmp !== false) {
+        $bytes = file_put_contents($tmp, $json, LOCK_EX);
+        if ($bytes === strlen($json)) {
+            @chmod($tmp, 0600);
+            $written = @rename($tmp, $file);
+        }
+        if (!$written && is_file($tmp)) @unlink($tmp);
+    }
 }
-flock($handle, LOCK_UN);
-fclose($handle);
-@chmod($file, 0600);
+flock($lockHandle, LOCK_UN);
+fclose($lockHandle);
 
 if (!$written) {
-    error_log('OrcaPulse lead capture: write to lead store failed.');
+    error_log('OrcaPulse lead capture: atomic write to lead store failed.');
     lead_response('error');
 }
+@chmod($file, 0600);
 
 lead_response('1');
