@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 350" role="img" aria-labelledby="title desc">
+  <title id="title">Dental &amp; clinic patient journey</title>
+  <desc id="desc">Connect local intent to clear, accessible next steps. Find, Understand, Contact form a conceptual workflow. No client performance figures are shown.</desc>
+  <defs>
+    <linearGradient id="surface" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f8faff"/><stop offset="100%" stop-color="#eaf1fd"/></linearGradient>
+    <linearGradient id="flow" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#285fc7" stop-opacity=".35"/><stop offset="100%" stop-color="#285fc7" stop-opacity=".8"/></linearGradient>
+  </defs>
+  <rect width="1100" height="350" rx="24" fill="url(#surface)"/>
+  <g stroke="#dfe7f4" stroke-width="1"><path d="M0 70H1100M0 140H1100M0 210H1100M0 280H1100"/><path d="M80 0V350M160 0V350M240 0V350M320 0V350M400 0V350M480 0V350M560 0V350M640 0V350M720 0V350M800 0V350M880 0V350M960 0V350M1040 0V350"/></g>
+  <rect x="24" y="20" width="1052" height="310" rx="20" fill="#ffffff" stroke="#d8e3f3"/>
+  <text x="56" y="55" fill="#202453" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="750">Dental &amp; clinic patient journey</text>
+  <text x="56" y="78" fill="#5b6472" font-family="Inter,Arial,sans-serif" font-size="12">Connect local intent to clear, accessible next steps.</text>
+  <g>
+    <rect x="54" y="103" width="282" height="116" rx="15" fill="#ffffff" stroke="#dce5f2"/>
+    <circle cx="82" cy="131" r="15" fill="#285fc7"/><text x="82" y="135" text-anchor="middle" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="800">01</text>
+    <text x="107" y="135" fill="#202453" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="750">Find</text>
+    <text x="78" y="165" fill="#5b6472" font-family="Inter,Arial,sans-serif" font-size="12">Local search and service information</text>
+    <path d="M78 186H298" stroke="#e0e7f0" stroke-width="5" stroke-linecap="round"/><path d="M78 186H210" stroke="#285fc7" stroke-width="5" stroke-linecap="round" opacity=".75"/>
+  </g>
+  <g>
+    <rect x="409" y="103" width="282" height="116" rx="15" fill="#ffffff" stroke="#dce5f2"/>
+    <circle cx="437" cy="131" r="15" fill="#285fc7"/><text x="437" y="135" text-anchor="middle" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="800">02</text>
+    <text x="462" y="135" fill="#202453" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="750">Understand</text>
+    <text x="433" y="165" fill="#5b6472" font-family="Inter,Arial,sans-serif" font-size="12">Build trust through clear, accurate content</text>
+    <path d="M433 186H653" stroke="#e0e7f0" stroke-width="5" stroke-linecap="round"/><path d="M433 186H596" stroke="#285fc7" stroke-width="5" stroke-linecap="round" opacity=".75"/>
+  </g>
+  <g>
+    <rect x="764" y="103" width="282" height="116" rx="15" fill="#ffffff" stroke="#dce5f2"/>
+    <circle cx="792" cy="131" r="15" fill="#285fc7"/><text x="792" y="135" text-anchor="middle" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="800">03</text>
+    <text x="817" y="135" fill="#202453" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="750">Contact</text>
+    <text x="788" y="165" fill="#5b6472" font-family="Inter,Arial,sans-serif" font-size="12">Make appointment enquiries easy</text>
+    <path d="M788 186H1008" stroke="#e0e7f0" stroke-width="5" stroke-linecap="round"/><path d="M788 186H929" stroke="#285fc7" stroke-width="5" stroke-linecap="round" opacity=".75"/>
+  </g>
+  <g fill="none" stroke="url(#flow)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M336 160H398l-7-6m7 6-7 6"/><path d="M691 160H753l-7-6m7 6-7 6"/></g>
+  <rect x="54" y="245" width="992" height="51" rx="13" fill="#202453"/>
+  <circle cx="78" cy="270" r="5" fill="#285fc7"/>
+  <text x="96" y="274" fill="#ffffff" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="750" letter-spacing=".5">LOCAL INTENT + EASIER APPOINTMENT ENQUIRIES</text>
+  <text x="1045" y="317" text-anchor="end" fill="#6b7280" font-family="Inter,Arial,sans-serif" font-size="10">Illustrative framework · not performance data</text>
+</svg>

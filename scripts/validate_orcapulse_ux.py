@@ -20,6 +20,7 @@ require(len(pages) >= 80, f"HTML page inventory present ({len(pages)} pages)")
 main_js = (ROOT / "scripts/main.js").read_text(encoding="utf-8")
 css = (ROOT / "styles/OrcaPulse.css").read_text(encoding="utf-8")
 home = (ROOT / "index.html").read_text(encoding="utf-8")
+contact = (ROOT / "contact.html").read_text(encoding="utf-8")
 lead_php = (ROOT / "admin/lead.php").read_text(encoding="utf-8")
 lead_viewer = (ROOT / "admin/leads.php").read_text(encoding="utf-8")
 layout = (ROOT / "admin/_layout.php").read_text(encoding="utf-8")
@@ -31,10 +32,12 @@ services = (ROOT / "services.html").read_text(encoding="utf-8")
 
 require("removeEmptyContentSlots" in main_js and 'data-op-empty="true"' in main_js,
         "empty CMS sections are handled before reveal animations")
-require("showLeadSubmissionFeedback" in main_js and "lead-feedback" in home,
-        "homepage enquiry success/failure feedback is wired")
-require("Sending your enquiry" in home and 'id="lead-status"' in home,
-        "submission state is separate from the booking link")
+require("submitContactLeadForm" in main_js and 'id="lead-feedback"' in contact,
+        "Contact Us enquiry form has accessible success/failure feedback")
+require(not re.search(r"<form\b", home, re.I) and 'id="lead-form"' in contact,
+        "homepage is booking-only and Contact Us holds the public enquiry form")
+require('name="source" value="contact-page"' in contact and "../contact.html?sent=" in lead_php,
+        "enquiry source and no-JavaScript fallback both target Contact Us")
 require("if (!rate_limit('lead', 10, 600))" in lead_php,
         "lead rate-limit failures are enforced")
 require("flock($lockHandle, LOCK_EX)" in lead_php and "tempnam($dir, '.lead-store-')" in lead_php and "@rename($tmp, $file)" in lead_php,

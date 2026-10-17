@@ -188,7 +188,71 @@
     });
   })();
 
-  // Show the result returned by admin/lead.php after the server redirects.
+  // The Contact Us page is the single public enquiry-form location.
+  // Keep submission asynchronous so errors do not clear a visitor's input.
+  (function submitContactLeadForm() {
+    var form = document.getElementById("lead-form");
+    if (!form) return;
+
+    var feedback = document.getElementById("lead-feedback");
+    var submit = form.querySelector('button[type="submit"]');
+
+    function showFeedback(message, success) {
+      if (!feedback) return;
+      feedback.hidden = false;
+      feedback.classList.remove("is-success", "is-error");
+      feedback.classList.add(success ? "is-success" : "is-error");
+      feedback.textContent = message;
+      feedback.setAttribute("role", success ? "status" : "alert");
+      feedback.setAttribute("aria-live", "polite");
+      feedback.setAttribute("tabindex", "-1");
+      feedback.focus({ preventScroll: true });
+    }
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var originalText = submit ? submit.textContent : "Send enquiry";
+
+      if (feedback) {
+        feedback.hidden = false;
+        feedback.classList.remove("is-success", "is-error");
+        feedback.textContent = "Sending your enquiry…";
+        feedback.setAttribute("role", "status");
+      }
+      if (submit) {
+        submit.disabled = true;
+        submit.setAttribute("aria-busy", "true");
+        submit.textContent = "Sending…";
+      }
+
+      fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { "Accept": "application/json" },
+        credentials: "same-origin"
+      }).then(function (response) {
+        return response.json().catch(function () { return {}; }).then(function (data) {
+          if (!response.ok || !data.ok) {
+            throw new Error(data.message || "We could not save your enquiry. Please try again or book a call directly.");
+          }
+          return data;
+        });
+      }).then(function (data) {
+        form.reset();
+        showFeedback(data.message || "Thank you. Your enquiry has been received.", true);
+      }).catch(function (error) {
+        showFeedback(error.message || "We could not connect. Your details are still in the form; please try again or book a call directly.", false);
+      }).finally(function () {
+        if (submit) {
+          submit.disabled = false;
+          submit.removeAttribute("aria-busy");
+          submit.textContent = originalText;
+        }
+      });
+    });
+  })();
+
+  // Show the result returned by admin/lead.php if JavaScript was unavailable.
   // Never put personal form data in the URL.
   (function showLeadSubmissionFeedback() {
     var params = new URLSearchParams(window.location.search);

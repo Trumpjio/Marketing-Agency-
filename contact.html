@@ -8,11 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles/glass.css?v=20261014b" />
- <link rel="stylesheet" href="styles/OrcaPulse.css?v=20261014b" />
- <link rel="stylesheet" href="styles/custom-design.css?v=20261014b" />
-<link rel="stylesheet" href="styles/template-design.css?v=20261014b" />
-    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles/glass.css?v=20261016c" />
+ <link rel="stylesheet" href="styles/OrcaPulse.css?v=20261016c" />
+ <link rel="icon" href="favicon.svg" type="image/svg+xml" />
  <link rel="canonical" href="https://orcapulse.io/contact.html" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Contact OrcaPulse | Book a Strategy Call" />
@@ -153,8 +151,8 @@
       <main id="main">
 <section class="hero" style="padding-bottom: var(--s-4);" data-op-key="hero" data-op-id="652ccf61">
 <div class="container">
-<h1 class="reveal">Looking to talk to OrcaPulse?</h1>
-          <p class="hero__sub reveal">We don't run a contact form. The fastest way to speak with us is to book a 30-minute call directly. No pitch deck, no sales flow &mdash; a frank conversation about your growth.</p>
+<h1 class="reveal">Tell us what you want to improve.</h1>
+          <p class="hero__sub reveal">Share a little about your business and the challenge in front of you. Use the form below, or book a 30-minute strategy call if you prefer to speak directly.</p>
           <div class="hero__actions reveal" style="justify-content:center;flex-wrap:wrap;gap:0.75rem;">
             <a href="https://calendly.com/orcapulse/intro-call" target="_blank" rel="noopener" class="btn btn--primary">Book a Strategy Call</a>
             
@@ -162,6 +160,56 @@
           </div>
           
 </div>
+</section>
+
+<section class="section OrcaPulse-work-section" id="contact-form-section" aria-labelledby="contact-form-heading">
+  <div class="container">
+    <div class="OrcaPulse-work-grid">
+      <div class="OrcaPulse-contact-copy">
+        <span class="pill">Contact OrcaPulse</span>
+        <h2 id="contact-form-heading">Give us the useful context.</h2>
+        <p>Tell us who you are, what your business does, and what you want to improve. We use these details to prepare for a more focused first conversation.</p>
+        <div class="OrcaPulse-work-list">
+          <div>01 &nbsp; Your business and audience</div>
+          <div>02 &nbsp; The current challenge or opportunity</div>
+          <div>03 &nbsp; The outcome you want to improve</div>
+        </div>
+        <p class="OrcaPulse-contact-direct">Prefer to book a time directly? <a href="https://calendly.com/orcapulse/intro-call" target="_blank" rel="noopener">Choose a 30-minute strategy slot.</a></p>
+      </div>
+      <form class="OrcaPulse-work-form" id="lead-form" action="admin/lead.php" method="post" accept-charset="UTF-8">
+        <div class="fields">
+          <div class="field">
+            <label for="lead-name">Your name <span aria-hidden="true">*</span></label>
+            <input id="lead-name" name="name" autocomplete="name" maxlength="240" required>
+          </div>
+          <div class="field">
+            <label for="lead-email">Work email <span aria-hidden="true">*</span></label>
+            <input id="lead-email" name="email" type="email" autocomplete="email" maxlength="254" required>
+          </div>
+          <div class="field">
+            <label for="lead-company">Company <span aria-hidden="true">*</span></label>
+            <input id="lead-company" name="company" autocomplete="organization" maxlength="320" required>
+          </div>
+          <div class="field">
+            <label for="lead-website">Website (optional)</label>
+            <input id="lead-website" name="website" type="url" inputmode="url" autocomplete="url" placeholder="https://yourwebsite.com" maxlength="2048">
+          </div>
+          <div class="field full">
+            <label for="lead-goals">What would you like to improve? <span aria-hidden="true">*</span></label>
+            <textarea id="lead-goals" name="goals" rows="5" maxlength="8000" required placeholder="Tell us about the challenge, goal, or opportunity."></textarea>
+          </div>
+          <div class="OrcaPulse-honeypot" aria-hidden="true">
+            <label for="lead-website-url">Leave this field empty</label>
+            <input id="lead-website-url" name="website_url" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <input type="hidden" name="source" value="contact-page">
+        </div>
+        <button class="OrcaPulse-form-submit" type="submit">Send enquiry</button>
+        <div class="OrcaPulse-form-feedback" id="lead-feedback" role="status" aria-live="polite" tabindex="-1" hidden></div>
+        <p class="OrcaPulse-form-note">Your details are used to respond to this enquiry. Read our <a href="privacy-policy.html">privacy policy</a> for more information.</p>
+      </form>
+    </div>
+  </div>
 </section>
 
 <section class="section" data-op-id="dc4f3b32">

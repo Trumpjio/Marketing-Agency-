@@ -128,6 +128,36 @@ function recordIssue(label, detail) {
     fail("mobile navigation", "#mobile-toggle was not found");
   }
 
+  // Verify the public form is available on Contact Us only and works through
+  // the same browser-facing asynchronous path visitors use.
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(base + "/index.html", { waitUntil: "domcontentloaded" });
+  const homeFormCount = await page.locator("form").count();
+  if (homeFormCount !== 0) fail("form placement", "homepage must be booking-only; found " + homeFormCount + " form(s)");
+
+  await page.goto(base + "/contact.html#contact-form-section", { waitUntil: "domcontentloaded" });
+  const contactForms = page.locator("form");
+  if (await contactForms.count() !== 1) {
+    fail("form placement", "Contact Us must contain exactly one public form; found " + await contactForms.count());
+  } else {
+    const form = page.locator("#lead-form");
+    if (!(await form.isVisible())) fail("Contact Us form", "lead form is not visible");
+    await page.locator("#lead-name").fill("Browser Test");
+    await page.locator("#lead-email").fill("browser-test@example.com");
+    await page.locator("#lead-company").fill("Validation");
+    await page.locator("#lead-website").fill("https://example.com");
+    await page.locator("#lead-goals").fill("Verify Contact Us form submission and accessible feedback.");
+    await page.locator("#lead-form button[type=submit]").click();
+    try {
+      await page.locator("#lead-feedback.is-success").waitFor({ state: "visible", timeout: 8000 });
+    } catch {
+      fail("Contact Us form", "successful browser submission did not display the success feedback");
+    }
+    if (!(await page.locator("#lead-feedback").innerText()).includes("received")) {
+      fail("Contact Us form", "success message text was missing or unexpected");
+    }
+  }
+
   // Exercise the public form endpoint in this disposable CI checkout.
   const postLead = async (fields) => page.request.post(base + "/admin/lead.php", {
     form: fields,
@@ -142,7 +172,8 @@ function recordIssue(label, detail) {
     const successData = await success.json().catch(() => ({}));
     if (success.status() !== 200 || !successData.ok) fail("lead form submission", "expected successful JSON response, got " + success.status() + " " + JSON.stringify(successData));
 
-    for (let i = 0; i < 8; i++) {
+    // One successful browser form submission has already consumed one hit.
+    for (let i = 0; i < 7; i++) {
       const response = await postLead({ ...goodFields, email: "qa+" + i + "@example.com" });
       if (response.status() !== 200) fail("lead form rate-limit setup", "request " + (i + 1) + " returned " + response.status());
       await response.body();
@@ -158,8 +189,119 @@ function recordIssue(label, detail) {
     fs.rmSync(path.join(root, "data", ".rate_lead.json"), { force: true });
   }
 
+  // Capture real rendered views for design review; these are CI artifacts,
+  // not production screenshots. Capture the hero, mid-page and final content.
+  const auditRoutes = [
+    "index.html",
+    "services.html",
+    "service-paid-media.html",
+    "industry-real-estate.html",
+    "real-estate-marketing-dubai.html",
+    "about.html",
+    "work.html",
+    "insights.html",
+    "contact.html"
+  ];
+  const screenshotDir = path.join(root, "artifacts", "design-audit");
+  const layoutDiagnostics = [];
+  fs.mkdirSync(screenshotDir, { recursive: true });
+  for (const width of [390, 768, 1440]) {
+    await page.setViewportSize({ width, height: width === 390 ? 844 : width === 768 ? 900 : 1000 });
+    for (const file of auditRoutes) {
+      const shortName = file.replace(/\.html$/, "");
+      try {
+        await page.goto(base + "/" + encodeURI(file), { waitUntil: "networkidle" });
+        await page.evaluate(() => document.fonts && document.fonts.ready);
+        if (["index.html", "services.html", "service-paid-media.html", "industry-real-estate.html", "real-estate-marketing-dubai.html", "work.html", "insights.html", "contact.html"].includes(file) && ["index.html", "services.html", "industry-real-estate.html"].includes(file)) {
+          const diagnostics = await page.evaluate(() => {
+            const select = (selector) => {
+              const el = document.querySelector(selector);
+              if (!el) return null;
+              const style = getComputedStyle(el);
+              const rect = el.getBoundingClientRect();
+              return {
+                selector,
+                top: Math.round(rect.top),
+                bottom: Math.round(rect.bottom),
+                left: Math.round(rect.left),
+                right: Math.round(rect.right),
+                width: Math.round(rect.width),
+                height: Math.round(rect.height),
+                position: style.position,
+                paddingTop: style.paddingTop,
+                paddingBottom: style.paddingBottom,
+                marginTop: style.marginTop,
+                fontSize: style.fontSize,
+                lineHeight: style.lineHeight,
+                fontFamily: style.fontFamily,
+                color: style.color,
+                background: style.backgroundColor,
+                minHeight: style.minHeight,
+                borderRadius: style.borderRadius
+              };
+            };
+            return {
+              viewport: { width: innerWidth, height: innerHeight, scrollY: Math.round(scrollY) },
+              document: { height: document.documentElement.scrollHeight, bodyHeight: document.body.scrollHeight },
+              header: select("header.nav"),
+              navInner: select(".nav__inner"),
+              hero: select("main > section.hero"),
+              h1: select("main > section.hero h1"),
+              heroSub: select("main > section.hero .hero__sub"),
+              heroAction: select("main > section.hero .hero__actions a"),
+              scarcity: select("main > section.hero .hero__scarcity"),
+              growthVisual: select(".OrcaPulse-home-visual"),
+              footerInner: select(".footer__inner"),
+              footerCols: select(".footer__cols")
+            };
+          });
+          layoutDiagnostics.push({ page: file, width, diagnostics });
+          const d = diagnostics;
+          const top = d.navInner && d.navInner.bottom;
+          if (d.h1 && typeof top === "number" && d.h1.top < top + 10) {
+            fail("desktop header/hero collision", width + "px " + file + ": H1 begins at y=" + d.h1.top + " while navigation ends at y=" + top);
+          }
+          if (width >= 1100 && d.heroAction && d.heroAction.width > 480) {
+            fail("oversized hero CTA", width + "px " + file + ": primary hero CTA is " + d.heroAction.width + "px wide");
+          }
+          if (width >= 1100 && d.footerInner && d.footerCols && d.footerCols.width < d.footerInner.width * 0.55) {
+            fail("compressed desktop footer", width + "px " + file + ": footer links occupy " + d.footerCols.width + "px of " + d.footerInner.width + "px footer width");
+          }
+          if (width >= 1100 && !d.heroAction && d.hero && d.hero.height > 560) {
+            fail("excessive text-only hero height", width + "px " + file + ": hero reserves " + d.hero.height + "px despite having no primary hero CTA");
+          }
+        }
+        const maxScroll = await page.evaluate(() => Math.max(0, document.documentElement.scrollHeight - window.innerHeight));
+        const points = [
+          ["hero", 0],
+          ["middle", Math.round(maxScroll * 0.48)],
+          ["end", maxScroll]
+        ];
+        for (const [label, y] of points) {
+          await page.evaluate((scrollY) => window.scrollTo(0, scrollY), y);
+          await page.waitForTimeout(180);
+          const filename = shortName + "-" + width + "-" + label + ".png";
+          await page.screenshot({ path: path.join(screenshotDir, filename), fullPage: false });
+        }
+        // Full-page desktop overview for the main pages so the vertical rhythm
+        // can be inspected in one image where the source page is not extreme.
+        if (width === 1440 && ["index.html", "services.html", "service-paid-media.html", "industry-real-estate.html", "work.html", "insights.html"].includes(file)) {
+          const maxHeight = await page.evaluate(() => document.documentElement.scrollHeight);
+          if (maxHeight <= 9500) {
+            await page.evaluate(() => window.scrollTo(0, 0));
+            await page.screenshot({ path: path.join(screenshotDir, shortName + "-1440-full.png"), fullPage: true });
+          }
+        }
+      } catch (error) {
+        recordIssue("design screenshot failed", file + " at " + width + "px: " + error.message);
+      }
+    }
+  }
+
+  fs.writeFileSync(path.join(screenshotDir, "layout-diagnostics.json"), JSON.stringify(layoutDiagnostics, null, 2));
   await browser.close();
 
+  console.log("Saved computed layout diagnostics for " + layoutDiagnostics.length + " route/viewport combinations.");
   console.log("Responsive viewport sweep: " + pages.length + " pages × " + viewports.length + " widths = " + (pages.length * viewports.length) + " checks.");
   console.log("Additional checks: mobile nav/accordion, form success/validation/rate-limit, JS errors, local request errors.");
   for (const issue of issues) console.log("REVIEW: " + issue.label + " — " + issue.detail);

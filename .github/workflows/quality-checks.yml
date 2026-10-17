@@ -10,6 +10,7 @@ on:
       - fix/orcapulse-hostinger-release
       - fix/orcapulse-post-merge-hardening
       - fix/orcapulse-comprehensive-site-polish
+      - fix/orcapulse-professional-layout
 
 permissions:
   contents: read
@@ -46,8 +47,9 @@ jobs:
 
       - name: Validate UI, accessibility-related behavior, copy, and lead flow
         run: |
-          python3 -m py_compile scripts/validate_orcapulse_site.py scripts/validate_orcapulse_ux.py scripts/normalize_site_copy.py
+          python3 -m py_compile scripts/validate_orcapulse_site.py scripts/validate_orcapulse_ux.py scripts/validate_conversion_paths.py scripts/normalize_site_copy.py
           python3 scripts/validate_orcapulse_ux.py
+          python3 scripts/validate_conversion_paths.py
 
       - name: Validate sitemap XML and enforce canonical host
         shell: bash
@@ -135,4 +137,13 @@ jobs:
 
       - name: Test all HTML pages at five viewport widths
         run: node scripts/smoke_site_responsive.cjs
+
+      - name: Upload visual audit screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: orcapulse-design-audit-screenshots
+          path: artifacts/design-audit/
+          if-no-files-found: warn
+          retention-days: 7
 
