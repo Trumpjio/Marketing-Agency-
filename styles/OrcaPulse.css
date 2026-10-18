@@ -1338,6 +1338,10 @@ body[data-template="home"] .OrcaPulse-bar-row:first-child .OrcaPulse-bar-track >
   background: var(--OrcaPulse-navy);
 }
 
+body[data-template="home"] .OrcaPulse-bar-row.is-accent .OrcaPulse-bar-track > span {
+  background: var(--OrcaPulse-blue);
+}
+
 body[data-template="home"] .OrcaPulse-chart-callout {
   margin: var(--space-6) 0 0;
   padding: var(--space-4) var(--space-5);
