@@ -149,13 +149,15 @@ jobs:
           npx lighthouse http://127.0.0.1:8000/index.html --form-factor=mobile --only-categories=performance,accessibility,seo --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --output=json --output-path=artifacts/lighthouse/after.json --quiet
           node - <<'NODE'
           const fs = require('node:fs');
-          const before = JSON.parse(fs.readFileSync('artifacts/lighthouse/before.json', 'utf8'));
-          const after = JSON.parse(fs.readFileSync('artifacts/lighthouse/after.json', 'utf8'));
+          const beforeReport = JSON.parse(fs.readFileSync('artifacts/lighthouse/before.json', 'utf8'));
+          const afterReport = JSON.parse(fs.readFileSync('artifacts/lighthouse/after.json', 'utf8'));
+          const before = beforeReport.lighthouseResult || beforeReport;
+          const after = afterReport.lighthouseResult || afterReport;
           const categories = ['performance', 'accessibility', 'seo'];
           const results = {};
           for (const category of categories) {
-            const oldScore = Math.round(before.lighthouseResult.categories[category].score * 100);
-            const newScore = Math.round(after.lighthouseResult.categories[category].score * 100);
+            const oldScore = Math.round(before.categories[category].score * 100);
+            const newScore = Math.round(after.categories[category].score * 100);
             results[category] = { before: oldScore, after: newScore, delta: newScore - oldScore };
           }
           console.log('Lighthouse mobile before/after:', JSON.stringify(results, null, 2));
