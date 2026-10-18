@@ -69,7 +69,8 @@ for page in pages:
         for tag in stylesheet_links
         if attrs(tag).get("href", "").startswith("styles/")
     ]
-    expected_styles = ["styles/glass.css?v=20261016c", "styles/OrcaPulse.css?v=20261016c"]
+    theme_version = "20261018a" if page.name == "index.html" else "20261016c"
+    expected_styles = ["styles/glass.css?v=20261016c", f"styles/OrcaPulse.css?v={theme_version}"]
     if local_stylesheets != expected_styles:
         errors.append(f"{page.name}: expected only the shared structural and brand CSS in order {expected_styles}; found {local_stylesheets}.")
     if "styles/custom-design.css" in source or "styles/template-design.css" in source:
