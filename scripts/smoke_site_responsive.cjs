@@ -205,7 +205,7 @@ function recordIssue(label, detail) {
   const screenshotDir = path.join(root, "artifacts", "design-audit");
   const layoutDiagnostics = [];
   fs.mkdirSync(screenshotDir, { recursive: true });
-  for (const width of [390, 768, 1440]) {
+  for (const width of [390, 768, 834, 1024, 1440]) {
     await page.setViewportSize({ width, height: width === 390 ? 844 : width === 768 ? 900 : 1000 });
     for (const file of auditRoutes) {
       const shortName = file.replace(/\.html$/, "");
