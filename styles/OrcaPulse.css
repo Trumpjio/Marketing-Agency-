@@ -64,6 +64,49 @@
   --ap-bg: #fff;
   --ap-bg-soft: var(--OrcaPulse-mist);
   --surface: #fff;
+
+  /* Homepage rebuild tokens — Step 1 only; layout rules are unchanged. */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  --home-container-max: 1680px;
+  --home-container-pad: 90px;
+  --home-section-space: 128px;
+  --home-grid-gutter: 24px;
+  --home-copy-max: 68ch;
+
+  --home-type-display: clamp(2.75rem, 5.2vw, 5.5rem);
+  --home-type-h2: clamp(2rem, 3.5vw, 3.5rem);
+  --home-type-h3: clamp(1.25rem, 2vw, 1.75rem);
+  --home-type-body: clamp(1rem, 1.1vw, 1.125rem);
+  --home-type-small: 0.875rem;
+
+  --home-motion-duration: 600ms;
+  --home-motion-ease: cubic-bezier(0.2, 0.65, 0.3, 1);
+  --home-motion-distance: 20px;
+  --home-focus-ring: 3px solid #285fc7;
+}
+
+@media (min-width: 834px) and (max-width: 1023px) {
+  :root {
+    --home-container-pad: 40px;
+    --home-section-space: 80px;
+  }
+}
+
+@media (max-width: 833px) {
+  :root {
+    --home-container-pad: 20px;
+    --home-section-space: 56px;
+  }
 }
 
 /* -------- Base -------- */
