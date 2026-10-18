@@ -207,7 +207,10 @@ function recordIssue(label, detail) {
   fs.mkdirSync(screenshotDir, { recursive: true });
   for (const width of [390, 768, 834, 1024, 1440]) {
     await page.setViewportSize({ width, height: width === 390 ? 844 : width === 768 ? 900 : 1000 });
-    for (const file of auditRoutes) {
+    // Phase 1 requires extra tablet/laptop screenshots for the homepage only.
+    // Keep other page types on the established audit widths to avoid expanding scope.
+    const routesForWidth = [834, 1024].includes(width) ? ["index.html"] : auditRoutes;
+    for (const file of routesForWidth) {
       const shortName = file.replace(/\.html$/, "");
       try {
         await page.goto(base + "/" + encodeURI(file), { waitUntil: "networkidle" });
