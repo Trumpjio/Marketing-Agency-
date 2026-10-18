@@ -1341,7 +1341,7 @@ body[data-template="home"] .OrcaPulse-bar-row:first-child .OrcaPulse-bar-track >
 body[data-template="home"] .OrcaPulse-chart-callout {
   margin: var(--space-6) 0 0;
   padding: var(--space-4) var(--space-5);
-  border-left: 4px solid var(--OrcaPulse-blue);
+  border-left: var(--space-1) solid var(--OrcaPulse-blue);
   background: var(--OrcaPulse-mist);
   color: var(--OrcaPulse-ink);
   line-height: 1.55;
@@ -1380,7 +1380,7 @@ body[data-template="home"] .OrcaPulse-chart-grid line {
 
 body[data-template="home"] .OrcaPulse-chart-axis text {
   fill: var(--OrcaPulse-muted);
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 
 body[data-template="home"] .OrcaPulse-chart-line {
@@ -1408,7 +1408,7 @@ body[data-template="home"] .OrcaPulse-chart-point--recovery {
 
 body[data-template="home"] .OrcaPulse-chart-value {
   fill: var(--OrcaPulse-navy);
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 800;
 }
 
@@ -1431,7 +1431,7 @@ body[data-template="home"] .region-apac { fill: #b5c9f0; }
 
 body[data-template="home"] .OrcaPulse-map-label {
   fill: #fff;
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 800;
   pointer-events: none;
 }
@@ -1675,7 +1675,7 @@ body[data-template="home"] .OrcaPulse-principles-list p {
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 833px) {
   body[data-template="home"] .OrcaPulse-bar-row,
   body[data-template="home"] .OrcaPulse-benchmark-row {
     grid-template-columns: minmax(0, 1fr) auto;
