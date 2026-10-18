@@ -805,6 +805,122 @@ textarea:focus-visible, select:focus-visible, summary:focus-visible {
 .OrcaPulse-method-card .cap__desc { margin-top: 0; }
 
 
+
+/* ============================================================
+   HOMEPAGE LAYOUT NORMALIZATION — Step 2
+   Scoped to the homepage so Phase 2 pages remain unchanged.
+   Content, URLs, integrations and interaction behavior are untouched.
+   ============================================================ */
+body[data-template="home"] .container,
+body[data-template="home"] .OrcaPulse-wrap,
+body[data-template="home"] .wrap {
+  width: min(calc(100% - (2 * var(--home-container-pad))), var(--home-container-max));
+  max-width: var(--home-container-max);
+  margin-inline: auto;
+  padding-inline: 0;
+}
+
+body[data-template="home"] main > section:not(.hero) {
+  padding-block: var(--home-section-space);
+}
+
+body[data-template="home"] .grid,
+body[data-template="home"] .OrcaPulse-case-grid,
+body[data-template="home"] .OrcaPulse-client-grid,
+body[data-template="home"] .OrcaPulse-principles,
+body[data-template="home"] .OrcaPulse-split,
+body[data-template="home"] .OrcaPulse-work-grid {
+  column-gap: var(--home-grid-gutter);
+  min-width: 0;
+}
+
+body[data-template="home"] .grid > *,
+body[data-template="home"] .OrcaPulse-case-grid > *,
+body[data-template="home"] .OrcaPulse-client-grid > *,
+body[data-template="home"] .OrcaPulse-principles > *,
+body[data-template="home"] .OrcaPulse-split > *,
+body[data-template="home"] .OrcaPulse-work-grid > * {
+  min-width: 0;
+}
+
+body[data-template="home"] .section-head {
+  width: 100%;
+  max-width: 68ch;
+  margin: 0 auto var(--space-7);
+}
+
+body[data-template="home"] .section-head h2,
+body[data-template="home"] main > section:not(.hero) > .container > h2,
+body[data-template="home"] .OrcaPulse-split__copy h2,
+body[data-template="home"] .cta-block h2 {
+  font-size: var(--home-type-h2);
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+body[data-template="home"] .section-head p,
+body[data-template="home"] .OrcaPulse-split__copy p,
+body[data-template="home"] .cta-block p,
+body[data-template="home"] main > section:not(.hero) .cap__desc {
+  max-width: var(--home-copy-max);
+  font-size: var(--home-type-body);
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+
+body[data-template="home"] .OrcaPulse-split__copy > * + * {
+  margin-top: var(--space-4);
+}
+
+body[data-template="home"] .OrcaPulse-home-visual {
+  width: min(calc(100% - (2 * var(--home-container-pad))), var(--home-container-max));
+  max-width: var(--home-container-max);
+  margin-inline: auto;
+}
+
+body[data-template="home"] .OrcaPulse-home-visual img,
+body[data-template="home"] .OrcaPulse-product-visual,
+body[data-template="home"] .OrcaPulse-funnel-card {
+  min-width: 0;
+  max-width: 100%;
+}
+
+body[data-template="home"] .OrcaPulse-home-visual img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+body[data-template="home"] a:focus-visible,
+body[data-template="home"] button:focus-visible,
+body[data-template="home"] input:focus-visible,
+body[data-template="home"] textarea:focus-visible,
+body[data-template="home"] select:focus-visible,
+body[data-template="home"] summary:focus-visible {
+  outline: var(--home-focus-ring);
+  outline-offset: var(--space-1);
+}
+
+@media (min-width: 834px) and (max-width: 1023px) {
+  body[data-template="home"] main > section:not(.hero) {
+    padding-block: var(--home-section-space);
+  }
+}
+
+@media (max-width: 833px) {
+  body[data-template="home"] .section-head {
+    margin-bottom: var(--space-6);
+  }
+
+  body[data-template="home"] .OrcaPulse-split__copy > * + * {
+    margin-top: var(--space-3);
+  }
+
+  body[data-template="home"] main > section:not(.hero) {
+    padding-block: var(--home-section-space);
+  }
+}
+
 /* Homepage visual: connect the core services without inventing results */
 .OrcaPulse-home-visual {
   position: relative;
