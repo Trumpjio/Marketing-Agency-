@@ -98,6 +98,93 @@ jobs:
           print("Security regression guards passed")
           PY
 
+  lighthouse-mobile:
+    needs: syntax-and-security
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out homepage branch
+        uses: actions/checkout@v7
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: none
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+
+      - name: Install Lighthouse and Chromium
+        run: |
+          npm install --no-save lighthouse playwright
+          npx playwright install --with-deps chromium
+          echo "CHROME_PATH=$(node -e "process.stdout.write(require('playwright').chromium.executablePath())")" >> "$GITHUB_ENV"
+
+      - name: Prepare deploy baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin deploy --depth=1
+          git worktree add --detach /tmp/orcapulse-baseline FETCH_HEAD
+          php -S 127.0.0.1:8001 -t /tmp/orcapulse-baseline > /tmp/orcapulse-baseline.log 2>&1 &
+          php -S 127.0.0.1:8000 -t . > /tmp/orcapulse-current.log 2>&1 &
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:8001/index.html >/dev/null && curl -fsS http://127.0.0.1:8000/index.html >/dev/null; then
+              echo "Baseline and PR sites are ready."
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/orcapulse-baseline.log /tmp/orcapulse-current.log
+          exit 1
+
+      - name: Run Lighthouse mobile baseline and PR audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/lighthouse
+          npx lighthouse http://127.0.0.1:8001/index.html --form-factor=mobile --only-categories=performance,accessibility,seo --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --output=json --output-path=artifacts/lighthouse/before.json --quiet
+          npx lighthouse http://127.0.0.1:8000/index.html --form-factor=mobile --only-categories=performance,accessibility,seo --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --output=json --output-path=artifacts/lighthouse/after.json --quiet
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const beforeReport = JSON.parse(fs.readFileSync('artifacts/lighthouse/before.json', 'utf8'));
+          const afterReport = JSON.parse(fs.readFileSync('artifacts/lighthouse/after.json', 'utf8'));
+          const before = beforeReport.lighthouseResult || beforeReport;
+          const after = afterReport.lighthouseResult || afterReport;
+          const categories = ['performance', 'accessibility', 'seo'];
+          const results = { categories: {}, largestContentfulPaintMs: {} };
+          for (const category of categories) {
+            const oldScore = Math.round(before.categories[category].score * 100);
+            const newScore = Math.round(after.categories[category].score * 100);
+            results.categories[category] = { before: oldScore, after: newScore, delta: newScore - oldScore };
+          }
+          const beforeLcp = Math.round(before.audits['largest-contentful-paint'].numericValue);
+          const afterLcp = Math.round(after.audits['largest-contentful-paint'].numericValue);
+          results.largestContentfulPaintMs = { before: beforeLcp, after: afterLcp, delta: afterLcp - beforeLcp, target: '<2500ms' };
+          console.log('Lighthouse mobile before/after:', JSON.stringify(results, null, 2));
+          fs.writeFileSync('artifacts/lighthouse/summary.json', JSON.stringify(results, null, 2));
+          const targets = { performance: 90, accessibility: 95, seo: 95 };
+          const failures = Object.entries(targets)
+            .filter(([key, target]) => results.categories[key].after < target)
+            .map(([key, target]) => key + ' target ' + target + ', got ' + results.categories[key].after);
+          if (afterLcp >= 2500) failures.push('LCP target <2500ms, got ' + afterLcp + 'ms');
+          if (failures.length) {
+            console.error('Lighthouse targets not met:', failures.join('; '));
+            process.exitCode = 1;
+          }
+          NODE
+
+      - name: Upload Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: orcapulse-lighthouse-mobile-before-after
+          path: artifacts/lighthouse/
+          if-no-files-found: warn
+          retention-days: 7
+
   browser-responsive:
     needs: syntax-and-security
     runs-on: ubuntu-latest

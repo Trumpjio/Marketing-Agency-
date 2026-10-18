@@ -64,6 +64,50 @@
   --ap-bg: #fff;
   --ap-bg-soft: var(--OrcaPulse-mist);
   --surface: #fff;
+
+  /* Homepage rebuild tokens — Step 1 only; layout rules are unchanged. */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  --home-hero-top-space: 144px;
+  --home-container-max: 1680px;
+  --home-container-pad: 90px;
+  --home-section-space: 128px;
+  --home-grid-gutter: 24px;
+  --home-copy-max: 68ch;
+
+  --home-type-display: clamp(2.75rem, 5.2vw, 5.5rem);
+  --home-type-h2: clamp(2rem, 3.5vw, 3.5rem);
+  --home-type-h3: clamp(1.25rem, 2vw, 1.75rem);
+  --home-type-body: clamp(1rem, 1.1vw, 1.125rem);
+  --home-type-small: 0.875rem;
+
+  --home-motion-duration: 600ms;
+  --home-motion-ease: cubic-bezier(0.2, 0.65, 0.3, 1);
+  --home-motion-distance: 20px;
+  --home-focus-ring: 3px solid #285fc7;
+}
+
+@media (min-width: 834px) and (max-width: 1023px) {
+  :root {
+    --home-container-pad: 40px;
+    --home-section-space: 80px;
+  }
+}
+
+@media (max-width: 833px) {
+  :root {
+    --home-container-pad: 20px;
+    --home-section-space: 56px;
+  }
 }
 
 /* -------- Base -------- */
@@ -762,6 +806,128 @@ textarea:focus-visible, select:focus-visible, summary:focus-visible {
 .OrcaPulse-method-card .cap__desc { margin-top: 0; }
 
 
+
+/* ============================================================
+   HOMEPAGE LAYOUT NORMALIZATION — Step 2
+   Scoped to the homepage so Phase 2 pages remain unchanged.
+   Content, URLs, integrations and interaction behavior are untouched.
+   ============================================================ */
+body[data-template="home"] .container,
+body[data-template="home"] .OrcaPulse-wrap,
+body[data-template="home"] .wrap {
+  width: min(calc(100% - (2 * var(--home-container-pad))), var(--home-container-max));
+  max-width: var(--home-container-max);
+  margin-inline: auto;
+  padding-inline: 0;
+}
+
+body[data-template="home"] main > section:not(.hero) {
+  padding-block: var(--home-section-space);
+}
+
+body[data-template="home"] .grid,
+body[data-template="home"] .OrcaPulse-case-grid,
+body[data-template="home"] .OrcaPulse-client-grid,
+body[data-template="home"] .OrcaPulse-principles,
+body[data-template="home"] .OrcaPulse-split,
+body[data-template="home"] .OrcaPulse-work-grid {
+  column-gap: var(--home-grid-gutter);
+  min-width: 0;
+}
+
+body[data-template="home"] .grid > *,
+body[data-template="home"] .OrcaPulse-case-grid > *,
+body[data-template="home"] .OrcaPulse-client-grid > *,
+body[data-template="home"] .OrcaPulse-principles > *,
+body[data-template="home"] .OrcaPulse-split > *,
+body[data-template="home"] .OrcaPulse-work-grid > * {
+  min-width: 0;
+}
+
+body[data-template="home"] .section-head {
+  width: 100%;
+  max-width: 68ch;
+  margin: 0 auto var(--space-7);
+}
+
+body[data-template="home"] .section-head h2,
+body[data-template="home"] main > section:not(.hero) > .container > h2,
+body[data-template="home"] .OrcaPulse-split__copy h2,
+body[data-template="home"] .cta-block h2 {
+  font-size: var(--home-type-h2);
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+body[data-template="home"] .section-head p,
+body[data-template="home"] .OrcaPulse-split__copy p,
+body[data-template="home"] .cta-block p,
+body[data-template="home"] main > section:not(.hero) .cap__desc {
+  max-width: var(--home-copy-max);
+  font-size: var(--home-type-body);
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+
+body[data-template="home"] .OrcaPulse-split__copy > * + * {
+  margin-top: var(--space-4);
+}
+
+body[data-template="home"] .OrcaPulse-home-visual {
+  width: min(calc(100% - (2 * var(--home-container-pad))), var(--home-container-max));
+  max-width: var(--home-container-max);
+  margin-inline: auto;
+}
+
+body[data-template="home"] .OrcaPulse-home-visual img,
+body[data-template="home"] .OrcaPulse-product-visual,
+body[data-template="home"] .OrcaPulse-funnel-card {
+  min-width: 0;
+  max-width: 100%;
+}
+
+body[data-template="home"] .OrcaPulse-home-visual img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+body[data-template="home"] a:focus-visible,
+body[data-template="home"] button:focus-visible,
+body[data-template="home"] input:focus-visible,
+body[data-template="home"] textarea:focus-visible,
+body[data-template="home"] select:focus-visible,
+body[data-template="home"] summary:focus-visible {
+  outline: var(--home-focus-ring);
+  outline-offset: var(--space-1);
+}
+
+@media (min-width: 834px) and (max-width: 1023px) {
+  body[data-template="home"] main > section:not(.hero) {
+    padding-block: var(--home-section-space);
+  }
+}
+
+@media (min-width: 1024px) {
+  body[data-template="home"] main > section.hero {
+    padding-top: var(--home-hero-top-space) !important;
+  }
+}
+
+@media (max-width: 833px) {
+  body[data-template="home"] .section-head {
+    margin-bottom: var(--space-6);
+  }
+
+  body[data-template="home"] .OrcaPulse-split__copy > * + * {
+    margin-top: var(--space-3);
+  }
+
+  body[data-template="home"] main > section:not(.hero) {
+    padding-block: var(--home-section-space);
+  }
+}
+
 /* Homepage visual: connect the core services without inventing results */
 .OrcaPulse-home-visual {
   position: relative;
@@ -1095,3 +1261,449 @@ textarea:focus-visible, select:focus-visible, summary:focus-visible {
   border-radius: inherit;
 }
 .op-card .article-visual__art { border-radius: 12px; }
+
+
+
+/* ============================================================
+   HOMEPAGE BENCHMARK VISUALS — native HTML/SVG, no dependencies
+   ============================================================ */
+body[data-template="home"] .OrcaPulse-data-visual {
+  display: block;
+  min-width: 0;
+  margin: var(--space-6) 0 0;
+  padding: clamp(var(--space-4), 3vw, var(--space-7));
+  border: 1px solid var(--OrcaPulse-line);
+  border-radius: var(--r-xl);
+  background: var(--OrcaPulse-paper);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+body[data-template="home"] .OrcaPulse-split > .OrcaPulse-data-visual {
+  margin: 0;
+}
+
+body[data-template="home"] .OrcaPulse-chart-title {
+  margin-bottom: var(--space-5);
+}
+
+body[data-template="home"] .OrcaPulse-chart-title h3 {
+  margin: 0 0 var(--space-2);
+  color: var(--OrcaPulse-navy);
+  font-size: var(--home-type-h3);
+  line-height: 1.2;
+}
+
+body[data-template="home"] .OrcaPulse-chart-title p {
+  margin: 0;
+  color: var(--OrcaPulse-muted);
+  font-size: var(--home-type-small);
+  line-height: 1.55;
+}
+
+body[data-template="home"] .OrcaPulse-bar-chart,
+body[data-template="home"] .OrcaPulse-funnel-benchmarks {
+  display: grid;
+  gap: var(--space-5);
+}
+
+body[data-template="home"] .OrcaPulse-bar-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.8fr) minmax(0, 2fr) auto;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--OrcaPulse-ink);
+  font-size: var(--home-type-small);
+}
+
+body[data-template="home"] .OrcaPulse-bar-row strong,
+body[data-template="home"] .OrcaPulse-benchmark-row strong {
+  color: var(--OrcaPulse-navy);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+body[data-template="home"] .OrcaPulse-bar-track,
+body[data-template="home"] .OrcaPulse-benchmark-track {
+  display: block;
+  height: var(--space-3);
+  border-radius: var(--radius-tag, 999px);
+  background: var(--OrcaPulse-mist);
+  overflow: hidden;
+}
+
+body[data-template="home"] .OrcaPulse-bar-track > span,
+body[data-template="home"] .OrcaPulse-benchmark-track > span {
+  display: block;
+  width: var(--bar-value, var(--benchmark-value));
+  height: 100%;
+  border-radius: inherit;
+  background: var(--OrcaPulse-blue);
+}
+
+body[data-template="home"] .OrcaPulse-bar-row:first-child .OrcaPulse-bar-track > span {
+  background: var(--OrcaPulse-navy);
+}
+
+body[data-template="home"] .OrcaPulse-bar-row.is-accent .OrcaPulse-bar-track > span {
+  background: var(--OrcaPulse-blue);
+}
+
+body[data-template="home"] .OrcaPulse-chart-callout {
+  margin: var(--space-6) 0 0;
+  padding: var(--space-4) var(--space-5);
+  border-left: var(--space-1) solid var(--OrcaPulse-blue);
+  background: var(--OrcaPulse-mist);
+  color: var(--OrcaPulse-ink);
+  line-height: 1.55;
+}
+
+body[data-template="home"] .OrcaPulse-chart-callout strong {
+  color: var(--OrcaPulse-navy);
+  font-size: 1.3em;
+  font-variant-numeric: tabular-nums;
+}
+
+body[data-template="home"] .OrcaPulse-chart-source,
+body[data-template="home"] .OrcaPulse-data-visual figcaption {
+  margin-top: var(--space-3);
+  color: var(--OrcaPulse-muted);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+}
+
+body[data-template="home"] .OrcaPulse-chart-source a {
+  color: var(--OrcaPulse-blue);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+body[data-template="home"] .OrcaPulse-line-chart {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+body[data-template="home"] .OrcaPulse-chart-grid line {
+  stroke: var(--OrcaPulse-line);
+  stroke-width: 1;
+}
+
+body[data-template="home"] .OrcaPulse-chart-axis text {
+  fill: var(--OrcaPulse-muted);
+  font-size: 0.75rem;
+}
+
+body[data-template="home"] .OrcaPulse-chart-line {
+  fill: none;
+  stroke: var(--OrcaPulse-blue);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+body[data-template="home"] .OrcaPulse-chart-line--recovery {
+  stroke: var(--OrcaPulse-navy);
+  stroke-dasharray: 7 6;
+}
+
+body[data-template="home"] .OrcaPulse-chart-point {
+  fill: var(--OrcaPulse-blue);
+  stroke: #fff;
+  stroke-width: 2;
+}
+
+body[data-template="home"] .OrcaPulse-chart-point--recovery {
+  fill: var(--OrcaPulse-navy);
+}
+
+body[data-template="home"] .OrcaPulse-chart-value {
+  fill: var(--OrcaPulse-navy);
+  font-size: 0.8125rem;
+  font-weight: 800;
+}
+
+body[data-template="home"] .OrcaPulse-world-map {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+body[data-template="home"] .OrcaPulse-map-land path {
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+body[data-template="home"] .region-americas { fill: #285fc7; }
+body[data-template="home"] .region-emea { fill: #6f91d6; }
+body[data-template="home"] .region-apac { fill: #b5c9f0; }
+
+body[data-template="home"] .OrcaPulse-map-label {
+  fill: #fff;
+  font-size: 0.8125rem;
+  font-weight: 800;
+  pointer-events: none;
+}
+
+body[data-template="home"] .OrcaPulse-region-legend {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+body[data-template="home"] .OrcaPulse-region-legend > div {
+  display: grid;
+  grid-template-columns: var(--space-3) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-1) var(--space-2);
+  min-width: 0;
+}
+
+body[data-template="home"] .OrcaPulse-region-swatch {
+  grid-row: span 3;
+  width: var(--space-3);
+  height: var(--space-3);
+  border-radius: 3px;
+}
+
+body[data-template="home"] .OrcaPulse-region-legend strong,
+body[data-template="home"] .OrcaPulse-region-legend b,
+body[data-template="home"] .OrcaPulse-region-legend small {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+body[data-template="home"] .OrcaPulse-region-legend strong {
+  font-size: 0.8125rem;
+}
+
+body[data-template="home"] .OrcaPulse-region-legend b {
+  color: var(--OrcaPulse-navy);
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+body[data-template="home"] .OrcaPulse-region-legend small {
+  color: var(--OrcaPulse-muted);
+  font-size: 0.75rem;
+}
+
+body[data-template="home"] .OrcaPulse-chart-table {
+  width: 100%;
+  margin-top: var(--space-5);
+  border-collapse: collapse;
+  text-align: left;
+  font-size: var(--home-type-small);
+}
+
+body[data-template="home"] .OrcaPulse-chart-table caption {
+  padding-bottom: var(--space-2);
+  color: var(--OrcaPulse-ink);
+  font-weight: 700;
+  text-align: left;
+}
+
+body[data-template="home"] .OrcaPulse-chart-table th,
+body[data-template="home"] .OrcaPulse-chart-table td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--OrcaPulse-line);
+  vertical-align: top;
+}
+
+body[data-template="home"] .OrcaPulse-chart-table th {
+  color: var(--OrcaPulse-ink);
+  font-weight: 700;
+}
+
+body[data-template="home"] .OrcaPulse-chart-table td {
+  color: var(--OrcaPulse-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+body[data-template="home"] .OrcaPulse-funnel-benchmark h4 {
+  margin: 0 0 var(--space-3);
+  color: var(--OrcaPulse-navy);
+  font-size: 1rem;
+}
+
+body[data-template="home"] .OrcaPulse-benchmark-row {
+  display: grid;
+  grid-template-columns: minmax(88px, 0.75fr) minmax(0, 2fr) auto;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  font-size: 0.8125rem;
+}
+
+body[data-template="home"] .OrcaPulse-benchmark-row .OrcaPulse-benchmark-track {
+  height: var(--space-2);
+}
+
+body[data-template="home"] .OrcaPulse-benchmark-row.is-top .OrcaPulse-benchmark-track > span {
+  background: var(--OrcaPulse-navy);
+}
+
+body[data-template="home"] .OrcaPulse-benchmark-row > span:first-child {
+  color: var(--OrcaPulse-muted);
+}
+
+body[data-template="home"] .OrcaPulse-service-stage {
+  padding-block: var(--space-7);
+  border-bottom: 1px solid var(--OrcaPulse-line);
+}
+
+body[data-template="home"] .OrcaPulse-service-stage:first-of-type {
+  padding-top: 0;
+}
+
+body[data-template="home"] .OrcaPulse-service-stage:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+body[data-template="home"] .OrcaPulse-service-stage .OrcaPulse-split__copy h3 {
+  margin: 0;
+  color: var(--OrcaPulse-navy);
+  font-size: var(--home-type-h3);
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+body[data-template="home"] .OrcaPulse-service-stage .OrcaPulse-split__copy p {
+  margin: var(--space-3) 0 0;
+}
+
+body[data-template="home"] .OrcaPulse-service-stage__note {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  padding: var(--space-7);
+  border-radius: var(--r-xl);
+  background: var(--OrcaPulse-mist);
+  color: var(--OrcaPulse-navy);
+}
+
+body[data-template="home"] .OrcaPulse-service-stage__note strong {
+  display: block;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+body[data-template="home"] .OrcaPulse-service-stage__note p {
+  margin: var(--space-3) 0 0;
+  color: var(--OrcaPulse-muted);
+  font-size: var(--home-type-small);
+  line-height: 1.6;
+}
+
+body[data-template="home"] .OrcaPulse-service-stage--reverse .OrcaPulse-split__copy,
+body[data-template="home"] .OrcaPulse-split--reverse .OrcaPulse-split__copy {
+  grid-column: 2;
+}
+
+body[data-template="home"] .OrcaPulse-split--reverse .OrcaPulse-service-stage__note {
+  grid-column: 1;
+}
+
+body[data-template="home"] .OrcaPulse-principles-list {
+  list-style: none;
+  display: grid;
+  gap: var(--space-6);
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+body[data-template="home"] .OrcaPulse-principles-list li {
+  display: grid;
+  grid-template-columns: var(--space-8) minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: start;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+body[data-template="home"] .OrcaPulse-principles-list li > span {
+  color: var(--OrcaPulse-blue);
+  font-size: 1.25rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+body[data-template="home"] .OrcaPulse-principles-list h3 {
+  margin: 0 0 var(--space-2);
+  color: var(--OrcaPulse-navy);
+  font-size: var(--home-type-h3);
+}
+
+body[data-template="home"] .OrcaPulse-principles-list p {
+  max-width: var(--home-copy-max);
+  margin: 0;
+  color: var(--OrcaPulse-muted);
+  font-size: var(--home-type-body);
+  line-height: 1.7;
+}
+
+@media (max-width: 833px) {
+  body[data-template="home"] .OrcaPulse-data-visual {
+    padding: var(--space-4);
+    margin-top: var(--space-5);
+  }
+
+  body[data-template="home"] .OrcaPulse-split > .OrcaPulse-data-visual {
+    margin-top: var(--space-4);
+  }
+
+  body[data-template="home"] .OrcaPulse-region-legend {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body[data-template="home"] .OrcaPulse-bar-row,
+  body[data-template="home"] .OrcaPulse-benchmark-row {
+    grid-template-columns: minmax(90px, 0.8fr) minmax(0, 1fr) auto;
+    gap: var(--space-2);
+  }
+
+  body[data-template="home"] .OrcaPulse-service-stage__note,
+  body[data-template="home"] .OrcaPulse-split--reverse .OrcaPulse-service-stage__note,
+  body[data-template="home"] .OrcaPulse-split--reverse .OrcaPulse-split__copy {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  body[data-template="home"] .OrcaPulse-service-stage__note {
+    padding: var(--space-5);
+  }
+
+  body[data-template="home"] .OrcaPulse-principles-list li {
+    grid-template-columns: var(--space-6) minmax(0, 1fr);
+    gap: var(--space-3);
+  }
+}
+
+@media (max-width: 833px) {
+  body[data-template="home"] .OrcaPulse-bar-row,
+  body[data-template="home"] .OrcaPulse-benchmark-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  body[data-template="home"] .OrcaPulse-bar-row > span:first-child,
+  body[data-template="home"] .OrcaPulse-benchmark-row > span:first-child {
+    grid-column: 1 / -1;
+  }
+
+  body[data-template="home"] .OrcaPulse-bar-track,
+  body[data-template="home"] .OrcaPulse-benchmark-track {
+    grid-column: 1;
+  }
+
+  body[data-template="home"] .OrcaPulse-chart-table th,
+  body[data-template="home"] .OrcaPulse-chart-table td {
+    padding-inline: var(--space-2);
+  }
+}
